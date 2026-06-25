@@ -30,7 +30,8 @@ export const STATS = [
   { value: 10, suffix: "+", label: "Years of Excellence" },
 ] as const;
 
-export function waLink(message = SITE.whatsappPrefill) {
+export function waLink(message: string = DEFAULT_WHATSAPP_PREFILL) {
   const n = SITE.whatsappNumber.replace(/[^0-9]/g, "");
   return `https://wa.me/${n}?text=${encodeURIComponent(message)}`;
 }
+
