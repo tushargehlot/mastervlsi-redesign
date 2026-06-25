@@ -83,8 +83,8 @@ export function LogicGatePlayground() {
               </tr>
             </thead>
             <tbody>
-              {(isUnary ? [{ a: 0, b: 0 }, { a: 1, b: 0 }] : rows).map((r) => {
-                const y = COMPUTE[gate](r.a, r.b as 0 | 1);
+              {(isUnary ? ([{ a: 0, b: 0 }, { a: 1, b: 0 }] as const) : rows).map((r) => {
+                const y = COMPUTE[gate](r.a as 0 | 1, r.b as 0 | 1);
                 const matched = a === r.a && (isUnary || b === r.b);
                 return (
                   <tr key={`${r.a}${r.b}`} className={`border-t border-border ${matched ? "bg-primary/10 text-foreground" : ""}`}>

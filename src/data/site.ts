@@ -1,5 +1,7 @@
 // Single source of truth for cross-cutting site constants.
 // Swap the WhatsApp number, Google Form, and map link here when ready.
+export const DEFAULT_WHATSAPP_PREFILL = "Hi MasterVLSI! I'd like to know more about your VLSI courses.";
+
 
 export const SITE = {
   name: "MasterVLSI",
