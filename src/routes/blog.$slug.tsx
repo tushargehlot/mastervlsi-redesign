@@ -70,7 +70,7 @@ function BlogPostPage() {
             <ArrowLeft size={14} /> Back to blog
           </Link>
           <div className="mt-6 flex flex-wrap gap-1.5">
-            {post.tags.map((t) => (
+            {post.tags.map((t: string) => (
               <span key={t} className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-primary/15 text-primary">{t}</span>
             ))}
           </div>
