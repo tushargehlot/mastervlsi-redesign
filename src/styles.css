@@ -7,16 +7,17 @@
 @import "@fontsource/space-grotesk/700.css";
 @import "@fontsource/jetbrains-mono/400.css";
 @import "@fontsource/jetbrains-mono/500.css";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
+@import "@fontsource/inter-tight/400.css";
+@import "@fontsource/inter-tight/500.css";
+@import "@fontsource/inter-tight/600.css";
+@import "@fontsource/inter-tight/700.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-sans: "Inter Tight", "Inter", system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -43,33 +44,66 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ignite: var(--ignite);
+  --color-crimson: var(--crimson);
+  --color-wire: var(--wire);
+  --color-trace: var(--trace);
   --color-silver: var(--silver);
-  --color-glow: var(--glow);
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(0.12 0.012 260);
-  --foreground: oklch(0.97 0.005 250);
-  --card: oklch(0.16 0.013 260);
-  --card-foreground: oklch(0.97 0.005 250);
-  --popover: oklch(0.16 0.013 260);
-  --popover-foreground: oklch(0.97 0.005 250);
-  --primary: oklch(0.62 0.24 25);
+
+  /* Layered silicon-graphite surfaces */
+  --background: oklch(0.115 0.014 255);
+  --foreground: oklch(0.965 0.005 250);
+  --surface-1: oklch(0.145 0.014 255);
+  --surface-2: oklch(0.18 0.014 255);
+  --surface-3: oklch(0.22 0.014 255);
+
+  --card: var(--surface-1);
+  --card-foreground: oklch(0.965 0.005 250);
+  --popover: var(--surface-2);
+  --popover-foreground: oklch(0.965 0.005 250);
+
+  /* Deeper crimson, with a hotter "ignite" highlight */
+  --crimson: oklch(0.58 0.22 22);
+  --ignite: oklch(0.66 0.24 25);
+  --primary: var(--crimson);
   --primary-foreground: oklch(0.98 0.005 250);
+
   --secondary: oklch(0.22 0.012 260);
   --secondary-foreground: oklch(0.97 0.005 250);
   --muted: oklch(0.20 0.012 260);
-  --muted-foreground: oklch(0.70 0.012 250);
-  --accent: oklch(0.62 0.24 25);
+  --muted-foreground: oklch(0.72 0.012 250);
+  --accent: var(--ignite);
   --accent-foreground: oklch(0.98 0.005 250);
-  --destructive: oklch(0.62 0.24 25);
+  --destructive: var(--crimson);
   --destructive-foreground: oklch(0.98 0.005 250);
-  --border: oklch(0.28 0.015 260 / 60%);
+
+  --border: oklch(0.30 0.015 255 / 50%);
+  --border-strong: oklch(0.42 0.018 255 / 70%);
   --input: oklch(0.24 0.013 260);
-  --ring: oklch(0.62 0.24 25);
-  --silver: oklch(0.85 0.01 250);
+  --ring: var(--ignite);
+
+  --silver: oklch(0.88 0.01 250);
+  --wire: oklch(0.78 0.02 240);
+  --trace: oklch(0.78 0.14 70);
+
+  --gradient-ignite: linear-gradient(135deg, var(--crimson) 0%, var(--ignite) 60%, oklch(0.75 0.18 35) 100%);
+  --gradient-silicon: linear-gradient(180deg, var(--surface-1) 0%, var(--background) 100%);
+  --gradient-radial-glow: radial-gradient(ellipse at center, oklch(0.58 0.22 22 / 0.35), transparent 60%);
+
+  --shadow-elevated: 0 30px 60px -30px oklch(0 0 0 / 0.6), 0 18px 36px -18px oklch(0.58 0.22 22 / 0.25);
+  --shadow-inset-trace: inset 0 1px 0 oklch(1 0 0 / 0.04), inset 0 -1px 0 oklch(0 0 0 / 0.4);
   --glow: 0 0 60px oklch(0.62 0.24 25 / 0.45);
+
+  /* Scroll-driven tint (0 → 1) used by fx/useScrollTint */
+  --scroll-tint: 0;
 }
 
 @layer base {
@@ -78,38 +112,77 @@
   }
   html {
     color-scheme: dark;
+    scroll-behavior: smooth;
   }
   body {
     background-color: var(--color-background);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, oklch(0.58 0.22 22 / calc(0.08 + var(--scroll-tint) * 0.04)), transparent 60%),
+      linear-gradient(180deg, var(--background) 0%, oklch(0.10 0.012 252) 100%);
+    background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
   ::selection { background: var(--primary); color: white; }
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: oklch(0.14 0.012 260); }
-  ::-webkit-scrollbar-thumb { background: oklch(0.35 0.08 25); border-radius: 8px; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, oklch(0.4 0.12 25), oklch(0.55 0.18 25));
+    border-radius: 8px;
+  }
   ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+  /* Fluid display type */
+  .h-display {
+    font-size: clamp(2.5rem, 6vw + 1rem, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+  .h-display-sm {
+    font-size: clamp(1.875rem, 3vw + 1rem, 3.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+  }
 }
 
 @utility grid-bg {
   background-image:
-    linear-gradient(oklch(0.30 0.02 260 / 0.18) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(0.30 0.02 260 / 0.18) 1px, transparent 1px);
+    linear-gradient(oklch(0.30 0.02 260 / 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.30 0.02 260 / 0.16) 1px, transparent 1px);
   background-size: 48px 48px;
+}
+
+@utility grid-bg-fine {
+  background-image:
+    linear-gradient(oklch(0.35 0.02 260 / 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.35 0.02 260 / 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 @utility glow-red {
   box-shadow: 0 0 40px -10px oklch(0.62 0.24 25 / 0.55), 0 0 80px -30px oklch(0.62 0.24 25 / 0.4);
 }
 
+@utility glow-soft {
+  box-shadow: 0 0 0 1px oklch(0.58 0.22 22 / 0.25), 0 30px 80px -40px oklch(0.58 0.22 22 / 0.6);
+}
+
 @utility text-gradient {
-  background: linear-gradient(120deg, #fff 0%, oklch(0.85 0.01 250) 40%, oklch(0.62 0.24 25) 100%);
+  background: linear-gradient(120deg, #fff 0%, oklch(0.88 0.01 250) 35%, oklch(0.66 0.24 25) 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-ignite {
+  background: var(--gradient-ignite);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -119,8 +192,24 @@
   mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
 
+@utility mask-fade-y {
+  mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+@utility surface-1 {
+  background-color: var(--color-surface-1);
+}
+@utility surface-2 {
+  background-color: var(--color-surface-2);
+}
+@utility hairline {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-inset-trace);
+}
+
 @utility scanline {
-  background: linear-gradient(180deg, transparent, oklch(0.62 0.24 25 / 0.18), transparent);
+  position: relative;
+  overflow: hidden;
 }
 
 @keyframes marquee {
@@ -142,4 +231,80 @@
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+@utility animate-shimmer {
+  background: linear-gradient(90deg, transparent, oklch(0.66 0.24 25 / 0.25), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2.4s linear infinite;
+}
+
+@keyframes scan-sweep {
+  0% { transform: translateX(-110%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(110%); opacity: 0; }
+}
+@utility animate-scan {
+  animation: scan-sweep 2.8s ease-in-out infinite;
+}
+
+@keyframes data-pulse {
+  0% { offset-distance: 0%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+@keyframes etch {
+  from { stroke-dashoffset: var(--len, 1000); }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@utility animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@utility animate-float {
+  animation: float-y 6s ease-in-out infinite;
+}
+
+/* Film grain overlay (used by <Grain />) */
+@utility grain-overlay {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: 0.45;
+}
+
+/* Custom cursor visibility — hide native when fx cursor is mounted */
+html[data-fx-cursor="on"] body,
+html[data-fx-cursor="on"] body * {
+  cursor: none !important;
+}
+html[data-fx-cursor="on"] body a,
+html[data-fx-cursor="on"] body button,
+html[data-fx-cursor="on"] body [data-magnetic],
+html[data-fx-cursor="on"] body input,
+html[data-fx-cursor="on"] body textarea {
+  cursor: none !important;
+}
+/* keep native cursor in inputs when focused so users can see caret */
+html[data-fx-cursor="on"] body input:focus,
+html[data-fx-cursor="on"] body textarea:focus {
+  cursor: text !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

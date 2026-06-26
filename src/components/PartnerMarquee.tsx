@@ -8,7 +8,7 @@ export function PartnerMarquee() {
         {list.map((p, i) => (
           <div
             key={i}
-            className="shrink-0 rounded-md border border-border bg-card/60 px-5 py-3 text-sm font-mono text-muted-foreground hover:text-primary hover:border-primary/60 transition-colors"
+            className="shrink-0 rounded-lg border border-border/70 bg-gradient-to-b from-card to-background/40 backdrop-blur px-6 py-3.5 text-sm font-mono tracking-tight text-muted-foreground hover:text-foreground hover:border-primary/50 hover:shadow-[0_0_24px_-8px_oklch(0.66_0.24_25/0.5)] transition-all"
           >
             {p.name}
           </div>
