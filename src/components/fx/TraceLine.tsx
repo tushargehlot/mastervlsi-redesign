@@ -5,7 +5,7 @@ export function TraceLine({ className = "" }: { className?: string }) {
   const reduce = useReducedMotion();
   return (
     <div className={`relative h-px w-full ${className}`} aria-hidden>
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-border-strong to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-border to-transparent opacity-80" />
       {!reduce && (
         <motion.div
           className="absolute top-0 h-px w-32 bg-gradient-to-r from-transparent via-ignite to-transparent"
