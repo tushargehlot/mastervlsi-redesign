@@ -1,95 +1,243 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { STATS } from "@/data/site";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { STATS, SITE } from "@/data/site";
 import { PARTNERS } from "@/data/partners";
 import { GridBackdrop } from "@/components/GridBackdrop";
 import { Counter } from "@/components/Counter";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
-import { Quote } from "lucide-react";
+import { Spotlight } from "@/components/fx/Spotlight";
+import { Reveal } from "@/components/fx/Reveal";
+import { Magnetic } from "@/components/fx/Magnetic";
+import { SectionDivider } from "@/components/vlsi/SectionDivider";
+import { VideoTestimonialGrid } from "@/components/placements/VideoTestimonialGrid";
+import { TestimonialCarousel } from "@/components/placements/TestimonialCarousel";
+import { GoogleReviewsGrid } from "@/components/placements/GoogleReviews";
+import { PlacementJourney } from "@/components/placements/PlacementJourney";
+import { FaqAccordion } from "@/components/FaqAccordion";
+import { FAQ_PLACEMENTS } from "@/data/faqs";
+import { ArrowRight, MessageCircle } from "lucide-react";
+import { useState } from "react";
 
 export const Route = createFileRoute("/placements")({
   head: () => ({
     meta: [
-      { title: "Placements — MasterVLSI" },
+      { title: "Placements & Alumni — MasterVLSI" },
       { name: "description", content: "5000+ alumni placed at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence and 25+ more. Placement within 30–45 days." },
       { property: "og:title", content: "Placements — MasterVLSI" },
-      { property: "og:description", content: "Where MasterVLSI engineers work today." },
+      { property: "og:description", content: "Video stories, written quotes, Google reviews — see where MasterVLSI engineers land." },
     ],
   }),
   component: PlacementsPage,
 });
 
-const TESTIMONIALS = [
-  { name: "Priya R.", role: "Design Verification Engineer @ NVIDIA", quote: "Joined with zero UVM knowledge. Six months later I was running constrained-random regressions on a GPU subsystem." },
-  { name: "Arjun M.", role: "Physical Design Engineer @ AMD", quote: "The 24/7 lab access changed everything. I could iterate on floorplans at 2 AM and message my mentor at 9." },
-  { name: "Sneha K.", role: "RTL Designer @ Qualcomm", quote: "Best decision I made coming out of college. Got 3 offers within 6 weeks of completion." },
-];
+const FILTERS = ["All", "Product", "Fabless", "EDA", "Services"] as const;
+type Filter = typeof FILTERS[number];
+
+const partnerCategory: Record<string, Exclude<Filter, "All">> = {
+  Intel: "Product", AMD: "Product", NVIDIA: "Product", Qualcomm: "Product", Samsung: "Product",
+  "Texas Instruments": "Product", Micron: "Product", "Western Digital": "Product",
+  MediaTek: "Fabless", Marvell: "Fabless", Broadcom: "Fabless", Renesas: "Fabless",
+  NXP: "Fabless", STMicroelectronics: "Fabless", "Analog Devices": "Fabless", Microchip: "Fabless",
+  Synopsys: "EDA", Cadence: "EDA", "Siemens EDA": "EDA", Xilinx: "EDA",
+  Wipro: "Services", HCL: "Services", "L&T Technology": "Services", "Tata Elxsi": "Services",
+  Sasken: "Services", "Capgemini Engineering": "Services", Mirafra: "Services",
+  eInfochips: "Services", Tessolve: "Services", "Sankalp Semiconductor": "Services",
+};
 
 function PlacementsPage() {
+  const [filter, setFilter] = useState<Filter>("All");
+  const filtered = filter === "All"
+    ? PARTNERS
+    : PARTNERS.filter((p) => partnerCategory[p.name] === filter);
+
   return (
     <>
-      <section className="relative py-24">
+      {/* HERO */}
+      <section className="relative py-24 overflow-hidden">
         <GridBackdrop />
+        <Spotlight size={700} />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <Reveal className="max-w-3xl">
             <p className="font-mono text-xs text-primary uppercase tracking-widest">// Outcomes</p>
-            <h1 className="mt-3 font-display text-5xl sm:text-6xl font-bold">
+            <h1 className="mt-3 h-display font-display font-bold">
               Where our engineers <span className="text-gradient">work today.</span>
             </h1>
-            <p className="mt-5 text-lg text-muted-foreground">
-              Placement starts within 30–45 days of joining MasterVLSI. Below is a snapshot of the
-              companies that have hired our alumni across India, the US and APAC.
+            <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
+              Placement starts within 30–45 days of completing the core modules. Below is the proof —
+              hiring partners, video stories from alumni, written testimonials, and unfiltered Google reviews.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="mt-14 grid grid-cols-2 lg:grid-cols-5 gap-4">
+          <Reveal delay={0.15} className="mt-14 grid grid-cols-2 lg:grid-cols-5 gap-4">
             {STATS.map((s) => (
-              <div key={s.label} className="rounded-2xl border border-border bg-card/60 p-6">
+              <div key={s.label} className="rounded-2xl border border-border bg-card/60 backdrop-blur p-6 hover:border-primary/50 transition-all">
                 <p className="font-display text-4xl font-bold text-gradient">
                   <Counter to={s.value} suffix={s.suffix} />
                 </p>
                 <p className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">{s.label}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="py-16 border-y border-border bg-card/30">
-        <div className="mx-auto max-w-7xl px-4 mb-6 text-center">
-          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            Trusted by 30+ hiring partners
-          </p>
+      <SectionDivider label="hiring partners" />
+
+      {/* PARTNERS */}
+      <section className="py-16 surface-1 border-y border-border">
+        <div className="mx-auto max-w-7xl px-4 mb-6 flex items-end justify-between flex-wrap gap-4">
+          <Reveal>
+            <p className="font-mono text-xs uppercase tracking-widest text-primary">// 30+ companies</p>
+            <h2 className="mt-2 h-display-sm font-display font-bold">
+              Alumni currently shipping silicon at.
+            </h2>
+          </Reveal>
+          <div className="flex flex-wrap gap-1.5">
+            {FILTERS.map((f) => (
+              <button
+                key={f}
+                onClick={() => setFilter(f)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider border transition-all ${
+                  filter === f
+                    ? "bg-primary text-primary-foreground border-primary glow-red"
+                    : "bg-card border-border text-muted-foreground hover:border-primary/40 hover:text-foreground"
+                }`}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
         </div>
         <PartnerMarquee />
         <div className="mx-auto max-w-7xl px-4 mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-          {PARTNERS.map((p) => (
+          {filtered.map((p) => (
             <div
               key={p.name}
-              className="aspect-[5/2] rounded-xl border border-border bg-background flex items-center justify-center font-mono text-sm text-muted-foreground hover:text-primary hover:border-primary/60 transition"
+              className="group aspect-[5/2] rounded-xl border border-border bg-background/60 backdrop-blur flex items-center justify-center font-mono text-sm text-muted-foreground hover:text-foreground hover:border-primary/60 hover:shadow-[0_0_30px_-10px_oklch(0.66_0.24_25/0.6)] transition-all relative overflow-hidden"
             >
-              {p.name}
+              <span className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="relative">{p.name}</span>
             </div>
           ))}
         </div>
       </section>
 
+      <SectionDivider label="video stories" />
+
+      {/* VIDEO TESTIMONIALS */}
       <section className="relative py-24">
         <GridBackdrop />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-display text-4xl font-bold max-w-2xl">
-            Voices from our <span className="text-gradient">alumni.</span>
-          </h2>
-          <div className="mt-12 grid md:grid-cols-3 gap-5">
-            {TESTIMONIALS.map((t) => (
-              <figure key={t.name} className="rounded-2xl border border-border bg-card p-7">
-                <Quote size={20} className="text-primary mb-3" />
-                <blockquote className="text-sm text-foreground leading-relaxed">"{t.quote}"</blockquote>
-                <figcaption className="mt-5">
-                  <p className="font-display font-bold">{t.name}</p>
-                  <p className="text-xs text-muted-foreground font-mono mt-0.5">{t.role}</p>
-                </figcaption>
-              </figure>
-            ))}
+          <Reveal>
+            <p className="font-mono text-xs text-primary uppercase tracking-widest">// In their own voices</p>
+            <h2 className="mt-3 h-display-sm font-display font-bold max-w-2xl">
+              Alumni stories, <span className="text-gradient">unscripted.</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-2xl">
+              Real engineers — at real companies — telling you what changed when they joined MasterVLSI.
+              Tap any thumbnail to hear them out.
+            </p>
+          </Reveal>
+          <div className="mt-12">
+            <VideoTestimonialGrid />
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider label="written testimonials" />
+
+      {/* WRITTEN CAROUSEL */}
+      <section className="relative py-20 surface-1 border-y border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <p className="font-mono text-xs text-primary uppercase tracking-widest">// Detailed wins</p>
+            <h2 className="mt-3 h-display-sm font-display font-bold max-w-2xl">
+              The long-form <span className="text-gradient">success stories.</span>
+            </h2>
+          </Reveal>
+          <div className="mt-10">
+            <TestimonialCarousel />
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider label="google reviews" />
+
+      {/* GOOGLE REVIEWS */}
+      <section className="relative py-24">
+        <GridBackdrop />
+        <Spotlight size={560} />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <p className="font-mono text-xs text-primary uppercase tracking-widest">// Verified · Google</p>
+            <h2 className="mt-3 h-display-sm font-display font-bold max-w-2xl">
+              What students post <span className="text-gradient">publicly on Google.</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-2xl">
+              No filter, no curation — direct from our Google Business profile.
+            </p>
+          </Reveal>
+          <div className="mt-10">
+            <GoogleReviewsGrid />
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider label="journey" />
+
+      {/* PLACEMENT JOURNEY */}
+      <section className="relative py-24 surface-1 border-y border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <p className="font-mono text-xs text-primary uppercase tracking-widest">// 4 stops</p>
+            <h2 className="mt-3 h-display-sm font-display font-bold max-w-2xl">
+              From cohort intake to <span className="text-gradient">offer letter.</span>
+            </h2>
+          </Reveal>
+          <div className="mt-14">
+            <PlacementJourney />
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="relative py-24">
+        <GridBackdrop />
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <p className="font-mono text-xs text-primary uppercase tracking-widest">// FAQ</p>
+            <h2 className="mt-3 h-display-sm font-display font-bold">
+              Placement <span className="text-gradient">questions.</span>
+            </h2>
+          </Reveal>
+          <div className="mt-10">
+            <FaqAccordion items={FAQ_PLACEMENTS} />
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="relative py-20">
+        <div className="mx-auto max-w-5xl px-4">
+          <div className="rounded-3xl border border-border bg-gradient-to-br from-card via-card to-primary/10 p-10 sm:p-14 text-center glow-soft relative overflow-hidden">
+            <div className="absolute inset-0 grid-bg-fine opacity-30 pointer-events-none" />
+            <h2 className="relative h-display-sm font-display font-bold">
+              Ready to join the <span className="text-gradient">next cohort?</span>
+            </h2>
+            <p className="relative mt-3 text-muted-foreground max-w-xl mx-auto">
+              Talk to a counsellor in under 2 minutes — straight on WhatsApp.
+            </p>
+            <div className="relative mt-8 flex flex-wrap justify-center gap-3">
+              <Magnetic>
+                <Link to="/demo" className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-red">
+                  Book free demo <ArrowRight size={16} />
+                </Link>
+              </Magnetic>
+              <Magnetic>
+                <a href={SITE.whatsappNumber ? "https://wa.me/" : "#"} className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-6 py-3 text-sm hover:border-primary/60 hover:text-primary">
+                  <MessageCircle size={16} /> Chat on WhatsApp
+                </a>
+              </Magnetic>
+            </div>
           </div>
         </div>
       </section>

@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import logoAsset from "@/assets/logo.png.asset.json";
 import markAsset from "@/assets/mark.png.asset.json";
+import logoAsset from "@/assets/logo.png.asset.json";
+import { Magnetic } from "@/components/fx/Magnetic";
 
 const links = [
   { to: "/", label: "Home" },
@@ -28,21 +29,24 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/70 backdrop-blur-xl border-b border-border"
+          ? "bg-background/60 backdrop-blur-2xl border-b border-border shadow-[0_4px_30px_-12px_rgba(0,0,0,0.6)]"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <img
-            src={markAsset.url}
-            alt="MasterVLSI"
-            width={32}
-            height={32}
-            className="h-8 w-8 transition-transform group-hover:rotate-3"
-          />
+        <Link to="/" data-magnetic className="flex items-center gap-2.5 group">
+          <span className="relative">
+            <span className="absolute inset-0 rounded-full bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+            <img
+              src={markAsset.url}
+              alt="MasterVLSI"
+              width={32}
+              height={32}
+              className="relative h-8 w-8 transition-transform duration-500 group-hover:rotate-[8deg]"
+            />
+          </span>
           <span className="font-display text-lg font-bold tracking-tight">
             MASTER<span className="text-primary">VLSI</span>
           </span>
@@ -53,19 +57,25 @@ export function Nav() {
             <Link
               key={l.to}
               to={l.to}
-              className="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              data-magnetic
+              className="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
               activeProps={{ className: "text-foreground" }}
               activeOptions={{ exact: l.to === "/" }}
             >
-              {l.label}
+              <span className="relative">
+                {l.label}
+                <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+              </span>
             </Link>
           ))}
-          <Link
-            to="/demo"
-            className="ml-2 inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors glow-red"
-          >
-            Book Free Demo
-          </Link>
+          <Magnetic className="ml-2">
+            <Link
+              to="/demo"
+              className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-all glow-red"
+            >
+              Book Free Demo
+            </Link>
+          </Magnetic>
         </nav>
 
         <button
@@ -102,7 +112,6 @@ export function Nav() {
           </nav>
         </div>
       )}
-      {/* prevent unused warning */}
       <img src={logoAsset.url} alt="" hidden width={1} height={1} />
     </header>
   );

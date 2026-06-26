@@ -13,6 +13,10 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
+import { Cursor } from "@/components/fx/Cursor";
+import { Grain } from "@/components/fx/Grain";
+import { ScrollTint } from "@/components/fx/ScrollTint";
+import { ScrollProgress } from "@/components/fx/ScrollProgress";
 import markAsset from "@/assets/mark.png.asset.json";
 
 function NotFoundComponent() {
@@ -124,6 +128,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ScrollTint />
+      <ScrollProgress />
+      <Cursor />
+      <Grain />
       <Nav />
       <main className="min-h-screen pt-16">
         <Outlet />
