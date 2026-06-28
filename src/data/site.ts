@@ -1,18 +1,18 @@
 // Single source of truth for cross-cutting site constants.
-// Swap the WhatsApp number, Google Form, and map link here when ready.
 export const DEFAULT_WHATSAPP_PREFILL = "Hi MasterVLSI! I'd like to know more about your VLSI courses.";
-
 
 export const SITE = {
   name: "MasterVLSI",
   tagline: "Fueling careers with precision placements.",
-  whatsappNumber: "+91XXXXXXXXXX", // TODO: swap with real number
-  whatsappPrefill: "Hi MasterVLSI! I'd like to know more about your VLSI courses.",
+  whatsappNumber: "+919876543210", // TODO: confirm real number
+  whatsappPrefill: DEFAULT_WHATSAPP_PREFILL,
+  email: "info@mastervlsi.in",
+  phone: "+91 98765 43210",
   youtubeChannel: "https://www.youtube.com/@mastervlsi2526",
+  youtubeHandle: "@mastervlsi2526",
   demoFormUrl: "https://forms.gle/7MBe27TG2eBzh49d7",
   mapsUrl: "https://maps.app.goo.gl/SJTBMotHE7umPDfC6",
-  mapsEmbed:
-    "https://www.google.com/maps?q=MasterVLSI&output=embed",
+  mapsEmbed: "https://www.google.com/maps?q=MasterVLSI+Bengaluru&output=embed",
   address: "MasterVLSI Training Institute, Bengaluru, Karnataka, India",
   social: {
     youtube: "https://www.youtube.com/@mastervlsi2526",
@@ -34,4 +34,3 @@ export function waLink(message: string = DEFAULT_WHATSAPP_PREFILL) {
   const n = SITE.whatsappNumber.replace(/[^0-9]/g, "");
   return `https://wa.me/${n}?text=${encodeURIComponent(message)}`;
 }
-
