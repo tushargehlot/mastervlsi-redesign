@@ -5,6 +5,9 @@ import { COURSES } from "@/data/courses";
 import { GridBackdrop } from "@/components/GridBackdrop";
 import { TiltCard } from "@/components/TiltCard";
 import { Search, Cpu } from "lucide-react";
+import { CostCalc } from "@/components/interactive/CostCalc";
+import { Quiz } from "@/components/interactive/Quiz";
+import { SectionDivider } from "@/components/vlsi/SectionDivider";
 
 export const Route = createFileRoute("/courses")({
   head: () => ({
@@ -108,6 +111,13 @@ function CoursesPage() {
             </motion.div>
           ))}
         </div>
+      </div>
+
+      <SectionDivider label="planner" />
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-16 grid lg:grid-cols-2 gap-6">
+        <Quiz />
+        <CostCalc />
       </div>
     </section>
   );
