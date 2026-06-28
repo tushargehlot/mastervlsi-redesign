@@ -15,6 +15,9 @@ import { PlacementJourney } from "@/components/placements/PlacementJourney";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { FAQ_PLACEMENTS } from "@/data/faqs";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import { SalaryHeatmap } from "@/components/interactive/SalaryHeatmap";
+import { AlumniMap } from "@/components/interactive/AlumniMap";
+import { waLink } from "@/data/site";
 import { useState } from "react";
 
 export const Route = createFileRoute("/placements")({
@@ -233,12 +236,29 @@ function PlacementsPage() {
                 </Link>
               </Magnetic>
               <Magnetic>
-                <a href={SITE.whatsappNumber ? "https://wa.me/" : "#"} className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-6 py-3 text-sm hover:border-primary/60 hover:text-primary">
+                <a href={waLink()} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-6 py-3 text-sm hover:border-primary/60 hover:text-primary">
                   <MessageCircle size={16} /> Chat on WhatsApp
                 </a>
               </Magnetic>
             </div>
           </div>
+        </div>
+      </section>
+
+      <SectionDivider label="data" />
+
+      <section className="relative py-24">
+        <GridBackdrop />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
+          <Reveal className="max-w-2xl">
+            <p className="font-mono text-xs text-primary uppercase tracking-widest">// Outcomes, visualised</p>
+            <h2 className="mt-3 h-display-sm font-display font-bold">
+              The placements <span className="text-gradient">heatmap & map.</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">Hover the salary grid for live tooltips. Click a city to inspect the hiring cluster.</p>
+          </Reveal>
+          <SalaryHeatmap />
+          <AlumniMap />
         </div>
       </section>
     </>

@@ -7,6 +7,7 @@ import { Reveal } from "@/components/fx/Reveal";
 import { SectionDivider } from "@/components/vlsi/SectionDivider";
 import { STATS } from "@/data/site";
 import { Target, Eye, Heart, Award, Check, X } from "lucide-react";
+import { MentorWall } from "@/components/interactive/MentorWall";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -209,6 +210,22 @@ function About() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <SectionDivider label="mentors" />
+
+      <section className="relative py-24">
+        <GridBackdrop />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal className="max-w-2xl mb-10">
+            <p className="font-mono text-xs text-primary uppercase tracking-widest">// The bench</p>
+            <h2 className="mt-3 h-display-sm font-display font-bold">
+              Engineers who <span className="text-gradient">tape out silicon</span> — not lecturers.
+            </h2>
+            <p className="mt-4 text-muted-foreground">Hover any card to see specialties. Every mentor still works on production silicon.</p>
+          </Reveal>
+          <MentorWall />
         </div>
       </section>
     </>
