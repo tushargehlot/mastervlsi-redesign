@@ -18,6 +18,10 @@ import { SectionDivider } from "@/components/vlsi/SectionDivider";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { FAQ_HOME } from "@/data/faqs";
 import { TestimonialCarousel } from "@/components/placements/TestimonialCarousel";
+import { LiveCohortTicker } from "@/components/interactive/LiveCohortTicker";
+import { FoundersNote } from "@/components/interactive/FoundersNote";
+import { PosterPlaylistCard } from "@/components/PosterPlaylistCard";
+import { PLAYLISTS } from "@/data/playlists";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -76,7 +80,7 @@ function Index() {
               <br />
               <span className="text-foreground/55">that runs the world.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-on-glass ink-soft">
               Industry-aligned training across RTL, Verification, Physical Design, DFT, STA & Low Power.
               Real mentors. 24/7 lab. Placement within 30–45 days.
             </p>
@@ -310,20 +314,10 @@ function Index() {
             </div>
           </Reveal>
           <Reveal delay={0.15}>
-            <div className="relative group">
-              <div className="absolute -inset-2 bg-gradient-to-br from-primary/40 via-trace/20 to-primary/40 rounded-3xl blur-2xl opacity-30 group-hover:opacity-60 transition-opacity" />
-              <div className="relative aspect-video rounded-2xl overflow-hidden border border-border">
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed?listType=user_uploads&list=mastervlsi2526"
-                  title="MasterVLSI featured playlist"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-              <div className="absolute -top-3 -left-3 font-mono text-[10px] bg-primary text-primary-foreground px-2 py-1 rounded">
-                ● LIVE
-              </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {PLAYLISTS.slice(0, 2).map((p, i) => (
+                <PosterPlaylistCard key={p.id} p={p} idx={i} />
+              ))}
             </div>
           </Reveal>
         </div>
