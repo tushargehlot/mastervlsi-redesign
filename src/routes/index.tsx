@@ -18,6 +18,10 @@ import { SectionDivider } from "@/components/vlsi/SectionDivider";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { FAQ_HOME } from "@/data/faqs";
 import { TestimonialCarousel } from "@/components/placements/TestimonialCarousel";
+import { LiveCohortTicker } from "@/components/interactive/LiveCohortTicker";
+import { FoundersNote } from "@/components/interactive/FoundersNote";
+import { PosterPlaylistCard } from "@/components/PosterPlaylistCard";
+import { PLAYLISTS } from "@/data/playlists";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -76,7 +80,7 @@ function Index() {
               <br />
               <span className="text-foreground/55">that runs the world.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-on-glass ink-soft">
               Industry-aligned training across RTL, Verification, Physical Design, DFT, STA & Low Power.
               Real mentors. 24/7 lab. Placement within 30–45 days.
             </p>
@@ -178,6 +182,44 @@ function Index() {
               </motion.div>
             ))}
           </div>
+
+          {/* Live ticker */}
+          <div className="mt-14 grid lg:grid-cols-[1fr_400px] gap-6">
+            <div className="rounded-2xl border border-border bg-card/60 p-6 backdrop-blur">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-primary">// What we ship</p>
+              <h3 className="mt-2 font-display text-2xl font-bold leading-tight">
+                Every cohort is a small <span className="text-gradient">design house.</span>
+              </h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                Daily standups, peer code reviews, EDA tool licences from Cadence and Synopsys,
+                weekly tape-out rehearsals. We don't lecture — we engineer.
+              </p>
+              <ul className="mt-5 grid sm:grid-cols-2 gap-2 text-xs">
+                {[
+                  "1-on-1 mentor reviews",
+                  "Industry-graded RTL repo",
+                  "Tape-out simulation lab",
+                  "Resume + LinkedIn audits",
+                  "Mock interviews weekly",
+                  "Lifetime alumni Slack",
+                ].map((x) => (
+                  <li key={x} className="flex items-center gap-2 text-muted-foreground">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />{x}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <LiveCohortTicker />
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider label="founder" />
+
+      <section className="relative py-24">
+        <GridBackdrop />
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <FoundersNote />
         </div>
       </section>
 
@@ -310,20 +352,10 @@ function Index() {
             </div>
           </Reveal>
           <Reveal delay={0.15}>
-            <div className="relative group">
-              <div className="absolute -inset-2 bg-gradient-to-br from-primary/40 via-trace/20 to-primary/40 rounded-3xl blur-2xl opacity-30 group-hover:opacity-60 transition-opacity" />
-              <div className="relative aspect-video rounded-2xl overflow-hidden border border-border">
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed?listType=user_uploads&list=mastervlsi2526"
-                  title="MasterVLSI featured playlist"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-              <div className="absolute -top-3 -left-3 font-mono text-[10px] bg-primary text-primary-foreground px-2 py-1 rounded">
-                ● LIVE
-              </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {PLAYLISTS.slice(0, 2).map((p, i) => (
+                <PosterPlaylistCard key={p.id} p={p} idx={i} />
+              ))}
             </div>
           </Reveal>
         </div>

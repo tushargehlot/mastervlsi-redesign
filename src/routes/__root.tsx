@@ -12,7 +12,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { WhatsAppWidget } from "@/components/WhatsAppWidget";
+import { VLSIa } from "@/components/chatbot/VLSIa";
+import { MobileActionBar } from "@/components/MobileActionBar";
 import { Cursor } from "@/components/fx/Cursor";
 import { Grain } from "@/components/fx/Grain";
 import { ScrollTint } from "@/components/fx/ScrollTint";
@@ -133,11 +134,12 @@ function RootComponent() {
       <Cursor />
       <Grain />
       <Nav />
-      <main className="min-h-screen pt-16">
+      <main className="min-h-screen pt-16 pb-20 md:pb-0">
         <Outlet />
       </main>
       <Footer />
-      <WhatsAppWidget />
+      <VLSIa />
+      <MobileActionBar />
     </QueryClientProvider>
   );
 }

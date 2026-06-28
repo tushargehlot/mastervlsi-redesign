@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import { PLAYLISTS } from "@/data/playlists";
 import { SITE } from "@/data/site";
@@ -8,7 +7,10 @@ import { Spotlight } from "@/components/fx/Spotlight";
 import { Reveal } from "@/components/fx/Reveal";
 import { Magnetic } from "@/components/fx/Magnetic";
 import { SectionDivider } from "@/components/vlsi/SectionDivider";
-import { Play, ExternalLink, Disc } from "lucide-react";
+import { PosterPlaylistCard } from "@/components/PosterPlaylistCard";
+import { Glossary } from "@/components/interactive/Glossary";
+import { Play, ExternalLink } from "lucide-react";
+
 
 export const Route = createFileRoute("/playlists")({
   head: () => ({
@@ -75,55 +77,18 @@ function PlaylistsPage() {
       <SectionDivider label="playlists" />
 
       <section className="relative py-20 surface-1 border-y border-border">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {list.map((p, i) => (
-            <motion.div
-              key={p.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="group rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/60 hover:glow-soft transition-all"
-            >
-              <div className="aspect-video bg-black relative overflow-hidden">
-                {p.listId ? (
-                  <iframe
-                    className="w-full h-full"
-                    src={`https://www.youtube.com/embed/videoseries?list=${p.listId}`}
-                    title={p.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                ) : (
-                  <a
-                    href={SITE.youtubeChannel}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-primary/25 via-card to-card group-hover:from-primary/40 transition"
-                  >
-                    {/* Tape reel decoration */}
-                    <div className="relative">
-                      <Disc size={64} className="text-primary group-hover:animate-spin-slow" />
-                      <div className="absolute inset-0 rounded-full bg-primary/20 blur-2xl" />
-                    </div>
-                    <span className="mt-4 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                      Watch on @mastervlsi2526
-                    </span>
-                  </a>
-                )}
-                <div className="absolute top-3 left-3 flex gap-2">
-                  <span className="text-[10px] font-mono uppercase px-2 py-1 rounded bg-black/70 backdrop-blur text-primary border border-primary/30">
-                    {p.level}
-                  </span>
-                </div>
-              </div>
-              <div className="p-6">
-                <p className="font-mono text-[10px] uppercase tracking-widest text-primary mb-2">{p.category}</p>
-                <h3 className="font-display text-xl font-bold group-hover:text-primary transition-colors">{p.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{p.description}</p>
-              </div>
-            </motion.div>
+            <PosterPlaylistCard key={p.id} p={p} idx={i} />
           ))}
+        </div>
+      </section>
+
+      <SectionDivider label="cheatsheet" />
+
+      <section className="relative py-20">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <Glossary />
         </div>
       </section>
 

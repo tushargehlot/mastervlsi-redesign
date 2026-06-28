@@ -1,136 +1,136 @@
 
-# v4 — Sophistication & Interactivity Pass
+# v5 — "World-class polish + backend + intelligence layer"
 
-Goal: lift the site from "basic dark + red" to a classy, world-class, VLSI-inspired experience. Keep the current red accent direction (no RGB rainbow), deepen it, add cursor + scroll choreography, expand written content, and add a real Placements showcase.
+Heads-up on the credentials you pasted: I'll wire the project to your Supabase using the **publishable key** and the **project URL**. The **service_role** and **secret keys** should never sit in chat or code — please **rotate both immediately** in your Supabase dashboard (Settings → API → Reset). I'll request the new service_role via the secure secrets form so it's only stored as an env var, never in the repo.
 
 ---
 
-## 1. Refined design system (no palette flip)
+## 1. Backend wiring (BYO Supabase — `boorervstizsweornnpk`)
 
-Stay in the current dark / crimson family, but make it feel like silicon, not gamer-red.
+- Add `.env` entries:
+  - `VITE_SUPABASE_URL=https://boorervstizsweornnpk.supabase.co`
+  - `VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_…` (safe to ship)
+  - `SUPABASE_URL` + `SUPABASE_PUBLISHABLE_KEY` (server mirror)
+- Create `src/integrations/supabase/client.ts` (browser) and `client.server.ts` (server, service_role from env after you rotate).
+- Generate typed `Database` types.
+- Migrations (via SQL you run in Supabase dashboard — I'll provide the file):
+  - `contact_submissions` — name, email, phone, course_interest, message
+  - `demo_requests` — name, email, phone, preferred_slot
+  - `newsletter_subscribers` — email (unique)
+  - `chatbot_conversations` + `chatbot_messages` — to log the fake-AI chats
+  - `testimonials` (admin-editable seed) + `placements` (company, ctc, year)
+  - `user_roles` enum (`admin`,`user`) + `has_role()` SECURITY DEFINER
+  - RLS on every table + explicit GRANTs (anon insert for forms, authenticated select for admin)
+- Server fns under `src/lib/`: `submitContact`, `submitDemo`, `subscribeNewsletter`, `logChatMessage`, `listTestimonials`.
+- No auth UI in this pass — admin tables are seed-only, forms are anon-insert.
 
-- Background: layered near-black with a faint blue-graphite undertone (`oklch(0.11 0.014 255)`), plus a second "panel" surface `oklch(0.15 0.014 255)` and a "raised" surface for cards.
-- Primary accent: deepen current red to a richer crimson `oklch(0.58 0.22 22)` with a hotter "ignite" variant `oklch(0.66 0.24 25)` used only for active/hover states and glow.
-- Add two supporting tokens (used sparingly, not as second brand colors):
-  - `--wire`: cool steel `oklch(0.78 0.02 240)` for thin diagram strokes / wire animations.
-  - `--trace`: warm amber `oklch(0.78 0.14 70)` for data-flow pulses on schematics.
-- Add semantic surface tokens: `--surface-1/2/3`, `--border-strong`, `--border-faint`, plus `--gradient-ignite`, `--gradient-silicon`, `--shadow-elevated`, `--shadow-inset-trace`.
-- Typography upgrade: keep Space Grotesk display, swap body to a quieter pairing — Inter Tight for UI, JetBrains Mono for code/labels; introduce a tighter editorial scale for hero (clamp-based fluid type).
-- Global texture: subtle film-grain + a 1px hairline grid that responds to scroll velocity (opacity rises while scrolling, fades at rest).
+## 2. Content + media import from the Wix site
 
-All tokens defined in `src/styles.css` under `@theme inline`. No hard-coded colors in components.
+- Scrape `mastervlsivideo.wixsite.com/my-site-2` (all pages: Home, About, Courses, Placements, Gallery, Contact).
+- Extract and add: longer about/mission text, founder bio, methodology paragraphs, FAQ entries, complete address + phone + email, social handles, gallery captions, alumni names + companies + photos.
+- Download every student/alumni image (placements grid + gallery) → `src/assets/students/*.jpg` with proper alt text.
+- Update `src/data/{placements,site,faqs,courses}.ts` with the merged content.
 
-## 2. Motion + interactivity layer (site-wide)
+## 3. YouTube fix + richer playlist UX
 
-New shared primitives in `src/components/fx/`:
+- Current cards 404 because `videoId` is `null` and embed URLs are wrong.
+- Pull real playlist IDs from `youtube.com/@mastervlsi2526/playlists` and per-page fetch the first 6 videos via the public oEmbed/`noembed.com` endpoint (no API key).
+- Each section gets a themed playlist:
+  - Home → "Featured"
+  - Courses → "RTL & SystemVerilog"
+  - Services → "Industry Flows"
+  - Placements → "Student Stories"
+  - Blog → "Concept Deep-Dives"
+  - Playlists page → full grid with filter chips
+- Use `lite-youtube-embed` (zero-JS thumbnail until click) so previews always render and Core Web Vitals stay green.
 
-- `Cursor.tsx` — custom cursor: a thin crimson ring + a small "die" dot. Magnetic snap on `[data-magnetic]` elements (buttons, nav links). Hidden on touch.
-- `SpotlightCursor.tsx` — radial gradient that follows the pointer on hero/section surfaces (`mix-blend-mode: screen`), giving a "probe light over silicon" feel.
-- `RevealOnScroll.tsx` — IntersectionObserver wrapper using framer-motion variants (fade + 16px rise + slight blur-out). Replaces ad-hoc `animate-fade-in`.
-- `ScrollProgressRail.tsx` — fixed left rail with a vertical trace that "etches" downward as you scroll, with stop nodes for each section (clickable).
-- `useScrollSection` hook — drives a CSS variable `--scroll-tint` on `<html>` (0 → 1) so backgrounds shift from near-black to a faintly warmer graphite as the user scrolls a page; color transitions are token-driven, not new hues.
-- `TiltCard` already exists — extend with parallax inner layers (logo / number floats above content).
-- `MagneticButton.tsx` — buttons drift ~6px toward cursor within a 120px radius.
-- `TraceLine.tsx` — SVG path that draws itself (`pathLength` 0→1) when in view, used as section dividers and inside diagrams. Amber data pulses travel along it on hover.
+## 4. Pretend-AI chatbot ("VLSIa — Silicon Co-pilot")
 
-Performance rules: all heavy effects gated behind `prefers-reduced-motion` and a `useIsTouch` check. Cursor + spotlight disabled on mobile.
+- Replace WhatsApp-only widget with a dual-mode dock: **VLSIa (AI Assistant)** + **WhatsApp**.
+- Custom SVG avatar (hex-chip "V" mark with pulse).
+- "Thinking" loader = animated logic-gate trace + token-by-token streaming reveal of pre-scripted answers (intent-matched).
+- Intent library: courses, fees, placements, schedule, demo, location, mentor profiles, syllabus PDFs, contact. Fallback → "Connect me to a human" → WhatsApp deep link.
+- Every message logged to `chatbot_conversations` (anon-safe, no PII required).
+- Header badge "AI Assistant · Beta" and disclaimer line "Responses generated from our knowledge base" — honest framing, not claiming real AI.
 
-## 3. VLSI-inspired section animations
+## 5. Twenty new sections / features
 
-Each page gets at least one bespoke, on-brand animation (not generic blobs):
+I'll distribute these across pages, each with custom interactive graphics:
 
-- **Home hero**: keep 3D chip, but add an animated PCB-trace SVG layer underneath that routes from the chip's pins out to the edges; traces light up sequentially. Headline uses a "mask-reveal" where each word is uncovered by a sweeping scanline.
-- **Home — "What we do"**: a horizontally scroll-pinned strip showing the design flow (Spec → RTL → DV → Synthesis → DFT → PD → STA → Signoff → Tape-out). Each stage is a card with a tiny live mini-animation (waveform for DV, floorplan rectangles snapping into place for PD, timing arrows for STA).
-- **Courses**: bento grid with cards that flip on hover to reveal module syllabus; hover triggers a faint waveform along the card border.
-- **Services**: alternating zig-zag rows; each row has an inline SVG diagram (e.g. UVM testbench topology, CDC handshake, scan chain) that animates on scroll.
-- **Playlists**: a "tape reel" carousel — playlists rendered as cassette-style cards; hover spins reel SVGs; embedded player loads on click.
-- **Placements** (expanded — see §4).
-- **Blog**: index becomes an editorial grid (one feature + grid); post page gets reading progress, table-of-contents that highlights active section, and a "circuit margin" — animated SVG running down the left gutter.
-- **About**: timeline rendered as an etched PCB trace, milestones are solder pads that pulse on reveal.
-- **Contact**: map embedded in a "chip package" frame; form fields underline animates like an oscilloscope trace on focus.
+1. **Interactive Tape-out Timeline** (horizontal scroll-pinned, RTL→GDSII)
+2. **Cost-of-Silicon Calculator** (node + area sliders → estimated NRE)
+3. **Mentor Wall** with hover-flip cards (photo → bio → LinkedIn)
+4. **24/7 Lab Live Status** (mock telemetry: stations occupied, EDA tool licences in use)
+5. **Career Path Visualizer** (sankey from "Fresher" → roles)
+6. **Salary Benchmark Heatmap** (role × experience, India)
+7. **Syllabus PDF Vault** with one-click email-gated download
+8. **Mock Interview Booker** (slot picker → `demo_requests` table)
+9. **Coverage Closure Gauge** (animated dashboard mocking UVM coverage)
+10. **Logic Gate Sandbox v2** (add MUX/FF, truth-table auto-gen)
+11. **Verilog → Waveform Live Editor** (Monaco editor + canvas wave)
+12. **STA Slack Inspector** (drag clock period, see violations light up)
+13. **Floorplan Puzzle** (drag blocks into die area, area utilisation %)
+14. **Alumni Map** (India + global pins with company logos)
+15. **Industry News Ticker** (curated headlines, marquee)
+16. **Glossary / VLSI Dictionary** (Cmd+K searchable, 150+ terms)
+17. **Weekly Tech Quiz** (5-Q multiple choice, stored in localStorage + leaderboard later)
+18. **Compare Cohorts** (table: Full-stack DV vs PD vs Analog)
+19. **Founder's Note** with signature SVG draw-in
+20. **Press & Recognition strip** (logos, dates, links)
 
-## 4. New Placements experience
+## 6. Graphics & interactive visual pass
 
-`src/routes/placements.tsx` rebuilt with these sections, all data-driven from `src/data/placements.ts`:
+- New scene primitives: animated **die-shot SVG** (mask reveal), **clock-tree fan-out** anim, **bus-vector marching ants**, **metal-stack 3D card** (CSS perspective).
+- Section dividers become **circuit cross-sections** instead of plain lines.
+- Cursor: add an **inspection lens** mode on technical figures (magnifies SVG on hover).
+- Hero: orbiting wafer with parallax pads tied to scrollY.
+- Replace generic icons with custom **hex-tile lucide overrides**.
 
-1. Hero with animated counters + crimson-on-graphite stat band.
-2. Hiring partners — keep marquee, upgrade tiles to glassy chips with hover glow; add tabs to filter by Product / Services / Fabless / EDA.
-3. **Video testimonials** — responsive grid of YouTube/Vimeo embeds (lazy-loaded `<iframe>` via lite-youtube pattern). Data shape: `{ name, role, company, videoId, thumbnail, quote }`. 6 placeholder slots ready for the user to drop in real video IDs.
-4. **Written testimonials carousel** — large pull-quote layout with avatar, role, company logo, and LinkedIn link; auto-advance with manual controls; keyboard accessible.
-5. **Google Reviews section** — card grid styled to match Google's review look (stars, reviewer name, relative date, review text, "Posted on Google" badge). Initially seeded from a static `googleReviews` array; a clear `TODO` comment + helper stub for swapping to the Google Places API later (no backend wired this round, per the user's prior instruction).
-6. **Placement journey** — 4-step illustrated path: Train → Mock interviews → Referral → Offer; animated on scroll.
-7. CTA band linking to WhatsApp bot + demo form.
+## 7. Accessibility / text contrast
 
-## 5. Content expansion (every page gets more)
+- Audit every page for low-contrast pairs (foreground over hero gradients, glass cards over PCB traces).
+- Add a `--ink` token and a `text-on-glass` utility that auto-applies backdrop scrim on translucent surfaces.
+- Bump body text on dark backgrounds to `oklch(0.94 0 0)` and add `text-shadow` for hero overlays.
+- Add visible focus rings, skip-link, prefers-reduced-motion respected by all new animations.
 
-Right now most pages are thin. Add real, written, VLSI-credible copy (not lorem):
+## 8. Mobile enhancements
 
-- **Home**: hero, manifesto strip, design-flow scroll-pin, featured course bento, mentor strip, outcomes band, featured playlist, latest blog teasers, hiring-partner marquee, testimonial highlight, FAQ accordion, final CTA.
-- **About**: mission, founder note, methodology (lab-first, mentor-led, placement-tied), facilities (24/7 lab, EDA tools list), team grid (placeholders), timeline, "Why MasterVLSI" comparison table vs generic bootcamps.
-- **Courses**: intro, full 15-module catalog with deep descriptions (from user-provided list), prerequisites, duration, outcomes, tools used per module, suggested learning path diagram, FAQ.
-- **Services**: industry offering split into RTL, DV, PD, DFT, AMS, Automation; each with deliverables, tools, sample engagement model.
-- **Playlists**: intro, featured playlist embed, full grid by topic (Verilog, SV, UVM, PD, STA, DFT, Interview), channel CTA.
-- **Placements**: see §4.
-- **Blog**: keep 10 posts but rewrite intros + add a "Topics" landing sub-grid; add author bio block and related-by-tag.
-- **Contact**: address, map, hours, WhatsApp CTA, form (mock submit), directions, FAQ.
+- Re-do Nav as a full-screen radial menu (chip-tile icons).
+- All hero scenes get a mobile-specific simpler variant (no R3F on `<sm` — switch to SVG poster).
+- Section padding tokens (`--pad-sm/md/lg`) replace one-off `py-*`.
+- Sticky bottom action bar on mobile: WhatsApp + Call + Demo.
+- Test matrix: 360 / 390 / 414 / 768.
 
-## 6. Functional additions
+## 9. Security pass
 
-- Global command palette (`⌘K` / `Ctrl K`) for navigating sections, courses, playlists — uses existing `cmdk` shadcn `Command` component.
-- Sticky section nav on long pages (Courses, Services, Placements) that highlights active section.
-- FAQ accordions (shadcn `Accordion`) on Home, Courses, Placements, Contact.
-- Newsletter strip in footer (mock submit, success state).
-- Floating bottom-right cluster: WhatsApp widget + "Back to top" + "Toggle motion" (respects + can override `prefers-reduced-motion`).
+- Move `whatsappNumber` and any contact secrets to env.
+- Add Zod validation on every form server fn (length, email, phone regex).
+- Set strict CSP, X-Frame-Options, Referrer-Policy via root route headers.
+- Honeypot field + per-IP rate limit on form server fns (using KV-style counter in `contact_submissions`).
+- Sanitize all user-rendered text (DOMPurify) — chatbot transcripts especially.
+- Audit: no `dangerouslySetInnerHTML`, no service_role in client graph (`*.server.ts` enforcement).
+- After you rotate, I'll request the new `SUPABASE_SERVICE_ROLE_KEY` via the secrets form.
 
-## 7. Files to add / change
+## 10. Files I'll add / change (high level)
 
 ```text
-src/styles.css                        # new tokens, fluid type, grain, scroll-tint var
-src/components/fx/Cursor.tsx
-src/components/fx/SpotlightCursor.tsx
-src/components/fx/RevealOnScroll.tsx
-src/components/fx/ScrollProgressRail.tsx
-src/components/fx/MagneticButton.tsx
-src/components/fx/TraceLine.tsx
-src/components/fx/Grain.tsx
-src/components/vlsi/DesignFlowPinned.tsx   # horizontal scroll flow
-src/components/vlsi/MiniWaveform.tsx
-src/components/vlsi/FloorplanAnim.tsx
-src/components/vlsi/PcbTraces.tsx          # hero underlay
-src/components/vlsi/TapeReelCard.tsx
-src/components/placements/VideoTestimonialGrid.tsx
-src/components/placements/TestimonialCarousel.tsx
-src/components/placements/GoogleReviewsGrid.tsx
-src/components/placements/PlacementJourney.tsx
-src/components/CommandPalette.tsx
-src/components/FaqAccordion.tsx
-src/components/NewsletterForm.tsx
-src/data/placements.ts                # videos, written quotes, google reviews
-src/data/faqs.ts
-src/data/courses.ts                   # expand to full 15 with deep copy
-src/data/blog.ts                      # rewrite intros, add hero images
-src/routes/__root.tsx                 # mount Cursor, Spotlight, ScrollRail, CommandPalette
-src/routes/index.tsx                  # full rebuild per §5
-src/routes/about.tsx                  # expand
-src/routes/courses.tsx                # expand
-src/routes/services.tsx               # expand + diagrams
-src/routes/playlists.tsx              # tape-reel grid
-src/routes/placements.tsx             # full rebuild per §4
-src/routes/blog.tsx + blog.$slug.tsx  # editorial layout, TOC, circuit gutter
-src/routes/contact.tsx                # chip-frame map, oscilloscope inputs
+src/integrations/supabase/{client.ts, client.server.ts, types.ts}
+src/lib/{contact,demo,newsletter,chatbot}.functions.ts
+src/components/chatbot/{VLSIa.tsx, IntentEngine.ts, ThinkingTrace.tsx}
+src/components/interactive/{TapeoutTimeline, CostCalc, MentorWall,
+  LabStatus, CareerSankey, SalaryHeatmap, SyllabusVault, SlotBooker,
+  CoverageGauge, GateSandboxV2, VerilogPlayground, StaInspector,
+  FloorplanPuzzle, AlumniMap, NewsTicker, Glossary, Quiz,
+  CohortCompare, FoundersNote, PressStrip}.tsx
+src/components/fx/{InspectionLens, DieShot, ClockTree, MetalStack}.tsx
+src/assets/students/*.jpg
+src/data/{mentors, glossary, quiz, alumni, press}.ts
+supabase/migrations/001_init.sql  (you run manually)
+.env.example  (urls + publishable key only)
 ```
 
-No backend changes this round (per prior instruction). Google Reviews + video testimonials stay data-driven so the user can swap IDs/text without code edits.
+## What I need from you before build starts
 
-## 8. Quality bar
-
-- Lighthouse a11y ≥ 95: every animation respects `prefers-reduced-motion`; cursor effects keep native cursor visible on focus-visible.
-- All interactive elements keyboard reachable; command palette + carousels have full keyboard support.
-- No layout shift on hero (fixed aspect for 3D + PCB layer).
-- Mobile: cursor/spotlight off, scroll-pin replaced by vertical stack, marquees still play, tap targets ≥ 44px.
-
-## 9. Out of scope this round
-
-- Real Google Places API integration (needs backend + key) — stub only.
-- Real video IDs / partner logos — placeholder slots clearly marked.
-- CMS for blog — markdown in `src/data/blog.ts` continues.
+1. Confirm you'll **rotate the service_role and secret keys** in the Supabase dashboard — then I'll prompt for the new `SUPABASE_SERVICE_ROLE_KEY` via the secure form.
+2. Confirm the chatbot persona name **"VLSIa"** or pick another.
+3. Anything in the 20-feature list you want **dropped or reprioritised** — otherwise I'll build all 20.
