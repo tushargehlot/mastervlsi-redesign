@@ -182,6 +182,44 @@ function Index() {
               </motion.div>
             ))}
           </div>
+
+          {/* Live ticker */}
+          <div className="mt-14 grid lg:grid-cols-[1fr_400px] gap-6">
+            <div className="rounded-2xl border border-border bg-card/60 p-6 backdrop-blur">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-primary">// What we ship</p>
+              <h3 className="mt-2 font-display text-2xl font-bold leading-tight">
+                Every cohort is a small <span className="text-gradient">design house.</span>
+              </h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                Daily standups, peer code reviews, EDA tool licences from Cadence and Synopsys,
+                weekly tape-out rehearsals. We don't lecture — we engineer.
+              </p>
+              <ul className="mt-5 grid sm:grid-cols-2 gap-2 text-xs">
+                {[
+                  "1-on-1 mentor reviews",
+                  "Industry-graded RTL repo",
+                  "Tape-out simulation lab",
+                  "Resume + LinkedIn audits",
+                  "Mock interviews weekly",
+                  "Lifetime alumni Slack",
+                ].map((x) => (
+                  <li key={x} className="flex items-center gap-2 text-muted-foreground">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />{x}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <LiveCohortTicker />
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider label="founder" />
+
+      <section className="relative py-24">
+        <GridBackdrop />
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <FoundersNote />
         </div>
       </section>
 
