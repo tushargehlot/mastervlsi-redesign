@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { STATS, SITE } from "@/data/site";
-import { PARTNERS } from "@/data/partners";
+import { PARTNERS, logoUrl } from "@/data/partners";
 import { GridBackdrop } from "@/components/GridBackdrop";
 import { Counter } from "@/components/Counter";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
@@ -12,6 +12,7 @@ import { VideoTestimonialGrid } from "@/components/placements/VideoTestimonialGr
 import { TestimonialCarousel } from "@/components/placements/TestimonialCarousel";
 import { GoogleReviewsGrid } from "@/components/placements/GoogleReviews";
 import { PlacementJourney } from "@/components/placements/PlacementJourney";
+import { AchievementsStrip } from "@/components/placements/AchievementsStrip";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { FAQ_PLACEMENTS } from "@/data/faqs";
 import { ArrowRight, MessageCircle } from "lucide-react";
