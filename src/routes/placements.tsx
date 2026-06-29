@@ -33,25 +33,14 @@ export const Route = createFileRoute("/placements")({
   component: PlacementsPage,
 });
 
-const FILTERS = ["All", "Product", "Fabless", "EDA", "Services"] as const;
+const FILTERS = ["All", "Product", "Fabless", "EDA", "Services", "R&D", "Startup"] as const;
 type Filter = typeof FILTERS[number];
-
-const partnerCategory: Record<string, Exclude<Filter, "All">> = {
-  Intel: "Product", AMD: "Product", NVIDIA: "Product", Qualcomm: "Product", Samsung: "Product",
-  "Texas Instruments": "Product", Micron: "Product", "Western Digital": "Product",
-  MediaTek: "Fabless", Marvell: "Fabless", Broadcom: "Fabless", Renesas: "Fabless",
-  NXP: "Fabless", STMicroelectronics: "Fabless", "Analog Devices": "Fabless", Microchip: "Fabless",
-  Synopsys: "EDA", Cadence: "EDA", "Siemens EDA": "EDA", Xilinx: "EDA",
-  Wipro: "Services", HCL: "Services", "L&T Technology": "Services", "Tata Elxsi": "Services",
-  Sasken: "Services", "Capgemini Engineering": "Services", Mirafra: "Services",
-  eInfochips: "Services", Tessolve: "Services", "Sankalp Semiconductor": "Services",
-};
 
 function PlacementsPage() {
   const [filter, setFilter] = useState<Filter>("All");
   const filtered = filter === "All"
     ? PARTNERS
-    : PARTNERS.filter((p) => partnerCategory[p.name] === filter);
+    : PARTNERS.filter((p) => p.category === filter);
 
   return (
     <>
