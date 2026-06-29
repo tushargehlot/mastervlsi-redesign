@@ -1,136 +1,77 @@
-
-# v5 — "World-class polish + backend + intelligence layer"
-
-Heads-up on the credentials you pasted: I'll wire the project to your Supabase using the **publishable key** and the **project URL**. The **service_role** and **secret keys** should never sit in chat or code — please **rotate both immediately** in your Supabase dashboard (Settings → API → Reset). I'll request the new service_role via the secure secrets form so it's only stored as an env var, never in the repo.
+## Goals
+1. Tone down the heavy red — keep brand crimson as an accent only.
+2. Fix mobile viewport clipping across all pages.
+3. Replace text "company chips" with real logos in the Placements roster.
+4. Wire up the 8 specific YouTube playlists (and individual videos) with real thumbnails to dedicated sections instead of one generic channel link.
+5. Remove all Physical Design / STA / DFT / PD-backend content — MasterVLSI teaches **Design & Verification only**.
+6. Absorb new content from the uploaded posters & PDFs.
 
 ---
 
-## 1. Backend wiring (BYO Supabase — `boorervstizsweornnpk`)
+## 1. Palette retune (subtle, not a redesign)
+`src/styles.css` tokens:
+- `--primary` shifts from crimson → deeper graphite-indigo (`oklch(0.62 0.14 255)`) as the dominant accent.
+- Crimson kept as `--accent` for badges, highlights, alerts only (~15% of surfaces, was ~60%).
+- Glow utilities (`glow-red`, `text-gradient`) re-pointed at the new primary; one new `glow-accent` for crimson highlights.
+- Background tints (`surface-1`, scroll-tint) lose the red wash.
+- Net effect: techy slate/indigo base with crimson punctuation — no component rewrite needed.
 
-- Add `.env` entries:
-  - `VITE_SUPABASE_URL=https://boorervstizsweornnpk.supabase.co`
-  - `VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_…` (safe to ship)
-  - `SUPABASE_URL` + `SUPABASE_PUBLISHABLE_KEY` (server mirror)
-- Create `src/integrations/supabase/client.ts` (browser) and `client.server.ts` (server, service_role from env after you rotate).
-- Generate typed `Database` types.
-- Migrations (via SQL you run in Supabase dashboard — I'll provide the file):
-  - `contact_submissions` — name, email, phone, course_interest, message
-  - `demo_requests` — name, email, phone, preferred_slot
-  - `newsletter_subscribers` — email (unique)
-  - `chatbot_conversations` + `chatbot_messages` — to log the fake-AI chats
-  - `testimonials` (admin-editable seed) + `placements` (company, ctc, year)
-  - `user_roles` enum (`admin`,`user`) + `has_role()` SECURITY DEFINER
-  - RLS on every table + explicit GRANTs (anon insert for forms, authenticated select for admin)
-- Server fns under `src/lib/`: `submitContact`, `submitDemo`, `subscribeNewsletter`, `logChatMessage`, `listTestimonials`.
-- No auth UI in this pass — admin tables are seed-only, forms are anon-insert.
+## 2. Mobile viewport fixes
+Audit pages flagged by the user. Apply the responsive-row pattern:
+- `Nav.tsx`: collapse stats/CTA into hamburger sheet earlier (`sm:` not `lg:`).
+- `placements.tsx` filter chips → horizontal scroll on `<sm`.
+- `Hero3D`, partner grid, salary heatmap, alumni map → wrap in `overflow-x-auto` with `min-w-0` text containers.
+- Add `clamp()` font sizing for `h-display` so headings don't blow out 360px screens.
+- Add `px-4 max-w-[100vw] overflow-x-hidden` guard on `__root.tsx` body.
 
-## 2. Content + media import from the Wix site
+## 3. Real company logos
+New `src/data/partners.ts` schema: `{ name, logoUrl, category, tier }`.
+- Source logos from Simple Icons CDN (`https://cdn.simpleicons.org/{slug}/{color}`) — free, monochrome, swap color per theme. Fallback to Clearbit (`logo.clearbit.com/{domain}`) for non-tech logos.
+- `PartnerMarquee` and the placements grid render `<img>` with grayscale → color on hover.
+- Roster expanded from the "Master VLSI Student Placed" poster: Sankalp, Tessolve, eInfochips, Wipro, HCLTech, Tata Elxsi, L&T, Tech Mahindra, LTIMindtree, Mirafra, Insemi, Moschip, Signoff, Radiant, Aura, Excel, LeadSoc, Relicuus, Vaan, Zreyah, Siliconis, Cognicadz, Tachyon, Agmatel, Aware, e-Zest, Mindgrove, Saankhya, Steradian, Signalchip, Morphing, Blueberry, RISC-V India, Kalray, IIT Madras/Bombay/Kanpur Research Parks, CeNSE, DRDO, BEL, ISRO, CDAC, SCL, BHEL, Polar, Prayog, HANA, 3rdiTech, ACME, ChipSofy, Mavenir, Hughes, Lattice, Xilinx, Zebu, Quicklogic, GUC, Semi, Morphin, Analog Devices, VVDN, Diodes, Silicon Labs, Realtek, Novatek, ROHM, ON Semi, NXP, ST, Renesas, Infineon, Intel, Samsung, Micron, TI, AMD, NVIDIA, Broadcom, Qualcomm, MediaTek, Marvell, Cisco, Meta, Microsoft, Amazon, Bosch, Google, Oppo, Vivo, Xiaomi, OnePlus, Lava, Honor, Sensing, TCS, KPIT, Cyient, Sonata, Delphi-TVS, AltenLabs, UST, Quest Global, Atos, Synapse, Unisoc, Verilog Solutions, SmartWire, Aaviniys, Agamenx, Mavenir, Embibe, Beegolab, Airoha, Truechip, Frontier, Kaynes, Niral, Brainchip, Paras, Pixelsoft, Innosilicon, Agnit, Pravega, VCC, RTE, Truchip, Sequilabs, Embcalas, Signate, Sitmec, OPRCK, Coreel, Brosee, DLTekggar, J.iscle Voc Coo, Transcors, CGS Global, Dobetech, Arasan, Embecosm, CG Power, Efinix, Index, Fossee, Ridgetech, Helios.
 
-- Scrape `mastervlsivideo.wixsite.com/my-site-2` (all pages: Home, About, Courses, Placements, Gallery, Contact).
-- Extract and add: longer about/mission text, founder bio, methodology paragraphs, FAQ entries, complete address + phone + email, social handles, gallery captions, alumni names + companies + photos.
-- Download every student/alumni image (placements grid + gallery) → `src/assets/students/*.jpg` with proper alt text.
-- Update `src/data/{placements,site,faqs,courses}.ts` with the merged content.
+## 4. Per-playlist YouTube wiring
+Update `src/data/playlists.ts` with the 8 real playlist IDs:
+| Slot on site | Playlist |
+|---|---|
+| Home → "Demo Lectures" | Verilog Session demo, Number Systems demo |
+| Courses → DV brochure CTA | Internship Bootcamp |
+| Placements → after testimonials | Student Reviews, Internship Feedback |
+| About → "Inside the campus" | Campus Tour |
+| Services → "Protocols in action" | AXI Protocol videos |
+| Playlists hub page | Complete VLSI Career Roadmap + all 8 |
 
-## 3. YouTube fix + richer playlist UX
+`PosterPlaylistCard` upgraded to:
+- Real `https://i.ytimg.com/vi/{firstVideoId}/hqdefault.jpg` thumbnails (already works for known IDs you provided).
+- Hover → faint play overlay, click opens that specific playlist (`youtube.com/playlist?list=...`), with `iframe` modal option for individual demo videos so users can watch inline.
+- Each card carries playlist meta: title, level, est. videos.
 
-- Current cards 404 because `videoId` is `null` and embed URLs are wrong.
-- Pull real playlist IDs from `youtube.com/@mastervlsi2526/playlists` and per-page fetch the first 6 videos via the public oEmbed/`noembed.com` endpoint (no API key).
-- Each section gets a themed playlist:
-  - Home → "Featured"
-  - Courses → "RTL & SystemVerilog"
-  - Services → "Industry Flows"
-  - Placements → "Student Stories"
-  - Blog → "Concept Deep-Dives"
-  - Playlists page → full grid with filter chips
-- Use `lite-youtube-embed` (zero-JS thumbnail until click) so previews always render and Core Web Vitals stay green.
+## 5. Scope to Design & Verification only
+Remove PD/STA/DFT/Physical-Design/Low-Power-UPF/AMS/Post-Silicon items from:
+- `src/data/courses.ts` — drop modules 6 (PD), 7 (DFT), 8 (STA), 9 (Low Power), 10 (Post-Silicon), 14 (AMS) from the 15-service list. Keep RTL, DV, FPGA Prototyping, Embedded, SoC Integration, ASIC Flow (RTL→GDSII handoff mention only), CDC, IP, Automation.
+- `src/data/glossary.ts` — drop PD/STA/DFT entries.
+- `src/data/mentors.ts` — remove PD-tagged mentors or relabel to DV/RTL.
+- `placements.tsx` filter list: drop "PD/STA" category.
+- Quiz tracks (`Quiz.tsx`): keep only RTL Design, Functional Verification (UVM), FPGA, Embedded.
+- Replace the 20-block curriculum poster content into a new `CurriculumGrid` (Digital Fundamentals → Verilog → SV → SVA/Coverage → UVM → Scripting → AMBA → PCIe → USB → CXL → HDMI/DP → GLS → IP/SoC verification → Low-speed protocols → Tools → Industry projects → Additional training). This **matches** the user's Design+Verification scope.
 
-## 4. Pretend-AI chatbot ("VLSIa — Silicon Co-pilot")
+## 6. New content sections (from posters/PDFs)
+- **Fees & Terms page** (`/fees`): ₹90,000 + GST, 50/50 installments, refund/transfer/negotiation policies, late-payment consequences, 2-month max clearance, GST invoice rules. Visual table with icon rail.
+- **Accommodation (PG) section** on `/contact`: Co-living / Girls / Boys PG cards with phone numbers from the poster, "10–200 m from institute" badges. Photos via lovable-assets from uploaded posters.
+- **Connectivity** strip on `/contact`: nearest railway (Krishnarajapuram 450 m, Banaswadi 6 km…), metro (Benniganahalli 500 m, KR Puram 550 m), bus stops, distances. Rendered as a stylised list, not a re-uploaded map.
+- **Nearby companies** strip on `/about` & `/placements`: distance-to-company list (Google 1 km, Synopsys 1 km, Samsung R&D 0 km, Cadence 1 km, Intel 4 km…) — reinforces ecosystem proximity.
+- **Special achievements** strip on `/placements`: Highest career gap (Dr. Pradeep, 42 y → Microchip), Early placement (Yaswanth Verma, 21 days, Google, ₹50 L), Most offers (Harsha Reddy, 30 offers), Highest package (Basavaraj, 70 LPA UK).
+- **Office contacts** in footer/contact: Sushil 7338429473, Sharmila 8431520978, Lipsa Madam 9019232425, Nitesh Sir 9844982345; `hr@mastervlsi.com`; Mon–Sat 9:30–18:30.
+- **DV brochure CTA** on `/courses`: link the uploaded `Design Verification (DV) Course Brochure.pdf` (uploaded via lovable-assets) with a "Download brochure" button.
+- **Recent placements ticker** on `/placements`: pulled from the VLSIGuru placements PDF — names anonymised to initials + company + package, scrolling vertical strip.
 
-- Replace WhatsApp-only widget with a dual-mode dock: **VLSIa (AI Assistant)** + **WhatsApp**.
-- Custom SVG avatar (hex-chip "V" mark with pulse).
-- "Thinking" loader = animated logic-gate trace + token-by-token streaming reveal of pre-scripted answers (intent-matched).
-- Intent library: courses, fees, placements, schedule, demo, location, mentor profiles, syllabus PDFs, contact. Fallback → "Connect me to a human" → WhatsApp deep link.
-- Every message logged to `chatbot_conversations` (anon-safe, no PII required).
-- Header badge "AI Assistant · Beta" and disclaimer line "Responses generated from our knowledge base" — honest framing, not claiming real AI.
+## 7. Verification
+- `tsgo` typecheck.
+- Playwright at 375 × 812 and 1280 × 1800 — screenshot every route, confirm no horizontal scroll, headings fit, filter chips reachable.
+- Logo CDN smoke check (one fetch per source per build).
 
-## 5. Twenty new sections / features
-
-I'll distribute these across pages, each with custom interactive graphics:
-
-1. **Interactive Tape-out Timeline** (horizontal scroll-pinned, RTL→GDSII)
-2. **Cost-of-Silicon Calculator** (node + area sliders → estimated NRE)
-3. **Mentor Wall** with hover-flip cards (photo → bio → LinkedIn)
-4. **24/7 Lab Live Status** (mock telemetry: stations occupied, EDA tool licences in use)
-5. **Career Path Visualizer** (sankey from "Fresher" → roles)
-6. **Salary Benchmark Heatmap** (role × experience, India)
-7. **Syllabus PDF Vault** with one-click email-gated download
-8. **Mock Interview Booker** (slot picker → `demo_requests` table)
-9. **Coverage Closure Gauge** (animated dashboard mocking UVM coverage)
-10. **Logic Gate Sandbox v2** (add MUX/FF, truth-table auto-gen)
-11. **Verilog → Waveform Live Editor** (Monaco editor + canvas wave)
-12. **STA Slack Inspector** (drag clock period, see violations light up)
-13. **Floorplan Puzzle** (drag blocks into die area, area utilisation %)
-14. **Alumni Map** (India + global pins with company logos)
-15. **Industry News Ticker** (curated headlines, marquee)
-16. **Glossary / VLSI Dictionary** (Cmd+K searchable, 150+ terms)
-17. **Weekly Tech Quiz** (5-Q multiple choice, stored in localStorage + leaderboard later)
-18. **Compare Cohorts** (table: Full-stack DV vs PD vs Analog)
-19. **Founder's Note** with signature SVG draw-in
-20. **Press & Recognition strip** (logos, dates, links)
-
-## 6. Graphics & interactive visual pass
-
-- New scene primitives: animated **die-shot SVG** (mask reveal), **clock-tree fan-out** anim, **bus-vector marching ants**, **metal-stack 3D card** (CSS perspective).
-- Section dividers become **circuit cross-sections** instead of plain lines.
-- Cursor: add an **inspection lens** mode on technical figures (magnifies SVG on hover).
-- Hero: orbiting wafer with parallax pads tied to scrollY.
-- Replace generic icons with custom **hex-tile lucide overrides**.
-
-## 7. Accessibility / text contrast
-
-- Audit every page for low-contrast pairs (foreground over hero gradients, glass cards over PCB traces).
-- Add a `--ink` token and a `text-on-glass` utility that auto-applies backdrop scrim on translucent surfaces.
-- Bump body text on dark backgrounds to `oklch(0.94 0 0)` and add `text-shadow` for hero overlays.
-- Add visible focus rings, skip-link, prefers-reduced-motion respected by all new animations.
-
-## 8. Mobile enhancements
-
-- Re-do Nav as a full-screen radial menu (chip-tile icons).
-- All hero scenes get a mobile-specific simpler variant (no R3F on `<sm` — switch to SVG poster).
-- Section padding tokens (`--pad-sm/md/lg`) replace one-off `py-*`.
-- Sticky bottom action bar on mobile: WhatsApp + Call + Demo.
-- Test matrix: 360 / 390 / 414 / 768.
-
-## 9. Security pass
-
-- Move `whatsappNumber` and any contact secrets to env.
-- Add Zod validation on every form server fn (length, email, phone regex).
-- Set strict CSP, X-Frame-Options, Referrer-Policy via root route headers.
-- Honeypot field + per-IP rate limit on form server fns (using KV-style counter in `contact_submissions`).
-- Sanitize all user-rendered text (DOMPurify) — chatbot transcripts especially.
-- Audit: no `dangerouslySetInnerHTML`, no service_role in client graph (`*.server.ts` enforcement).
-- After you rotate, I'll request the new `SUPABASE_SERVICE_ROLE_KEY` via the secrets form.
-
-## 10. Files I'll add / change (high level)
-
-```text
-src/integrations/supabase/{client.ts, client.server.ts, types.ts}
-src/lib/{contact,demo,newsletter,chatbot}.functions.ts
-src/components/chatbot/{VLSIa.tsx, IntentEngine.ts, ThinkingTrace.tsx}
-src/components/interactive/{TapeoutTimeline, CostCalc, MentorWall,
-  LabStatus, CareerSankey, SalaryHeatmap, SyllabusVault, SlotBooker,
-  CoverageGauge, GateSandboxV2, VerilogPlayground, StaInspector,
-  FloorplanPuzzle, AlumniMap, NewsTicker, Glossary, Quiz,
-  CohortCompare, FoundersNote, PressStrip}.tsx
-src/components/fx/{InspectionLens, DieShot, ClockTree, MetalStack}.tsx
-src/assets/students/*.jpg
-src/data/{mentors, glossary, quiz, alumni, press}.ts
-supabase/migrations/001_init.sql  (you run manually)
-.env.example  (urls + publishable key only)
-```
-
-## What I need from you before build starts
-
-1. Confirm you'll **rotate the service_role and secret keys** in the Supabase dashboard — then I'll prompt for the new `SUPABASE_SERVICE_ROLE_KEY` via the secure form.
-2. Confirm the chatbot persona name **"VLSIa"** or pick another.
-3. Anything in the 20-feature list you want **dropped or reprioritised** — otherwise I'll build all 20.
+## Technical notes
+- No backend changes; Supabase wiring untouched.
+- Asset pipeline: uploaded poster photos for PG cards → `lovable-assets create`. PDF brochure → asset pointer, served via CDN.
+- Logos use remote CDN URLs (no binary commits). Add `<link rel="preconnect" href="https://cdn.simpleicons.org">` in `__root.tsx`.
+- Curriculum grid is a pure data file (`src/data/curriculum.ts`) consumed by a new `CurriculumGrid` component reused on Home + Courses.

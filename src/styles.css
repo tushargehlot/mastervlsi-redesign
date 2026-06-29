@@ -70,17 +70,19 @@
   --popover: var(--surface-2);
   --popover-foreground: oklch(0.965 0.005 250);
 
-  /* Deeper crimson, with a hotter "ignite" highlight */
-  --crimson: oklch(0.58 0.22 22);
-  --ignite: oklch(0.66 0.24 25);
-  --primary: var(--crimson);
+  /* Primary is now a cool graphite-indigo. Crimson is reserved as an accent only. */
+  --crimson: oklch(0.6 0.2 22);
+  --ignite: oklch(0.68 0.22 25);
+  --indigo: oklch(0.62 0.16 258);
+  --indigo-hi: oklch(0.72 0.16 250);
+  --primary: var(--indigo);
   --primary-foreground: oklch(0.98 0.005 250);
 
   --secondary: oklch(0.22 0.012 260);
   --secondary-foreground: oklch(0.97 0.005 250);
   --muted: oklch(0.20 0.012 260);
-  --muted-foreground: oklch(0.72 0.012 250);
-  --accent: var(--ignite);
+  --muted-foreground: oklch(0.74 0.012 250);
+  --accent: var(--crimson);
   --accent-foreground: oklch(0.98 0.005 250);
   --destructive: var(--crimson);
   --destructive-foreground: oklch(0.98 0.005 250);
@@ -88,19 +90,19 @@
   --border: oklch(0.30 0.015 255 / 50%);
   --border-strong: oklch(0.42 0.018 255 / 70%);
   --input: oklch(0.24 0.013 260);
-  --ring: var(--ignite);
+  --ring: var(--indigo);
 
   --silver: oklch(0.88 0.01 250);
   --wire: oklch(0.78 0.02 240);
   --trace: oklch(0.78 0.14 70);
 
-  --gradient-ignite: linear-gradient(135deg, var(--crimson) 0%, var(--ignite) 60%, oklch(0.75 0.18 35) 100%);
+  --gradient-ignite: linear-gradient(135deg, var(--indigo) 0%, var(--indigo-hi) 55%, oklch(0.78 0.14 220) 100%);
   --gradient-silicon: linear-gradient(180deg, var(--surface-1) 0%, var(--background) 100%);
-  --gradient-radial-glow: radial-gradient(ellipse at center, oklch(0.58 0.22 22 / 0.35), transparent 60%);
+  --gradient-radial-glow: radial-gradient(ellipse at center, oklch(0.62 0.16 258 / 0.32), transparent 60%);
 
-  --shadow-elevated: 0 30px 60px -30px oklch(0 0 0 / 0.6), 0 18px 36px -18px oklch(0.58 0.22 22 / 0.25);
+  --shadow-elevated: 0 30px 60px -30px oklch(0 0 0 / 0.6), 0 18px 36px -18px oklch(0.32 0.05 255 / 0.45);
   --shadow-inset-trace: inset 0 1px 0 oklch(1 0 0 / 0.04), inset 0 -1px 0 oklch(0 0 0 / 0.4);
-  --glow: 0 0 60px oklch(0.62 0.24 25 / 0.45);
+  --glow: 0 0 60px oklch(0.62 0.16 258 / 0.45);
 
   /* Scroll-driven tint (0 → 1) used by fx/useScrollTint */
   --scroll-tint: 0;
@@ -117,7 +119,7 @@
   body {
     background-color: var(--color-background);
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, oklch(0.58 0.22 22 / calc(0.08 + var(--scroll-tint) * 0.04)), transparent 60%),
+      radial-gradient(ellipse 80% 50% at 50% -10%, oklch(0.62 0.16 258 / calc(0.07 + var(--scroll-tint) * 0.03)), transparent 60%),
       linear-gradient(180deg, var(--background) 0%, oklch(0.10 0.012 252) 100%);
     background-attachment: fixed;
     color: var(--color-foreground);
@@ -167,15 +169,19 @@
 }
 
 @utility glow-red {
-  box-shadow: 0 0 40px -10px oklch(0.62 0.24 25 / 0.55), 0 0 80px -30px oklch(0.62 0.24 25 / 0.4);
+  box-shadow: 0 0 40px -10px oklch(0.62 0.16 258 / 0.55), 0 0 80px -30px oklch(0.62 0.16 258 / 0.4);
+}
+
+@utility glow-accent {
+  box-shadow: 0 0 40px -10px oklch(0.66 0.22 25 / 0.55), 0 0 80px -30px oklch(0.66 0.22 25 / 0.4);
 }
 
 @utility glow-soft {
-  box-shadow: 0 0 0 1px oklch(0.58 0.22 22 / 0.25), 0 30px 80px -40px oklch(0.58 0.22 22 / 0.6);
+  box-shadow: 0 0 0 1px oklch(0.62 0.16 258 / 0.25), 0 30px 80px -40px oklch(0.62 0.16 258 / 0.55);
 }
 
 @utility text-gradient {
-  background: linear-gradient(120deg, #fff 0%, oklch(0.88 0.01 250) 35%, oklch(0.66 0.24 25) 95%);
+  background: linear-gradient(120deg, #fff 0%, oklch(0.9 0.02 250) 35%, oklch(0.72 0.16 250) 95%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -183,6 +189,13 @@
 
 @utility text-gradient-ignite {
   background: var(--gradient-ignite);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-accent {
+  background: linear-gradient(120deg, #fff 0%, oklch(0.78 0.18 35) 95%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

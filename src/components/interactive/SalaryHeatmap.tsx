@@ -1,24 +1,23 @@
 import { useMemo, useState } from "react";
 
-const ROLES = ["RTL Design", "DV (UVM)", "Physical Design", "STA", "DFT", "Low Power"];
+const ROLES = ["RTL Design", "DV (UVM)", "FPGA Prototyping", "SoC Integration", "Embedded / Firmware", "CDC / Formal"];
 const EXP = ["0–1 yr", "1–3 yr", "3–6 yr", "6–10 yr"];
 
 // LPA midpoints — illustrative ranges aggregated from alumni outcomes.
 const DATA: number[][] = [
-  // 0-1, 1-3, 3-6, 6-10
   [7, 12, 22, 38],
   [8, 14, 26, 42],
-  [9, 16, 30, 48],
-  [8, 14, 26, 40],
-  [8, 13, 24, 36],
+  [7, 13, 24, 38],
   [9, 15, 28, 44],
+  [7, 12, 22, 36],
+  [8, 14, 26, 40],
 ];
 
 function heat(v: number, max: number) {
   const t = v / max;
-  // crimson → ignite scale
-  const l = 0.18 + t * 0.5;
-  return `oklch(${l} 0.22 ${20 + t * 10})`;
+  // cool indigo → bright periwinkle ramp
+  const l = 0.22 + t * 0.45;
+  return `oklch(${l} 0.16 ${260 - t * 10})`;
 }
 
 export function SalaryHeatmap() {

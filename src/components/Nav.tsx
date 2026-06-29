@@ -52,13 +52,13 @@ export function Nav() {
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-0.5">
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               data-magnetic
-              className="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+              className="relative px-2.5 py-2 text-[13px] text-muted-foreground hover:text-foreground transition-colors group"
               activeProps={{ className: "text-foreground" }}
               activeOptions={{ exact: l.to === "/" }}
             >
@@ -71,7 +71,7 @@ export function Nav() {
           <Magnetic className="ml-2">
             <Link
               to="/demo"
-              className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-all glow-red"
+              className="inline-flex items-center rounded-md bg-primary px-3.5 py-2 text-[13px] font-medium text-primary-foreground hover:bg-primary/90 transition-all glow-red"
             >
               Book Free Demo
             </Link>
@@ -81,14 +81,14 @@ export function Nav() {
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
-          className="lg:hidden p-2 -mr-2 text-foreground"
+          className="md:hidden p-2 -mr-2 text-foreground"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl">
+        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
           <nav className="px-4 py-4 flex flex-col gap-1">
             {links.map((l) => (
               <Link

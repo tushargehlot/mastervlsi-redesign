@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { STATS, SITE } from "@/data/site";
-import { PARTNERS } from "@/data/partners";
+import { PARTNERS, logoUrl } from "@/data/partners";
 import { GridBackdrop } from "@/components/GridBackdrop";
 import { Counter } from "@/components/Counter";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
@@ -12,6 +12,7 @@ import { VideoTestimonialGrid } from "@/components/placements/VideoTestimonialGr
 import { TestimonialCarousel } from "@/components/placements/TestimonialCarousel";
 import { GoogleReviewsGrid } from "@/components/placements/GoogleReviews";
 import { PlacementJourney } from "@/components/placements/PlacementJourney";
+import { AchievementsStrip } from "@/components/placements/AchievementsStrip";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { FAQ_PLACEMENTS } from "@/data/faqs";
 import { ArrowRight, MessageCircle } from "lucide-react";
@@ -32,25 +33,14 @@ export const Route = createFileRoute("/placements")({
   component: PlacementsPage,
 });
 
-const FILTERS = ["All", "Product", "Fabless", "EDA", "Services"] as const;
+const FILTERS = ["All", "Product", "Fabless", "EDA", "Services", "R&D", "Startup"] as const;
 type Filter = typeof FILTERS[number];
-
-const partnerCategory: Record<string, Exclude<Filter, "All">> = {
-  Intel: "Product", AMD: "Product", NVIDIA: "Product", Qualcomm: "Product", Samsung: "Product",
-  "Texas Instruments": "Product", Micron: "Product", "Western Digital": "Product",
-  MediaTek: "Fabless", Marvell: "Fabless", Broadcom: "Fabless", Renesas: "Fabless",
-  NXP: "Fabless", STMicroelectronics: "Fabless", "Analog Devices": "Fabless", Microchip: "Fabless",
-  Synopsys: "EDA", Cadence: "EDA", "Siemens EDA": "EDA", Xilinx: "EDA",
-  Wipro: "Services", HCL: "Services", "L&T Technology": "Services", "Tata Elxsi": "Services",
-  Sasken: "Services", "Capgemini Engineering": "Services", Mirafra: "Services",
-  eInfochips: "Services", Tessolve: "Services", "Sankalp Semiconductor": "Services",
-};
 
 function PlacementsPage() {
   const [filter, setFilter] = useState<Filter>("All");
   const filtered = filter === "All"
     ? PARTNERS
-    : PARTNERS.filter((p) => partnerCategory[p.name] === filter);
+    : PARTNERS.filter((p) => p.category === filter);
 
   return (
     <>
@@ -87,40 +77,72 @@ function PlacementsPage() {
 
       {/* PARTNERS */}
       <section className="py-16 surface-1 border-y border-border">
-        <div className="mx-auto max-w-7xl px-4 mb-6 flex items-end justify-between flex-wrap gap-4">
+        <div className="mx-auto max-w-7xl px-4 mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-widest text-primary">// 30+ companies</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-primary">// 60+ companies</p>
             <h2 className="mt-2 h-display-sm font-display font-bold">
               Alumni currently shipping silicon at.
             </h2>
           </Reveal>
-          <div className="flex flex-wrap gap-1.5">
-            {FILTERS.map((f) => (
-              <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider border transition-all ${
-                  filter === f
-                    ? "bg-primary text-primary-foreground border-primary glow-red"
-                    : "bg-card border-border text-muted-foreground hover:border-primary/40 hover:text-foreground"
-                }`}
-              >
-                {f}
-              </button>
-            ))}
+          <div className="-mx-4 px-4 overflow-x-auto sm:mx-0 sm:px-0 sm:overflow-visible">
+            <div className="flex gap-1.5 w-max sm:w-auto sm:flex-wrap">
+              {FILTERS.map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setFilter(f)}
+                  className={`shrink-0 px-3.5 py-1.5 rounded-full text-[11px] font-mono uppercase tracking-wider border transition-all ${
+                    filter === f
+                      ? "bg-primary text-primary-foreground border-primary glow-red"
+                      : "bg-card border-border text-muted-foreground hover:border-primary/40 hover:text-foreground"
+                  }`}
+                >
+                  {f}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
         <PartnerMarquee />
-        <div className="mx-auto max-w-7xl px-4 mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-          {filtered.map((p) => (
-            <div
-              key={p.name}
-              className="group aspect-[5/2] rounded-xl border border-border bg-background/60 backdrop-blur flex items-center justify-center font-mono text-sm text-muted-foreground hover:text-foreground hover:border-primary/60 hover:shadow-[0_0_30px_-10px_oklch(0.66_0.24_25/0.6)] transition-all relative overflow-hidden"
-            >
-              <span className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="relative">{p.name}</span>
-            </div>
-          ))}
+        <div className="mx-auto max-w-7xl px-4 mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          {filtered.map((p) => {
+            const src = logoUrl(p.domain);
+            return (
+              <div
+                key={p.name}
+                className="group aspect-[5/2] rounded-xl border border-border bg-background/60 backdrop-blur flex items-center justify-center gap-2 px-2 hover:border-primary/60 hover:bg-card transition-all relative overflow-hidden"
+              >
+                {src && (
+                  <img
+                    src={src}
+                    alt={p.name}
+                    loading="lazy"
+                    className="h-7 w-7 object-contain rounded brightness-[1.1] grayscale group-hover:grayscale-0 transition shrink-0"
+                    onError={(e) => ((e.currentTarget.style.display = "none"))}
+                  />
+                )}
+                <span className="font-mono text-[11px] sm:text-xs text-muted-foreground group-hover:text-foreground truncate min-w-0">
+                  {p.name}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <SectionDivider label="special achievements" />
+
+      <section className="relative py-16">
+        <GridBackdrop />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <p className="font-mono text-xs text-accent uppercase tracking-widest">// Records</p>
+            <h2 className="mt-2 h-display-sm font-display font-bold max-w-2xl">
+              Standout <span className="text-gradient">alumni achievements.</span>
+            </h2>
+          </Reveal>
+          <div className="mt-10">
+            <AchievementsStrip />
+          </div>
         </div>
       </section>
 
