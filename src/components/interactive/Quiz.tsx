@@ -2,17 +2,17 @@ import { useState } from "react";
 
 const QUESTIONS = [
   { q: "Do you enjoy writing code more than running simulations?", a: { yes: "rtl", no: "dv" } },
-  { q: "Are you more comfortable with maths/physics than software?", a: { yes: "pd", no: null } },
   { q: "Do you like debugging waveform traces for hours?", a: { yes: "dv", no: "rtl" } },
-  { q: "Would you rather optimise area/timing than build features?", a: { yes: "pd", no: "rtl" } },
-  { q: "Excited about safety, fault models and test coverage?", a: { yes: "dft", no: null } },
+  { q: "Would you rather bring up hardware than write testbenches?", a: { yes: "fpga", no: "dv" } },
+  { q: "Do you love low-level firmware, drivers and bare-metal C?", a: { yes: "emb", no: null } },
+  { q: "Would you rather work on reusable IP than full SoCs?", a: { yes: "rtl", no: "dv" } },
 ];
 
 const RESULT: Record<string, { title: string; track: string; line: string }> = {
   rtl: { title: "RTL Design", track: "Verilog → SystemVerilog → AMBA", line: "You'll thrive writing clean, synthesizable RTL." },
   dv:  { title: "Design Verification", track: "SV → UVM → Coverage", line: "You'll love building rigorous, reusable testbenches." },
-  pd:  { title: "Physical Design", track: "Floorplan → CTS → Signoff", line: "Geometry, timing and power are your playground." },
-  dft: { title: "Design for Test", track: "Scan → MBIST → ATPG", line: "You'll make sure silicon never lies about itself." },
+  fpga:{ title: "FPGA Prototyping", track: "Verilog → Vivado/Quartus → Bring-up", line: "You'll thrive bringing silicon to life on real boards." },
+  emb: { title: "Embedded Systems", track: "C → ARM → RTOS → Drivers", line: "You'll write the firmware that runs on what we verify." },
 };
 
 export function Quiz() {
@@ -55,7 +55,7 @@ export function Quiz() {
         <p className="text-[10px] font-mono text-muted-foreground">Q {step + 1} / {QUESTIONS.length}</p>
       </div>
       <div className="h-1 w-full bg-surface-2 rounded-full overflow-hidden">
-        <div className="h-full bg-gradient-to-r from-primary to-ignite transition-all" style={{ width: `${((step) / QUESTIONS.length) * 100}%` }} />
+        <div className="h-full bg-gradient-to-r from-primary to-accent transition-all" style={{ width: `${((step) / QUESTIONS.length) * 100}%` }} />
       </div>
       <h3 className="mt-6 font-display text-2xl font-bold leading-snug">{QUESTIONS[step].q}</h3>
       <div className="mt-6 grid grid-cols-2 gap-3">
