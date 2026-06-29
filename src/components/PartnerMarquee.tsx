@@ -1,4 +1,26 @@
-import { PARTNERS } from "@/data/partners";
+import { PARTNERS, logoUrl } from "@/data/partners";
+
+function LogoChip({ name, domain }: { name: string; domain?: string }) {
+  const src = logoUrl(domain);
+  return (
+    <div className="shrink-0 group h-14 min-w-[160px] rounded-lg border border-border/70 bg-card/60 backdrop-blur px-5 flex items-center gap-3 hover:border-primary/50 hover:bg-card transition-all">
+      {src ? (
+        <img
+          src={src}
+          alt={name}
+          loading="lazy"
+          width={28}
+          height={28}
+          className="h-7 w-7 object-contain rounded brightness-[1.15] grayscale group-hover:grayscale-0 transition"
+          onError={(e) => ((e.currentTarget.style.display = "none"))}
+        />
+      ) : null}
+      <span className="font-mono text-xs tracking-tight text-muted-foreground group-hover:text-foreground whitespace-nowrap">
+        {name}
+      </span>
+    </div>
+  );
+}
 
 export function PartnerMarquee() {
   const list = [...PARTNERS, ...PARTNERS];
@@ -6,12 +28,7 @@ export function PartnerMarquee() {
     <div className="relative w-full overflow-hidden mask-fade-x py-2">
       <div className="flex gap-3 animate-marquee w-max">
         {list.map((p, i) => (
-          <div
-            key={i}
-            className="shrink-0 rounded-lg border border-border/70 bg-gradient-to-b from-card to-background/40 backdrop-blur px-6 py-3.5 text-sm font-mono tracking-tight text-muted-foreground hover:text-foreground hover:border-primary/50 hover:shadow-[0_0_24px_-8px_oklch(0.66_0.24_25/0.5)] transition-all"
-          >
-            {p.name}
-          </div>
+          <LogoChip key={`${p.name}-${i}`} name={p.name} domain={p.domain} />
         ))}
       </div>
     </div>
