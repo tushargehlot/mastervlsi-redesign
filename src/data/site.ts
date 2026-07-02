@@ -3,17 +3,24 @@ export const DEFAULT_WHATSAPP_PREFILL = "Hi MasterVLSI! I'd like to know more ab
 
 export const SITE = {
   name: "MasterVLSI",
-  tagline: "Fueling careers with precision placements.",
-  whatsappNumber: "+919876543210", // TODO: confirm real number
+  tagline: "Leader in the semiconductor industry — training the engineers who build the chips.",
+  whatsappNumber: "+919844982345", // Nitesh Sir — technical
   whatsappPrefill: DEFAULT_WHATSAPP_PREFILL,
-  email: "info@mastervlsi.in",
-  phone: "+91 98765 43210",
+  email: "hr@mastervlsi.com",
+  phone: "+91 73384 29473",
   youtubeChannel: "https://www.youtube.com/@mastervlsi2526",
   youtubeHandle: "@mastervlsi2526",
-  demoFormUrl: "https://forms.gle/7MBe27TG2eBzh49d7",
+  demoFormUrl:
+    "https://docs.google.com/forms/d/e/1FAIpQLScEzfHndVUc8Jqx_1y-KN_dknCCYH4BNG2HHqJLeMzls5622Q/viewform?usp=header",
+  demoFormEmbedUrl:
+    "https://docs.google.com/forms/d/e/1FAIpQLScEzfHndVUc8Jqx_1y-KN_dknCCYH4BNG2HHqJLeMzls5622Q/viewform?embedded=true",
   mapsUrl: "https://maps.app.goo.gl/SJTBMotHE7umPDfC6",
-  mapsEmbed: "https://www.google.com/maps?q=MasterVLSI+Bengaluru&output=embed",
-  address: "MasterVLSI Training Institute, Bengaluru, Karnataka, India",
+  mapsEmbed:
+    "https://www.google.com/maps?q=MasterVLSI+Institute+Udayanagar+Tin+Factory+Bengaluru&output=embed",
+  address:
+    "MasterVLSI Institute — 1st Floor, opposite to Vinayaka Temple, Udayanagar Main Road, near Tin-Factory bus stop, Bangalore – 560016",
+  addressShort: "Udayanagar Main Road, Near Tin-Factory, Bangalore – 560016",
+  workingHours: "Mon – Sat · 9:30 AM to 6:30 PM",
   social: {
     youtube: "https://www.youtube.com/@mastervlsi2526",
     linkedin: "#",
@@ -22,8 +29,15 @@ export const SITE = {
   },
 } as const;
 
+export const OFFICE_CONTACTS = [
+  { name: "Sushil", role: "Payments · Placement · General queries", phone: "7338429473" },
+  { name: "Sharmila", role: "Payments · Placement · General queries", phone: "8431520978" },
+  { name: "Lipsa Madam", role: "Escalation (if unresolved above)", phone: "9019232425" },
+  { name: "Nitesh Sir", role: "Technical discussions only", phone: "9844982345" },
+] as const;
+
 export const STATS = [
-  { value: 24, suffix: "", label: "Professional Modules" },
+  { value: 20, suffix: "", label: "Professional Modules" },
   { value: 16, suffix: "", label: "Industry Mentors" },
   { value: 5000, suffix: "+", label: "Qualified Graduates" },
   { value: 99, suffix: "%", label: "Student Satisfaction" },
