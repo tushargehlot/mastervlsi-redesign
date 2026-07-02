@@ -8,6 +8,9 @@ import { SectionDivider } from "@/components/vlsi/SectionDivider";
 import { STATS } from "@/data/site";
 import { Target, Eye, Heart, Award, Check, X } from "lucide-react";
 import { MentorWall } from "@/components/interactive/MentorWall";
+import { AccommodationSection } from "@/components/AccommodationSection";
+import { CampusReach } from "@/components/CampusReach";
+import { HeroBackdrop } from "@/components/HeroBackdrop";
 
 export const Route = createFileRoute("/about")({
   head: () => ({

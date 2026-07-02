@@ -31,28 +31,25 @@ export function Nav() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/60 backdrop-blur-2xl border-b border-border shadow-[0_4px_30px_-12px_rgba(0,0,0,0.6)]"
+          ? "bg-background/70 backdrop-blur-2xl border-b border-border shadow-[0_4px_30px_-12px_rgba(0,0,0,0.6)]"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
-        <Link to="/" data-magnetic className="flex items-center gap-2.5 group">
-          <span className="relative">
-            <span className="absolute inset-0 rounded-full bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+        <Link to="/" data-magnetic className="flex items-center gap-2.5 group min-w-0">
+          <span className="relative shrink-0">
+            <span className="absolute -inset-2 rounded-xl bg-primary/25 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
             <img
-              src={markAsset.url}
+              src={logoAsset.url}
               alt="MasterVLSI"
-              width={32}
-              height={32}
-              className="relative h-8 w-8 transition-transform duration-500 group-hover:rotate-[8deg]"
+              width={160}
+              height={40}
+              className="relative h-9 sm:h-10 w-auto transition-transform duration-500 group-hover:scale-[1.03]"
             />
-          </span>
-          <span className="font-display text-lg font-bold tracking-tight">
-            MASTER<span className="text-primary">VLSI</span>
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-0.5">
+        <nav className="hidden lg:flex items-center gap-0.5">
           {links.map((l) => (
             <Link
               key={l.to}
@@ -69,26 +66,28 @@ export function Nav() {
             </Link>
           ))}
           <Magnetic className="ml-2">
-            <Link
-              to="/demo"
-              className="inline-flex items-center rounded-md bg-primary px-3.5 py-2 text-[13px] font-medium text-primary-foreground hover:bg-primary/90 transition-all glow-red"
-            >
-              Book Free Demo
-            </Link>
+            <DemoTrigger className="relative inline-flex items-center overflow-hidden rounded-md px-4 py-2 text-[13px] font-semibold text-white transition-all glow-red hover:brightness-110">
+              <span
+                className="absolute inset-0"
+                style={{ background: "var(--gradient-ignite)" }}
+                aria-hidden
+              />
+              <span className="relative">Book Free Demo</span>
+            </DemoTrigger>
           </Magnetic>
         </nav>
 
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden p-2 -mr-2 text-foreground"
+          className="lg:hidden p-2 -mr-2 text-foreground"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
+        <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl">
           <nav className="px-4 py-4 flex flex-col gap-1">
             {links.map((l) => (
               <Link
@@ -102,17 +101,17 @@ export function Nav() {
                 {l.label}
               </Link>
             ))}
-            <Link
-              to="/demo"
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground"
-            >
-              Book Free Demo
-            </Link>
+            <DemoTrigger className="relative mt-2 inline-flex items-center justify-center overflow-hidden rounded-md px-4 py-2.5 text-sm font-semibold text-white">
+              <span
+                className="absolute inset-0"
+                style={{ background: "var(--gradient-ignite)" }}
+                aria-hidden
+              />
+              <span className="relative" onClick={() => setOpen(false)}>Book Free Demo</span>
+            </DemoTrigger>
           </nav>
         </div>
       )}
-      <img src={logoAsset.url} alt="" hidden width={1} height={1} />
     </header>
   );
 }
