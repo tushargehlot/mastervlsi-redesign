@@ -1,18 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Custom crimson ring + die-dot cursor with magnetic snap on
- * [data-magnetic], anchors and buttons. Disabled on touch / reduced-motion.
+ * High-contrast custom cursor: outer ring uses mix-blend-difference over a
+ * warm-white fill so it stays visible against any background. Inner dot uses
+ * the brand crimson. Grows on interactive targets, hides on touch/reduced.
  */
 export function Cursor() {
   const ring = useRef<HTMLDivElement>(null);
   const dot = useRef<HTMLDivElement>(null);
+  const label = useRef<HTMLDivElement>(null);
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
     const isTouch =
-      window.matchMedia("(hover: none)").matches ||
-      "ontouchstart" in window;
+      window.matchMedia("(hover: none)").matches || "ontouchstart" in window;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (isTouch || reduce) return;
 
@@ -26,41 +27,36 @@ export function Cursor() {
     let dx = x;
     let dy = y;
     let raf = 0;
-    let isMagnet = false;
+    let mode: "idle" | "hover" | "text" = "idle";
 
-    const SNAP = "a, button, [data-magnetic], [role='button'], input, textarea, select, summary, label";
+    const HOVER_SEL = "a, button, [data-magnetic], [role='button'], summary, label";
+    const TEXT_SEL = "input, textarea, [contenteditable='true']";
 
     function onMove(e: MouseEvent) {
       tx = e.clientX;
       ty = e.clientY;
-      const el = (e.target as HTMLElement)?.closest(SNAP) as HTMLElement | null;
-      if (el) {
-        const r = el.getBoundingClientRect();
-        const cx = r.left + r.width / 2;
-        const cy = r.top + r.height / 2;
-        const dxm = (tx - cx) * 0.18;
-        const dym = (ty - cy) * 0.18;
-        tx = cx + dxm;
-        ty = cy + dym;
-        isMagnet = true;
-      } else {
-        isMagnet = false;
-      }
+      const el = e.target as HTMLElement | null;
+      if (el?.closest(TEXT_SEL)) mode = "text";
+      else if (el?.closest(HOVER_SEL)) mode = "hover";
+      else mode = "idle";
     }
 
     function loop() {
       x += (tx - x) * 0.22;
       y += (ty - y) * 0.22;
-      dx += (tx - dx) * 0.45;
-      dy += (ty - dy) * 0.45;
+      dx += (tx - dx) * 0.5;
+      dy += (ty - dy) * 0.5;
+      const scale = mode === "hover" ? 1.9 : mode === "text" ? 0.4 : 1;
       if (ring.current) {
-        ring.current.style.transform = `translate3d(${x - 18}px, ${y - 18}px, 0) scale(${isMagnet ? 1.6 : 1})`;
-        ring.current.style.borderColor = isMagnet
-          ? "oklch(0.66 0.24 25 / 0.9)"
-          : "oklch(0.66 0.24 25 / 0.45)";
+        ring.current.style.transform = `translate3d(${x - 18}px, ${y - 18}px, 0) scale(${scale})`;
       }
       if (dot.current) {
-        dot.current.style.transform = `translate3d(${dx - 2.5}px, ${dy - 2.5}px, 0)`;
+        dot.current.style.transform = `translate3d(${dx - 3}px, ${dy - 3}px, 0)`;
+        dot.current.style.opacity = mode === "text" ? "0" : "1";
+      }
+      if (label.current) {
+        label.current.style.transform = `translate3d(${x + 20}px, ${y - 8}px, 0)`;
+        label.current.style.opacity = mode === "hover" ? "1" : "0";
       }
       raf = requestAnimationFrame(loop);
     }
@@ -78,17 +74,36 @@ export function Cursor() {
   if (!enabled) return null;
   return (
     <>
+      {/* Difference-blend ring — always readable */}
       <div
         ref={ring}
         aria-hidden
-        className="pointer-events-none fixed top-0 left-0 z-[100] h-9 w-9 rounded-full border transition-[border-color,transform] duration-150 ease-out mix-blend-difference"
-        style={{ borderWidth: "1px" }}
+        className="pointer-events-none fixed top-0 left-0 z-[100] h-9 w-9 rounded-full border-2 border-white transition-transform duration-150 ease-out"
+        style={{ mixBlendMode: "difference" }}
       />
+      {/* Warm dot */}
       <div
         ref={dot}
         aria-hidden
-        className="pointer-events-none fixed top-0 left-0 z-[100] h-[5px] w-[5px] rounded-full bg-primary mix-blend-screen"
+        className="pointer-events-none fixed top-0 left-0 z-[100] h-1.5 w-1.5 rounded-full transition-opacity duration-150"
+        style={{
+          background: "oklch(0.72 0.19 45)",
+          boxShadow: "0 0 10px oklch(0.72 0.19 45 / 0.9), 0 0 22px oklch(0.62 0.20 25 / 0.6)",
+        }}
       />
+      {/* Tiny hover label */}
+      <div
+        ref={label}
+        aria-hidden
+        className="pointer-events-none fixed top-0 left-0 z-[100] px-1.5 py-0.5 rounded font-mono text-[9px] uppercase tracking-widest opacity-0 transition-opacity duration-200"
+        style={{
+          background: "oklch(0.62 0.20 25)",
+          color: "white",
+          boxShadow: "0 4px 12px oklch(0 0 0 / 0.4)",
+        }}
+      >
+        interact
+      </div>
     </>
   );
 }

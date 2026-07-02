@@ -1,11 +1,11 @@
 {
-  "asset_id": "4fbb99dc-1734-48d3-9511-48a3ff00db1e",
-  "content_type": "image/png",
-  "created_at": "2026-06-25T06:19:30Z",
-  "original_filename": "mastervlsi-logo.png",
+  "version": 1,
+  "asset_id": "4594deaa-5aa2-4e44-8299-f8367be1a6bf",
   "project_id": "d54a91b2-7a75-430b-b6e2-e350b5fc7c97",
-  "r2_key": "a/v1/d54a91b2-7a75-430b-b6e2-e350b5fc7c97/4fbb99dc-1734-48d3-9511-48a3ff00db1e/mastervlsi-logo.png",
-  "size": 64418,
-  "url": "/__l5e/assets-v1/4fbb99dc-1734-48d3-9511-48a3ff00db1e/mastervlsi-logo.png",
-  "version": 1
+  "url": "/__l5e/assets-v1/4594deaa-5aa2-4e44-8299-f8367be1a6bf/mastervlsi-logo.png",
+  "r2_key": "a/v1/d54a91b2-7a75-430b-b6e2-e350b5fc7c97/4594deaa-5aa2-4e44-8299-f8367be1a6bf/mastervlsi-logo.png",
+  "original_filename": "mastervlsi-logo.png",
+  "size": 43642,
+  "content_type": "image/png",
+  "created_at": "2026-07-02T10:43:39Z"
 }

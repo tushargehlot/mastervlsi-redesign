@@ -1,77 +1,101 @@
-## Goals
-1. Tone down the heavy red — keep brand crimson as an accent only.
-2. Fix mobile viewport clipping across all pages.
-3. Replace text "company chips" with real logos in the Placements roster.
-4. Wire up the 8 specific YouTube playlists (and individual videos) with real thumbnails to dedicated sections instead of one generic channel link.
-5. Remove all Physical Design / STA / DFT / PD-backend content — MasterVLSI teaches **Design & Verification only**.
-6. Absorb new content from the uploaded posters & PDFs.
+# MasterVLSI — Refinement Pass (v7)
 
----
+Goal: fix the jarring blue accent, elevate the chatbot, tighten mobile, add missing accommodation/connectivity content, and swap in the new logo.
 
-## 1. Palette retune (subtle, not a redesign)
-`src/styles.css` tokens:
-- `--primary` shifts from crimson → deeper graphite-indigo (`oklch(0.62 0.14 255)`) as the dominant accent.
-- Crimson kept as `--accent` for badges, highlights, alerts only (~15% of surfaces, was ~60%).
-- Glow utilities (`glow-red`, `text-gradient`) re-pointed at the new primary; one new `glow-accent` for crimson highlights.
-- Background tints (`surface-1`, scroll-tint) lose the red wash.
-- Net effect: techy slate/indigo base with crimson punctuation — no component rewrite needed.
+## 1. Color system — kill the blue
 
-## 2. Mobile viewport fixes
-Audit pages flagged by the user. Apply the responsive-row pattern:
-- `Nav.tsx`: collapse stats/CTA into hamburger sheet earlier (`sm:` not `lg:`).
-- `placements.tsx` filter chips → horizontal scroll on `<sm`.
-- `Hero3D`, partner grid, salary heatmap, alumni map → wrap in `overflow-x-auto` with `min-w-0` text containers.
-- Add `clamp()` font sizing for `h-display` so headings don't blow out 360px screens.
-- Add `px-4 max-w-[100vw] overflow-x-hidden` guard on `__root.tsx` body.
+`src/styles.css`
+- `--primary` → warm crimson `oklch(0.60 0.20 22)` (brand red from logo).
+- `--accent` → ignited orange `oklch(0.72 0.19 45)`.
+- `--ring`, `--gradient-ignite`, `--gradient-radial-glow`, `--glow` → rebuilt on red↔orange, no indigo/blue anywhere.
+- Add `--trace` amber and a subtle `--wire` warm-grey so PCB/circuit graphics stay warm.
+- Sweep `text-*-500/600`, hardcoded indigo classes, and any leftover `oklch(... 258)` in components (Hero3D glow, TraceLine, Spotlight, ScrollTint, chatbot).
 
-## 3. Real company logos
-New `src/data/partners.ts` schema: `{ name, logoUrl, category, tier }`.
-- Source logos from Simple Icons CDN (`https://cdn.simpleicons.org/{slug}/{color}`) — free, monochrome, swap color per theme. Fallback to Clearbit (`logo.clearbit.com/{domain}`) for non-tech logos.
-- `PartnerMarquee` and the placements grid render `<img>` with grayscale → color on hover.
-- Roster expanded from the "Master VLSI Student Placed" poster: Sankalp, Tessolve, eInfochips, Wipro, HCLTech, Tata Elxsi, L&T, Tech Mahindra, LTIMindtree, Mirafra, Insemi, Moschip, Signoff, Radiant, Aura, Excel, LeadSoc, Relicuus, Vaan, Zreyah, Siliconis, Cognicadz, Tachyon, Agmatel, Aware, e-Zest, Mindgrove, Saankhya, Steradian, Signalchip, Morphing, Blueberry, RISC-V India, Kalray, IIT Madras/Bombay/Kanpur Research Parks, CeNSE, DRDO, BEL, ISRO, CDAC, SCL, BHEL, Polar, Prayog, HANA, 3rdiTech, ACME, ChipSofy, Mavenir, Hughes, Lattice, Xilinx, Zebu, Quicklogic, GUC, Semi, Morphin, Analog Devices, VVDN, Diodes, Silicon Labs, Realtek, Novatek, ROHM, ON Semi, NXP, ST, Renesas, Infineon, Intel, Samsung, Micron, TI, AMD, NVIDIA, Broadcom, Qualcomm, MediaTek, Marvell, Cisco, Meta, Microsoft, Amazon, Bosch, Google, Oppo, Vivo, Xiaomi, OnePlus, Lava, Honor, Sensing, TCS, KPIT, Cyient, Sonata, Delphi-TVS, AltenLabs, UST, Quest Global, Atos, Synapse, Unisoc, Verilog Solutions, SmartWire, Aaviniys, Agamenx, Mavenir, Embibe, Beegolab, Airoha, Truechip, Frontier, Kaynes, Niral, Brainchip, Paras, Pixelsoft, Innosilicon, Agnit, Pravega, VCC, RTE, Truchip, Sequilabs, Embcalas, Signate, Sitmec, OPRCK, Coreel, Brosee, DLTekggar, J.iscle Voc Coo, Transcors, CGS Global, Dobetech, Arasan, Embecosm, CG Power, Efinix, Index, Fossee, Ridgetech, Helios.
+## 2. Logo swap
 
-## 4. Per-playlist YouTube wiring
-Update `src/data/playlists.ts` with the 8 real playlist IDs:
-| Slot on site | Playlist |
-|---|---|
-| Home → "Demo Lectures" | Verilog Session demo, Number Systems demo |
-| Courses → DV brochure CTA | Internship Bootcamp |
-| Placements → after testimonials | Student Reviews, Internship Feedback |
-| About → "Inside the campus" | Campus Tour |
-| Services → "Protocols in action" | AXI Protocol videos |
-| Playlists hub page | Complete VLSI Career Roadmap + all 8 |
+- Upload `user-uploads://logo.png` via `lovable-assets` → `src/assets/logo.png.asset.json`.
+- Replace usage in `Nav.tsx`, `Footer.tsx`, `__root.tsx` head icons/og. Keep intrinsic aspect ratio; render at fixed height (32–40px nav, 48px footer).
 
-`PosterPlaylistCard` upgraded to:
-- Real `https://i.ytimg.com/vi/{firstVideoId}/hqdefault.jpg` thumbnails (already works for known IDs you provided).
-- Hover → faint play overlay, click opens that specific playlist (`youtube.com/playlist?list=...`), with `iframe` modal option for individual demo videos so users can watch inline.
-- Each card carries playlist meta: title, level, est. videos.
+## 3. AI chatbot redesign (`src/components/chatbot/VLSIa.tsx`)
 
-## 5. Scope to Design & Verification only
-Remove PD/STA/DFT/Physical-Design/Low-Power-UPF/AMS/Post-Silicon items from:
-- `src/data/courses.ts` — drop modules 6 (PD), 7 (DFT), 8 (STA), 9 (Low Power), 10 (Post-Silicon), 14 (AMS) from the 15-service list. Keep RTL, DV, FPGA Prototyping, Embedded, SoC Integration, ASIC Flow (RTL→GDSII handoff mention only), CDC, IP, Automation.
-- `src/data/glossary.ts` — drop PD/STA/DFT entries.
-- `src/data/mentors.ts` — remove PD-tagged mentors or relabel to DV/RTL.
-- `placements.tsx` filter list: drop "PD/STA" category.
-- Quiz tracks (`Quiz.tsx`): keep only RTL Design, Functional Verification (UVM), FPGA, Embedded.
-- Replace the 20-block curriculum poster content into a new `CurriculumGrid` (Digital Fundamentals → Verilog → SV → SVA/Coverage → UVM → Scripting → AMBA → PCIe → USB → CXL → HDMI/DP → GLS → IP/SoC verification → Low-speed protocols → Tools → Industry projects → Additional training). This **matches** the user's Design+Verification scope.
+- New floating launcher: hexagonal chip-shaped button with concentric pulsing rings, orange→red gradient, animated "V" mark and a tiny status LED dot.
+- Panel: taller (420×560), glassy surface, header shows animated waveform + "VLSIa · Silicon Intelligence · online".
+- Custom loader: 4-stage pipeline strip ("PARSE → INFER → SYNTH → RESPOND") lighting up sequentially with a scanning bar — replaces plain dots.
+- Message bubbles: assistant with left neon-trace border + monospace tag, user with warm-red gradient.
+- Quick-reply chips styled as breaker switches.
+- Keep existing scripted flow + Supabase session logging.
 
-## 6. New content sections (from posters/PDFs)
-- **Fees & Terms page** (`/fees`): ₹90,000 + GST, 50/50 installments, refund/transfer/negotiation policies, late-payment consequences, 2-month max clearance, GST invoice rules. Visual table with icon rail.
-- **Accommodation (PG) section** on `/contact`: Co-living / Girls / Boys PG cards with phone numbers from the poster, "10–200 m from institute" badges. Photos via lovable-assets from uploaded posters.
-- **Connectivity** strip on `/contact`: nearest railway (Krishnarajapuram 450 m, Banaswadi 6 km…), metro (Benniganahalli 500 m, KR Puram 550 m), bus stops, distances. Rendered as a stylised list, not a re-uploaded map.
-- **Nearby companies** strip on `/about` & `/placements`: distance-to-company list (Google 1 km, Synopsys 1 km, Samsung R&D 0 km, Cadence 1 km, Intel 4 km…) — reinforces ecosystem proximity.
-- **Special achievements** strip on `/placements`: Highest career gap (Dr. Pradeep, 42 y → Microchip), Early placement (Yaswanth Verma, 21 days, Google, ₹50 L), Most offers (Harsha Reddy, 30 offers), Highest package (Basavaraj, 70 LPA UK).
-- **Office contacts** in footer/contact: Sushil 7338429473, Sharmila 8431520978, Lipsa Madam 9019232425, Nitesh Sir 9844982345; `hr@mastervlsi.com`; Mon–Sat 9:30–18:30.
-- **DV brochure CTA** on `/courses`: link the uploaded `Design Verification (DV) Course Brochure.pdf` (uploaded via lovable-assets) with a "Download brochure" button.
-- **Recent placements ticker** on `/placements`: pulled from the VLSIGuru placements PDF — names anonymised to initials + company + package, scrolling vertical strip.
+## 4. Mobile
 
-## 7. Verification
-- `tsgo` typecheck.
-- Playwright at 375 × 812 and 1280 × 1800 — screenshot every route, confirm no horizontal scroll, headings fit, filter chips reachable.
-- Logo CDN smoke check (one fetch per source per build).
+- Delete `MobileActionBar` and its mount in `__root.tsx` (and safe-area padding compensation on `main`).
+- Nav: audit `md:` breakpoints, ensure hamburger opens a full-screen sheet, no horizontal overflow.
+- Global: add `overflow-x-hidden` on `body`; wrap wide grids with `min-w-0`; make `PartnerMarquee`, `SalaryHeatmap`, `AlumniMap`, `PosterPlaylistCard` grids stack cleanly < 640px.
+- Hero3D: reduce canvas DPR & disable heavy shader effects on `< md` for perf.
+
+## 5. Demo popup + section
+
+- New `src/components/DemoModal.tsx`: radix Dialog, chip-frame styling, embeds the Google Form URL in an iframe (`https://docs.google.com/forms/d/e/1FAIpQLScEzfHndVUc8Jqx_1y-KN_dknCCYH4BNG2HHqJLeMzls5622Q/viewform?embedded=true`), plus a "Open in new tab" fallback.
+- Global trigger via a small context/provider `useDemoModal()`; every existing "Book demo / Reserve seat / Get started" CTA opens it instead of routing.
+- Update `SITE.demoFormUrl` in `src/data/site.ts`.
+- `src/routes/demo.tsx`: keep as full page but embed the same form + add a hero, "what to expect", FAQ, and CTA-to-modal from other routes.
+
+## 6. Custom cursor & scrollbar
+
+- `src/components/fx/Cursor.tsx`: rebuild — outer ring + inner dot use `mix-blend-mode: difference` and a solid warm-white so it stays visible over any background; add hover-grow on `[data-cursor="hover"]` and shrink on text inputs. Disabled on touch devices.
+- `src/styles.css`: custom webkit scrollbar (10px, translucent track, red→orange gradient thumb with inset trace, rounded), `scrollbar-color` for Firefox.
+
+## 7. Hero background — rebuild
+
+`src/components/Hero3D.tsx` (or new `HeroBackdrop.tsx`)
+- Replace current scene with layered canvas:
+  1. Animated SVG PCB mesh (paths drawing themselves on load, subtle drift).
+  2. Three.js floating chip die (rotating slowly) with orange rim-light + red bloom.
+  3. Particle "electron" stream flowing along traces, mouse-parallax reactive.
+  4. Scanning horizontal laser line every 6s.
+- Respect `prefers-reduced-motion` and mobile perf gate.
+
+## 8. Accommodation section (from uploaded PG image)
+
+New `src/components/AccommodationSection.tsx` used on `about` and `contact` routes:
+- Three tabs: Co-living / Girls PG / Boys PG.
+- Cards with name, phone(s), "Very Near · 10–200m" badge; grid 2/3/4 responsive.
+- Highlights strip: 10–200m from institute, Safe & Secure, Hygienic, 24/7 Support.
+- Office contacts (Sushil, Sharmila, Lipsa, Nitesh) as a side card.
+- Data lives in `src/data/accommodation.ts`.
+
+## 9. Campus tour + connectivity + location
+
+New `src/components/CampusReach.tsx` on `about` & `contact`:
+- Left: three lists — Nearest Railway Stations (8), Metro (2), Bus Stops (4) with distances.
+- Right: reuse existing Google map iframe + a distance legend, "Excellent Connectivity" banner.
+- Add "Campus Tour" block above with the campus-tour YouTube playlist poster + 3 stat pills (24/7 lab, 12k sq ft, 60-seat lecture hall).
+- Update `src/data/site.ts` address to `1st Floor, opposite to Vinayaka Temple, Udayanagar, near Tin-Factory bus stop, Bangalore – 560016`.
+
+## 10. Content additions
+
+- `about`: founders expanded, milestones timeline, "Why Bangalore silicon corridor" block, campus gallery placeholder.
+- `courses`: prerequisites, weekly cadence, tools covered per module.
+- `services`: expanded copy for each of the 15 services.
+- `placements`: extra pull-quotes, "Offer letter wall" grid.
+- `home`: add "Why MasterVLSI" 6-tile bento, ticker of recent placements.
+- Add `Fees & Terms` route content sourced from the fee-details poster (already scoped).
+
+## 11. Interactive graphics
+
+- `SignalBus`: animated multi-lane bit-flow divider between sections.
+- `DieMap`: hoverable SVG chip floorplan on services page — each block highlights a service.
+- `WaveformScroll`: scroll-scrubbed waveform on placements page.
+- Micro-interactions: magnetic buttons everywhere primary CTAs live; number counters trigger on view; tilt on course cards refined.
 
 ## Technical notes
-- No backend changes; Supabase wiring untouched.
-- Asset pipeline: uploaded poster photos for PG cards → `lovable-assets create`. PDF brochure → asset pointer, served via CDN.
-- Logos use remote CDN URLs (no binary commits). Add `<link rel="preconnect" href="https://cdn.simpleicons.org">` in `__root.tsx`.
-- Curriculum grid is a pure data file (`src/data/curriculum.ts`) consumed by a new `CurriculumGrid` component reused on Home + Courses.
+
+- Stack: TanStack Start, framer-motion, three/@react-three/fiber already installed. No new deps needed except optional `@radix-ui/react-dialog` (already via shadcn).
+- Provider order in `__root.tsx`: `DemoModalProvider` wraps existing tree.
+- All new colors flow through tokens — no hex in components.
+- Preserve Supabase wiring; no schema changes.
+
+## Out of scope
+
+- No real AI backend (chatbot stays scripted, styled to feel intelligent).
+- No new pages beyond what's listed.
+- No changes to blog content this pass.
