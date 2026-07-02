@@ -13,11 +13,11 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { VLSIa } from "@/components/chatbot/VLSIa";
-import { MobileActionBar } from "@/components/MobileActionBar";
 import { Cursor } from "@/components/fx/Cursor";
 import { Grain } from "@/components/fx/Grain";
 import { ScrollTint } from "@/components/fx/ScrollTint";
 import { ScrollProgress } from "@/components/fx/ScrollProgress";
+import { DemoModalProvider } from "@/components/DemoModal";
 import markAsset from "@/assets/mark.png.asset.json";
 
 function NotFoundComponent() {
@@ -129,17 +129,18 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ScrollTint />
-      <ScrollProgress />
-      <Cursor />
-      <Grain />
-      <Nav />
-      <main className="min-h-screen pt-16 pb-20 md:pb-0">
-        <Outlet />
-      </main>
-      <Footer />
-      <VLSIa />
-      <MobileActionBar />
+      <DemoModalProvider>
+        <ScrollTint />
+        <ScrollProgress />
+        <Cursor />
+        <Grain />
+        <Nav />
+        <main className="min-h-screen pt-16">
+          <Outlet />
+        </main>
+        <Footer />
+        <VLSIa />
+      </DemoModalProvider>
     </QueryClientProvider>
   );
 }
