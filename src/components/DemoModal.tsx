@@ -111,21 +111,18 @@ function DemoDialog({ onClose }: { onClose: () => void }) {
   );
 }
 
-/** Convenient trigger — turns any child into a demo-modal opener. */
+/** Convenient trigger — a button that opens the demo modal. */
 export function DemoTrigger({
   children,
-  as: Tag = "button",
   className,
 }: {
   children: ReactNode;
-  as?: keyof React.JSX.IntrinsicElements;
   className?: string;
 }) {
   const { open } = useDemoModal();
-  const Comp = Tag as unknown as React.ElementType;
   return (
-    <Comp type="button" onClick={open} className={className}>
+    <button type="button" onClick={open} className={className}>
       {children}
-    </Comp>
+    </button>
   );
 }
