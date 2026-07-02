@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import markAsset from "@/assets/mark.png.asset.json";
 import logoAsset from "@/assets/logo.png.asset.json";
 import { Magnetic } from "@/components/fx/Magnetic";
+import { DemoTrigger } from "@/components/DemoModal";
 
 const links = [
   { to: "/", label: "Home" },
