@@ -231,6 +231,22 @@ function About() {
           <MentorWall />
         </div>
       </section>
+
+      <CampusReach />
+      <AccommodationSection />
+
+      <section className="relative py-16 overflow-hidden">
+        <HeroBackdrop />
+        <div className="mx-auto max-w-3xl px-4 text-center relative">
+          <p className="font-mono text-xs text-primary uppercase tracking-widest">// Ready?</p>
+          <h2 className="mt-3 h-display-sm font-display font-bold">
+            Come see the lab. <span className="text-gradient-ignite">Bring your questions.</span>
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            60-minute free demo · every weekday · online or on-site.
+          </p>
+        </div>
+      </section>
     </>
   );
 }
