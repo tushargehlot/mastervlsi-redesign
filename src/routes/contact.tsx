@@ -16,6 +16,30 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact MasterVLSI" },
       { property: "og:description", content: "We'd love to hear from you." },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: SITE.name,
+          description: SITE.tagline,
+          telephone: SITE.phone,
+          email: SITE.email,
+          url: "/contact",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress:
+              "1st Floor, opposite to Vinayaka Temple, Udayanagar Main Road, near Tin-Factory bus stop",
+            addressLocality: "Bangalore",
+            postalCode: "560016",
+            addressCountry: "IN",
+          },
+          openingHours: "Mo-Sa 09:30-18:30",
+          hasMap: SITE.mapsUrl,
+        }),
+      },
+    ],
   }),
   component: ContactPage,
 });

@@ -29,6 +29,20 @@ export const Route = createFileRoute("/placements")({
       { property: "og:title", content: "Placements — MasterVLSI" },
       { property: "og:description", content: "Video stories, written quotes, Google reviews — see where MasterVLSI engineers land." },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_PLACEMENTS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
   }),
   component: PlacementsPage,
 });

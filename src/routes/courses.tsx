@@ -17,6 +17,26 @@ export const Route = createFileRoute("/courses")({
       { property: "og:title", content: "VLSI Courses — MasterVLSI" },
       { property: "og:description", content: "Pick the silicon track that fits your career." },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "MasterVLSI Course Modules",
+          itemListElement: COURSES.map((c, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "Course",
+              name: c.title,
+              description: c.long,
+              provider: { "@type": "Organization", name: "MasterVLSI" },
+            },
+          })),
+        }),
+      },
+    ],
   }),
   component: CoursesPage,
 });

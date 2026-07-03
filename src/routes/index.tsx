@@ -16,7 +16,6 @@ import { PcbTraces } from "@/components/vlsi/PcbTraces";
 import { MiniWaveform } from "@/components/vlsi/MiniWaveform";
 import { SectionDivider } from "@/components/vlsi/SectionDivider";
 import { FaqAccordion } from "@/components/FaqAccordion";
-import { FAQ_HOME } from "@/data/faqs";
 import { TestimonialCarousel } from "@/components/placements/TestimonialCarousel";
 import { LiveCohortTicker } from "@/components/interactive/LiveCohortTicker";
 import { FoundersNote } from "@/components/interactive/FoundersNote";
