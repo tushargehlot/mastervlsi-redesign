@@ -7,14 +7,18 @@ import { CalendarCheck, Clock, MapPin, Users } from "lucide-react";
 export const Route = createFileRoute("/demo")({
   head: () => ({
     meta: [
-      { title: "Book a Free Demo — MasterVLSI" },
-      { name: "description", content: "Reserve a free demo class at MasterVLSI. See our pedagogy, meet mentors and tour the lab — all in 60 minutes." },
-      { property: "og:title", content: "Free Demo Class — MasterVLSI" },
+      { title: "Book a Free VLSI Demo Class — MasterVLSI Bengaluru" },
+      { name: "description", content: "Reserve a free 60-minute VLSI demo class. Meet mentors, tour the 24/7 lab and see the curriculum firsthand. On-site in Bengaluru or online." },
+      { property: "og:title", content: "Free VLSI Demo Class — MasterVLSI" },
       { property: "og:description", content: "Try before you commit. Book a complimentary demo today." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/demo" },
     ],
+    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/demo" }],
   }),
   component: DemoPage,
 });
+
 
 function DemoPage() {
   return (
