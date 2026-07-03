@@ -1,17 +1,32 @@
 # MasterVLSI
 
-> Premier VLSI training institute in Bengaluru — RTL, Design Verification (UVM), FPGA, SoC integration, and placement in 30–45 days.
+> India's premier VLSI training institute in Bengaluru. Design & Verification focus (RTL, SystemVerilog, UVM), FPGA prototyping, SoC integration. Placement in 30–45 days at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence and 60+ semiconductor companies.
 
-MasterVLSI is a Design & Verification focused VLSI training school. Cohorts are mentor-led, lab-backed, and aligned with what top semiconductor employers hire for. 5000+ alumni placed at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence and 60+ other companies.
+MasterVLSI has been training semiconductor engineers since 2015. 5000+ alumni placed. 16 industry mentors. 24/7 EDA lab with Synopsys VCS, Cadence Xcelium, Mentor Questa and full backend tool stack. Campus at Udayanagar Main Road, near Tin-Factory bus stop, Bangalore – 560016.
+
+## Key facts
+
+- Founded: 2015, Bengaluru, India
+- Alumni: 5000+
+- Placement window: 30–45 days after course completion
+- Focus: Design (RTL) and Verification (UVM) — not Physical Design
+- Modules: 15 industry-aligned VLSI training modules
+- Contact: WhatsApp +91 98449 82345 · hr@mastervlsi.com
+- YouTube: https://www.youtube.com/@mastervlsi2526 (200+ free tutorials)
 
 ## Pages
 
-- [Home](/): Overview, program pillars, mentor manifesto, and cohort highlights.
-- [About](/about): Institute story, campus location, accommodation, and connectivity.
-- [Courses](/courses): 15 industry-aligned modules across RTL, DV, FPGA, SoC, CDC, IP, and flow automation.
-- [Services](/services): Silicon engineering services offered to industry partners.
-- [Placements](/placements): Hiring partners, alumni video stories, testimonials, Google reviews, and salary heatmap.
-- [Playlists](/playlists): Curated YouTube playlists covering VLSI fundamentals to advanced topics.
-- [Blog](/blog): Guides, interview prep, and deep-dives on chip design and careers.
-- [Demo](/demo): Book a free demo class with a mentor.
-- [Contact](/contact): Address, phone, WhatsApp, and location in Bengaluru.
+- [Home](https://vlsiviz-sparkle.lovable.app/): Overview, program pillars, mentor manifesto, cohort highlights, FAQs.
+- [About](https://vlsiviz-sparkle.lovable.app/about): Institute story since 2015, mentors, campus location, PG accommodation, transit connectivity from Bengaluru rail and metro.
+- [Courses](https://vlsiviz-sparkle.lovable.app/courses): 15 modules — RTL Design, Design Verification (UVM), FPGA Prototyping, Embedded Systems, SoC Integration, Low Power Design, Post-Silicon Validation, ASIC Design, CDC, IP Development, AMS Verification, VLSI Flow Automation and more.
+- [Services](https://vlsiviz-sparkle.lovable.app/services): NDA-friendly silicon engineering services — RTL, DV, CDC, IP, SoC integration, flow automation — for fabless startups and enterprises.
+- [Placements](https://vlsiviz-sparkle.lovable.app/placements): Hiring partners, alumni video testimonials, Google reviews, salary heatmap, placement journey, achievements strip.
+- [Playlists](https://vlsiviz-sparkle.lovable.app/playlists): Curated YouTube playlists covering VLSI fundamentals through advanced topics — Verilog, SystemVerilog, UVM, interview prep.
+- [Blog](https://vlsiviz-sparkle.lovable.app/blog): Technical guides on RTL, DV, CDC, low-power design, static timing, interview preparation and career deep-dives.
+- [Demo](https://vlsiviz-sparkle.lovable.app/demo): Book a free 60-minute demo class — on-site in Bengaluru or online. Meet mentors, tour the lab.
+- [Contact](https://vlsiviz-sparkle.lovable.app/contact): Address, phone, WhatsApp, email, campus map.
+
+## Optional
+
+- [Sitemap](https://vlsiviz-sparkle.lovable.app/sitemap.xml)
+- [YouTube channel](https://www.youtube.com/@mastervlsi2526)

@@ -94,7 +94,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "MasterVLSI" },
       { property: "og:title", content: "MasterVLSI — Premier VLSI Training" },
       { property: "og:description", content: "Fueling careers with precision placements." },
-      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "MasterVLSI" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#0a0a0d" },
     ],
@@ -112,15 +112,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "Organization",
               name: "MasterVLSI",
-              url: "/",
+              url: "https://vlsiviz-sparkle.lovable.app/",
               logo: markAsset.url,
               description:
                 "Premier VLSI training institute — RTL, Design Verification (UVM), FPGA, SoC integration, and placement in 30–45 days.",
+              sameAs: ["https://www.youtube.com/@mastervlsi2526"],
               address: {
                 "@type": "PostalAddress",
                 streetAddress:
                   "1st Floor, opposite to Vinayaka Temple, Udayanagar Main Road, near Tin-Factory bus stop",
                 addressLocality: "Bangalore",
+                addressRegion: "Karnataka",
                 postalCode: "560016",
                 addressCountry: "IN",
               },
@@ -128,13 +130,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "WebSite",
               name: "MasterVLSI",
-              url: "/",
+              url: "https://vlsiviz-sparkle.lovable.app/",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://vlsiviz-sparkle.lovable.app/blog?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
             },
           ],
         }),
       },
     ],
   }),
+
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

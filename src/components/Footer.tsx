@@ -53,7 +53,7 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Link to="/" className="flex items-center gap-2.5">
-              <img src={markAsset.url} alt="" width={36} height={36} className="h-9 w-9" />
+              <img src={markAsset.url} alt="MasterVLSI logo" width={36} height={36} className="h-9 w-9" />
               <span className="font-display text-xl font-bold tracking-tight">
                 MASTER<span className="text-primary">VLSI</span>
               </span>

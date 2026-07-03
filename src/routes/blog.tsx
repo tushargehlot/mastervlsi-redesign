@@ -8,14 +8,18 @@ import { Search, Clock, ArrowRight } from "lucide-react";
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Blog — MasterVLSI" },
-      { name: "description", content: "VLSI guides, interview prep, and silicon engineering deep-dives from the MasterVLSI team." },
-      { property: "og:title", content: "MasterVLSI Blog" },
+      { title: "VLSI Blog — Interview Prep, RTL & DV Guides | MasterVLSI" },
+      { name: "description", content: "Deep-dives on Verilog, SystemVerilog, UVM, static timing, CDC, low-power design, and VLSI interview prep — written by working silicon engineers." },
+      { property: "og:title", content: "MasterVLSI Blog — VLSI Guides & Interview Prep" },
       { property: "og:description", content: "Sharp, practical writing on chip design and careers." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/blog" },
     ],
+    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/blog" }],
   }),
   component: BlogIndex,
 });
+
 
 function BlogIndex() {
   const [q, setQ] = useState("");

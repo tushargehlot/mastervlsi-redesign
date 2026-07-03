@@ -27,11 +27,18 @@ import { FAQ_HOME } from "@/data/faqs";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "MasterVLSI — Train. Tape-out. Get Placed." },
-      { name: "description", content: "Premier VLSI training with 24/7 lab access, real-time mentors and placement within 30–45 days of joining." },
-      { property: "og:title", content: "MasterVLSI — Premier VLSI Training" },
-      { property: "og:description", content: "From RTL to GDSII — fueling careers with precision placements." },
+      { title: "MasterVLSI — VLSI Training & Placement in Bengaluru | RTL, UVM, DV" },
+      { name: "description", content: "India's premier VLSI training institute. Design & Verification (UVM), RTL, FPGA, SoC. 24/7 lab, industry mentors, 5000+ alumni placed at Intel, AMD, NVIDIA in 30–45 days." },
+      { property: "og:title", content: "MasterVLSI — VLSI Training & Placement in 30–45 Days" },
+      { property: "og:description", content: "From RTL to GDSII — Design & Verification training with placement at Intel, AMD, NVIDIA, Qualcomm and 60+ companies." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/" },
+      { property: "og:site_name", content: "MasterVLSI" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "MasterVLSI — Premier VLSI Training" },
+      { name: "twitter:description", content: "Design & Verification training with placement in 30–45 days." },
     ],
+    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -49,6 +56,7 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
+
 
 const MANIFESTO = [
   { icon: Layers, kw: "Lab-first", t: "Every concept lands in a real Verilog/SV file before a single slide." },

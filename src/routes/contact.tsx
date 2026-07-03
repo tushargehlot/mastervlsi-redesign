@@ -11,11 +11,14 @@ import { MapPin, MessageCircle, Mail, Phone, Youtube, ExternalLink, Send } from 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — MasterVLSI" },
-      { name: "description", content: "Visit our Bengaluru lab, chat on WhatsApp or send an email. We respond within a business day." },
-      { property: "og:title", content: "Contact MasterVLSI" },
-      { property: "og:description", content: "We'd love to hear from you." },
+      { title: "Contact MasterVLSI — Bengaluru VLSI Institute | WhatsApp, Call, Visit" },
+      { name: "description", content: "Visit our Bengaluru campus at Udayanagar Main Road near Tin-Factory, or reach us on WhatsApp (+91 98449 82345), email or phone. Response within a business day." },
+      { property: "og:title", content: "Contact MasterVLSI — Bengaluru" },
+      { property: "og:description", content: "WhatsApp, email, call or drop by our Bengaluru lab." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/contact" },
     ],
+    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/contact" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -26,23 +29,36 @@ export const Route = createFileRoute("/contact")({
           description: SITE.tagline,
           telephone: SITE.phone,
           email: SITE.email,
-          url: "/contact",
+          url: "https://vlsiviz-sparkle.lovable.app/contact",
           address: {
             "@type": "PostalAddress",
             streetAddress:
               "1st Floor, opposite to Vinayaka Temple, Udayanagar Main Road, near Tin-Factory bus stop",
             addressLocality: "Bangalore",
+            addressRegion: "Karnataka",
             postalCode: "560016",
             addressCountry: "IN",
           },
-          openingHours: "Mo-Sa 09:30-18:30",
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: 13.0067,
+            longitude: 77.6784,
+          },
+          openingHoursSpecification: [{
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+            opens: "09:30",
+            closes: "18:30",
+          }],
           hasMap: SITE.mapsUrl,
+          sameAs: [SITE.youtubeChannel],
         }),
       },
     ],
   }),
   component: ContactPage,
 });
+
 
 function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });

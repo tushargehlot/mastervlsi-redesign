@@ -15,14 +15,18 @@ import { HeroBackdrop } from "@/components/HeroBackdrop";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — MasterVLSI" },
-      { name: "description", content: "10+ years of VLSI excellence. Real-time mentors, industry-aligned curriculum, 5000+ alumni." },
-      { property: "og:title", content: "About MasterVLSI" },
-      { property: "og:description", content: "A decade of placing engineers at the world's top silicon companies." },
+      { title: "About MasterVLSI — 10+ Years Training VLSI Engineers" },
+      { name: "description", content: "Founded 2015 in Bengaluru. 16 industry mentors, 5000+ alumni at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence. Campus near Tin-Factory with 24/7 lab access." },
+      { property: "og:title", content: "About MasterVLSI — A Decade of Silicon Excellence" },
+      { property: "og:description", content: "How a 12-student weekend cohort became India's most trusted VLSI training school." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/about" },
     ],
+    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/about" }],
   }),
   component: About,
 });
+
 
 const TIMELINE = [
   { year: "2015", title: "Founded", desc: "Started as a 12-student weekend cohort in Bengaluru with two senior engineers and a borrowed lab." },
