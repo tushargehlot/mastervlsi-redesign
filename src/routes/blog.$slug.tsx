@@ -15,6 +15,7 @@ export const Route = createFileRoute("/blog/$slug")({
   },
   head: ({ loaderData, params }) => {
     const p = loaderData?.post;
+    const url = `https://vlsiviz-sparkle.lovable.app/blog/${params.slug}`;
     return {
       meta: p
         ? [
@@ -24,12 +25,16 @@ export const Route = createFileRoute("/blog/$slug")({
             { property: "og:description", content: p.excerpt },
             { property: "og:image", content: p.cover },
             { property: "og:type", content: "article" },
-            { property: "og:url", content: `/blog/${params.slug}` },
+            { property: "og:url", content: url },
+            { property: "article:published_time", content: p.date },
+            { property: "article:author", content: p.author },
             { name: "twitter:card", content: "summary_large_image" },
+            { name: "twitter:title", content: p.title },
+            { name: "twitter:description", content: p.excerpt },
             { name: "twitter:image", content: p.cover },
           ]
-        : [{ title: "Post — MasterVLSI Blog" }],
-      links: p ? [{ rel: "canonical", href: `/blog/${params.slug}` }] : [],
+        : [{ title: "Post — MasterVLSI Blog" }, { name: "robots", content: "noindex" }],
+      links: p ? [{ rel: "canonical", href: url }] : [],
       scripts: p
         ? [
             {
@@ -44,14 +49,31 @@ export const Route = createFileRoute("/blog/$slug")({
                 datePublished: p.date,
                 dateModified: p.date,
                 keywords: p.tags.join(", "),
-                publisher: { "@type": "Organization", name: "MasterVLSI" },
-                mainEntityOfPage: `/blog/${params.slug}`,
+                publisher: {
+                  "@type": "Organization",
+                  name: "MasterVLSI",
+                  logo: { "@type": "ImageObject", url: "https://vlsiviz-sparkle.lovable.app/favicon.ico" },
+                },
+                mainEntityOfPage: url,
+              }),
+            },
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: "https://vlsiviz-sparkle.lovable.app/" },
+                  { "@type": "ListItem", position: 2, name: "Blog", item: "https://vlsiviz-sparkle.lovable.app/blog" },
+                  { "@type": "ListItem", position: 3, name: p.title, item: url },
+                ],
               }),
             },
           ]
         : [],
     };
   },
+
   component: BlogPostPage,
   notFoundComponent: () => (
     <div className="py-32 text-center">
