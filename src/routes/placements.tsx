@@ -114,7 +114,7 @@ function PlacementsPage() {
                 {src && (
                   <img
                     src={src}
-                    alt={p.name}
+                    alt={`${p.name} company logo`}
                     loading="lazy"
                     className="h-7 w-7 object-contain rounded brightness-[1.1] grayscale group-hover:grayscale-0 transition shrink-0"
                     onError={(e) => ((e.currentTarget.style.display = "none"))}
