@@ -12,14 +12,18 @@ import { ArrowRight, FileCheck, GitBranch, Layers, Lock, Zap, Cpu } from "lucide
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — MasterVLSI" },
-      { name: "description", content: "End-to-end VLSI design services: RTL, DV, FPGA, SoC, PD, DFT, STA, Low Power, Post-Si, ASIC, CDC, IP, AMS, automation." },
-      { property: "og:title", content: "VLSI Design Services" },
-      { property: "og:description", content: "Industry-grade silicon engineering, on demand." },
+      { title: "VLSI Design & Verification Services — MasterVLSI" },
+      { name: "description", content: "End-to-end silicon engineering services: RTL design, UVM verification, FPGA prototyping, SoC integration, CDC, IP development and flow automation. NDA-friendly delivery." },
+      { property: "og:title", content: "VLSI Design & Verification Services" },
+      { property: "og:description", content: "Industry-grade silicon engineering, on demand — from RTL to sign-off." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/services" },
     ],
+    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/services" }],
   }),
   component: ServicesPage,
 });
+
 
 const ENGAGEMENT = [
   { icon: FileCheck, t: "Scoped SOW", d: "Tight, milestone-based statement of work. Fixed-bid or T&M." },
