@@ -23,6 +23,8 @@ import { FoundersNote } from "@/components/interactive/FoundersNote";
 import { PosterPlaylistCard } from "@/components/PosterPlaylistCard";
 import { PLAYLISTS } from "@/data/playlists";
 
+import { FAQ_HOME } from "@/data/faqs";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -30,6 +32,20 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Premier VLSI training with 24/7 lab access, real-time mentors and placement within 30–45 days of joining." },
       { property: "og:title", content: "MasterVLSI — Premier VLSI Training" },
       { property: "og:description", content: "From RTL to GDSII — fueling careers with precision placements." },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_HOME.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
     ],
   }),
   component: Index,

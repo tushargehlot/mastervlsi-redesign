@@ -103,6 +103,37 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", type: "image/png", href: markAsset.url },
       { rel: "apple-touch-icon", href: markAsset.url },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "MasterVLSI",
+              url: "/",
+              logo: markAsset.url,
+              description:
+                "Premier VLSI training institute — RTL, Design Verification (UVM), FPGA, SoC integration, and placement in 30–45 days.",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress:
+                  "1st Floor, opposite to Vinayaka Temple, Udayanagar Main Road, near Tin-Factory bus stop",
+                addressLocality: "Bangalore",
+                postalCode: "560016",
+                addressCountry: "IN",
+              },
+            },
+            {
+              "@type": "WebSite",
+              name: "MasterVLSI",
+              url: "/",
+            },
+          ],
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
