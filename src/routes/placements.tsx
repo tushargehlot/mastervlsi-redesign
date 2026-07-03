@@ -24,11 +24,15 @@ import { useState } from "react";
 export const Route = createFileRoute("/placements")({
   head: () => ({
     meta: [
-      { title: "Placements & Alumni — MasterVLSI" },
-      { name: "description", content: "5000+ alumni placed at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence and 25+ more. Placement within 30–45 days." },
-      { property: "og:title", content: "Placements — MasterVLSI" },
+      { title: "VLSI Placements — 5000+ Alumni at Intel, NVIDIA, AMD | MasterVLSI" },
+      { name: "description", content: "5000+ MasterVLSI alumni placed at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence and 60+ semiconductor companies within 30–45 days of course completion." },
+      { property: "og:title", content: "Placements at MasterVLSI — 5000+ Silicon Engineers" },
       { property: "og:description", content: "Video stories, written quotes, Google reviews — see where MasterVLSI engineers land." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/placements" },
     ],
+    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/placements" }],
+
     scripts: [
       {
         type: "application/ld+json",
