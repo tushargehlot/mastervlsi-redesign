@@ -12,11 +12,15 @@ import { SectionDivider } from "@/components/vlsi/SectionDivider";
 export const Route = createFileRoute("/courses")({
   head: () => ({
     meta: [
-      { title: "Courses — MasterVLSI" },
-      { name: "description", content: "15 industry-aligned VLSI modules: RTL, DV, PD, DFT, STA, Low Power, ASIC, CDC, IP, AMS and more." },
-      { property: "og:title", content: "VLSI Courses — MasterVLSI" },
-      { property: "og:description", content: "Pick the silicon track that fits your career." },
+      { title: "VLSI Courses — RTL, UVM, FPGA, SoC | 15 Modules | MasterVLSI" },
+      { name: "description", content: "15 industry-aligned VLSI training modules covering RTL design, Design Verification (UVM), FPGA prototyping, SoC integration, CDC, IP development, AMS and flow automation." },
+      { property: "og:title", content: "VLSI Courses — 15 Modules from RTL to Sign-off" },
+      { property: "og:description", content: "Pick the silicon track that fits your career — hands-on, mentor-led, placement-aligned." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/courses" },
     ],
+    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/courses" }],
+
     scripts: [
       {
         type: "application/ld+json",
