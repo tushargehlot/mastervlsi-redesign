@@ -1,0 +1,17 @@
+# MasterVLSI
+
+> Premier VLSI training institute in Bengaluru — RTL, Design Verification (UVM), FPGA, SoC integration, and placement in 30–45 days.
+
+MasterVLSI is a Design & Verification focused VLSI training school. Cohorts are mentor-led, lab-backed, and aligned with what top semiconductor employers hire for. 5000+ alumni placed at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence and 60+ other companies.
+
+## Pages
+
+- [Home](/): Overview, program pillars, mentor manifesto, and cohort highlights.
+- [About](/about): Institute story, campus location, accommodation, and connectivity.
+- [Courses](/courses): 15 industry-aligned modules across RTL, DV, FPGA, SoC, CDC, IP, and flow automation.
+- [Services](/services): Silicon engineering services offered to industry partners.
+- [Placements](/placements): Hiring partners, alumni video stories, testimonials, Google reviews, and salary heatmap.
+- [Playlists](/playlists): Curated YouTube playlists covering VLSI fundamentals to advanced topics.
+- [Blog](/blog): Guides, interview prep, and deep-dives on chip design and careers.
+- [Demo](/demo): Book a free demo class with a mentor.
+- [Contact](/contact): Address, phone, WhatsApp, and location in Bengaluru.

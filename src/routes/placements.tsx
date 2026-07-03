@@ -29,6 +29,20 @@ export const Route = createFileRoute("/placements")({
       { property: "og:title", content: "Placements — MasterVLSI" },
       { property: "og:description", content: "Video stories, written quotes, Google reviews — see where MasterVLSI engineers land." },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_PLACEMENTS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
   }),
   component: PlacementsPage,
 });
@@ -114,7 +128,7 @@ function PlacementsPage() {
                 {src && (
                   <img
                     src={src}
-                    alt={p.name}
+                    alt={`${p.name} company logo`}
                     loading="lazy"
                     className="h-7 w-7 object-contain rounded brightness-[1.1] grayscale group-hover:grayscale-0 transition shrink-0"
                     onError={(e) => ((e.currentTarget.style.display = "none"))}

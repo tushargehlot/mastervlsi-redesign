@@ -25,6 +25,8 @@ export function Glossary() {
         <div className="relative">
           <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <input
+            type="search"
+            aria-label="Search VLSI glossary terms"
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search RTL, UVM, ECO…"

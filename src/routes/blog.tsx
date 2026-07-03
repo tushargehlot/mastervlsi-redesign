@@ -52,6 +52,8 @@ function BlogIndex() {
           <div className="relative w-full max-w-sm">
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <input
+              type="search"
+              aria-label="Search blog posts"
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search posts…"

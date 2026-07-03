@@ -13,7 +13,7 @@ export const Route = createFileRoute("/blog/$slug")({
     if (!post) throw notFound();
     return { post };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     const p = loaderData?.post;
     return {
       meta: p
@@ -24,10 +24,32 @@ export const Route = createFileRoute("/blog/$slug")({
             { property: "og:description", content: p.excerpt },
             { property: "og:image", content: p.cover },
             { property: "og:type", content: "article" },
+            { property: "og:url", content: `/blog/${params.slug}` },
             { name: "twitter:card", content: "summary_large_image" },
             { name: "twitter:image", content: p.cover },
           ]
         : [{ title: "Post — MasterVLSI Blog" }],
+      links: p ? [{ rel: "canonical", href: `/blog/${params.slug}` }] : [],
+      scripts: p
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Article",
+                headline: p.title,
+                description: p.excerpt,
+                image: p.cover,
+                author: { "@type": "Person", name: p.author },
+                datePublished: p.date,
+                dateModified: p.date,
+                keywords: p.tags.join(", "),
+                publisher: { "@type": "Organization", name: "MasterVLSI" },
+                mainEntityOfPage: `/blog/${params.slug}`,
+              }),
+            },
+          ]
+        : [],
     };
   },
   component: BlogPostPage,
