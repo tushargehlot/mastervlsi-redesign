@@ -15,14 +15,18 @@ import { Play, ExternalLink } from "lucide-react";
 export const Route = createFileRoute("/playlists")({
   head: () => ({
     meta: [
-      { title: "YouTube Playlists — MasterVLSI" },
-      { name: "description", content: "Free deep-dive YouTube playlists on Verilog, UVM, Physical Design, STA, DFT and VLSI interviews." },
-      { property: "og:title", content: "Free VLSI Tutorials — MasterVLSI" },
+      { title: "Free VLSI YouTube Playlists — Verilog, UVM, PD | MasterVLSI" },
+      { name: "description", content: "200+ free VLSI tutorial videos organised by topic: Verilog, SystemVerilog, UVM, Physical Design, STA, DFT and interview prep from working industry mentors." },
+      { property: "og:title", content: "Free VLSI Video Tutorials — MasterVLSI" },
       { property: "og:description", content: "Curated playlists from our YouTube channel @mastervlsi2526." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/playlists" },
     ],
+    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/playlists" }],
   }),
   component: PlaylistsPage,
 });
+
 
 function PlaylistsPage() {
   const cats = useMemo(() => ["All", ...Array.from(new Set(PLAYLISTS.map((p) => p.category)))], []);
