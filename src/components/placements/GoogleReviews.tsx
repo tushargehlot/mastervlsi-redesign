@@ -1,17 +1,18 @@
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
-import { GOOGLE_REVIEWS } from "@/data/placements";
+import { Star, ExternalLink } from "lucide-react";
+import { GOOGLE_REVIEWS } from "@/data/googleReviews";
+import { SITE } from "@/data/site";
 
 const COLORS = ["#EA4335", "#FBBC04", "#34A853", "#4285F4", "#EA4335", "#FBBC04"];
 
 export function GoogleReviewsGrid() {
-  const avg =
-    GOOGLE_REVIEWS.reduce((s, r) => s + r.rating, 0) / GOOGLE_REVIEWS.length;
+  const reviews = GOOGLE_REVIEWS.filter((r) => r.rating >= 4);
+  const avg = reviews.reduce((s, r) => s + r.rating, 0) / reviews.length;
 
   return (
     <div>
       <div className="flex items-center gap-4 mb-8 flex-wrap">
-        <div className="flex items-center gap-3 rounded-2xl border border-border bg-card px-5 py-3">
+        <div className="flex items-center gap-3 rounded-2xl border border-border bg-card px-5 py-3 shadow-sm">
           <GoogleG />
           <div>
             <div className="flex items-center gap-2">
@@ -23,12 +24,20 @@ export function GoogleReviewsGrid() {
               </div>
             </div>
             <p className="text-xs text-muted-foreground font-mono mt-0.5">
-              {GOOGLE_REVIEWS.length}+ Google reviews
+              {reviews.length}+ verified 4★+ reviews
             </p>
           </div>
         </div>
         <a
-          href="https://www.google.com/maps"
+          href={SITE.mapsUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm hover:border-primary hover:text-primary transition"
+        >
+          View on Google <ExternalLink size={12} />
+        </a>
+        <a
+          href={SITE.mapsUrl}
           target="_blank"
           rel="noreferrer"
           className="text-sm text-primary hover:underline font-mono"
@@ -38,14 +47,14 @@ export function GoogleReviewsGrid() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {GOOGLE_REVIEWS.map((r, i) => (
+        {reviews.map((r, i) => (
           <motion.article
-            key={r.name}
+            key={r.name + i}
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.04 }}
-            className="rounded-2xl border border-border bg-card p-5 hover:border-primary/40 transition"
+            transition={{ delay: (i % 9) * 0.04 }}
+            className="rounded-2xl border border-border bg-card p-5 hover:border-primary/40 hover:shadow-[0_10px_30px_-15px_rgba(15,47,92,0.20)] transition"
           >
             <div className="flex items-center gap-3">
               <div

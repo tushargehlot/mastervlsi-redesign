@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logoAsset from "@/assets/logo.png.asset.json";
 import { Magnetic } from "@/components/fx/Magnetic";
 import { DemoTrigger } from "@/components/DemoModal";
@@ -9,8 +9,9 @@ const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/courses", label: "Courses" },
-  { to: "/services", label: "Services" },
-  { to: "/playlists", label: "Playlists" },
+  { to: "/courses/protocols", label: "Protocols" },
+  { to: "/alumni", label: "Alumni" },
+  { to: "/testimonials", label: "Testimonials" },
   { to: "/placements", label: "Placements" },
   { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
@@ -31,32 +32,31 @@ export function Nav() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/70 backdrop-blur-2xl border-b border-border shadow-[0_4px_30px_-12px_rgba(0,0,0,0.6)]"
-          : "bg-transparent"
+          ? "bg-background/85 backdrop-blur-2xl border-b border-border shadow-[0_4px_20px_-8px_rgba(15,47,92,0.10)]"
+          : "bg-background/60 backdrop-blur-md"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
         <Link to="/" data-magnetic className="flex items-center gap-2.5 group min-w-0">
-          <span className="relative shrink-0">
-            <span className="absolute -inset-2 rounded-xl bg-primary/25 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+          <span className="relative shrink-0 flex items-center justify-center rounded-lg bg-white ring-1 ring-border/60 px-2 py-1">
             <img
               src={logoAsset.url}
               alt="MasterVLSI"
               width={160}
               height={40}
-              className="relative h-9 sm:h-10 w-auto transition-transform duration-500 group-hover:scale-[1.03]"
+              className="relative h-8 sm:h-9 w-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
             />
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-0.5">
+        <nav className="hidden xl:flex items-center gap-0.5">
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               data-magnetic
               className="relative px-2.5 py-2 text-[13px] text-muted-foreground hover:text-foreground transition-colors group"
-              activeProps={{ className: "text-foreground" }}
+              activeProps={{ className: "text-primary font-semibold" }}
               activeOptions={{ exact: l.to === "/" }}
             >
               <span className="relative">
@@ -80,22 +80,22 @@ export function Nav() {
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
-          className="lg:hidden p-2 -mr-2 text-foreground"
+          className="xl:hidden p-2 -mr-2 text-foreground"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl">
-          <nav className="px-4 py-4 flex flex-col gap-1">
+        <div className="xl:hidden border-t border-border bg-background/98 backdrop-blur-xl">
+          <nav className="px-4 py-4 flex flex-col gap-1 max-h-[75vh] overflow-y-auto">
             {links.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="px-3 py-2.5 rounded-md text-sm text-muted-foreground hover:bg-card hover:text-foreground"
-                activeProps={{ className: "text-foreground bg-card" }}
+                className="px-3 py-2.5 rounded-md text-sm text-muted-foreground hover:bg-surface-1 hover:text-foreground"
+                activeProps={{ className: "text-primary bg-primary/5 font-semibold" }}
                 activeOptions={{ exact: l.to === "/" }}
               >
                 {l.label}

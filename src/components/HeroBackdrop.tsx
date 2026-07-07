@@ -1,24 +1,23 @@
 import { motion } from "framer-motion";
 
 /**
- * HeroBackdrop — layered animated background for the home hero.
- * Pure SVG + CSS for perf; overlays a soft PCB mesh, drifting circuit traces
- * with pulsing "electron" nodes, and a horizontal scanning laser.
+ * HeroBackdrop — light-mode circuit backdrop.
+ * Soft navy grid, thin teal traces, subtle red data pulses on white.
  */
 export function HeroBackdrop() {
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Radial warm glow */}
+      {/* Radial navy glow */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 60% at 30% 20%, oklch(0.62 0.20 25 / 0.28), transparent 60%), radial-gradient(ellipse 50% 50% at 80% 80%, oklch(0.72 0.19 45 / 0.22), transparent 60%)",
+            "radial-gradient(ellipse 70% 60% at 30% 20%, oklch(0.55 0.13 258 / 0.10), transparent 60%), radial-gradient(ellipse 50% 50% at 80% 80%, oklch(0.55 0.10 200 / 0.09), transparent 60%)",
         }}
       />
       {/* Hex mesh */}
       <svg
-        className="absolute inset-0 w-full h-full opacity-[0.18]"
+        className="absolute inset-0 w-full h-full opacity-40"
         viewBox="0 0 800 600"
         preserveAspectRatio="xMidYMid slice"
       >
@@ -27,7 +26,7 @@ export function HeroBackdrop() {
             <polygon
               points="30,2 58,17 58,45 30,60 2,45 2,17"
               fill="none"
-              stroke="oklch(0.55 0.10 40 / 0.5)"
+              stroke="oklch(0.55 0.10 258 / 0.28)"
               strokeWidth="0.7"
             />
           </pattern>
@@ -51,12 +50,12 @@ export function HeroBackdrop() {
       >
         <defs>
           <linearGradient id="trace-g" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0%" stopColor="oklch(0.62 0.20 25 / 0)" />
-            <stop offset="50%" stopColor="oklch(0.72 0.19 45 / 0.9)" />
-            <stop offset="100%" stopColor="oklch(0.62 0.20 25 / 0)" />
+            <stop offset="0%" stopColor="oklch(0.32 0.09 258 / 0)" />
+            <stop offset="50%" stopColor="oklch(0.55 0.10 200 / 0.85)" />
+            <stop offset="100%" stopColor="oklch(0.32 0.09 258 / 0)" />
           </linearGradient>
           <filter id="glow-f">
-            <feGaussianBlur stdDeviation="2" result="b" />
+            <feGaussianBlur stdDeviation="1.5" result="b" />
             <feMerge>
               <feMergeNode in="b" />
               <feMergeNode in="SourceGraphic" />
@@ -85,7 +84,7 @@ export function HeroBackdrop() {
           />
         ))}
 
-        {/* Node dots pulsing */}
+        {/* Node dots pulsing — red accents on light bg */}
         {[
           [180, 120],
           [420, 160],
@@ -100,7 +99,7 @@ export function HeroBackdrop() {
             cx={x}
             cy={y}
             r="3"
-            fill="oklch(0.75 0.20 40)"
+            fill="oklch(0.58 0.22 25)"
             filter="url(#glow-f)"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0.3, 1, 0.3], r: [3, 4.5, 3] }}
@@ -109,25 +108,12 @@ export function HeroBackdrop() {
         ))}
       </svg>
 
-      {/* Scanning laser */}
-      <motion.div
-        className="absolute inset-x-0 h-24"
-        style={{
-          background:
-            "linear-gradient(180deg, transparent, oklch(0.72 0.19 45 / 0.18) 45%, oklch(0.72 0.19 45 / 0.32) 50%, oklch(0.72 0.19 45 / 0.18) 55%, transparent)",
-          mixBlendMode: "screen",
-        }}
-        initial={{ top: "-10%" }}
-        animate={{ top: ["-10%", "110%"] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-      />
-
-      {/* Soft vignette to keep hero text readable */}
+      {/* Soft top-to-bottom fade */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, oklch(0.12 0.010 30 / 0) 30%, oklch(0.10 0.010 25 / 0.8) 100%)",
+            "linear-gradient(180deg, oklch(1 0 0 / 0) 60%, oklch(0.975 0.006 250 / 0.90) 100%)",
         }}
       />
     </div>
