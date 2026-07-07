@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PlaylistsRouteImport } from './routes/playlists'
@@ -17,10 +18,17 @@ import { Route as DemoRouteImport } from './routes/demo'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as AlumniRouteImport } from './routes/alumni'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CoursesProtocolsRouteImport } from './routes/courses.protocols'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
+const TestimonialsRoute = TestimonialsRouteImport.update({
+  id: '/testimonials',
+  path: '/testimonials',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -61,6 +69,11 @@ const BlogRoute = BlogRouteImport.update({
   path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlumniRoute = AlumniRouteImport.update({
+  id: '/alumni',
+  path: '/alumni',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -71,6 +84,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CoursesProtocolsRoute = CoursesProtocolsRouteImport.update({
+  id: '/protocols',
+  path: '/protocols',
+  getParentRoute: () => CoursesRoute,
+} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -80,48 +98,58 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/alumni': typeof AlumniRoute
   '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
-  '/courses': typeof CoursesRoute
+  '/courses': typeof CoursesRouteWithChildren
   '/demo': typeof DemoRoute
   '/placements': typeof PlacementsRoute
   '/playlists': typeof PlaylistsRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/testimonials': typeof TestimonialsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/courses/protocols': typeof CoursesProtocolsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/alumni': typeof AlumniRoute
   '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
-  '/courses': typeof CoursesRoute
+  '/courses': typeof CoursesRouteWithChildren
   '/demo': typeof DemoRoute
   '/placements': typeof PlacementsRoute
   '/playlists': typeof PlaylistsRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/testimonials': typeof TestimonialsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/courses/protocols': typeof CoursesProtocolsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/alumni': typeof AlumniRoute
   '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
-  '/courses': typeof CoursesRoute
+  '/courses': typeof CoursesRouteWithChildren
   '/demo': typeof DemoRoute
   '/placements': typeof PlacementsRoute
   '/playlists': typeof PlaylistsRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/testimonials': typeof TestimonialsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/courses/protocols': typeof CoursesProtocolsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/alumni'
     | '/blog'
     | '/contact'
     | '/courses'
@@ -130,11 +158,14 @@ export interface FileRouteTypes {
     | '/playlists'
     | '/services'
     | '/sitemap.xml'
+    | '/testimonials'
     | '/blog/$slug'
+    | '/courses/protocols'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/alumni'
     | '/blog'
     | '/contact'
     | '/courses'
@@ -143,11 +174,14 @@ export interface FileRouteTypes {
     | '/playlists'
     | '/services'
     | '/sitemap.xml'
+    | '/testimonials'
     | '/blog/$slug'
+    | '/courses/protocols'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/alumni'
     | '/blog'
     | '/contact'
     | '/courses'
@@ -156,24 +190,35 @@ export interface FileRouteTypes {
     | '/playlists'
     | '/services'
     | '/sitemap.xml'
+    | '/testimonials'
     | '/blog/$slug'
+    | '/courses/protocols'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AlumniRoute: typeof AlumniRoute
   BlogRoute: typeof BlogRouteWithChildren
   ContactRoute: typeof ContactRoute
-  CoursesRoute: typeof CoursesRoute
+  CoursesRoute: typeof CoursesRouteWithChildren
   DemoRoute: typeof DemoRoute
   PlacementsRoute: typeof PlacementsRoute
   PlaylistsRoute: typeof PlaylistsRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TestimonialsRoute: typeof TestimonialsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/testimonials': {
+      id: '/testimonials'
+      path: '/testimonials'
+      fullPath: '/testimonials'
+      preLoaderRoute: typeof TestimonialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -230,6 +275,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alumni': {
+      id: '/alumni'
+      path: '/alumni'
+      fullPath: '/alumni'
+      preLoaderRoute: typeof AlumniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -243,6 +295,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/courses/protocols': {
+      id: '/courses/protocols'
+      path: '/protocols'
+      fullPath: '/courses/protocols'
+      preLoaderRoute: typeof CoursesProtocolsRouteImport
+      parentRoute: typeof CoursesRoute
     }
     '/blog/$slug': {
       id: '/blog/$slug'
@@ -264,28 +323,31 @@ const BlogRouteChildren: BlogRouteChildren = {
 
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
+interface CoursesRouteChildren {
+  CoursesProtocolsRoute: typeof CoursesProtocolsRoute
+}
+
+const CoursesRouteChildren: CoursesRouteChildren = {
+  CoursesProtocolsRoute: CoursesProtocolsRoute,
+}
+
+const CoursesRouteWithChildren =
+  CoursesRoute._addFileChildren(CoursesRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AlumniRoute: AlumniRoute,
   BlogRoute: BlogRouteWithChildren,
   ContactRoute: ContactRoute,
-  CoursesRoute: CoursesRoute,
+  CoursesRoute: CoursesRouteWithChildren,
   DemoRoute: DemoRoute,
   PlacementsRoute: PlacementsRoute,
   PlaylistsRoute: PlaylistsRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TestimonialsRoute: TestimonialsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

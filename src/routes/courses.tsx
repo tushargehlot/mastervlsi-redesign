@@ -1,13 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { COURSES } from "@/data/courses";
+import { COURSES, TRACKS } from "@/data/courses";
 import { GridBackdrop } from "@/components/GridBackdrop";
 import { TiltCard } from "@/components/TiltCard";
-import { Search, Cpu } from "lucide-react";
+import { Search, Cpu, ArrowRight } from "lucide-react";
 import { CostCalc } from "@/components/interactive/CostCalc";
 import { Quiz } from "@/components/interactive/Quiz";
 import { SectionDivider } from "@/components/vlsi/SectionDivider";
+import { TracksOverview } from "@/components/TracksOverview";
+import { ProtocolMatrix } from "@/components/ProtocolMatrix";
+import { Reveal } from "@/components/fx/Reveal";
 
 export const Route = createFileRoute("/courses")({
   head: () => ({
@@ -65,19 +68,61 @@ function CoursesPage() {
   );
 
   return (
-    <section className="relative py-24">
+    <>
+    <section className="relative pt-28 pb-16">
       <GridBackdrop />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <p className="font-mono text-xs text-primary uppercase tracking-widest">// 15 modules</p>
-          <h1 className="mt-3 font-display text-5xl sm:text-6xl font-bold">
+          <p className="font-mono text-xs text-primary uppercase tracking-widest">// {TRACKS.length} tracks · {COURSES.length} modules · 14 protocols</p>
+          <h1 className="mt-3 h-display font-display font-bold">
             Your <span className="text-gradient">silicon syllabus.</span>
           </h1>
           <p className="mt-5 text-lg text-muted-foreground">
-            Every module is hands-on, mentor-led, lab-backed, and aligned with what the top 30
-            silicon employers actually need today.
+            Four headline tracks — Physical Design, RTL Design, Design & Verification, Analog Design — each with basic, advance, and internship formats.
           </p>
         </div>
+      </div>
+    </section>
+
+    <section className="relative pb-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Reveal>
+          <p className="font-mono text-xs text-primary uppercase tracking-widest">// Headline tracks</p>
+          <h2 className="mt-2 h-display-sm font-display font-bold">Pick your track.</h2>
+        </Reveal>
+        <div className="mt-8"><TracksOverview /></div>
+      </div>
+    </section>
+
+    <SectionDivider label="protocols" />
+
+    <section className="relative py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Reveal className="max-w-2xl flex items-end justify-between gap-4">
+          <div>
+            <p className="font-mono text-xs text-primary uppercase tracking-widest">// 14 protocols</p>
+            <h2 className="mt-2 h-display-sm font-display font-bold">
+              Every protocol <span className="text-gradient">on modern silicon.</span>
+            </h2>
+          </div>
+        </Reveal>
+        <div className="mt-8"><ProtocolMatrix /></div>
+        <div className="mt-8 text-center">
+          <Link to="/courses/protocols" className="inline-flex items-center gap-2 text-sm text-primary hover:underline font-semibold">
+            Deep-dive on every protocol <ArrowRight size={14} />
+          </Link>
+        </div>
+      </div>
+    </section>
+
+    <SectionDivider label="all modules" />
+
+    <section className="relative py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Reveal>
+          <p className="font-mono text-xs text-primary uppercase tracking-widest">// {COURSES.length} modules</p>
+          <h2 className="mt-2 h-display-sm font-display font-bold">All course modules.</h2>
+        </Reveal>
 
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <div className="relative w-full max-w-sm">
@@ -139,12 +184,16 @@ function CoursesPage() {
         </div>
       </div>
 
-      <SectionDivider label="planner" />
+    </section>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-16 grid lg:grid-cols-2 gap-6">
+    <SectionDivider label="planner" />
+
+    <section className="relative py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-6">
         <Quiz />
         <CostCalc />
       </div>
     </section>
+    </>
   );
 }
