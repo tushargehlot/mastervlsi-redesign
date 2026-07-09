@@ -16,11 +16,18 @@ const companyDomain = (c: string) => {
     "Marvell": "marvell.com", "Texas Instruments": "ti.com", "MediaTek": "mediatek.com",
     "Renesas": "renesas.com", "Broadcom": "broadcom.com", "Micron": "micron.com",
     "Analog Devices": "analog.com", "STMicroelectronics": "st.com", "Xilinx / AMD": "amd.com",
-    "NXP Semiconductors": "nxp.com", "Bosch": "bosch.com", "Wipro Semiconductor": "wipro.com",
-    "Tessolve": "tessolve.com",
+    "Xilinx": "xilinx.com", "NXP Semiconductors": "nxp.com", "Bosch": "bosch.com",
+    "Wipro Semiconductor": "wipro.com", "Wipro": "wipro.com", "Tessolve": "tessolve.com",
+    "Google": "google.com", "Amazon": "amazon.com", "Siemens EDA": "siemens.com",
+    "Tech Mahindra": "techmahindra.com", "BEL": "bel-india.in", "Insemi": "insemi.com",
+    "Atria Logic": "atrialogic.com", "Mirafra": "mirafra.com", "Exiger": "exiger.com",
+    "SmartSoc": "smartsocsolutions.com", "Cyient": "cyient.com", "Maverick": "maverickmicro.com",
+    "Microfx": "microfx.com", "Lewiz Communications": "lewiz.com",
+    "Edic Semicon": "edicsemicon.com", "Chiptest Engineering": "chiptest.co.in",
   };
   return m[c];
 };
+
 
 export function AlumniWall({ initialCount = PAGE }: { initialCount?: number }) {
   const [course, setCourse] = useState<(typeof ALUMNI_COURSES)[number] | "All">("All");
