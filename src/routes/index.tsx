@@ -20,6 +20,8 @@ import { TestimonialCarousel } from "@/components/placements/TestimonialCarousel
 import { LiveCohortTicker } from "@/components/interactive/LiveCohortTicker";
 import { FoundersNote } from "@/components/interactive/FoundersNote";
 import { PosterPlaylistCard } from "@/components/PosterPlaylistCard";
+import { CampusTour } from "@/components/CampusTour";
+
 import { PLAYLISTS } from "@/data/playlists";
 
 import { FAQ_HOME } from "@/data/faqs";
@@ -97,16 +99,18 @@ function Index() {
               <span className="text-muted-foreground">Cohort 2026 — Enrolling Now</span>
             </div>
             <h1 className="mt-7 h-display font-display font-bold">
-              <span className="text-gradient">Master VLSI.</span>
+              <span className="text-gradient">AI-augmented</span>
               <br />
-              <span className="text-foreground">Engineer the silicon</span>
+              <span className="text-foreground">VLSI mastery.</span>
               <br />
-              <span className="text-foreground/55">that runs the world.</span>
+              <span className="text-foreground/55">From RTL to tape-out.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-on-glass ink-soft">
-              Industry-aligned training across RTL, Verification, Physical Design, DFT, STA & Low Power.
-              Real mentors. 24/7 lab. Placement within 30–45 days.
+              India's longest-running VLSI institute — 12+ years, 5000+ engineers shipped to Intel,
+              NVIDIA, AMD, Qualcomm & Google. Now with AI-assisted debug, RTL review and interview
+              prep baked into every cohort.
             </p>
+
             <div className="mt-9 flex flex-wrap gap-3">
               <Magnetic>
                 <Link
@@ -176,7 +180,11 @@ function Index() {
         <PartnerMarquee />
       </section>
 
+      {/* CAMPUS TOUR */}
+      <CampusTour />
+
       {/* STATS */}
+
       <section className="relative py-28 overflow-hidden">
         <GridBackdrop />
         <Spotlight size={600} />
