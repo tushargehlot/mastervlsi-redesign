@@ -107,11 +107,13 @@ function AlumnusCard({ a, i }: { a: Alumnus; i: number }) {
       <p className="text-[11px] text-muted-foreground font-mono mt-0.5 truncate flex items-center gap-1">
         <Building2 size={10} /> {a.company}
       </p>
-      <p className="text-[11px] text-muted-foreground mt-1 truncate">{a.role}</p>
+      {a.from_loc && (
+        <p className="text-[10px] text-muted-foreground/80 mt-0.5 truncate italic">from {a.from_loc}</p>
+      )}
       <div className="mt-2 flex items-center justify-between gap-1">
         {a.package && (
-          <span className="inline-block px-2 py-0.5 rounded-md text-[10px] font-mono bg-primary/10 text-primary font-semibold">
-            {a.package}
+          <span className="inline-block px-2 py-0.5 rounded-md text-[10px] font-mono bg-accent/20 text-foreground font-semibold border border-accent/40">
+            ₹{a.package}
           </span>
         )}
         {a.linkedin && (
@@ -120,6 +122,10 @@ function AlumnusCard({ a, i }: { a: Alumnus; i: number }) {
           </a>
         )}
       </div>
+      {a.quote && (
+        <p className="mt-2 text-[10px] text-muted-foreground line-clamp-2 italic">"{a.quote}"</p>
+      )}
+
     </motion.article>
   );
 }
