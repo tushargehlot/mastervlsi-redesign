@@ -43,9 +43,16 @@ export function PosterPlaylistCard({ p, idx }: { p: Playlist; idx: number }) {
             src={thumb}
             alt={p.title}
             loading="lazy"
+            onError={(e) => {
+              const img = e.currentTarget;
+              const v = p.videoId!;
+              if (img.src.includes("hqdefault")) img.src = `https://i.ytimg.com/vi/${v}/mqdefault.jpg`;
+              else if (img.src.includes("mqdefault")) img.src = `https://i.ytimg.com/vi/${v}/default.jpg`;
+            }}
             className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
           />
         )}
+
         {!thumb && (
           <svg className="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 400 225" fill="none" aria-hidden>
             <defs>

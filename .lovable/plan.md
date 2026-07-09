@@ -1,129 +1,97 @@
-## Goal
+## 1. New color scheme (kill the red/blue/grey/orange chaos)
 
-Rebuild MasterVLSI to feel like a trusted 12-year-old institute (reference: vlsiguru.com, maven-silicon.com) — light theme, real students with photos, deep content on every course and protocol, and a testimonial hub that scales to 200+ videos. Fix the missing logo and the color-fatigue problem.
+Commit to ONE cohesive direction — **Deep Emerald + Warm Ivory** (premium, technical, trustworthy, distinct from every competitor's red/blue).
 
----
+Tokens in `src/styles.css` (OKLCH):
+- `--background`: ivory `oklch(0.985 0.005 90)`
+- `--foreground`: near-black graphite `oklch(0.18 0.01 240)`
+- `--primary`: deep emerald `oklch(0.45 0.14 165)` (silicon/circuit green)
+- `--primary-glow`: `oklch(0.62 0.16 165)`
+- `--accent`: molten gold `oklch(0.78 0.14 82)` (used sparingly for CTAs/highlights)
+- `--surface-1/2`: warm off-whites with faint emerald tint
+- `--border`: `oklch(0.9 0.01 165)`
+- Gradients: `--gradient-hero: linear-gradient(135deg, emerald → gold)`, `--gradient-mesh` for hero blobs
+- Shadows: soft emerald-tinted elevation, no harsh blacks
 
-## 1. Theme: dark red → Clean Light + Trust Blue
+Sweep every component (`Nav`, `Footer`, `HeroBackdrop`, `ChipScene`, `AlumniWall`, `PartnerMarquee`, `VLSIa` chatbot, `DemoModal`, all badges/chips) — remove hardcoded `text-white`, `bg-black`, red/orange/blue Tailwind classes; use semantic tokens only.
 
-Rewrite `src/styles.css` tokens (light mode default):
+## 2. Logo + favicon (black logo)
 
-- `--background: #ffffff`, `--surface-1: #f5f7fb`, `--foreground: #0b1220`
-- `--primary: #0f2f5c` (deep navy — trust)
-- `--accent: #e11d2e` (red used ONLY for CTAs, badges, highlights — not backgrounds)
-- `--trace: #0d7a8a` (teal for tech accents / waveforms)
-- `--border: #e2e8f0`, `--muted-foreground: #475569`
-- Retire `glow-red`, `blood-red` washes; replace with soft navy shadows + subtle grid.
-- Update `Hero3D`/`HeroBackdrop`/`ChipScene` to a light silicon-wafer palette (navy traces on white grid, teal pulses, thin red data-flow lines).
-- Sweep every component using hard-coded reds (`text-primary` red, `bg-primary/20` on wide sections, `glow-red`, gradients from red) — swap to navy primary with red only on CTAs and stat highlights.
-- `Nav`, `Footer`, section dividers, cards → light surfaces with navy text.
+- Upload attached black MasterVLSI logo via `lovable-assets create` → `src/assets/logo-black.png.asset.json`.
+- Replace logo reference in `Nav.tsx` and `Footer.tsx` (drop dark-mode inversion — palette is light now).
+- Copy same PNG to `public/favicon.png`, remove `public/favicon.ico`, update `<link rel="icon">` in `__root.tsx`.
 
-## 2. Logo fix
+## 3. Hero — highlight AI + campus tour
 
-- Re-inspect `src/assets/logo.png.asset.json` and confirm rendering path in `Nav` and `Footer`. Add explicit width/height, `object-contain`, and `bg-white` wrapper so the dark PNG shows on light backgrounds.
-- If the uploaded `WhatsApp_Image_2026-07-07…jpeg` is a cleaner mark, upload it via `lovable-assets create` and repoint the JSON pointer used by `Nav`/`Footer`/favicon.
-- Ensure favicon link in `__root.tsx` uses the same asset.
+- Rewrite `src/routes/index.tsx` hero: headline "**Where India's VLSI + AI Engineers Are Built**" with animated "AI" chip glyph, subhead about GenAI-for-EDA, AI-assisted verification, ML-driven PD.
+- Replace `HeroBackdrop`/`Hero3D` visuals with realistic futuristic wafer/die render: layered SVG die shot + subtle 3D chip (keep `ChipScene` but re-skin emerald/gold, add glowing AI neural mesh overlay). Add reveal-on-scroll parallax.
+- Add **Campus Tour** section on home embedding `https://youtu.be/GEBNnsaYTvw` via `PosterPlaylistCard` (autoplays on click, high-res `maxresdefault.jpg` thumbnail with poster fallback).
 
-## 3. Alumni Wall with real photos (200+ ready)
+## 4. Realistic futuristic graphics pass
 
-- New route `/alumni` + prominent section on `/placements` and home.
-- New data file `src/data/alumni.ts` — typed array `{name, photo, company, role, package, course, batch, linkedin?, quote?}`.
-- New component `AlumniWall.tsx`: filterable grid (by company, course, package band) with:
-  - Real headshot (rounded), name, company logo overlay, role, package chip, course tag.
-  - Hover: quote flip / LinkedIn link.
-  - "Load more" pagination (24 at a time) so 200+ scales.
-- **Data ingestion (user action required):** user exports the linked Google Sheet to CSV and uploads it here along with a ZIP of headshots. Agent then:
-  - Places photos under `src/assets/alumni/` via `lovable-assets create` (CDN pointers, not repo bloat).
-  - Generates `alumni.ts` from the CSV.
-- Placeholder: ship 12 seed entries (initials avatar + company logo) so the page is live before the CSV arrives.
+- Replace flat/childish SVGs with dense, photoreal-feeling composites:
+  - Hero: silicon wafer macro + neural mesh + circuit trace overlay
+  - Section dividers: die-shot strips, waveform ribbons, PCB traces
+  - Cards: subtle glassmorphism + emerald edge glow + gold accent lines
+  - Backgrounds: layered mesh gradients + hex grid + node pulses
+- Generate 4–6 hero/section images via `imagegen` (premium) — realistic silicon wafer, engineer at workstation, neural + chip fusion, futuristic clean-room lab.
+- Upgrade `FlowVisualizer`, `ProtocolMatrix`, `LogicGatePlayground` with denser techy chrome (etched panels, LED indicators, motion trails).
 
-## 4. Testimonial hub (scales to 200 videos)
+## 5. YouTube thumbnails — global fix
 
-- New route `/testimonials` (linked from Nav + Placements).
-- New data file `src/data/testimonials.ts` — `{youtubeId, name, company, role, course, package, year}`.
-- Component `TestimonialHub.tsx`: filter chips (Company / Course / Year), search box, responsive grid of YouTube thumbnails with lightbox player, "Load more".
-- Agent seeds 30–50 entries by curating the MasterVLSI YouTube channel (via user-supplied channel/playlist URL — need one clarification: which playlist URL, added as a follow-up if not already in `SITE`).
-- Existing `VideoTestimonialGrid` on `/placements` becomes a "featured 6" preview linking to `/testimonials`.
+- Root cause: some IDs use unavailable `hqdefault`. Standardize on `PosterPlaylistCard` everywhere (`testimonials.tsx`, `playlists.tsx`, home).
+- Thumbnail resolver: try `maxresdefault.jpg` → `sddefault.jpg` → `hqdefault.jpg` → `mqdefault.jpg` via `onError` chain.
+- Apply to `VIDEO_TESTIMONIALS` grid, playlists page, campus tour card.
 
-## 5. Google Reviews wall (live 4★+ only)
+## 6. Real company logos (60+)
 
-- User will paste 15–25 top reviews. Agent stores them in `src/data/googleReviews.ts` (`{name, rating, date, text, avatar?}`).
-- Rebuild `GoogleReviews.tsx` as a masonry wall with star ratings, verified-Google badge, reviewer initial avatar, "Write a review" CTA linking to the Google Business profile.
-- Filter to `rating >= 4` at render time.
-- Add a "View all reviews on Google" outbound link (user provides GMB URL — captured in `SITE.googleReviewsUrl`).
+- Extend `src/data/partners.ts` to full 60+ list with `{ name, domain }`.
+- Logo source cascade: Clearbit (`logo.clearbit.com/{domain}`) → Google favicon fallback → Simple Icons CDN → text chip.
+- Rebuild `PartnerMarquee` and the "Alumni currently shipping silicon at" grid on placements/home to render logo tiles ONLY (no text label unless load fails). Larger tiles, monochrome→color on hover, dense 6-per-row grid + marquee.
 
-## 6. Courses & Protocols — deep content
+## 7. Alumni — hardcoded names + photos
 
-Restructure `/courses` from a card grid into a full curriculum hub. Update `src/data/courses.ts` with the exact taxonomy:
+- Scrape the Wix `placement-list` page (via `fetch_website`) to extract every alumnus name, company, role, photo URL.
+- Mirror each image: upload to Lovable Assets (`lovable-assets create --file <tmp>`) so we own the CDN URL; store pointer JSON per student under `src/assets/alumni/`.
+- Rebuild `src/data/alumni.ts` with the full hardcoded roster: `{ id, name, company, role, package?, photo (asset URL), course, linkedin? }`.
+- `AlumniWall` already renders `a.photo` — just needs the real data. Bump initial page to 60, keep load-more.
+- Add same-styled grid section on home ("Recent Placements") showing top 12.
 
-**Tracks**
-- Physical Design
-- RTL Design
-- Design & Verification → sub-tracks: IP Verification, SoC Verification, RTL Verification, GLS Verification
-- Analog Design
+## 8. Content density — scrape VLSI Guru + Maven Silicon
 
-**Protocols taught** (dedicated `/courses/protocols` section or in-page tab):
-- AMBA: APB, AHB, AXI
-- Low-speed: UART, SPI, I2C, GPIO, JTAG
-- High-speed: PCIe, DDR, USB, CXL, CHI, Ethernet
+- `fetch_website` both sites; extract course outlines, module syllabi, tool lists, FAQs, "why us" bullets, career-path content.
+- Rewrite/expand (paraphrased, not verbatim) into MasterVLSI voice:
+  - `src/data/courses.ts`: full syllabus per module, prerequisites, tools taught, duration, outcomes, projects
+  - `src/data/faqs.ts`: 30+ FAQs across admission, fees, placement, curriculum, hostel
+  - New `src/data/whyUs.ts`, `src/data/careerPaths.ts`, `src/data/tools.ts` (Cadence/Synopsys/Siemens tool coverage)
+- New/expanded sections on home + courses + about: "Career Paths", "Tools You'll Master", "Curriculum Depth", "Industry Advisory", "Hiring Process We Prep You For".
 
-**Formats offered** (surface as chips on every course card):
-- Free internship · Paid internship · Basic course · Advance course
+## 9. Lead-gen CTAs everywhere + entry popup
 
-Each track gets its own page (`/courses/$slug`) with: syllabus (weeks), tools taught, prerequisites, outcomes, sample projects, target companies, faculty, fees CTA, related protocols. Reuses TanStack dynamic routes + per-page SEO head.
+- Single source of truth in `src/data/site.ts`: `LEAD_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScEzfHndVUc8Jqx_1y-KN_dknCCYH4BNG2HHqJLeMzls5622Q/viewform"`.
+- Update `DemoModal` to iframe this form directly.
+- Add sticky CTAs at end of every section on every page: hero, after each module card, after alumni grid, after testimonial rail, before footer. Variants: "Book Free Demo", "Get Syllabus", "Talk to Mentor", "Reserve My Seat" — all trigger the modal.
+- New `EntryPopup` component: shown on first mount after 6s (or 30% scroll, whichever first); dismiss stored in `localStorage` (`mvlsi_lead_popup_v1`) for 7 days. Renders the Google Form iframe inside a centered dialog with emerald/gold framing and a small "Skip for now" link.
+- Mount `<EntryPopup />` in `__root.tsx`.
 
-## 7. "Who is this for" section (career-gap positioning)
+## 10. SEO / metadata / social
 
-New home + `/about` section "MasterVLSI is your one-stop switch" with four persona cards:
-- College student (pursuing / final year)
-- Fresher / passed-out
-- Career gap (PSU, non-VLSI, faculty → VLSI)
-- Domain switcher (VLSI → different VLSI sub-domain)
-
-For career-gap persona: highlight 3 pillars — (1) interview prep with experience-level framing, (2) sustainable practical exposure, (3) job support. Anchor to a WhatsApp CTA.
-
-## 8. General content depth (match vlsiguru / maven density)
-
-- **Home**: add sections — "Why MasterVLSI" (12+ years, industry mentors, 5000+ alumni), "Our tracks at a glance", "Protocols we cover" strip, "Featured alumni", "Latest testimonials", "Google reviews snapshot", "Career-gap solution", "Free vs Paid internship comparison", extended FAQ.
-- **About**: founder story, 12-year timeline, faculty grid with photos, campus reach map (already exists — restyle), accommodation section (already exists — restyle), MoUs / affiliations.
-- **Blog**: keep, restyle to light.
-- **Contact**: keep, add campus tour CTA and larger embedded map.
-
-## 9. Nav / Footer / mobile polish
-
-- Nav: mega-menu for Courses (tracks + protocols columns), separate Testimonials + Alumni links.
-- Footer: add columns for Tracks, Protocols, Formats, Company; add Google review badge, YouTube subscribe, WhatsApp.
-- Mobile: re-verify no horizontal overflow after theme swap; nav drawer redesigned for light mode.
-
-## 10. Technical / SEO
-
-- Every new route gets unique `head()` (title, description, og:*, canonical) and JSON-LD (`Course` schema per track page, `ItemList` for alumni, `VideoObject` for testimonials, aggregate `Review` for Google reviews wall).
-- Update `sitemap[.]xml.ts` with the new routes.
-- Update `public/llms.txt` with the new track/protocol taxonomy.
+- Regenerate `og:image` per key route with the new emerald/gold hero renders.
+- Update `llms.txt` and JSON-LD Organization logo → new black logo URL.
 
 ---
 
-## Files to add
-`src/routes/alumni.tsx`, `src/routes/testimonials.tsx`, `src/routes/courses.$slug.tsx`, `src/routes/courses.protocols.tsx`, `src/data/alumni.ts`, `src/data/testimonials.ts`, `src/data/googleReviews.ts`, `src/data/protocols.ts`, `src/components/AlumniWall.tsx`, `src/components/TestimonialHub.tsx`, `src/components/WhoIsThisFor.tsx`, `src/components/ProtocolMatrix.tsx`, `src/components/CourseTrackDetail.tsx`.
+## Technical notes
 
-## Files to substantially edit
-`src/styles.css`, `src/routes/__root.tsx`, `src/routes/index.tsx`, `src/routes/about.tsx`, `src/routes/courses.tsx`, `src/routes/placements.tsx`, `src/components/Nav.tsx`, `src/components/Footer.tsx`, `src/components/Hero3D.tsx`, `src/components/HeroBackdrop.tsx`, `src/components/ChipScene.tsx`, `src/components/placements/GoogleReviews.tsx`, `src/data/courses.ts`, `src/data/site.ts`.
+- Palette + logo + popup ship first (immediate visible impact).
+- Alumni scrape + asset uploads run in a batched shell loop; expect ~5–8 min for image mirroring.
+- If Wix scrape returns fewer than expected students, fall back to preserving existing seed + flagging gaps rather than blocking.
+- Thumbnail resolver added as a shared util in `src/lib/youtube.ts` and used by every video component.
+- No backend changes; all data static in `src/data/*`.
+- Vercel build stays green (no new heavy deps beyond what's installed).
 
-## Follow-ups needed from you (do not block v1)
-1. **CSV export of the alumni Google Sheet + ZIP of headshots** — required for the real alumni wall. I ship 12 seed placeholders now and swap when you upload.
-2. **Top 15–25 Google reviews (text + reviewer name + star rating)** — pasted in chat.
-3. **Google Business Profile URL** — for the "Write a review" and "View all" buttons.
-4. **YouTube channel / testimonials playlist URL** — so I can curate the first 30–50 video testimonial IDs.
+## Out of scope this pass
 
-## Out of scope (this pass)
-- Live Google Places API integration (chosen paste-in approach instead).
-- Auto-scraping YouTube (agent hand-curates).
-- Backend / auth / Cloud — no persistence needed for these features.
-
-## Rollout order
-1. Theme swap + logo fix + Nav/Footer restyle (foundation — everything else depends on it).
-2. Courses restructure + Protocols page + Who-is-this-for section (content depth).
-3. Alumni wall + Testimonial hub scaffolding with seed data.
-4. Google reviews wall.
-5. SEO/head/sitemap/llms.txt updates.
-6. Second pass once you upload alumni CSV/photos + reviews + playlist URL.
+- Live Google Reviews API sync (still hardcoded from prior curated list).
+- WhatsApp bot backend.
+- Blog content expansion beyond existing 10 posts.

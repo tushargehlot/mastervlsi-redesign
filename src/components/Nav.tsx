@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
-import logoAsset from "@/assets/logo.png.asset.json";
+import logoAsset from "@/assets/logo-black.png.asset.json";
 import { Magnetic } from "@/components/fx/Magnetic";
 import { DemoTrigger } from "@/components/DemoModal";
 

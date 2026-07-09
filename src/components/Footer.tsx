@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Youtube, Linkedin, Instagram, Twitter, MapPin, MessageCircle, Send, Star } from "lucide-react";
 import { SITE, waLink } from "@/data/site";
-import markAsset from "@/assets/mark.png.asset.json";
+import markAsset from "@/assets/logo-black.png.asset.json";
 import { TraceLine } from "@/components/fx/TraceLine";
 
 export function Footer() {

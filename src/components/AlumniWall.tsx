@@ -16,11 +16,18 @@ const companyDomain = (c: string) => {
     "Marvell": "marvell.com", "Texas Instruments": "ti.com", "MediaTek": "mediatek.com",
     "Renesas": "renesas.com", "Broadcom": "broadcom.com", "Micron": "micron.com",
     "Analog Devices": "analog.com", "STMicroelectronics": "st.com", "Xilinx / AMD": "amd.com",
-    "NXP Semiconductors": "nxp.com", "Bosch": "bosch.com", "Wipro Semiconductor": "wipro.com",
-    "Tessolve": "tessolve.com",
+    "Xilinx": "xilinx.com", "NXP Semiconductors": "nxp.com", "Bosch": "bosch.com",
+    "Wipro Semiconductor": "wipro.com", "Wipro": "wipro.com", "Tessolve": "tessolve.com",
+    "Google": "google.com", "Amazon": "amazon.com", "Siemens EDA": "siemens.com",
+    "Tech Mahindra": "techmahindra.com", "BEL": "bel-india.in", "Insemi": "insemi.com",
+    "Atria Logic": "atrialogic.com", "Mirafra": "mirafra.com", "Exiger": "exiger.com",
+    "SmartSoc": "smartsocsolutions.com", "Cyient": "cyient.com", "Maverick": "maverickmicro.com",
+    "Microfx": "microfx.com", "Lewiz Communications": "lewiz.com",
+    "Edic Semicon": "edicsemicon.com", "Chiptest Engineering": "chiptest.co.in",
   };
   return m[c];
 };
+
 
 export function AlumniWall({ initialCount = PAGE }: { initialCount?: number }) {
   const [course, setCourse] = useState<(typeof ALUMNI_COURSES)[number] | "All">("All");
@@ -100,11 +107,13 @@ function AlumnusCard({ a, i }: { a: Alumnus; i: number }) {
       <p className="text-[11px] text-muted-foreground font-mono mt-0.5 truncate flex items-center gap-1">
         <Building2 size={10} /> {a.company}
       </p>
-      <p className="text-[11px] text-muted-foreground mt-1 truncate">{a.role}</p>
+      {a.from_loc && (
+        <p className="text-[10px] text-muted-foreground/80 mt-0.5 truncate italic">from {a.from_loc}</p>
+      )}
       <div className="mt-2 flex items-center justify-between gap-1">
         {a.package && (
-          <span className="inline-block px-2 py-0.5 rounded-md text-[10px] font-mono bg-primary/10 text-primary font-semibold">
-            {a.package}
+          <span className="inline-block px-2 py-0.5 rounded-md text-[10px] font-mono bg-accent/20 text-foreground font-semibold border border-accent/40">
+            ₹{a.package}
           </span>
         )}
         {a.linkedin && (
@@ -113,6 +122,10 @@ function AlumnusCard({ a, i }: { a: Alumnus; i: number }) {
           </a>
         )}
       </div>
+      {a.quote && (
+        <p className="mt-2 text-[10px] text-muted-foreground line-clamp-2 italic">"{a.quote}"</p>
+      )}
+
     </motion.article>
   );
 }
