@@ -18,7 +18,10 @@ import { Grain } from "@/components/fx/Grain";
 import { ScrollTint } from "@/components/fx/ScrollTint";
 import { ScrollProgress } from "@/components/fx/ScrollProgress";
 import { DemoModalProvider } from "@/components/DemoModal";
-import markAsset from "@/assets/mark.png.asset.json";
+import { EntryPopup } from "@/components/EntryPopup";
+import { StickyCTA } from "@/components/StickyCTA";
+import markAsset from "@/assets/logo-black.png.asset.json";
+
 
 function NotFoundComponent() {
   return (
@@ -179,7 +182,10 @@ function RootComponent() {
         </main>
         <Footer />
         <VLSIa />
+        <StickyCTA />
+        <EntryPopup />
       </DemoModalProvider>
     </QueryClientProvider>
   );
 }
+
