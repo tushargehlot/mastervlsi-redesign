@@ -3,7 +3,7 @@ import { Star, ExternalLink } from "lucide-react";
 import { GOOGLE_REVIEWS } from "@/data/googleReviews";
 import { SITE } from "@/data/site";
 
-const COLORS = ["#EA4335", "#FBBC04", "#34A853", "#4285F4", "#EA4335", "#FBBC04"];
+const COLORS = ["var(--primary)", "var(--accent)", "var(--cyber-deep)", "var(--cyber-core)", "var(--violet-core)"];
 
 export function GoogleReviewsGrid() {
   const reviews = GOOGLE_REVIEWS.filter((r) => r.rating >= 4);
@@ -19,7 +19,7 @@ export function GoogleReviewsGrid() {
               <span className="font-display text-2xl font-bold">{avg.toFixed(1)}</span>
               <div className="flex">
                 {[0, 1, 2, 3, 4].map((i) => (
-                  <Star key={i} size={14} className="fill-yellow-400 text-yellow-400" />
+                  <Star key={i} size={14} className="fill-primary text-primary" />
                 ))}
               </div>
             </div>
@@ -74,7 +74,7 @@ export function GoogleReviewsGrid() {
                 <Star
                   key={s}
                   size={14}
-                  className={s < r.rating ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground/40"}
+                  className={s < r.rating ? "fill-primary text-primary" : "text-muted-foreground/40"}
                 />
               ))}
             </div>

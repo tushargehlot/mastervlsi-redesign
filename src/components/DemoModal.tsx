@@ -91,7 +91,7 @@ function DemoDialog({ onClose }: { onClose: () => void }) {
         </div>
 
         {/* Iframe body */}
-        <div className="relative flex flex-col min-h-[70vh] md:min-h-[600px] bg-white">
+        <div className="relative flex flex-col min-h-[70vh] md:min-h-[600px] bg-background">
           <button
             aria-label="Close"
             onClick={onClose}

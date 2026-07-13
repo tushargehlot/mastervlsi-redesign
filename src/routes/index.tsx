@@ -11,7 +11,6 @@ import { STATS, SITE } from "@/data/site";
 import { Spotlight } from "@/components/fx/Spotlight";
 import { Reveal } from "@/components/fx/Reveal";
 import { Magnetic } from "@/components/fx/Magnetic";
-import { PcbTraces } from "@/components/vlsi/PcbTraces";
 import { MiniWaveform } from "@/components/vlsi/MiniWaveform";
 import { SectionDivider } from "@/components/vlsi/SectionDivider";
 import { FaqAccordion } from "@/components/FaqAccordion";
@@ -359,7 +358,7 @@ function Index() {
               Learn for free on our <span className="text-gradient">YouTube channel.</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              200+ deep-dive videos on Verilog, SystemVerilog, UVM, Physical Design and STA — all from working industry mentors.
+              200+ deep-dive videos on Verilog, SystemVerilog, UVM, AMBA protocols and AI-assisted debug — all from working industry mentors.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Magnetic>

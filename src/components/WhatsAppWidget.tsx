@@ -119,13 +119,13 @@ export function WhatsAppWidget() {
             transition={{ duration: 0.22 }}
             className="fixed bottom-24 right-5 z-50 w-[min(94vw,360px)] max-h-[70vh] rounded-2xl border border-border bg-card overflow-hidden shadow-2xl flex flex-col"
           >
-            <div className="bg-gradient-to-r from-primary to-red-700 px-4 py-3 flex items-center gap-3">
+            <div className="px-4 py-3 flex items-center gap-3" style={{ background: "var(--gradient-ignite)" }}>
               <div className="h-9 w-9 rounded-full bg-white/15 flex items-center justify-center">
                 <MessageCircle size={18} />
               </div>
               <div className="flex-1">
-                <p className="text-sm font-semibold text-white leading-tight">MasterVLSI Bot</p>
-                <p className="text-[10px] text-white/80 flex items-center gap-1.5">
+                <p className="text-sm font-semibold text-primary-foreground leading-tight">MasterVLSI Bot</p>
+                <p className="text-[10px] text-primary-foreground/80 flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-green-400" /> online · typically replies instantly
                 </p>
               </div>
