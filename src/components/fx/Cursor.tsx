@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * High-contrast custom cursor: outer ring uses mix-blend-difference over a
- * warm-white fill so it stays visible against any background. Inner dot uses
- * the brand crimson. Grows on interactive targets, hides on touch/reduced.
+ * High-contrast custom cursor tuned for the dark cyber-blue interface.
  */
 export function Cursor() {
   const ring = useRef<HTMLDivElement>(null);
@@ -81,14 +79,14 @@ export function Cursor() {
         className="pointer-events-none fixed top-0 left-0 z-[100] h-9 w-9 rounded-full border-2 border-white transition-transform duration-150 ease-out"
         style={{ mixBlendMode: "difference" }}
       />
-      {/* Warm dot */}
+      {/* Cyan core */}
       <div
         ref={dot}
         aria-hidden
         className="pointer-events-none fixed top-0 left-0 z-[100] h-1.5 w-1.5 rounded-full transition-opacity duration-150"
         style={{
-          background: "oklch(0.72 0.19 45)",
-          boxShadow: "0 0 10px oklch(0.72 0.19 45 / 0.9), 0 0 22px oklch(0.62 0.20 25 / 0.6)",
+          background: "var(--primary)",
+          boxShadow: "0 0 10px var(--primary), 0 0 26px var(--accent)",
         }}
       />
       {/* Tiny hover label */}
@@ -97,8 +95,8 @@ export function Cursor() {
         aria-hidden
         className="pointer-events-none fixed top-0 left-0 z-[100] px-1.5 py-0.5 rounded font-mono text-[9px] uppercase tracking-widest opacity-0 transition-opacity duration-200"
         style={{
-          background: "oklch(0.62 0.20 25)",
-          color: "white",
+          background: "var(--primary)",
+          color: "var(--primary-foreground)",
           boxShadow: "0 4px 12px oklch(0 0 0 / 0.4)",
         }}
       >

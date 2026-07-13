@@ -8,11 +8,11 @@ export function TraceLine({ className = "" }: { className?: string }) {
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-border to-transparent opacity-80" />
       {!reduce && (
         <motion.div
-          className="absolute top-0 h-px w-32 bg-gradient-to-r from-transparent via-ignite to-transparent"
+          className="absolute top-0 h-px w-32 bg-gradient-to-r from-transparent via-primary to-transparent"
           initial={{ x: "-20%" }}
           animate={{ x: "120%" }}
           transition={{ duration: 6, ease: "linear", repeat: Infinity }}
-          style={{ boxShadow: "0 0 8px oklch(0.66 0.24 25 / 0.8)" }}
+          style={{ boxShadow: "0 0 10px var(--primary)" }}
         />
       )}
     </div>

@@ -19,13 +19,13 @@ export function PcbTraces({ className = "" }: { className?: string }) {
     >
       <defs>
         <linearGradient id="traceWire" x1="0" x2="1">
-          <stop offset="0%" stopColor="oklch(0.78 0.02 240 / 0.0)" />
-          <stop offset="50%" stopColor="oklch(0.78 0.02 240 / 0.35)" />
-          <stop offset="100%" stopColor="oklch(0.78 0.02 240 / 0.0)" />
+          <stop offset="0%" stopColor="var(--primary)" stopOpacity="0" />
+          <stop offset="50%" stopColor="var(--primary)" stopOpacity="0.52" />
+          <stop offset="100%" stopColor="var(--primary)" stopOpacity="0" />
         </linearGradient>
         <radialGradient id="pad" r="1">
-          <stop offset="0%" stopColor="oklch(0.66 0.24 25 / 0.9)" />
-          <stop offset="100%" stopColor="oklch(0.66 0.24 25 / 0)" />
+          <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="var(--primary)" stopOpacity="0" />
         </radialGradient>
       </defs>
       {paths.map((d, i) => (
@@ -43,7 +43,7 @@ export function PcbTraces({ className = "" }: { className?: string }) {
           {!reduce && (
             <motion.circle
               r={2.5}
-              fill="oklch(0.78 0.14 70)"
+              fill="var(--primary)"
               initial={{ opacity: 0 }}
               animate={{ opacity: [0, 1, 1, 0] }}
               transition={{
@@ -55,7 +55,7 @@ export function PcbTraces({ className = "" }: { className?: string }) {
               style={{
                 offsetPath: `path('${d}')`,
                 offsetRotate: "0deg",
-                filter: "drop-shadow(0 0 4px oklch(0.78 0.14 70))",
+                filter: "drop-shadow(0 0 6px var(--primary))",
               }}
             >
               <animate

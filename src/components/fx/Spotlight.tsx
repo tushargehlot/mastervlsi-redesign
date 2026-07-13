@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
  */
 export function Spotlight({
   className = "",
-  color = "oklch(0.66 0.24 25 / 0.18)",
+  color = "oklch(0.76 0.155 220 / 0.18)",
   size = 520,
 }: {
   className?: string;
