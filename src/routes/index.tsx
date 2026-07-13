@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, Sparkles, Zap, Cpu, GraduationCap, Layers, Activity } from "lucide-react";
-import { Hero3D } from "@/components/Hero3D";
 import { GridBackdrop } from "@/components/GridBackdrop";
 import { Counter } from "@/components/Counter";
 import { FlowVisualizer } from "@/components/FlowVisualizer";
@@ -12,7 +11,6 @@ import { STATS, SITE } from "@/data/site";
 import { Spotlight } from "@/components/fx/Spotlight";
 import { Reveal } from "@/components/fx/Reveal";
 import { Magnetic } from "@/components/fx/Magnetic";
-import { PcbTraces } from "@/components/vlsi/PcbTraces";
 import { MiniWaveform } from "@/components/vlsi/MiniWaveform";
 import { SectionDivider } from "@/components/vlsi/SectionDivider";
 import { FaqAccordion } from "@/components/FaqAccordion";
@@ -21,6 +19,7 @@ import { LiveCohortTicker } from "@/components/interactive/LiveCohortTicker";
 import { FoundersNote } from "@/components/interactive/FoundersNote";
 import { PosterPlaylistCard } from "@/components/PosterPlaylistCard";
 import { CampusTour } from "@/components/CampusTour";
+import { HeroBackdrop } from "@/components/HeroBackdrop";
 
 import { PLAYLISTS } from "@/data/playlists";
 
@@ -76,36 +75,33 @@ function Index() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[94vh] flex items-center overflow-hidden">
-        <GridBackdrop />
-        <div className="absolute inset-0 -z-10 opacity-40">
-          <PcbTraces />
-        </div>
-        <Hero3D />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background pointer-events-none" />
+      <section className="relative min-h-[94vh] flex items-center overflow-hidden bg-background">
+        <HeroBackdrop />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-background via-background/55 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/25 via-transparent to-background pointer-events-none" />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div className="relative z-[2] mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 backdrop-blur px-3 py-1.5 text-xs font-mono">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-card/75 backdrop-blur px-3 py-1.5 text-xs font-mono shadow-[var(--glow)]">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inset-0 rounded-full bg-primary animate-ping" />
                 <span className="relative h-1.5 w-1.5 rounded-full bg-primary" />
               </span>
-              <span className="text-muted-foreground">Cohort 2026 — Enrolling Now</span>
+              <span className="text-foreground">Cohort 2026 — AI + Design Verification enrolling now</span>
             </div>
-            <h1 className="mt-7 h-display font-display font-bold">
+            <h1 className="mt-7 h-display font-display font-bold text-on-glass">
               <span className="text-gradient">AI-augmented</span>
               <br />
-              <span className="text-foreground">VLSI mastery.</span>
+              <span className="text-foreground">VLSI design mastery.</span>
               <br />
-              <span className="text-foreground/55">From RTL to tape-out.</span>
+              <span className="text-muted-foreground">RTL, SystemVerilog, UVM.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-on-glass ink-soft">
+            <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-on-glass text-muted-foreground">
               India's longest-running VLSI institute — 12+ years, 5000+ engineers shipped to Intel,
               NVIDIA, AMD, Qualcomm & Google. Now with AI-assisted debug, RTL review and interview
               prep baked into every cohort.
@@ -124,7 +120,7 @@ function Index() {
               <Magnetic>
                 <Link
                   to="/playlists"
-                  className="inline-flex items-center gap-2 rounded-md border border-border bg-card/60 backdrop-blur px-7 py-3.5 text-sm font-medium hover:border-primary/60 hover:text-primary"
+                  className="inline-flex items-center gap-2 rounded-md border border-primary/35 bg-card/72 backdrop-blur px-7 py-3.5 text-sm font-medium text-foreground hover:border-primary/70 hover:text-primary"
                 >
                   <Play size={16} /> Watch on YouTube
                 </Link>
@@ -137,8 +133,8 @@ function Index() {
                 { v: "6 mo", l: "Course duration" },
                 { v: "24/7", l: "Lab access" },
               ].map((x) => (
-                <div key={x.l}>
-                  <p className="text-2xl text-primary font-bold">{x.v}</p>
+                <div key={x.l} className="rounded-lg border border-primary/20 bg-card/45 px-3 py-2 backdrop-blur">
+                  <p className="text-2xl text-primary font-bold text-on-glass">{x.v}</p>
                   <p className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">{x.l}</p>
                 </div>
               ))}
@@ -362,7 +358,7 @@ function Index() {
               Learn for free on our <span className="text-gradient">YouTube channel.</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              200+ deep-dive videos on Verilog, SystemVerilog, UVM, Physical Design and STA — all from working industry mentors.
+              200+ deep-dive videos on Verilog, SystemVerilog, UVM, AMBA protocols and AI-assisted debug — all from working industry mentors.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Magnetic>

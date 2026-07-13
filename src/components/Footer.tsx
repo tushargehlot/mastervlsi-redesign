@@ -53,7 +53,7 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Link to="/" className="flex items-center gap-2.5">
-              <span className="inline-flex items-center justify-center rounded-md bg-white ring-1 ring-border p-1">
+              <span className="inline-flex items-center justify-center rounded-md ring-1 ring-border p-1" style={{ background: "var(--logo-backplate)" }}>
                 <img src={markAsset.url} alt="MasterVLSI logo" width={32} height={32} className="h-8 w-8" />
               </span>
               <span className="font-display text-xl font-bold tracking-tight">
@@ -79,8 +79,8 @@ export function Footer() {
               <a href={waLink()} target="_blank" rel="noreferrer" className="ml-1 inline-flex items-center gap-1.5 rounded-md bg-accent/10 text-accent px-3 py-2 text-xs font-medium hover:bg-accent/20 transition">
                 <MessageCircle size={14} /> WhatsApp
               </a>
-              <a href={SITE.mapsUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-md bg-yellow-100 text-yellow-800 px-3 py-2 text-xs font-medium hover:bg-yellow-200 transition">
-                <Star size={14} className="fill-yellow-500 text-yellow-500" /> Google reviews
+              <a href={SITE.mapsUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-md bg-accent/10 text-accent px-3 py-2 text-xs font-medium hover:bg-accent/20 transition">
+                <Star size={14} className="fill-current" /> Google reviews
               </a>
             </div>
           </div>
@@ -88,10 +88,10 @@ export function Footer() {
           <div className="lg:col-span-2">
             <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Tracks</h4>
             <ul className="mt-4 space-y-2.5 text-sm">
-              <li><Link to="/courses" className="hover:text-primary transition">Physical Design</Link></li>
               <li><Link to="/courses" className="hover:text-primary transition">RTL Design</Link></li>
-              <li><Link to="/courses" className="hover:text-primary transition">Design & Verification</Link></li>
-              <li><Link to="/courses" className="hover:text-primary transition">Analog Design</Link></li>
+              <li><Link to="/courses" className="hover:text-primary transition">Design Verification</Link></li>
+              <li><Link to="/courses" className="hover:text-primary transition">SystemVerilog</Link></li>
+              <li><Link to="/courses" className="hover:text-primary transition">UVM Methodology</Link></li>
               <li><Link to="/courses/protocols" className="hover:text-primary transition">Protocols</Link></li>
             </ul>
           </div>

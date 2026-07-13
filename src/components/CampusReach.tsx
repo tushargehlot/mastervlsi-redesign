@@ -21,7 +21,7 @@ function DistanceList({
     <div className="rounded-2xl border border-border bg-card overflow-hidden group">
       <div
         className="px-5 py-4 border-b border-border relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, oklch(0.18 0.03 25 / 0.9), oklch(0.14 0.010 30 / 0.9))" }}
+        style={{ background: "linear-gradient(135deg, var(--surface-2), var(--surface-1))" }}
       >
         <span
           className="absolute inset-x-0 bottom-0 h-px"
@@ -29,7 +29,7 @@ function DistanceList({
         />
         <div className="flex items-center gap-3">
           <span
-            className="h-10 w-10 rounded-lg text-white flex items-center justify-center shadow-md"
+            className="h-10 w-10 rounded-lg text-primary-foreground flex items-center justify-center shadow-md"
             style={{ background: "var(--gradient-ignite)" }}
           >
             <Icon size={18} />
@@ -120,7 +120,7 @@ export function CampusReach() {
               </a>
             </div>
             <div
-              className="rounded-2xl p-5 text-white border border-white/10"
+              className="rounded-2xl p-5 text-primary-foreground border border-primary/20"
               style={{ background: "var(--gradient-ignite)" }}
             >
               <p className="font-mono text-[11px] uppercase tracking-widest opacity-85">

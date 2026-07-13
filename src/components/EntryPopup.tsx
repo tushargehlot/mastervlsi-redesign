@@ -46,13 +46,13 @@ export function EntryPopup() {
             <button
               onClick={dismiss}
               aria-label="Close"
-              className="absolute top-3 right-3 z-10 h-8 w-8 rounded-full bg-white/90 hover:bg-white text-ink flex items-center justify-center shadow"
+              className="absolute top-3 right-3 z-10 h-8 w-8 rounded-full bg-background/90 hover:bg-background text-foreground flex items-center justify-center shadow"
             >
               <X size={16} />
             </button>
 
             <div className="relative pt-14 px-6 sm:px-8 pb-7 text-center">
-              <div className="mx-auto h-16 w-16 rounded-2xl bg-white shadow-xl ring-1 ring-black/5 flex items-center justify-center">
+              <div className="mx-auto h-16 w-16 rounded-2xl bg-background shadow-xl ring-1 ring-border flex items-center justify-center">
                 <Sparkles className="text-primary" size={26} />
               </div>
               <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.22em] text-primary/80">
@@ -62,7 +62,7 @@ export function EntryPopup() {
                 Talk to a mentor before <span className="text-gradient">you enroll.</span>
               </h2>
               <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
-                Get a personalised roadmap — RTL, DV, Physical Design or Analog — plus a call from
+                Get a personalised roadmap — RTL, SystemVerilog, UVM or protocols — plus a call from
                 our placement team. Zero cost, no obligation.
               </p>
 
@@ -86,7 +86,7 @@ export function EntryPopup() {
                   target="_blank"
                   rel="noreferrer"
                   onClick={dismiss}
-                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-white transition hover:brightness-110"
+                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
                   style={{ background: "var(--gradient-ignite)" }}
                 >
                   Book my free demo <ArrowRight size={15} />

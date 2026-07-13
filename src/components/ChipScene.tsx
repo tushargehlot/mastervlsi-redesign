@@ -27,36 +27,36 @@ function ChipBoard() {
 
   return (
     <group ref={group}>
-      {/* PCB substrate — light PCB green-cream */}
+      {/* PCB substrate — dark ceramic board */}
       <mesh position={[0, -0.18, 0]} receiveShadow>
         <boxGeometry args={[3.6, 0.08, 3.6]} />
-        <meshStandardMaterial color="#e8ecf1" metalness={0.3} roughness={0.55} />
+        <meshStandardMaterial color="#06121f" metalness={0.48} roughness={0.44} emissive="#03111f" emissiveIntensity={0.35} />
       </mesh>
-      {/* Chip die — deep navy */}
+      {/* Chip die — black silicon */}
       <mesh position={[0, 0.05, 0]}>
         <boxGeometry args={[2.2, 0.3, 2.2]} />
-        <meshStandardMaterial color="#0f2f5c" metalness={0.75} roughness={0.3} emissive="#0a1f3d" emissiveIntensity={0.35} />
-        <Edges color="#0d7a8a" threshold={15} />
+        <meshStandardMaterial color="#050912" metalness={0.82} roughness={0.24} emissive="#061d35" emissiveIntensity={0.55} />
+        <Edges color="#2ee8ff" threshold={15} />
       </mesh>
-      {/* Inner glowing layers — teal */}
+      {/* Inner holographic layers */}
       <mesh position={[0, 0.21, 0]}>
         <boxGeometry args={[1.7, 0.02, 1.7]} />
-        <meshStandardMaterial color="#0d7a8a" emissive="#0d7a8a" emissiveIntensity={1.3} />
+        <meshStandardMaterial color="#20dfff" emissive="#20dfff" emissiveIntensity={1.8} transparent opacity={0.75} />
       </mesh>
       <mesh position={[0, 0.23, 0]}>
         <boxGeometry args={[1.2, 0.02, 1.2]} />
-        <meshStandardMaterial color="#3aa3b3" emissive="#3aa3b3" emissiveIntensity={1.8} />
+        <meshStandardMaterial color="#6ff6ff" emissive="#6ff6ff" emissiveIntensity={2.4} transparent opacity={0.8} />
       </mesh>
-      {/* Center beacon — subtle red accent */}
+      {/* Center AI beacon */}
       <mesh position={[0, 0.32, 0]}>
         <cylinderGeometry args={[0.18, 0.18, 0.04, 32]} />
-        <meshStandardMaterial color="#ffffff" emissive="#e11d2e" emissiveIntensity={2.2} />
+        <meshStandardMaterial color="#e8fbff" emissive="#8b5cff" emissiveIntensity={2.4} />
       </mesh>
       {/* Pins */}
       {pins.map((p, i) => (
         <mesh key={i} position={p.pos as [number, number, number]}>
           <boxGeometry args={[0.06, 0.06, 0.18]} />
-          <meshStandardMaterial color="#c4c8d0" metalness={1} roughness={0.25} />
+          <meshStandardMaterial color="#9feeff" metalness={1} roughness={0.18} emissive="#0d7a9c" emissiveIntensity={0.35} />
         </mesh>
       ))}
     </group>
@@ -71,7 +71,7 @@ function RingGlow() {
   return (
     <mesh ref={ref} position={[0, 0.4, 0]} rotation={[Math.PI / 2, 0, 0]}>
       <torusGeometry args={[2.2, 0.018, 16, 128]} />
-      <meshStandardMaterial color="#0d7a8a" emissive="#0d7a8a" emissiveIntensity={2.2} />
+      <meshStandardMaterial color="#20dfff" emissive="#20dfff" emissiveIntensity={2.8} />
     </mesh>
   );
 }
@@ -84,9 +84,9 @@ export default function ChipScene() {
       gl={{ antialias: true, alpha: true }}
     >
       <ambientLight intensity={0.55} />
-      <pointLight position={[5, 6, 5]} intensity={55} color="#ffffff" />
-      <pointLight position={[-4, 3, -4]} intensity={35} color="#0d7a8a" />
-      <pointLight position={[0, 2, 0]} intensity={10} color="#e11d2e" />
+      <pointLight position={[5, 6, 5]} intensity={58} color="#9feeff" />
+      <pointLight position={[-4, 3, -4]} intensity={42} color="#20dfff" />
+      <pointLight position={[0, 2, 0]} intensity={14} color="#8b5cff" />
       <Float speed={1.4} rotationIntensity={0.2} floatIntensity={0.4}>
         <ChipBoard />
         <RingGlow />

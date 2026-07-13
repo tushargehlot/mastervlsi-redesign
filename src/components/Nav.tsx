@@ -32,13 +32,13 @@ export function Nav() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/85 backdrop-blur-2xl border-b border-border shadow-[0_4px_20px_-8px_rgba(15,47,92,0.10)]"
+          ? "bg-background/88 backdrop-blur-2xl border-b border-border shadow-[var(--shadow-elevated)]"
           : "bg-background/60 backdrop-blur-md"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
         <Link to="/" data-magnetic className="flex items-center gap-2.5 group min-w-0">
-          <span className="relative shrink-0 flex items-center justify-center rounded-lg bg-white ring-1 ring-border/60 px-2 py-1">
+          <span className="relative shrink-0 flex items-center justify-center rounded-lg ring-1 ring-border/60 px-2 py-1" style={{ background: "var(--logo-backplate)" }}>
             <img
               src={logoAsset.url}
               alt="MasterVLSI"
@@ -66,7 +66,7 @@ export function Nav() {
             </Link>
           ))}
           <Magnetic className="ml-2">
-            <DemoTrigger className="relative inline-flex items-center overflow-hidden rounded-md px-4 py-2 text-[13px] font-semibold text-white transition-all glow-red hover:brightness-110">
+            <DemoTrigger className="relative inline-flex items-center overflow-hidden rounded-md px-4 py-2 text-[13px] font-semibold text-primary-foreground transition-all glow-red hover:brightness-110">
               <span
                 className="absolute inset-0"
                 style={{ background: "var(--gradient-ignite)" }}
@@ -101,7 +101,7 @@ export function Nav() {
                 {l.label}
               </Link>
             ))}
-            <DemoTrigger className="relative mt-2 inline-flex items-center justify-center overflow-hidden rounded-md px-4 py-2.5 text-sm font-semibold text-white">
+            <DemoTrigger className="relative mt-2 inline-flex items-center justify-center overflow-hidden rounded-md px-4 py-2.5 text-sm font-semibold text-primary-foreground">
               <span
                 className="absolute inset-0"
                 style={{ background: "var(--gradient-ignite)" }}
