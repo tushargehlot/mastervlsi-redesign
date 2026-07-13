@@ -77,10 +77,10 @@ function Index() {
       {/* HERO */}
       <section className="relative min-h-[94vh] flex items-center overflow-hidden bg-background">
         <HeroBackdrop />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/76 to-background/20 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background pointer-events-none" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-background via-background/70 to-background/5 pointer-events-none" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/25 via-transparent to-background pointer-events-none" />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div className="relative z-[2] mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

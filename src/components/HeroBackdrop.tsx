@@ -7,14 +7,14 @@ import heroPcb from "@/assets/cyber-pcb-hero.jpg";
  */
 export function HeroBackdrop() {
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       <img
         src={heroPcb}
         alt=""
         aria-hidden
         width={1600}
         height={1000}
-        className="absolute inset-0 h-full w-full object-cover opacity-80"
+        className="absolute inset-0 h-full w-full object-cover opacity-95"
       />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_68%_44%,transparent_0%,transparent_26%,var(--background)_74%),linear-gradient(90deg,var(--background)_0%,oklch(0.105_0.030_250/0.82)_35%,oklch(0.105_0.030_250/0.30)_68%,var(--background)_100%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,var(--background)_0%,transparent_28%,transparent_64%,var(--background)_100%)]" />
