@@ -16,8 +16,8 @@ export function HeroBackdrop() {
         height={1000}
         className="absolute inset-0 h-full w-full object-cover opacity-95"
       />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_68%_44%,transparent_0%,transparent_26%,var(--background)_74%),linear-gradient(90deg,var(--background)_0%,oklch(0.105_0.030_250/0.82)_35%,oklch(0.105_0.030_250/0.30)_68%,var(--background)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,var(--background)_0%,transparent_28%,transparent_64%,var(--background)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,var(--background)_0%,oklch(0.105_0.030_250/0.76)_34%,oklch(0.105_0.030_250/0.08)_72%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,var(--background)_0%,transparent_22%,transparent_72%,var(--background)_100%)]" />
 
       {/* Holographic mesh */}
       <svg
