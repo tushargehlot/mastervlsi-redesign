@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Youtube, Linkedin, Instagram, Twitter, MapPin, MessageCircle, Send, Star } from "lucide-react";
 import { SITE, waLink } from "@/data/site";
-import markAsset from "@/assets/logo-black.png.asset.json";
+const LOGO_URL = "/logo-mastervlsi.png";
 import { TraceLine } from "@/components/fx/TraceLine";
 
 export function Footer() {
@@ -54,7 +54,7 @@ export function Footer() {
           <div className="lg:col-span-4">
             <Link to="/" className="flex items-center gap-2.5">
               <span className="inline-flex items-center justify-center rounded-md ring-1 ring-border p-1" style={{ background: "var(--logo-backplate)" }}>
-                <img src={markAsset.url} alt="MasterVLSI logo" width={32} height={32} className="h-8 w-8" />
+                <img src={LOGO_URL} alt="MasterVLSI logo" width={32} height={32} className="h-8 w-8 object-contain" />
               </span>
               <span className="font-display text-xl font-bold tracking-tight">
                 MASTER<span className="text-accent">VLSI</span>
