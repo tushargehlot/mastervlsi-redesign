@@ -37,14 +37,6 @@ export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
   },
   {
     id: "2",
-    name: "Arjun Menon",
-    role: "Physical Design Engineer",
-    company: "AMD",
-    videoId: null,
-    quote: "24/7 lab access changed everything — I could iterate on floorplans at 2 AM.",
-  },
-  {
-    id: "3",
     name: "Sneha Kulkarni",
     role: "RTL Designer",
     company: "Qualcomm",
@@ -52,28 +44,20 @@ export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
     quote: "Three offers within six weeks of completion. The mentor-led flow is unreal.",
   },
   {
-    id: "4",
-    name: "Vikram Iyer",
-    role: "DFT Engineer",
-    company: "Intel",
-    videoId: null,
-    quote: "From scan basics to MBIST insertion in a single cohort — and a referral on top.",
-  },
-  {
-    id: "5",
-    name: "Ananya Shah",
-    role: "STA Engineer",
-    company: "Synopsys",
-    videoId: null,
-    quote: "Closing timing on a 5 nm block in my second month felt impossible — and then it wasn't.",
-  },
-  {
-    id: "6",
+    id: "3",
     name: "Rohit Bansal",
     role: "SoC Verification Lead",
     company: "Samsung",
     videoId: null,
     quote: "MasterVLSI doesn't teach tools, they teach taste. That's why I'm leading a team today.",
+  },
+  {
+    id: "4",
+    name: "Karthik Iyer",
+    role: "UVM Verification Engineer",
+    company: "AMD",
+    videoId: null,
+    quote: "Coverage closure on a full AXI environment before I even graduated the cohort.",
   },
 ];
 
@@ -111,11 +95,11 @@ export const WRITTEN_TESTIMONIALS: WrittenTestimonial[] = [
     ctc: "₹17 LPA",
   },
   {
-    name: "Saurabh Mehta",
-    role: "Physical Design Engineer",
-    company: "Cadence",
+    name: "Aakash Patel",
+    role: "RTL Design Engineer",
+    company: "Marvell",
     quote:
-      "Three floorplan iterations a day, with reviews from people who've signed off real tape-outs. There's no shortcut to that exposure anywhere else in India.",
+      "The RTL micro-architecture reviews from senior mentors were the missing piece. My design got signed off in the first review at work.",
     ctc: "₹22 LPA",
   },
 ];
@@ -163,7 +147,7 @@ export const GOOGLE_REVIEWS: GoogleReview[] = [
     initials: "LI",
     rating: 4,
     date: "4 months ago",
-    text: "Excellent technical depth in PD and STA. Would love a couple more weekend revision sessions, but otherwise top notch.",
+    text: "Excellent technical depth on SystemVerilog and UVM. Would love a couple more weekend revision sessions, but otherwise top notch.",
   },
 ];
 

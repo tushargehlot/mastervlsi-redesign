@@ -1,32 +1,36 @@
 # MasterVLSI
 
-> India's premier VLSI training institute in Bengaluru. Design & Verification focus (RTL, SystemVerilog, UVM), FPGA prototyping, SoC integration. Placement in 30–45 days at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence and 60+ semiconductor companies.
+> The best VLSI institute in Bangalore. Design & Verification focus — RTL Design, SystemVerilog, UVM, CDC, IP and SoC integration. Placement in 30–45 days at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence and 60+ semiconductor companies.
 
-MasterVLSI has been training semiconductor engineers since 2015. 5000+ alumni placed. 16 industry mentors. 24/7 EDA lab with Synopsys VCS, Cadence Xcelium, Mentor Questa and full backend tool stack. Campus at Udayanagar Main Road, near Tin-Factory bus stop, Bangalore – 560016.
+MasterVLSI has been training semiconductor engineers since 2015 from its Bangalore campus at Udayanagar Main Road, near Tin-Factory bus stop (560016). 5000+ alumni placed. 16 industry mentors. 24/7 EDA lab with Synopsys VCS, Cadence Xcelium, Mentor Questa and full frontend simulation stack. We do NOT teach Physical Design — our expertise is Design (RTL) and Verification (UVM).
 
 ## Key facts
 
-- Founded: 2015, Bengaluru, India
+- Founded: 2015, Bangalore, India
 - Alumni: 5000+
 - Placement window: 30–45 days after course completion
-- Focus: Design (RTL) and Verification (UVM) — not Physical Design
+- Focus: Design (RTL) and Verification (UVM) — no Physical Design, no STA, no DFT
 - Modules: 15 industry-aligned VLSI training modules
 - Contact: WhatsApp +91 98449 82345 · hr@mastervlsi.com
 - YouTube: https://www.youtube.com/@mastervlsi2526 (200+ free tutorials)
+- Address: 1st Floor, opposite to Vinayaka Temple, Udayanagar Main Road, near Tin-Factory bus stop, Bangalore – 560016
 
 ## Pages
 
-- [Home](https://vlsiviz-sparkle.lovable.app/): Overview, program pillars, mentor manifesto, cohort highlights, FAQs.
-- [About](https://vlsiviz-sparkle.lovable.app/about): Institute story since 2015, mentors, campus location, PG accommodation, transit connectivity from Bengaluru rail and metro.
-- [Courses](https://vlsiviz-sparkle.lovable.app/courses): 15 modules — RTL Design, Design Verification (UVM), FPGA Prototyping, Embedded Systems, SoC Integration, Low Power Design, Post-Silicon Validation, ASIC Design, CDC, IP Development, AMS Verification, VLSI Flow Automation and more.
-- [Services](https://vlsiviz-sparkle.lovable.app/services): NDA-friendly silicon engineering services — RTL, DV, CDC, IP, SoC integration, flow automation — for fabless startups and enterprises.
-- [Placements](https://vlsiviz-sparkle.lovable.app/placements): Hiring partners, alumni video testimonials, Google reviews, salary heatmap, placement journey, achievements strip.
-- [Playlists](https://vlsiviz-sparkle.lovable.app/playlists): Curated YouTube playlists covering VLSI fundamentals through advanced topics — Verilog, SystemVerilog, UVM, interview prep.
-- [Blog](https://vlsiviz-sparkle.lovable.app/blog): Technical guides on RTL, DV, CDC, low-power design, static timing, interview preparation and career deep-dives.
-- [Demo](https://vlsiviz-sparkle.lovable.app/demo): Book a free 60-minute demo class — on-site in Bengaluru or online. Meet mentors, tour the lab.
-- [Contact](https://vlsiviz-sparkle.lovable.app/contact): Address, phone, WhatsApp, email, campus map.
+- [Home](https://www.mastervlsi.com/): Overview, program pillars, mentor manifesto, cohort highlights, FAQs.
+- [About](https://www.mastervlsi.com/about): Institute story since 2015, mentors, Bangalore campus location, PG accommodation, transit connectivity from Bengaluru rail and metro.
+- [Courses](https://www.mastervlsi.com/courses): 15 modules — RTL Design, Design Verification (UVM), SystemVerilog, Coverage & Assertions, CDC, IP Verification, SoC Verification, AMBA (APB/AHB/AXI), High-Speed Protocols (PCIe, DDR, USB, CXL), GLS and more.
+- [Protocols](https://www.mastervlsi.com/courses/protocols): AMBA family, high-speed and low-speed protocol coverage.
+- [Services](https://www.mastervlsi.com/services): NDA-friendly silicon engineering services — RTL, DV, CDC, IP, SoC integration, flow automation — for fabless startups and enterprises.
+- [Placements](https://www.mastervlsi.com/placements): Hiring partners, alumni video testimonials, Google reviews, salary heatmap, placement journey, achievements strip.
+- [Alumni](https://www.mastervlsi.com/alumni): Real alumni wall with names, companies and packages.
+- [Testimonials](https://www.mastervlsi.com/testimonials): Written and video testimonials from placed engineers.
+- [Playlists](https://www.mastervlsi.com/playlists): Curated YouTube playlists — Verilog, SystemVerilog, UVM, interview prep.
+- [Blog](https://www.mastervlsi.com/blog): Technical guides on RTL, DV, CDC, static timing, interview preparation and career deep-dives.
+- [Demo](https://www.mastervlsi.com/demo): Book a free 60-minute demo class — on-site in Bangalore or online.
+- [Contact](https://www.mastervlsi.com/contact): Address, phone, WhatsApp, email, campus map.
 
 ## Optional
 
-- [Sitemap](https://vlsiviz-sparkle.lovable.app/sitemap.xml)
+- [Sitemap](https://www.mastervlsi.com/sitemap.xml)
 - [YouTube channel](https://www.youtube.com/@mastervlsi2526)
