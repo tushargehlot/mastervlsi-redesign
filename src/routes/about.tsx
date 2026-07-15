@@ -121,7 +121,7 @@ function About() {
             </h2>
             <p className="mt-5 text-muted-foreground">
               We don't believe in tutorial-style learning. Every concept is taught against a real artifact you build —
-              a UART, a DMA, a 32-bit pipelined adder, a floorplan, a UVM testbench. By the end of the cohort, you have
+              a UART, a DMA, a 32-bit pipelined adder, an AXI verification env, a UVM testbench. By the end of the cohort, you have
               not a certificate — a portfolio.
             </p>
           </Reveal>

@@ -61,7 +61,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 max-w-md text-sm text-muted-foreground leading-relaxed">
-              {SITE.tagline} 12+ years, 5000+ engineers placed. Real-time industry mentors and a 24/7 lab from RTL to GDSII.
+              {SITE.tagline} 12+ years, 5000+ engineers placed. Real-time industry mentors and a 24/7 EDA lab focused on RTL Design and UVM Verification.
             </p>
             <div className="mt-5 flex items-center gap-2 flex-wrap">
               <a href={SITE.social.youtube} target="_blank" rel="noreferrer" className="p-2.5 rounded-md bg-card border border-border hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition" aria-label="YouTube">
