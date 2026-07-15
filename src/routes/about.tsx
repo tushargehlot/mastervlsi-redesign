@@ -31,7 +31,7 @@ export const Route = createFileRoute("/about")({
 const TIMELINE = [
   { year: "2015", title: "Founded", desc: "Started as a 12-student weekend cohort in Bengaluru with two senior engineers and a borrowed lab." },
   { year: "2017", title: "First Intel offer", desc: "An alumna joins Intel's DV team — our first marquee placement and our first written testimonial." },
-  { year: "2018", title: "1000+ Alumni", desc: "Crossed our first major milestone with curated cohorts across DV, RTL and PD tracks." },
+  { year: "2018", title: "1000+ Alumni", desc: "Crossed our first major milestone with curated cohorts across Design and Verification tracks." },
   { year: "2020", title: "24/7 Online Lab", desc: "Pivoted to remote-first with full EDA tool access for every enrolled student, no geographic limits." },
   { year: "2022", title: "Services arm launched", desc: "Began delivering NDA-grade RTL & DV engagements to fabless startups in addition to training." },
   { year: "2023", title: "5000+ engineers placed", desc: "Across Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence and 25 more." },
