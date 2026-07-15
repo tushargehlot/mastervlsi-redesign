@@ -8,7 +8,7 @@ type Msg = { from: "bot" | "user"; text: string };
 const FLOWS: Record<string, { reply: string; followups?: string[] }> = {
   Courses: {
     reply:
-      "We offer 24 modules across RTL, DV, PD, DFT, STA, Low Power & more. Course duration is 6 months, validity 1 year. Want a syllabus?",
+      "We offer RTL Design and Design Verification (UVM) tracks with 15 modules covering SystemVerilog, UVM, CDC, Protocols and more. Course duration is 6 months, validity 1 year. Want a syllabus?",
     followups: ["Send syllabus", "Fees", "Demo class"],
   },
   Placements: {

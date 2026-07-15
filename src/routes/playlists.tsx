@@ -15,14 +15,14 @@ import { Play, ExternalLink } from "lucide-react";
 export const Route = createFileRoute("/playlists")({
   head: () => ({
     meta: [
-      { title: "Free VLSI YouTube Playlists — Verilog, UVM, PD | MasterVLSI" },
-      { name: "description", content: "200+ free VLSI tutorial videos organised by topic: Verilog, SystemVerilog, UVM, Physical Design, STA, DFT and interview prep from working industry mentors." },
+      { title: "Free VLSI YouTube Playlists — Verilog, SystemVerilog, UVM | MasterVLSI" },
+      { name: "description", content: "200+ free VLSI tutorial videos organised by topic: Verilog, SystemVerilog, UVM, Design Verification and interview prep from working industry mentors in Bangalore." },
       { property: "og:title", content: "Free VLSI Video Tutorials — MasterVLSI" },
       { property: "og:description", content: "Curated playlists from our YouTube channel @mastervlsi2526." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/playlists" },
+      { property: "og:url", content: "https://www.mastervlsi.com/playlists" },
     ],
-    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/playlists" }],
+    links: [{ rel: "canonical", href: "https://www.mastervlsi.com/playlists" }],
   }),
   component: PlaylistsPage,
 });
@@ -45,7 +45,7 @@ function PlaylistsPage() {
               VLSI on <span className="text-gradient">YouTube.</span>
             </h1>
             <p className="mt-5 text-lg text-muted-foreground">
-              200+ videos, organised by topic. Verilog basics through to UVM, PD, STA, DFT and full interview prep —
+              200+ videos, organised by topic. Verilog basics through to UVM, Design Verification and full interview prep —
               all from working industry mentors. Start anywhere, work at your own pace.
             </p>
             <Magnetic className="mt-6 inline-block">

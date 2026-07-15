@@ -34,6 +34,6 @@ export const FAQ_PLACEMENTS: FaqItem[] = [
   },
   {
     q: "Which roles do students typically get?",
-    a: "RTL Designer, Design Verification Engineer (UVM), Physical Design Engineer, DFT Engineer, STA Engineer, Low-Power Designer, and AMS Verification Engineer.",
+    a: "RTL Designer, Design Verification Engineer (UVM), SoC Verification Engineer, IP Verification Engineer, and RTL Design Engineer roles.",
   },
 ];

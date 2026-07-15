@@ -2,7 +2,7 @@
 // Each entry includes which route it lives on so the team can prioritise.
 export const FEATURE_IDEAS = [
   { id: 1, title: "Mentor Wall", route: "/about",      summary: "Hover-flip cards with mentor specialties + years on silicon." },
-  { id: 2, title: "Coverage Gauge",  route: "/courses",    summary: "Animated radial gauge per module — RTL/DV/PD coverage %." },
+  { id: 2, title: "Coverage Gauge",  route: "/courses",    summary: "Animated radial gauge per module — RTL and DV coverage %." },
   { id: 3, title: "Salary Heatmap",  route: "/placements", summary: "Role × experience grid with crimson heat cells & live tooltip." },
   { id: 4, title: "Alumni Map",      route: "/placements", summary: "SVG India-map with company pins clustered by city." },
   { id: 5, title: "VLSI Glossary",   route: "/playlists",  summary: "Searchable acronym dictionary with quick filter." },

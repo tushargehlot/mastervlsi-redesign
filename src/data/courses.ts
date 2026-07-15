@@ -23,36 +23,8 @@ export type Track = {
   color: "navy" | "teal" | "crimson" | "ignite";
 };
 
-// Five headline tracks MasterVLSI offers.
+// Headline tracks MasterVLSI offers.
 export const TRACKS: Track[] = [
-  {
-    id: "pd",
-    slug: "physical-design",
-    name: "Physical Design",
-    tagline: "Floorplan → GDSII on real 7nm blocks.",
-    blurb:
-      "Full RTL-to-GDSII flow on industry blocks — floorplanning, placement, CTS, routing, signoff timing/DRC/LVS. Trained on Cadence Innovus and Synopsys ICC2 with 24/7 lab access.",
-    duration: "6 months",
-    outcomes: [
-      "Own a block from netlist to GDSII",
-      "Close timing across PVT corners",
-      "Fix DRC/LVS violations at 7nm",
-      "Understand DFM & signoff QoR reports",
-    ],
-    syllabus: [
-      { week: "1-2", topic: "PD fundamentals, floorplanning" },
-      { week: "3-4", topic: "Placement, power planning, IR drop" },
-      { week: "5-6", topic: "CTS — clock tree synthesis" },
-      { week: "7-8", topic: "Routing, ECO flow" },
-      { week: "9-10", topic: "Timing signoff (PrimeTime)" },
-      { week: "11-12", topic: "DRC / LVS / DFM" },
-      { week: "13+", topic: "Industry block tape-out project" },
-    ],
-    tools: ["Cadence Innovus", "Synopsys ICC2", "PrimeTime", "Calibre", "Voltus"],
-    targetCompanies: ["Intel", "AMD", "Qualcomm", "NVIDIA", "Samsung", "Marvell"],
-    formats: ["Basic Course", "Advance Course", "Paid Internship"],
-    color: "navy",
-  },
   {
     id: "rtl",
     slug: "rtl-design",
@@ -147,7 +119,7 @@ export const COURSES: Course[] = [
   { id: "sv", number: 3, title: "SystemVerilog", short: "OOP, interfaces, assertions.", long: "SystemVerilog OOP, interfaces, mailboxes, IPC, SVA assertions.", tags: ["DV"] },
   { id: "coverage", number: 4, title: "Randomization, Coverage & Assertions", short: "Constraints, covergroups, SVA.", long: "Constraint randomization, functional/code coverage, SVA properties.", tags: ["DV"] },
   { id: "uvm", number: 5, title: "UVM Methodology", short: "End-to-end UVM testbench architecture.", long: "UVM components, phases, factory, TLM, sequences, RAL, virtual sequencer.", tags: ["DV", "UVM"] },
-  { id: "pd", number: 6, title: "Physical Design (RTL → GDSII)", short: "Floorplan, place, CTS, route, signoff.", long: "Complete PD flow on industry blocks: floorplan, placement, CTS, routing, signoff timing/DRC/LVS.", tags: ["PD"] },
+  { id: "pd", number: 6, title: "Design Verification Projects", short: "APB & AXI UVM environments.", long: "Two capstone UVM projects — APB and AXI verification environments built end-to-end.", tags: ["DV", "Projects"] },
   { id: "analog", number: 7, title: "Analog Design", short: "OPAMPs, LDOs, PLLs.", long: "Analog transistor-level design & layout in Cadence Virtuoso.", tags: ["Analog"] },
   { id: "amba", number: 8, title: "AMBA Protocols", short: "APB, AHB, AXI.", long: "AMBA protocol family: APB, AHB, AXI — design & verification.", tags: ["Protocols"] },
   { id: "highspeed", number: 9, title: "High-Speed Protocols", short: "PCIe, USB, DDR, CXL, CHI, Ethernet.", long: "PCIe (Gen1-Gen7), USB, DDR, CXL, CHI, Ethernet architecture & verification.", tags: ["Protocols"] },

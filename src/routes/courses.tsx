@@ -15,14 +15,14 @@ import { Reveal } from "@/components/fx/Reveal";
 export const Route = createFileRoute("/courses")({
   head: () => ({
     meta: [
-      { title: "VLSI Courses — RTL, UVM, FPGA, SoC | 15 Modules | MasterVLSI" },
-      { name: "description", content: "15 industry-aligned VLSI training modules covering RTL design, Design Verification (UVM), FPGA prototyping, SoC integration, CDC, IP development, AMS and flow automation." },
-      { property: "og:title", content: "VLSI Courses — 15 Modules from RTL to Sign-off" },
+      { title: "VLSI Courses in Bangalore — RTL, UVM, DV, FPGA | MasterVLSI" },
+      { name: "description", content: "VLSI institute in Bangalore offering RTL Design, Design Verification (UVM), FPGA, SoC, CDC, IP and AMS training. 15 modules, industry mentors, placement in 30–45 days." },
+      { property: "og:title", content: "VLSI Courses in Bangalore — RTL & Design Verification" },
       { property: "og:description", content: "Pick the silicon track that fits your career — hands-on, mentor-led, placement-aligned." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/courses" },
+      { property: "og:url", content: "https://www.mastervlsi.com/courses" },
     ],
-    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/courses" }],
+    links: [{ rel: "canonical", href: "https://www.mastervlsi.com/courses" }],
 
     scripts: [
       {
@@ -78,7 +78,7 @@ function CoursesPage() {
             Your <span className="text-gradient">silicon syllabus.</span>
           </h1>
           <p className="mt-5 text-lg text-muted-foreground">
-            Four headline tracks — Physical Design, RTL Design, Design & Verification, Analog Design — each with basic, advance, and internship formats.
+            Three headline tracks — RTL Design, Design & Verification, Analog Design — each with basic, advance, and internship formats.
           </p>
         </div>
       </div>
