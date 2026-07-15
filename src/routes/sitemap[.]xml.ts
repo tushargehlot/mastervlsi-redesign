@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { BLOG_POSTS } from "@/data/blog";
 
-const BASE_URL = "https://vlsiviz-sparkle.lovable.app";
+const BASE_URL = "https://www.mastervlsi.com";
 
 
 interface SitemapEntry {
@@ -20,8 +20,11 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/about", changefreq: "monthly", priority: "0.8" },
           { path: "/courses", changefreq: "weekly", priority: "0.9" },
+          { path: "/courses/protocols", changefreq: "monthly", priority: "0.7" },
           { path: "/services", changefreq: "monthly", priority: "0.7" },
           { path: "/placements", changefreq: "weekly", priority: "0.9" },
+          { path: "/alumni", changefreq: "weekly", priority: "0.8" },
+          { path: "/testimonials", changefreq: "weekly", priority: "0.7" },
           { path: "/playlists", changefreq: "weekly", priority: "0.6" },
           { path: "/blog", changefreq: "weekly", priority: "0.7" },
           { path: "/demo", changefreq: "monthly", priority: "0.8" },
