@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
-import logoAsset from "@/assets/logo-black.png.asset.json";
+const LOGO_URL = "/logo-mastervlsi.png";
 import { Magnetic } from "@/components/fx/Magnetic";
 import { DemoTrigger } from "@/components/DemoModal";
 
@@ -40,7 +40,7 @@ export function Nav() {
         <Link to="/" data-magnetic className="flex items-center gap-2.5 group min-w-0">
           <span className="relative shrink-0 flex items-center justify-center rounded-lg ring-1 ring-border/60 px-2 py-1" style={{ background: "var(--logo-backplate)" }}>
             <img
-              src={logoAsset.url}
+              src={LOGO_URL}
               alt="MasterVLSI"
               width={160}
               height={40}

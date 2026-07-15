@@ -7,7 +7,7 @@ const ITEMS = [
   "💼  Karthik placed @ AMD · ₹19 LPA · 22m ago",
   "📝  43 new demo bookings this week",
   "💼  Anu placed @ Qualcomm · ₹22 LPA · 1h ago",
-  "🎓  Vikram joined the PD-STA Sprint · 1h ago",
+  "🎓  Vikram joined the DV-UVM Sprint · 1h ago",
   "🏆  Cohort 24 hits 97% placement rate",
 ];
 

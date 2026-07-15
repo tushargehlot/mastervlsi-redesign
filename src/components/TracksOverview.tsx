@@ -1,10 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Cpu, Layers, Waves, Shapes } from "lucide-react";
+import { ArrowRight, Cpu, Waves, Shapes } from "lucide-react";
 import { TRACKS } from "@/data/courses";
 import { Reveal } from "@/components/fx/Reveal";
 
 const ICONS = {
-  "physical-design": Layers,
   "rtl-design": Cpu,
   "design-verification": Shapes,
   "analog-design": Waves,

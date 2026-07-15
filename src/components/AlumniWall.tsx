@@ -91,7 +91,7 @@ function AlumnusCard({ a, i }: { a: Alumnus; i: number }) {
     >
       <div className="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-surface-1 to-surface-2 mb-3">
         {a.photo ? (
-          <img src={a.photo} alt={`${a.name} — ${a.company}`} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={a.photo} alt={`${a.name} — ${a.company}`} loading="lazy" referrerPolicy="no-referrer" className="absolute inset-0 h-full w-full object-cover" onError={(e) => { const el = e.currentTarget as HTMLImageElement; el.onerror = null; el.style.display = "none"; }} />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center font-display font-bold text-3xl text-primary/50">
             {initials(a.name)}

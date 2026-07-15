@@ -28,18 +28,20 @@ import { FAQ_HOME } from "@/data/faqs";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "MasterVLSI — VLSI Training & Placement in Bengaluru | RTL, UVM, DV" },
-      { name: "description", content: "India's premier VLSI training institute. Design & Verification (UVM), RTL, FPGA, SoC. 24/7 lab, industry mentors, 5000+ alumni placed at Intel, AMD, NVIDIA in 30–45 days." },
-      { property: "og:title", content: "MasterVLSI — VLSI Training & Placement in 30–45 Days" },
-      { property: "og:description", content: "From RTL to GDSII — Design & Verification training with placement at Intel, AMD, NVIDIA, Qualcomm and 60+ companies." },
+      { title: "Best VLSI Institute in Bangalore | RTL & Design Verification Training — MasterVLSI" },
+      { name: "description", content: "MasterVLSI is Bangalore's top VLSI training institute. RTL Design, Design Verification (UVM), CDC, IP & SoC. 5000+ engineers placed at Intel, AMD, NVIDIA, Qualcomm in 30–45 days. 24/7 EDA lab, industry mentors, Tin-Factory campus." },
+      { name: "keywords", content: "VLSI institute in Bangalore, best VLSI institute Bangalore, VLSI training Bangalore, VLSI course Bangalore, RTL training, UVM training, Design Verification Bangalore, VLSI placement Bangalore" },
+      { property: "og:title", content: "Best VLSI Institute in Bangalore — MasterVLSI" },
+      { property: "og:description", content: "From RTL to UVM Verification — training with placement at Intel, AMD, NVIDIA, Qualcomm and 60+ companies in 30–45 days." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/" },
+      { property: "og:url", content: "https://www.mastervlsi.com/" },
       { property: "og:site_name", content: "MasterVLSI" },
+      { property: "og:image", content: "https://www.mastervlsi.com/logo-mastervlsi.png" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "MasterVLSI — Premier VLSI Training" },
-      { name: "twitter:description", content: "Design & Verification training with placement in 30–45 days." },
+      { name: "twitter:title", content: "Best VLSI Institute in Bangalore — MasterVLSI" },
+      { name: "twitter:description", content: "RTL & Design Verification training with placement in 30–45 days." },
     ],
-    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://www.mastervlsi.com/" }],
     scripts: [
       {
         type: "application/ld+json",

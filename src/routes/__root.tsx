@@ -20,7 +20,8 @@ import { ScrollProgress } from "@/components/fx/ScrollProgress";
 import { DemoModalProvider } from "@/components/DemoModal";
 import { EntryPopup } from "@/components/EntryPopup";
 import { StickyCTA } from "@/components/StickyCTA";
-import markAsset from "@/assets/logo-black.png.asset.json";
+const LOGO_URL = "/logo-mastervlsi.png";
+const SITE_URL = "https://www.mastervlsi.com";
 
 
 function NotFoundComponent() {
@@ -88,23 +89,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "MasterVLSI — Premier VLSI Training & Placements" },
+      { title: "Best VLSI Institute in Bangalore | RTL & Design Verification — MasterVLSI" },
       {
         name: "description",
         content:
-          "Industry-aligned VLSI training across RTL, DV, PD, DFT, STA & Low Power. 24/7 lab, real-time mentors, placement in 30–45 days.",
+          "MasterVLSI — the top VLSI training institute in Bangalore for RTL Design, Design Verification (UVM), CDC, IP & SoC. 5000+ engineers placed at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence in 30–45 days. 24/7 EDA lab, industry mentors.",
       },
+      { name: "keywords", content: "VLSI institute Bangalore, best VLSI training Bangalore, VLSI course Bangalore, RTL design training, Design Verification UVM course, SystemVerilog training Bangalore, VLSI placement, MasterVLSI" },
       { name: "author", content: "MasterVLSI" },
-      { property: "og:title", content: "MasterVLSI — Premier VLSI Training" },
-      { property: "og:description", content: "Fueling careers with precision placements." },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { name: "geo.region", content: "IN-KA" },
+      { name: "geo.placename", content: "Bangalore" },
+      { name: "geo.position", content: "13.0067;77.6829" },
+      { name: "ICBM", content: "13.0067, 77.6829" },
+      { property: "og:title", content: "Best VLSI Institute in Bangalore — MasterVLSI" },
+      { property: "og:description", content: "RTL & Design Verification training with placement in 30–45 days at 60+ semiconductor companies." },
       { property: "og:site_name", content: "MasterVLSI" },
+      { property: "og:locale", content: "en_IN" },
+      { property: "og:image", content: `${SITE_URL}/logo-mastervlsi.png` },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: `${SITE_URL}/logo-mastervlsi.png` },
       { name: "theme-color", content: "#0a0a0d" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: markAsset.url },
-      { rel: "apple-touch-icon", href: markAsset.url },
+      { rel: "icon", type: "image/png", href: LOGO_URL },
+      { rel: "apple-touch-icon", href: LOGO_URL },
+      { rel: "preconnect", href: "https://static.wixstatic.com" },
+      { rel: "preconnect", href: "https://img.youtube.com" },
+      { rel: "preconnect", href: "https://i.ytimg.com" },
     ],
     scripts: [
       {
@@ -113,13 +126,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@graph": [
             {
-              "@type": "Organization",
+              "@type": ["EducationalOrganization", "LocalBusiness"],
+              "@id": `${SITE_URL}/#org`,
               name: "MasterVLSI",
-              url: "https://vlsiviz-sparkle.lovable.app/",
-              logo: markAsset.url,
+              alternateName: "MasterVLSI Institute",
+              url: SITE_URL,
+              logo: `${SITE_URL}/logo-mastervlsi.png`,
+              image: `${SITE_URL}/logo-mastervlsi.png`,
               description:
-                "Premier VLSI training institute — RTL, Design Verification (UVM), FPGA, SoC integration, and placement in 30–45 days.",
-              sameAs: ["https://www.youtube.com/@mastervlsi2526"],
+                "Premier VLSI training institute in Bangalore — RTL Design, Design Verification (UVM), SoC integration and placement in 30–45 days at Intel, AMD, NVIDIA, Qualcomm.",
+              telephone: "+91-98449-82345",
+              email: "hr@mastervlsi.com",
+              priceRange: "₹₹",
+              areaServed: [
+                { "@type": "City", name: "Bangalore" },
+                { "@type": "City", name: "Bengaluru" },
+                { "@type": "Country", name: "India" },
+              ],
+              sameAs: [
+                "https://www.youtube.com/@mastervlsi2526",
+                "https://mastervlsivideo.wixsite.com/my-site-2",
+              ],
               address: {
                 "@type": "PostalAddress",
                 streetAddress:
@@ -129,14 +156,36 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 postalCode: "560016",
                 addressCountry: "IN",
               },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 13.0067,
+                longitude: 77.6829,
+              },
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                opens: "09:30",
+                closes: "18:30",
+              },
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.9",
+                reviewCount: "500",
+                bestRating: "5",
+              },
+              foundingDate: "2015",
+              numberOfEmployees: "20",
+              slogan: "The best VLSI institute in Bangalore for RTL and Design Verification.",
             },
             {
               "@type": "WebSite",
+              "@id": `${SITE_URL}/#website`,
               name: "MasterVLSI",
-              url: "https://vlsiviz-sparkle.lovable.app/",
+              url: SITE_URL,
+              publisher: { "@id": `${SITE_URL}/#org` },
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://vlsiviz-sparkle.lovable.app/blog?q={search_term_string}",
+                target: `${SITE_URL}/blog?q={search_term_string}`,
                 "query-input": "required name=search_term_string",
               },
             },

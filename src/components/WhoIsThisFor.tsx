@@ -33,7 +33,7 @@ const PERSONAS = [
     icon: ArrowRightLeft,
     tag: "Switch",
     title: "VLSI → Different VLSI sub-domain",
-    desc: "Working in one domain (say, DV) but want to move (say, into PD or Analog)? Targeted upskilling with mentor referrals.",
+    desc: "Working in one role (say, RTL Design) but want to move (say, into UVM Verification)? Targeted upskilling with mentor referrals.",
     bullets: ["Domain-to-domain roadmap", "Weekend deep-dives", "1-on-1 mentor pairing"],
   },
 ] as const;

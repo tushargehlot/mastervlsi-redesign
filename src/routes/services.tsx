@@ -33,9 +33,9 @@ const ENGAGEMENT = [
 ];
 
 const PILLARS = [
-  { icon: Cpu, kw: "Frontend", t: "RTL · DV · CDC · IP" },
-  { icon: Layers, kw: "Backend", t: "PD · DFT · STA · Low Power" },
-  { icon: Zap, kw: "Specialty", t: "AMS · Post-Si · Automation" },
+  { icon: Cpu, kw: "Design", t: "RTL · CDC · IP · SoC integration" },
+  { icon: Layers, kw: "Verification", t: "UVM · Coverage · Assertions · GLS" },
+  { icon: Zap, kw: "Specialty", t: "AMBA · High-speed protocols · Automation" },
 ];
 
 function ServicesPage() {

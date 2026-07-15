@@ -20,4 +20,4 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-Sitemap: https://vlsiviz-sparkle.lovable.app/sitemap.xml
+Sitemap: https://www.mastervlsi.com/sitemap.xml

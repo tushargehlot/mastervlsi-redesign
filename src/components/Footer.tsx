@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Youtube, Linkedin, Instagram, Twitter, MapPin, MessageCircle, Send, Star } from "lucide-react";
 import { SITE, waLink } from "@/data/site";
-import markAsset from "@/assets/logo-black.png.asset.json";
+const LOGO_URL = "/logo-mastervlsi.png";
 import { TraceLine } from "@/components/fx/TraceLine";
 
 export function Footer() {
@@ -54,14 +54,14 @@ export function Footer() {
           <div className="lg:col-span-4">
             <Link to="/" className="flex items-center gap-2.5">
               <span className="inline-flex items-center justify-center rounded-md ring-1 ring-border p-1" style={{ background: "var(--logo-backplate)" }}>
-                <img src={markAsset.url} alt="MasterVLSI logo" width={32} height={32} className="h-8 w-8" />
+                <img src={LOGO_URL} alt="MasterVLSI logo" width={32} height={32} className="h-8 w-8 object-contain" />
               </span>
               <span className="font-display text-xl font-bold tracking-tight">
                 MASTER<span className="text-accent">VLSI</span>
               </span>
             </Link>
             <p className="mt-4 max-w-md text-sm text-muted-foreground leading-relaxed">
-              {SITE.tagline} 12+ years, 5000+ engineers placed. Real-time industry mentors and a 24/7 lab from RTL to GDSII.
+              {SITE.tagline} 12+ years, 5000+ engineers placed. Real-time industry mentors and a 24/7 EDA lab focused on RTL Design and UVM Verification.
             </p>
             <div className="mt-5 flex items-center gap-2 flex-wrap">
               <a href={SITE.social.youtube} target="_blank" rel="noreferrer" className="p-2.5 rounded-md bg-card border border-border hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition" aria-label="YouTube">
