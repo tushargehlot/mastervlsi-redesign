@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { STATS, SITE } from "@/data/site";
-import { PARTNERS, logoUrl, initials } from "@/data/partners";
+import { PARTNERS, logoUrl } from "@/data/partners";
 import { GridBackdrop } from "@/components/GridBackdrop";
 import { Counter } from "@/components/Counter";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
@@ -142,18 +142,13 @@ function PlacementsPage() {
                     transition={{ duration: 0.35, delay: i * 0.025, ease: "easeOut" }}
                     className="group aspect-square rounded-xl border border-border bg-background/50 backdrop-blur flex items-center justify-center hover:border-primary/50 hover:bg-card hover:shadow-lg hover:shadow-primary/5 transition-all relative overflow-hidden cursor-default"
                   >
-                    {src && (
-                      <img
-                        src={src}
-                        alt={p.name}
-                        loading="lazy"
-                        className="absolute inset-0 h-full w-full object-contain p-2.5 rounded grayscale group-hover:grayscale-0 transition-all duration-500 opacity-70 group-hover:opacity-100 group-hover:scale-110"
-                        onError={(e) => { e.currentTarget.style.display = "none"; e.currentTarget.nextElementSibling?.classList.remove("hidden"); }}
-                      />
-                    )}
-                    <span className={`${src ? "hidden " : ""}font-mono text-xs sm:text-sm font-bold text-primary/60 group-hover:text-primary transition-colors`}>
-                      {initials(p.name)}
-                    </span>
+                    <img
+                      src={src}
+                      alt={p.name}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-contain p-2.5 brightness-110 transition-all duration-500 group-hover:scale-110"
+                      onError={(e) => { e.currentTarget.style.display = "none"; }}
+                    />
                     <span className="absolute bottom-0 left-0 right-0 text-[9px] font-mono text-muted-foreground/0 group-hover:text-muted-foreground/60 text-center pb-1 transition-all duration-300 truncate">
                       {p.name}
                     </span>

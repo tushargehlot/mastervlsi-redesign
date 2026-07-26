@@ -95,7 +95,3 @@ export function logoUrl(domain?: string) {
   const slug = domain.replace(/\./g, "-");
   return `/logos/${slug}.png`;
 }
-
-export function initials(name: string) {
-  return name.split(/[\s&]+/).map(w => w[0]).join("").slice(0, 2).toUpperCase();
-}

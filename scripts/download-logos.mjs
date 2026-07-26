@@ -4,6 +4,13 @@ import { join } from "path";
 const outDir = join(process.cwd(), "public", "logos");
 mkdirSync(outDir, { recursive: true });
 
+// Multi-source: try Google, then DuckDuckGo, then icon.horse
+const SOURCES = [
+  (d) => `https://www.google.com/s2/favicons?domain=${d}&sz=128`,
+  (d) => `https://icons.duckduckgo.com/ip3/${d}.ico`,
+  (d) => `https://icon.horse/icon/${d}`,
+];
+
 const PARTNERS = [
   { name: "Intel", domain: "intel.com" },
   { name: "AMD", domain: "amd.com" },
@@ -77,32 +84,38 @@ const PARTNERS = [
   { name: "Efinix", domain: "efinixinc.com" },
 ];
 
-async function download(domain, name) {
+async function tryDownload(domain, name) {
   const slug = domain.replace(/\./g, "-");
   const outPath = join(outDir, `${slug}.png`);
-  if (existsSync(outPath)) {
-    console.log(`  skip ${name}`);
-    return;
+
+  for (const makeUrl of SOURCES) {
+    const url = makeUrl(domain);
+    try {
+      const res = await fetch(url, { redirect: "follow", signal: AbortSignal.timeout(5000) });
+      if (!res.ok) continue;
+      const contentType = res.headers.get("content-type") || "";
+      const buf = Buffer.from(await res.arrayBuffer());
+      if (buf.length < 100) continue; // too small, skip
+      writeFileSync(outPath, buf);
+      const shortUrl = url.replace(/https:\/\//, "");
+      console.log(`  ✓ ${name.padEnd(28)} ${shortUrl}`);
+      return true;
+    } catch { continue; }
   }
-  const url = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
-  try {
-    const res = await fetch(url, { redirect: "follow" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const buf = Buffer.from(await res.arrayBuffer());
-    writeFileSync(outPath, buf);
-    console.log(`  ✓ ${name} (${domain})`);
-  } catch (e) {
-    console.log(`  ✗ ${name} (${domain}) — ${e.message}`);
-  }
+  console.log(`  ✗ ${name} (${domain}) — no source found`);
+  return false;
 }
 
 async function main() {
-  console.log(`Downloading ${PARTNERS.length} logos...`);
-  for (let i = 0; i < PARTNERS.length; i += 10) {
-    const batch = PARTNERS.slice(i, i + 10);
-    await Promise.all(batch.map(p => download(p.domain, p.name)));
+  console.log(`Downloading ${PARTNERS.length} logos from 3 sources...`);
+  let ok = 0, fail = 0;
+  for (let i = 0; i < PARTNERS.length; i += 5) {
+    const batch = PARTNERS.slice(i, i + 5);
+    const results = await Promise.all(batch.map(p => tryDownload(p.domain, p.name)));
+    ok += results.filter(Boolean).length;
+    fail += results.filter(r => !r).length;
   }
-  console.log("Done.");
+  console.log(`\nDone. ${ok} OK, ${fail} failed.`);
 }
 
 main();
