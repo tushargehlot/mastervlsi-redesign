@@ -52,7 +52,7 @@ export const Route = createFileRoute("/blog/$slug")({
                 publisher: {
                   "@type": "Organization",
                   name: "MasterVLSI",
-                  logo: { "@type": "ImageObject", url: "https://vlsiviz-sparkle.lovable.app/favicon.ico" },
+                  logo: { "@type": "ImageObject", url: "https://www.mastervlsi.com/logo-mastervlsi.png" },
                 },
                 mainEntityOfPage: url,
               }),
