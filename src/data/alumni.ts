@@ -1,5 +1,4 @@
-// AUTO-EXTRACTED from https://mastervlsivideo.wixsite.com/my-site-2/placement-list
-// Photos are hotlinked from Wix CDN (public assets).
+// MasterVLSI Placement Data — extracted from https://mastervlsivideo.wixsite.com/my-site-2/placement-list
 
 export type Alumnus = {
   id: string;

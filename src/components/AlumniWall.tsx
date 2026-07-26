@@ -1,32 +1,11 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Linkedin, Building2 } from "lucide-react";
 import { ALUMNI, ALUMNI_COURSES, type Alumnus } from "@/data/alumni";
-import { logoUrl } from "@/data/partners";
 
 const PAGE = 24;
 
 const initials = (n: string) =>
   n.split(" ").map((s) => s[0]).join("").slice(0, 2).toUpperCase();
-
-const companyDomain = (c: string) => {
-  const m: Record<string, string> = {
-    "NVIDIA": "nvidia.com", "AMD": "amd.com", "Intel": "intel.com", "Qualcomm": "qualcomm.com",
-    "Samsung": "samsung.com", "Synopsys": "synopsys.com", "Cadence": "cadence.com",
-    "Marvell": "marvell.com", "Texas Instruments": "ti.com", "MediaTek": "mediatek.com",
-    "Renesas": "renesas.com", "Broadcom": "broadcom.com", "Micron": "micron.com",
-    "Analog Devices": "analog.com", "STMicroelectronics": "st.com", "Xilinx / AMD": "amd.com",
-    "Xilinx": "xilinx.com", "NXP Semiconductors": "nxp.com", "Bosch": "bosch.com",
-    "Wipro Semiconductor": "wipro.com", "Wipro": "wipro.com", "Tessolve": "tessolve.com",
-    "Google": "google.com", "Amazon": "amazon.com", "Siemens EDA": "siemens.com",
-    "Tech Mahindra": "techmahindra.com", "BEL": "bel-india.in", "Insemi": "insemi.com",
-    "Atria Logic": "atrialogic.com", "Mirafra": "mirafra.com", "Exiger": "exiger.com",
-    "SmartSoc": "smartsocsolutions.com", "Cyient": "cyient.com", "Maverick": "maverickmicro.com",
-    "Microfx": "microfx.com", "Lewiz Communications": "lewiz.com",
-    "Edic Semicon": "edicsemicon.com", "Chiptest Engineering": "chiptest.co.in",
-  };
-  return m[c];
-};
 
 
 export function AlumniWall({ initialCount = PAGE }: { initialCount?: number }) {
@@ -78,9 +57,6 @@ export function AlumniWall({ initialCount = PAGE }: { initialCount?: number }) {
 }
 
 function AlumnusCard({ a, i }: { a: Alumnus; i: number }) {
-  const dom = companyDomain(a.company);
-  const clogo = dom ? logoUrl(dom) : null;
-
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
@@ -89,7 +65,16 @@ function AlumnusCard({ a, i }: { a: Alumnus; i: number }) {
       transition={{ delay: (i % 12) * 0.03 }}
       className="group relative rounded-2xl border border-border bg-card p-4 hover:border-primary/50 hover:shadow-[0_10px_30px_-12px_rgba(15,47,92,0.20)] transition-all overflow-hidden"
     >
-      <div className="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-surface-1 to-surface-2 mb-3">
+      <p className="font-display font-bold text-sm leading-tight truncate">{a.name}</p>
+      {a.package && (
+        <p className="mt-1 text-[11px] font-mono font-semibold text-primary">
+          ₹{a.package}
+        </p>
+      )}
+      {a.from_loc && (
+        <p className="mt-0.5 text-[10px] text-muted-foreground truncate italic">{a.from_loc}</p>
+      )}
+      <div className="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-surface-1 to-surface-2 mt-3">
         {a.photo ? (
           <img src={a.photo} alt={`${a.name} — ${a.company}`} loading="lazy" referrerPolicy="no-referrer" className="absolute inset-0 h-full w-full object-cover" onError={(e) => { const el = e.currentTarget as HTMLImageElement; el.onerror = null; el.style.display = "none"; }} />
         ) : (
@@ -97,35 +82,10 @@ function AlumnusCard({ a, i }: { a: Alumnus; i: number }) {
             {initials(a.name)}
           </div>
         )}
-        {clogo && (
-          <div className="absolute bottom-2 right-2 h-8 w-8 rounded-md bg-white border border-border flex items-center justify-center overflow-hidden shadow-sm">
-            <img src={clogo} alt="" className="h-6 w-6 object-contain" onError={(e) => ((e.currentTarget.style.display = "none"))} />
-          </div>
-        )}
-      </div>
-      <p className="font-display font-bold text-sm leading-tight truncate">{a.name}</p>
-      <p className="text-[11px] text-muted-foreground font-mono mt-0.5 truncate flex items-center gap-1">
-        <Building2 size={10} /> {a.company}
-      </p>
-      {a.from_loc && (
-        <p className="text-[10px] text-muted-foreground/80 mt-0.5 truncate italic">from {a.from_loc}</p>
-      )}
-      <div className="mt-2 flex items-center justify-between gap-1">
-        {a.package && (
-          <span className="inline-block px-2 py-0.5 rounded-md text-[10px] font-mono bg-accent/20 text-foreground font-semibold border border-accent/40">
-            ₹{a.package}
-          </span>
-        )}
-        {a.linkedin && (
-          <a href={a.linkedin} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary" aria-label={`${a.name} on LinkedIn`}>
-            <Linkedin size={12} />
-          </a>
-        )}
       </div>
       {a.quote && (
         <p className="mt-2 text-[10px] text-muted-foreground line-clamp-2 italic">"{a.quote}"</p>
       )}
-
     </motion.article>
   );
 }
