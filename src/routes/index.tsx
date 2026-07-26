@@ -77,7 +77,7 @@ function Index() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[94vh] flex items-center overflow-hidden bg-background">
+      <section className="relative min-h-[85vh] sm:min-h-[94vh] flex items-center overflow-hidden bg-background">
         <HeroBackdrop />
         <div className="absolute inset-0 z-[1] bg-gradient-to-r from-background via-background/55 to-transparent pointer-events-none" />
         <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/25 via-transparent to-background pointer-events-none" />

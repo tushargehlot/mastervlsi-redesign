@@ -3,7 +3,7 @@ export function Grain() {
   return (
     <div
       aria-hidden
-      className="grain-overlay pointer-events-none fixed inset-0 z-[60]"
+      className="grain-overlay pointer-events-none fixed inset-0 z-[5]"
       style={{ opacity: 0.18 }}
     />
   );

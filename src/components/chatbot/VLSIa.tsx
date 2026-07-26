@@ -225,7 +225,7 @@ export function VLSIa() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed bottom-24 right-3 left-3 sm:left-auto sm:right-5 sm:w-[400px] z-[60] rounded-2xl overflow-hidden border border-primary/30 bg-card/95 backdrop-blur-xl shadow-elevated"
+            className="fixed bottom-20 sm:bottom-24 right-3 left-3 sm:left-auto sm:right-5 sm:w-[400px] z-[60] rounded-2xl overflow-hidden border border-primary/30 bg-card/95 backdrop-blur-xl shadow-elevated"
             style={{ maxHeight: "min(70vh, 520px)" }}
           >
             {/* Chip pins across top */}

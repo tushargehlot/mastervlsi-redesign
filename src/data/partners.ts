@@ -92,5 +92,10 @@ export const PARTNERS: Partner[] = [
 
 export function logoUrl(domain?: string) {
   if (!domain) return null;
-  return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+  const slug = domain.replace(/\./g, "-");
+  return `/logos/${slug}.png`;
+}
+
+export function initials(name: string) {
+  return name.split(/[\s&]+/).map(w => w[0]).join("").slice(0, 2).toUpperCase();
 }

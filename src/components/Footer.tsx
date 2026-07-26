@@ -18,7 +18,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative bg-surface-1 mt-24 border-t border-border">
+    <footer className="relative bg-surface-1 mt-12 sm:mt-24 border-t border-border">
       <TraceLine />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         {/* Newsletter strip */}
@@ -109,7 +109,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Proof</h4>
             <ul className="mt-4 space-y-2.5 text-sm">
-              <li><Link to="/alumni" className="hover:text-primary transition">Alumni wall</Link></li>
+              <li><Link to="/placements" className="hover:text-primary transition">Alumni wall</Link></li>
               <li><Link to="/testimonials" className="hover:text-primary transition">Testimonials</Link></li>
               <li><Link to="/placements" className="hover:text-primary transition">Placements</Link></li>
               <li><Link to="/about" className="hover:text-primary transition">About us</Link></li>

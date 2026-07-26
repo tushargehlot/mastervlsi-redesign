@@ -12,6 +12,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { MobileActionBar } from "@/components/MobileActionBar";
 import { VLSIa } from "@/components/chatbot/VLSIa";
 import { Cursor } from "@/components/fx/Cursor";
 import { Grain } from "@/components/fx/Grain";
@@ -227,12 +228,13 @@ function RootComponent() {
         <Cursor />
         <Grain />
         <Nav />
-        <main className="min-h-screen pt-16">
+        <main className="min-h-screen pt-16 pb-20 md:pb-0">
           <Outlet />
         </main>
         <Footer />
         <VLSIa />
         <StickyCTA />
+        <MobileActionBar />
         <EntryPopup />
       </DemoModalProvider>
     </QueryClientProvider>
