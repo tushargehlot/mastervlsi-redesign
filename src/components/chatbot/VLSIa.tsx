@@ -108,7 +108,7 @@ function Launcher({ open, onClick }: { open: boolean; onClick: () => void }) {
     <button
       onClick={onClick}
       aria-label={open ? "Close VLSIa" : "Open VLSIa assistant"}
-      className="fixed bottom-5 right-5 z-[60] group"
+      className="fixed bottom-16 sm:bottom-5 right-5 z-[60] group"
     >
       {/* Orbit rings */}
       <span className="absolute inset-[-14px] rounded-full border border-primary/30 animate-spin-slow" />
@@ -163,7 +163,7 @@ export function VLSIa() {
   const demoModal = useDemoModal();
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    endRef.current?.scrollIntoView({ block: "end" });
   }, [msgs, thinking, open]);
 
   function pushBot(text: string, chips?: string[], intent?: string) {
@@ -226,7 +226,7 @@ export function VLSIa() {
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             className="fixed bottom-24 right-3 left-3 sm:left-auto sm:right-5 sm:w-[400px] z-[60] rounded-2xl overflow-hidden border border-primary/30 bg-card/95 backdrop-blur-xl shadow-elevated"
-            style={{ maxHeight: "min(80vh, 640px)" }}
+            style={{ maxHeight: "min(70vh, 520px)" }}
           >
             {/* Chip pins across top */}
             <div className="absolute inset-x-4 top-0 flex justify-between pointer-events-none z-10">
@@ -301,7 +301,7 @@ export function VLSIa() {
             </div>
 
             {/* Body */}
-            <div className="overflow-y-auto px-4 py-4 space-y-3" style={{ maxHeight: "min(52vh, 380px)" }}>
+            <div className="overflow-y-auto px-4 py-4 space-y-3" style={{ maxHeight: "min(52vh, 380px)", overscrollBehavior: "contain" }}>
               {msgs.map((m) => (
                 <div key={m.id} className={m.role === "user" ? "flex justify-end" : "flex justify-start"}>
                   <div className="max-w-[88%]">

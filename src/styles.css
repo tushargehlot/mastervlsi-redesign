@@ -139,13 +139,20 @@
       radial-gradient(ellipse 80% 45% at 50% -10%, oklch(0.76 0.155 220 / calc(0.12 + var(--scroll-tint) * 0.05)), transparent 62%),
       radial-gradient(ellipse 65% 42% at 100% 100%, oklch(0.68 0.185 285 / calc(0.10 + var(--scroll-tint) * 0.04)), transparent 58%),
       linear-gradient(180deg, var(--background) 0%, oklch(0.075 0.030 252) 100%);
-    background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
     overflow-x: hidden;
   }
+  @media (hover: hover) and (pointer: fine) {
+    body {
+      background-attachment: fixed;
+    }
+  }
+
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
     letter-spacing: 0;
