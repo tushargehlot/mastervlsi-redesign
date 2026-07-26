@@ -19,6 +19,8 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 import { SalaryHeatmap } from "@/components/interactive/SalaryHeatmap";
 import { AlumniMap } from "@/components/interactive/AlumniMap";
 import { waLink } from "@/data/site";
+import { AlumniWall } from "@/components/AlumniWall";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 export const Route = createFileRoute("/placements")({
@@ -121,29 +123,58 @@ function PlacementsPage() {
           </div>
         </div>
         <PartnerMarquee />
-        <div className="mx-auto max-w-7xl px-4 mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-          {filtered.map((p) => {
-            const src = logoUrl(p.domain);
-            return (
-              <div
-                key={p.name}
-                className="group aspect-[5/2] rounded-xl border border-border bg-background/60 backdrop-blur flex items-center justify-center gap-2 px-2 hover:border-primary/60 hover:bg-card transition-all relative overflow-hidden"
-              >
-                {src && (
-                  <img
-                    src={src}
-                    alt={`${p.name} company logo`}
-                    loading="lazy"
-                    className="h-7 w-7 object-contain rounded brightness-[1.1] grayscale group-hover:grayscale-0 transition shrink-0"
-                    onError={(e) => ((e.currentTarget.style.display = "none"))}
-                  />
-                )}
-                <span className="font-mono text-[11px] sm:text-xs text-muted-foreground group-hover:text-foreground truncate min-w-0">
-                  {p.name}
-                </span>
-              </div>
-            );
-          })}
+        <div className="mx-auto max-w-7xl px-4 mt-12">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={filter}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-2"
+            >
+              {filtered.map((p, i) => {
+                const src = logoUrl(p.domain);
+                return src ? (
+                  <motion.div
+                    key={p.name}
+                    initial={{ opacity: 0, scale: 0.8, y: 12 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 0.35, delay: i * 0.025, ease: "easeOut" }}
+                    className="group aspect-square rounded-xl border border-border bg-background/50 backdrop-blur flex items-center justify-center hover:border-primary/50 hover:bg-card hover:shadow-lg hover:shadow-primary/5 transition-all relative overflow-hidden cursor-default"
+                  >
+                    <img
+                      src={src}
+                      alt={p.name}
+                      loading="lazy"
+                      className="h-8 w-8 sm:h-9 sm:w-9 object-contain rounded grayscale group-hover:grayscale-0 transition-all duration-500 opacity-60 group-hover:opacity-100 group-hover:scale-110"
+                      onError={(e) => ((e.currentTarget.style.display = "none"))}
+                    />
+                    <span className="absolute bottom-0 left-0 right-0 text-[9px] font-mono text-muted-foreground/0 group-hover:text-muted-foreground/60 text-center pb-1 transition-all duration-300 truncate">
+                      {p.name}
+                    </span>
+                  </motion.div>
+                ) : null;
+              })}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </section>
+
+      <SectionDivider label="alumni wall" />
+      <section className="relative py-16 surface-1 border-y border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal className="max-w-2xl">
+            <p className="font-mono text-xs text-primary uppercase tracking-widest">// Names, roles, packages</p>
+            <h2 className="mt-2 h-display-sm font-display font-bold">
+              Real engineers — <span className="text-gradient">real offers.</span>
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Filter by track to see who landed where, and what they draw.
+            </p>
+          </Reveal>
+          <div className="mt-10">
+            <AlumniWall />
+          </div>
         </div>
       </section>
 
