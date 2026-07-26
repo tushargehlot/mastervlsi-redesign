@@ -92,5 +92,5 @@ export const PARTNERS: Partner[] = [
 
 export function logoUrl(domain?: string) {
   if (!domain) return null;
-  return `https://logo.clearbit.com/${domain}?size=128`;
+  return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
 }
