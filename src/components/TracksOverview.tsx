@@ -18,7 +18,7 @@ export function TracksOverview() {
           <Reveal key={t.id} delay={i * 0.05}>
             <Link
               to="/courses"
-              className="group block h-full rounded-2xl border border-border bg-card p-6 hover:border-primary/60 hover:shadow-[0_16px_40px_-20px_rgba(15,47,92,0.25)] transition-all relative overflow-hidden"
+              className="group block h-full rounded-2xl border border-border bg-card p-6 hover:border-primary/60 hover:shadow-[0_16px_40px_-20px_oklch(0.60_0.20_24_/_0.30)] transition-all relative overflow-hidden"
             >
               <div className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-primary/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative flex items-start justify-between gap-4">

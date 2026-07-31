@@ -63,7 +63,7 @@ function AlumnusCard({ a, i }: { a: Alumnus; i: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: (i % 12) * 0.03 }}
-      className="group relative rounded-2xl border border-border bg-card p-4 hover:border-primary/50 hover:shadow-[0_10px_30px_-12px_rgba(15,47,92,0.20)] transition-all overflow-hidden"
+      className="group relative rounded-2xl border border-border bg-card p-4 hover:border-primary/50 hover:shadow-[0_10px_30px_-12px_oklch(0.60_0.20_24_/_0.22)] transition-all overflow-hidden"
     >
       <p className="font-display font-bold text-sm leading-tight truncate">{a.name}</p>
       {a.package && (

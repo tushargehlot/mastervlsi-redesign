@@ -37,8 +37,8 @@ function PgCard({ pg }: { pg: PG }) {
             <MapPin size={10} /> {pg.distance}
           </p>
         </div>
-        <span className="shrink-0 inline-flex items-center gap-1 rounded-md bg-emerald-500/15 px-2 py-0.5 text-[10px] font-mono text-emerald-400 uppercase tracking-widest">
-          <span className="h-1 w-1 rounded-full bg-emerald-400 animate-pulse" /> verified
+        <span className="shrink-0 inline-flex items-center gap-1 rounded-md bg-primary/15 px-2 py-0.5 text-[10px] font-mono text-primary uppercase tracking-widest">
+          <span className="h-1 w-1 rounded-full bg-primary animate-pulse" /> verified
         </span>
       </div>
       <div className="mt-3 flex flex-wrap gap-1.5">

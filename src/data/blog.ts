@@ -1,12 +1,7 @@
-import chip from "@/assets/blog-chip.jpg";
-import rtl from "@/assets/blog-rtl.jpg";
-import wafer from "@/assets/blog-wafer.jpg";
-
 export type BlogPost = {
   slug: string;
   title: string;
   excerpt: string;
-  cover: string;
   author: string;
   date: string;
   readTime: string;
@@ -14,16 +9,14 @@ export type BlogPost = {
   body: string;
 };
 
-const covers = [chip, rtl, wafer];
-
-const raw: Omit<BlogPost, "cover">[] = [
+const raw: Omit<BlogPost, never>[] = [
   {
     slug: "what-is-vlsi-roadmap",
     title: "What is VLSI? A Beginner's Roadmap for 2026",
     excerpt:
       "From transistors to billion-gate SoCs — the VLSI landscape, what each role does, and how to break in.",
     author: "MasterVLSI Team",
-    date: "2026-01-12",
+    date: "2025-09-10",
     readTime: "8 min",
     tags: ["Beginner", "Career"],
     body: `## The chips that run your life
@@ -45,7 +38,7 @@ Pick **one** flow, learn it deeply, then expand. Don't try to learn everything a
     excerpt:
       "When to reach for SystemVerilog over plain Verilog, and the constructs every RTL engineer must master.",
     author: "MasterVLSI Team",
-    date: "2026-01-22",
+    date: "2025-10-02",
     readTime: "6 min",
     tags: ["RTL", "Verilog"],
     body: `## Same family, different goals
@@ -74,7 +67,7 @@ end
     excerpt:
       "Drivers, monitors, sequencers and scoreboards — demystified with a 32-bit adder testbench.",
     author: "MasterVLSI Team",
-    date: "2026-02-03",
+    date: "2025-10-28",
     readTime: "10 min",
     tags: ["Verification", "UVM"],
     body: `## The UVM mental model
@@ -97,7 +90,7 @@ Random + constrained stimulus catches bugs your directed tests will never imagin
     excerpt:
       "The seven-step PD recipe — what each tool does, what can go wrong, and what to fix first.",
     author: "MasterVLSI Team",
-    date: "2026-02-14",
+    date: "2025-11-18",
     readTime: "9 min",
     tags: ["Physical Design", "Backend"],
     body: `## The PD recipe
@@ -118,7 +111,7 @@ Macro placement before understanding dataflow. Always sketch the connectivity gr
     excerpt:
       "Setup, hold, slack, and why your chip fails at 0 °C but passes at 85 °C.",
     author: "MasterVLSI Team",
-    date: "2026-02-25",
+    date: "2025-12-09",
     readTime: "7 min",
     tags: ["STA", "Backend"],
     body: `## Setup vs Hold in one paragraph
@@ -136,7 +129,7 @@ Negative slack? You have work to do. Common fixes: VT swaps, sizing, useful skew
     excerpt:
       "How testability is baked into modern chips — and why DFT engineers sleep well at night.",
     author: "MasterVLSI Team",
-    date: "2026-03-08",
+    date: "2026-01-14",
     readTime: "8 min",
     tags: ["DFT"],
     body: `## Scan chains
@@ -154,7 +147,7 @@ The chip tests **itself** at speed. Critical for memories — you cannot externa
     excerpt:
       "Metastability, data loss, and the synchronizers that keep async designs alive.",
     author: "MasterVLSI Team",
-    date: "2026-03-20",
+    date: "2026-02-05",
     readTime: "7 min",
     tags: ["CDC", "Verification"],
     body: `## The three CDC sins
@@ -171,7 +164,7 @@ Two-flop synchronizers for control bits. **Gray-code** counters across domains. 
     excerpt:
       "Why mobile SoCs sip milliwatts — and the techniques that get them there.",
     author: "MasterVLSI Team",
-    date: "2026-04-01",
+    date: "2026-02-26",
     readTime: "8 min",
     tags: ["Low Power", "UPF"],
     body: `## The big three
@@ -188,7 +181,7 @@ A separate file describes power intent (domains, supplies, level shifters, isola
     excerpt:
       "The 12 topics every interviewer touches, plus a 30-day prep plan.",
     author: "MasterVLSI Team",
-    date: "2026-04-15",
+    date: "2026-03-17",
     readTime: "9 min",
     tags: ["Career", "Interview"],
     body: `## The 12 topics
@@ -214,7 +207,7 @@ Week 1–2: theory. Week 3: hands-on with toy designs. Week 4: mock interviews. 
     excerpt:
       "Where you start, where you can reach, and what each promotion actually pays.",
     author: "MasterVLSI Team",
-    date: "2026-05-02",
+    date: "2026-04-07",
     readTime: "7 min",
     tags: ["Career"],
     body: `## The ladder
@@ -228,11 +221,16 @@ AI accelerators, automotive silicon, 3 nm and below, chiplet integration. India 
   },
 ];
 
-export const BLOG_POSTS: BlogPost[] = raw.map((p, i) => ({
-  ...p,
-  cover: covers[i % covers.length],
-}));
+export const BLOG_POSTS: BlogPost[] = raw;
 
 export function getPost(slug: string) {
   return BLOG_POSTS.find((p) => p.slug === slug);
+}
+
+export function getAdjacent(slug: string) {
+  const i = BLOG_POSTS.findIndex((p) => p.slug === slug);
+  return {
+    prev: i > 0 ? BLOG_POSTS[i - 1] : null,
+    next: i >= 0 && i < BLOG_POSTS.length - 1 ? BLOG_POSTS[i + 1] : null,
+  };
 }

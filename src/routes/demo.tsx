@@ -28,7 +28,7 @@ function DemoPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
           <div>
             <p className="font-mono text-xs text-primary uppercase tracking-widest">// Try before you commit</p>
-            <h1 className="mt-3 font-display text-5xl sm:text-6xl font-bold">
+            <h1 className="mt-3 h-display-sm font-display font-bold">
               Book a <span className="text-gradient">free demo class.</span>
             </h1>
             <p className="mt-5 text-lg text-muted-foreground">
@@ -43,7 +43,7 @@ function DemoPage() {
                 { icon: Users, label: "Small batch", val: "Max 6 students per demo" },
               ].map((b) => (
                 <div key={b.label} className="flex items-start gap-4 rounded-xl border border-border bg-card/60 p-4">
-                  <div className="h-10 w-10 shrink-0 rounded-md bg-primary/10 text-primary flex items-center justify-center">
+                  <div className="h-10 w-10 shrink-0 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                     <b.icon size={18} />
                   </div>
                   <div>
@@ -57,7 +57,7 @@ function DemoPage() {
               href={SITE.demoFormUrl}
               target="_blank"
               rel="noreferrer"
-              className="mt-10 inline-flex items-center justify-center rounded-md bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground hover:bg-primary/90 glow-red"
+              className="mt-10 inline-flex items-center justify-center rounded-xl bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground hover:bg-primary/90 glow-red"
             >
               Reserve my seat →
             </a>

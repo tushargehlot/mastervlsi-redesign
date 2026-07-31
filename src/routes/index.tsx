@@ -113,7 +113,7 @@ function Index() {
               <Magnetic>
                 <Link
                   to="/demo"
-                  className="group inline-flex items-center gap-2 rounded-md bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-red"
+                  className="group inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-red"
                 >
                   Book a Free Demo
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -122,7 +122,7 @@ function Index() {
               <Magnetic>
                 <Link
                   to="/playlists"
-                  className="inline-flex items-center gap-2 rounded-md border border-primary/35 bg-card/72 backdrop-blur px-7 py-3.5 text-sm font-medium text-foreground hover:border-primary/70 hover:text-primary"
+                  className="inline-flex items-center gap-2 rounded-xl border border-primary/35 bg-card/72 backdrop-blur px-7 py-3.5 text-sm font-medium text-foreground hover:border-primary/70 hover:text-primary"
                 >
                   <Play size={16} /> Watch on YouTube
                 </Link>
@@ -156,7 +156,7 @@ function Index() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-5">
           {MANIFESTO.map((m, i) => (
             <Reveal key={m.kw} delay={i * 0.08} className="flex items-start gap-4">
-              <div className="h-10 w-10 shrink-0 rounded-md bg-primary/10 text-primary flex items-center justify-center">
+              <div className="h-10 w-10 shrink-0 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                 <m.icon size={18} />
               </div>
               <div>
@@ -368,13 +368,13 @@ function Index() {
                   href={SITE.youtubeChannel}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
+                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
                 >
                   <Play size={16} /> Subscribe
                 </a>
               </Magnetic>
               <Magnetic>
-                <Link to="/playlists" className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm hover:border-primary/60 hover:text-primary">
+                <Link to="/playlists" className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-2.5 text-sm hover:border-primary/60 hover:text-primary">
                   Browse all playlists
                 </Link>
               </Magnetic>
@@ -439,12 +439,12 @@ function Index() {
             </p>
             <div className="relative mt-8 flex flex-wrap justify-center gap-3">
               <Magnetic>
-                <Link to="/demo" className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-red">
+                <Link to="/demo" className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-red">
                   Book free demo <ArrowRight size={16} />
                 </Link>
               </Magnetic>
               <Magnetic>
-                <Link to="/contact" className="inline-flex items-center gap-2 rounded-md border border-border px-6 py-3 text-sm hover:border-primary/60 hover:text-primary">
+                <Link to="/contact" className="inline-flex items-center gap-2 rounded-xl border border-border px-6 py-3 text-sm hover:border-primary/60 hover:text-primary">
                   Talk to a counsellor
                 </Link>
               </Magnetic>

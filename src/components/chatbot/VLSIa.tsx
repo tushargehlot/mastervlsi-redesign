@@ -91,7 +91,7 @@ function Pipeline() {
           >
             <span
               className="h-1.5 w-1.5 rounded-full"
-              style={{ background: i % 2 ? "oklch(0.72 0.19 45)" : "oklch(0.62 0.20 25)" }}
+              style={{ background: i % 2 ? "var(--ignite)" : "var(--crimson)" }}
             />
             <span className="text-foreground/80">{s}</span>
           </motion.span>
@@ -145,7 +145,7 @@ function Launcher({ open, onClick }: { open: boolean; onClick: () => void }) {
           </span>
         )}
         {/* Status LED */}
-        <span className="absolute -top-0.5 right-1 h-2.5 w-2.5 rounded-full bg-emerald-400 ring-2 ring-background animate-pulse" />
+        <span className="absolute -top-0.5 right-1 h-2.5 w-2.5 rounded-full bg-primary ring-2 ring-background animate-pulse" />
         {/* Corner pins */}
         <span className="absolute -left-1 top-1/2 -translate-y-1/2 h-2 w-1 bg-white/40" />
         <span className="absolute -right-1 top-1/2 -translate-y-1/2 h-2 w-1 bg-white/40" />
@@ -237,7 +237,7 @@ export function VLSIa() {
 
             {/* Header */}
             <div className="relative px-4 pt-4 pb-3 border-b border-border/60"
-              style={{ background: "linear-gradient(135deg, oklch(0.20 0.05 25 / 0.9), oklch(0.14 0.010 30 / 0.9))" }}
+              style={{ background: "linear-gradient(135deg, oklch(0.19 0.008 0 / 0.95), oklch(0.145 0.006 0 / 0.95))" }}
             >
               <div className="absolute inset-0 grid-bg-fine opacity-20 pointer-events-none" />
               <div className="relative flex items-center justify-between">
@@ -256,7 +256,7 @@ export function VLSIa() {
                         <path d="M4 5 L12 20 L20 5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </div>
-                    <span className="absolute -bottom-1 -right-1 flex h-4 items-center gap-0.5 rounded bg-emerald-500 px-1 text-[8px] font-bold text-black">
+                    <span className="absolute -bottom-1 -right-1 flex h-4 items-center gap-0.5 rounded bg-primary px-1 text-[8px] font-bold text-primary-foreground">
                       <Radio size={7} /> LIVE
                     </span>
                   </div>
@@ -293,8 +293,8 @@ export function VLSIa() {
                 />
                 <defs>
                   <linearGradient id="wave-g" x1="0" x2="1">
-                    <stop offset="0%" stopColor="oklch(0.62 0.20 25)" />
-                    <stop offset="100%" stopColor="oklch(0.72 0.19 45)" />
+                    <stop offset="0%" stopColor="var(--crimson)" />
+                    <stop offset="100%" stopColor="var(--ignite)" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -319,7 +319,7 @@ export function VLSIa() {
                       style={
                         m.role === "user"
                           ? { background: "var(--gradient-ignite)" }
-                          : { background: "oklch(0.16 0.014 30 / 0.9)", borderLeftWidth: 3, borderLeftColor: "oklch(0.72 0.19 45)" }
+                          : { background: "oklch(0.17 0.006 0 / 0.92)", borderLeftWidth: 3, borderLeftColor: "var(--ignite)" }
                       }
                     >
                       <p
@@ -351,14 +351,14 @@ export function VLSIa() {
                 <div className="flex justify-start">
                   <div
                     className="rounded-2xl rounded-bl-sm border border-primary/25 px-3.5 py-2.5 relative overflow-hidden"
-                    style={{ background: "oklch(0.16 0.014 30 / 0.9)", borderLeftWidth: 3, borderLeftColor: "oklch(0.72 0.19 45)" }}
+                    style={{ background: "oklch(0.17 0.006 0 / 0.92)", borderLeftWidth: 3, borderLeftColor: "var(--ignite)" }}
                   >
                     {/* Scanning bar */}
                     <span
                       className="absolute inset-y-0 left-0 w-1/3 pointer-events-none"
                       style={{
                         background:
-                          "linear-gradient(90deg, transparent, oklch(0.72 0.19 45 / 0.25), transparent)",
+                          "linear-gradient(90deg, transparent, color-mix(in oklab, var(--ignite) 25%, transparent), transparent)",
                         animation: "scan-sweep 1.8s ease-in-out infinite",
                       }}
                     />
@@ -392,14 +392,14 @@ export function VLSIa() {
             </form>
             <div className="px-3 pb-2.5 flex items-center justify-between text-[10px] font-mono text-muted-foreground">
               <span className="flex items-center gap-1">
-                <span className="h-1 w-1 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="h-1 w-1 rounded-full bg-primary animate-pulse" />
                 encrypted · privacy-first
               </span>
               <a
                 href={waLink()}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1 text-emerald-400 hover:underline"
+                className="flex items-center gap-1 text-primary hover:underline"
               >
                 <Phone size={10} /> Human on WhatsApp
               </a>

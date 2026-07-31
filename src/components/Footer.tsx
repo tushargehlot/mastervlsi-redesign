@@ -22,12 +22,12 @@ export function Footer() {
       <TraceLine />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         {/* Newsletter strip */}
-        <div className="rounded-3xl border border-border bg-gradient-to-br from-card via-card to-primary/5 p-8 sm:p-10 mb-14 relative overflow-hidden shadow-sm">
+        <div className="rounded-3xl border border-border bg-gradient-to-br from-card via-card to-primary/10 p-8 sm:p-10 mb-14 relative overflow-hidden shadow-[0_30px_80px_-35px_oklch(0.60_0.20_24_/_0.30)]">
           <div className="absolute -top-20 -right-20 h-60 w-60 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
           <div className="relative grid lg:grid-cols-2 gap-6 items-center">
             <div>
               <p className="font-mono text-xs text-primary uppercase tracking-widest">// Silicon weekly</p>
-              <h3 className="mt-2 font-display text-2xl sm:text-3xl font-bold">
+              <h3 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight">
                 One VLSI deep-dive in your inbox <span className="text-gradient">every Friday.</span>
               </h3>
             </div>
@@ -38,11 +38,11 @@ export function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="engineer@silicon.dev"
-                className="flex-1 px-4 py-3 rounded-md bg-background border border-border text-sm focus:border-primary focus:outline-none"
+                className="flex-1 px-4 py-3 rounded-xl bg-background border border-border text-sm focus:border-primary focus:outline-none"
               />
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-navy transition"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-red transition"
               >
                 {sent ? "✓ Subscribed" : <>Subscribe <Send size={14} /></>}
               </button>

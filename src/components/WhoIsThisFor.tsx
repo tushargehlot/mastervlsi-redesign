@@ -55,7 +55,7 @@ export function WhoIsThisFor() {
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
           {PERSONAS.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.06}>
-              <div className="group h-full rounded-2xl border border-border bg-card p-6 hover:border-primary/50 hover:shadow-[0_10px_30px_-12px_rgba(15,47,92,0.15)] transition-all">
+              <div className="group h-full rounded-2xl border border-border bg-card p-6 hover:border-primary/50 hover:shadow-[0_10px_30px_-12px_oklch(0.60_0.20_24_/_0.18)] transition-all">
                 <div className="flex items-center gap-3">
                   <div className="h-11 w-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
                     <p.icon size={20} />

@@ -70,7 +70,7 @@ function AlumniPage() {
 
       <section className="relative py-20">
         <div className="mx-auto max-w-5xl px-4">
-          <div className="rounded-3xl border border-border bg-gradient-to-br from-primary/5 via-card to-card p-10 sm:p-14 text-center">
+          <div className="rounded-3xl border border-border bg-gradient-to-br from-card via-card to-primary/10 p-10 sm:p-14 text-center">
             <h2 className="h-display-sm font-display font-bold">
               You could be <span className="text-gradient">next on this wall.</span>
             </h2>
@@ -78,10 +78,10 @@ function AlumniPage() {
               Join the next cohort. Placement starts within 30–45 days of the core modules.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Link to="/demo" className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-navy">
+              <Link to="/demo" className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-navy">
                 Book free demo <ArrowRight size={16} />
               </Link>
-              <Link to="/courses" className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-6 py-3 text-sm hover:border-primary hover:text-primary">
+              <Link to="/courses" className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-sm hover:border-primary hover:text-primary">
                 See all tracks
               </Link>
             </div>

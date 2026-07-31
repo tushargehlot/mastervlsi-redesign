@@ -3,7 +3,7 @@ import { Star, ExternalLink } from "lucide-react";
 import { GOOGLE_REVIEWS } from "@/data/googleReviews";
 import { SITE } from "@/data/site";
 
-const COLORS = ["var(--primary)", "var(--accent)", "var(--cyber-deep)", "var(--cyber-core)", "var(--violet-core)"];
+const COLORS = ["var(--primary)", "var(--accent)", "var(--crimson-deep)", "var(--crimson)", "var(--ignite)"];
 
 export function GoogleReviewsGrid() {
   const reviews = GOOGLE_REVIEWS.filter((r) => r.rating >= 4);
@@ -54,7 +54,7 @@ export function GoogleReviewsGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: (i % 9) * 0.04 }}
-            className="rounded-2xl border border-border bg-card p-5 hover:border-primary/40 hover:shadow-[0_10px_30px_-15px_rgba(15,47,92,0.20)] transition"
+            className="rounded-2xl border border-border bg-card p-5 hover:border-primary/40 hover:shadow-[0_10px_30px_-15px_oklch(0.60_0.20_24_/_0.22)] transition"
           >
             <div className="flex items-center gap-3">
               <div

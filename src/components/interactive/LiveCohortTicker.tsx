@@ -18,12 +18,12 @@ export function LiveCohortTicker() {
       <div className="flex items-center justify-between px-5 py-3 border-b border-border bg-surface-2">
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
-            <span className="absolute inset-0 rounded-full bg-emerald-500 animate-ping" />
-            <span className="relative h-2 w-2 rounded-full bg-emerald-500" />
+            <span className="absolute inset-0 rounded-full bg-primary animate-ping" />
+            <span className="relative h-2 w-2 rounded-full bg-primary" />
           </span>
           <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">live activity</p>
         </div>
-        <p className="font-mono text-[10px] text-emerald-400">streaming</p>
+        <p className="font-mono text-[10px] text-primary">streaming</p>
       </div>
       <div className="relative h-44 overflow-hidden mask-fade-y">
         <motion.ul

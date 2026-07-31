@@ -133,7 +133,7 @@ function CoursesPage() {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search modules…"
-              className="w-full pl-9 pr-3 py-2.5 rounded-md bg-card border border-border text-sm focus:border-primary focus:outline-none"
+              className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-card border border-border text-sm focus:border-primary focus:outline-none"
             />
           </div>
           <div className="flex flex-wrap gap-1.5">

@@ -19,7 +19,7 @@ export function AlumniMap() {
           {/* Simplified India outline */}
           <path
             d="M230 80 L290 120 L320 180 L340 240 L360 320 L340 400 L300 470 L260 540 L220 560 L180 540 L150 480 L130 420 L110 360 L100 290 L130 220 L170 160 L200 110 Z"
-            fill="oklch(0.18 0.014 255)"
+            fill="oklch(0.17 0.005 0)"
             stroke="oklch(0.45 0.05 25 / 0.4)"
             strokeWidth="1.5"
             strokeDasharray="4 3"

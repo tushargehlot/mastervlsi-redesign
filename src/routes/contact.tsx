@@ -150,7 +150,7 @@ function ContactPage() {
                 />
               </div>
               <Magnetic className="mt-4 inline-block">
-                <a href={SITE.mapsUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90">
+                <a href={SITE.mapsUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90">
                   <MapPin size={14} /> Get directions
                 </a>
               </Magnetic>
@@ -187,13 +187,13 @@ function ContactPage() {
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   placeholder="Tell us what you're exploring…"
-                  className="mt-1.5 w-full bg-transparent border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:border-primary transition-colors resize-none"
+                  className="mt-1.5 w-full bg-transparent border border-border rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-primary transition-colors resize-none"
                 />
               </div>
               <Magnetic className="block">
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-red"
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-red"
                 >
                   {sent ? "Opening WhatsApp…" : <>Send message <Send size={14} /></>}
                 </button>

@@ -3,6 +3,7 @@ export const DEFAULT_WHATSAPP_PREFILL = "Hi MasterVLSI! I'd like to know more ab
 
 export const SITE = {
   name: "MasterVLSI",
+  url: "https://www.mastervlsi.com",
   tagline: "Leader in the semiconductor industry — training the engineers who build the chips.",
   whatsappNumber: "+919844982345", // Nitesh Sir — technical
   whatsappPrefill: DEFAULT_WHATSAPP_PREFILL,

@@ -27,14 +27,15 @@ export function Nav() {
   }, []);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/88 backdrop-blur-2xl border-b border-border shadow-[var(--shadow-elevated)]"
-          : "bg-background/60 backdrop-blur-md"
-      }`}
-    >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 sm:px-6 pt-3">
+      <div
+        className={`mx-auto max-w-7xl rounded-2xl border overflow-hidden transition-all duration-500 ${
+          scrolled
+            ? "border-border/70 bg-background/85 backdrop-blur-2xl shadow-[var(--shadow-elevated)]"
+            : "border-border/50 bg-background/60 backdrop-blur-xl"
+        }`}
+      >
+        <div className="flex items-center justify-between px-4 sm:px-5 h-14 sm:h-16">
         <Link to="/" data-magnetic className="flex items-center gap-2.5 group min-w-0">
           <span className="relative shrink-0 flex items-center justify-center rounded-lg ring-1 ring-border/60 px-2 py-1" style={{ background: "var(--logo-backplate)" }}>
             <img
@@ -64,7 +65,7 @@ export function Nav() {
             </Link>
           ))}
           <Magnetic className="ml-2">
-            <DemoTrigger className="relative inline-flex items-center overflow-hidden rounded-md px-4 py-2 text-[13px] font-semibold text-primary-foreground transition-all glow-red hover:brightness-110">
+            <DemoTrigger className="relative inline-flex items-center overflow-hidden rounded-xl px-4 py-2 text-[13px] font-semibold text-primary-foreground transition-all glow-red hover:brightness-110">
               <span
                 className="absolute inset-0"
                 style={{ background: "var(--gradient-ignite)" }}
@@ -85,21 +86,21 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="xl:hidden border-t border-border bg-background/98 backdrop-blur-xl">
+        <div className="xl:hidden border-t border-border/60 bg-background/98 backdrop-blur-xl rounded-b-2xl">
           <nav className="px-4 py-4 flex flex-col gap-1 max-h-[75vh] overflow-y-auto">
             {links.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="px-3 py-2.5 rounded-md text-sm text-muted-foreground hover:bg-surface-1 hover:text-foreground"
+                className="px-3 py-2.5 rounded-xl text-sm text-muted-foreground hover:bg-surface-1 hover:text-foreground"
                 activeProps={{ className: "text-primary bg-primary/5 font-semibold" }}
                 activeOptions={{ exact: l.to === "/" }}
               >
                 {l.label}
               </Link>
             ))}
-            <DemoTrigger className="relative mt-2 inline-flex items-center justify-center overflow-hidden rounded-md px-4 py-2.5 text-sm font-semibold text-primary-foreground">
+            <DemoTrigger className="relative mt-2 inline-flex items-center justify-center overflow-hidden rounded-xl px-4 py-2.5 text-sm font-semibold text-primary-foreground">
               <span
                 className="absolute inset-0"
                 style={{ background: "var(--gradient-ignite)" }}
@@ -110,6 +111,7 @@ export function Nav() {
           </nav>
         </div>
       )}
+      </div>
     </header>
   );
 }

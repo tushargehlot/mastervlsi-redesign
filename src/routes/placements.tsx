@@ -302,12 +302,12 @@ function PlacementsPage() {
             </p>
             <div className="relative mt-8 flex flex-wrap justify-center gap-3">
               <Magnetic>
-                <Link to="/demo" className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-red">
+                <Link to="/demo" className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-red">
                   Book free demo <ArrowRight size={16} />
                 </Link>
               </Magnetic>
               <Magnetic>
-                <a href={waLink()} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-6 py-3 text-sm hover:border-primary/60 hover:text-primary">
+                <a href={waLink()} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-sm hover:border-primary/60 hover:text-primary">
                   <MessageCircle size={16} /> Chat on WhatsApp
                 </a>
               </Magnetic>

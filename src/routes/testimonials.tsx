@@ -60,13 +60,13 @@ function TestimonialsPage() {
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
                 placeholder="Search by name, company or role…"
-                className="w-full pl-9 pr-3 py-3 rounded-md bg-card border border-border text-sm focus:border-primary focus:outline-none"
+                className="w-full pl-9 pr-3 py-3 rounded-xl bg-card border border-border text-sm focus:border-primary focus:outline-none"
               />
             </label>
             <select
               value={company}
               onChange={(e) => setCompany(e.target.value)}
-              className="rounded-md bg-card border border-border text-sm px-3 py-3"
+              className="rounded-xl bg-card border border-border text-sm px-3 py-3"
             >
               {companies.map((c) => (
                 <option key={c} value={c}>{c}</option>
@@ -145,7 +145,7 @@ function TestimonialsPage() {
               </a>
             </p>
             <div className="mt-6">
-              <Link to="/demo" className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
+              <Link to="/demo" className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
                 Talk to a mentor <ArrowRight size={14} />
               </Link>
             </div>

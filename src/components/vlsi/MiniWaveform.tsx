@@ -18,7 +18,7 @@ export function MiniWaveform({ className = "" }: { className?: string }) {
       {!reduce && (
         <motion.circle
           r="2"
-          fill="oklch(0.78 0.14 70)"
+          fill="var(--ignite-hi)"
           animate={{ cx: [0, 200], opacity: [0, 1, 1, 0] }}
           transition={{ duration: 2.4, repeat: Infinity, ease: "linear" }}
           cy={20}

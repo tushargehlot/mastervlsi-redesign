@@ -36,7 +36,7 @@ export function EntryPopup() {
             exit={{ scale: 0.9, y: 40, opacity: 0 }}
             transition={{ type: "spring", damping: 22, stiffness: 240 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-border bg-card shadow-[0_40px_120px_-30px_rgba(0,60,40,0.5)]"
+            className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-border bg-card shadow-[0_40px_120px_-30px_oklch(0.60_0.20_24_/_0.45)]"
           >
             <div
               className="absolute inset-x-0 top-0 h-40 opacity-90"

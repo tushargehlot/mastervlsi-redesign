@@ -88,7 +88,7 @@ function ServicesPage() {
                 className="group rounded-2xl border border-border bg-card p-6 hover:border-primary/60 hover:glow-soft transition-all relative overflow-hidden"
               >
                 <div className="flex items-center gap-3">
-                  <span className="h-9 w-9 rounded-md bg-primary/10 text-primary flex items-center justify-center font-mono text-xs font-bold">
+                  <span className="h-9 w-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-mono text-xs font-bold">
                     {String(c.number).padStart(2, "0")}
                   </span>
                   <h3 className="font-display text-lg font-bold">{c.title}</h3>
@@ -151,7 +151,7 @@ function ServicesPage() {
               NDA-friendly, milestone-based engagement. We respond within a business day.
             </p>
             <Magnetic className="relative mt-8">
-              <Link to="/contact" className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-red">
+              <Link to="/contact" className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 glow-red">
                 Start a conversation <ArrowRight size={16} />
               </Link>
             </Magnetic>

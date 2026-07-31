@@ -2,10 +2,11 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { BLOG_POSTS, getPost } from "@/data/blog";
+import { BLOG_POSTS, getAdjacent, getPost } from "@/data/blog";
+import { SITE, waLink } from "@/data/site";
+import { BlogCover } from "@/components/blog/BlogCover";
 import { GridBackdrop } from "@/components/GridBackdrop";
-import { Clock, ArrowLeft, MessageCircle } from "lucide-react";
-import { waLink } from "@/data/site";
+import { Clock, ArrowLeft, ArrowRight, MessageCircle, Check, Link2, Share2 } from "lucide-react";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -15,7 +16,7 @@ export const Route = createFileRoute("/blog/$slug")({
   },
   head: ({ loaderData, params }) => {
     const p = loaderData?.post;
-    const url = `https://vlsiviz-sparkle.lovable.app/blog/${params.slug}`;
+    const url = `${SITE.url}/blog/${params.slug}`;
     return {
       meta: p
         ? [
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/blog/$slug")({
             { name: "description", content: p.excerpt },
             { property: "og:title", content: p.title },
             { property: "og:description", content: p.excerpt },
-            { property: "og:image", content: p.cover },
+            { property: "og:image", content: `${SITE.url}/logo-mastervlsi.png` },
             { property: "og:type", content: "article" },
             { property: "og:url", content: url },
             { property: "article:published_time", content: p.date },
@@ -31,7 +32,7 @@ export const Route = createFileRoute("/blog/$slug")({
             { name: "twitter:card", content: "summary_large_image" },
             { name: "twitter:title", content: p.title },
             { name: "twitter:description", content: p.excerpt },
-            { name: "twitter:image", content: p.cover },
+            { name: "twitter:image", content: `${SITE.url}/logo-mastervlsi.png` },
           ]
         : [{ title: "Post — MasterVLSI Blog" }, { name: "robots", content: "noindex" }],
       links: p ? [{ rel: "canonical", href: url }] : [],
@@ -44,15 +45,15 @@ export const Route = createFileRoute("/blog/$slug")({
                 "@type": "Article",
                 headline: p.title,
                 description: p.excerpt,
-                image: p.cover,
-                author: { "@type": "Person", name: p.author },
+                image: `${SITE.url}/logo-mastervlsi.png`,
+                author: { "@type": "Organization", name: p.author },
                 datePublished: p.date,
                 dateModified: p.date,
                 keywords: p.tags.join(", "),
                 publisher: {
                   "@type": "Organization",
                   name: "MasterVLSI",
-                  logo: { "@type": "ImageObject", url: "https://www.mastervlsi.com/logo-mastervlsi.png" },
+                  logo: { "@type": "ImageObject", url: `${SITE.url}/logo-mastervlsi.png` },
                 },
                 mainEntityOfPage: url,
               }),
@@ -63,8 +64,8 @@ export const Route = createFileRoute("/blog/$slug")({
                 "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
                 itemListElement: [
-                  { "@type": "ListItem", position: 1, name: "Home", item: "https://vlsiviz-sparkle.lovable.app/" },
-                  { "@type": "ListItem", position: 2, name: "Blog", item: "https://vlsiviz-sparkle.lovable.app/blog" },
+                  { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
+                  { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE.url}/blog` },
                   { "@type": "ListItem", position: 3, name: p.title, item: url },
                 ],
               }),
@@ -84,9 +85,50 @@ export const Route = createFileRoute("/blog/$slug")({
   ),
 });
 
+function ShareBar({ title }: { title: string }) {
+  const [copied, setCopied] = useState(false);
+  const url = typeof window !== "undefined" ? window.location.href : `${SITE.url}/blog`;
+
+  function share(provider: "wa" | "x" | "linkedin") {
+    const text = `${title} — MasterVLSI Blog`;
+    const href =
+      provider === "wa"
+        ? `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`
+        : provider === "x"
+          ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`
+          : `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    window.open(href, "_blank", "noopener,noreferrer");
+  }
+
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.prompt("Copy link:", url);
+    }
+  }
+
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground flex items-center gap-1.5 mr-1">
+        <Share2 size={12} /> Share
+      </span>
+      <button onClick={() => share("wa")} className="px-3 py-1.5 rounded-full text-xs font-mono border border-border bg-card text-muted-foreground hover:border-primary/60 hover:text-primary transition">WhatsApp</button>
+      <button onClick={() => share("x")} className="px-3 py-1.5 rounded-full text-xs font-mono border border-border bg-card text-muted-foreground hover:border-primary/60 hover:text-primary transition">X</button>
+      <button onClick={() => share("linkedin")} className="px-3 py-1.5 rounded-full text-xs font-mono border border-border bg-card text-muted-foreground hover:border-primary/60 hover:text-primary transition">LinkedIn</button>
+      <button onClick={copy} className="px-3 py-1.5 rounded-full text-xs font-mono border border-primary/40 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition inline-flex items-center gap-1.5">
+        {copied ? <><Check size={11} /> Copied</> : <><Link2 size={11} /> Copy link</>}
+      </button>
+    </div>
+  );
+}
+
 function BlogPostPage() {
   const { post } = Route.useLoaderData();
   const [progress, setProgress] = useState(0);
+  const { prev, next } = getAdjacent(post.slug);
 
   useEffect(() => {
     function onScroll() {
@@ -103,9 +145,7 @@ function BlogPostPage() {
 
   return (
     <article className="relative">
-      <div className="fixed top-16 inset-x-0 h-0.5 bg-border z-40">
-        <div className="h-full bg-primary transition-[width] duration-100" style={{ width: `${progress}%` }} />
-      </div>
+      <div className="fixed top-0 inset-x-0 h-0.5 z-40 bg-gradient-to-r from-crimson via-ignite to-trace" style={{ width: `${progress}%` }} />
 
       <header className="relative pt-16 pb-12 border-b border-border">
         <GridBackdrop />
@@ -118,21 +158,22 @@ function BlogPostPage() {
               <span key={t} className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-primary/15 text-primary">{t}</span>
             ))}
           </div>
-          <h1 className="mt-4 font-display text-4xl sm:text-5xl font-bold leading-tight">{post.title}</h1>
+          <h1 className="mt-4 h-display-sm font-display font-bold leading-tight">{post.title}</h1>
           <p className="mt-5 text-lg text-muted-foreground">{post.excerpt}</p>
-          <div className="mt-6 flex items-center gap-3 text-xs text-muted-foreground font-mono">
+          <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-muted-foreground font-mono">
             <span>{post.author}</span>
             <span>·</span>
             <span>{new Date(post.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
             <span>·</span>
             <span className="inline-flex items-center gap-1"><Clock size={11} /> {post.readTime}</span>
           </div>
+          <div className="mt-6">
+            <ShareBar title={post.title} />
+          </div>
         </div>
       </header>
 
-      <div className="aspect-[2/1] max-h-[480px] overflow-hidden border-b border-border">
-        <img src={post.cover} alt={post.title} className="w-full h-full object-cover" width={1280} height={768} />
-      </div>
+      <BlogCover post={post} className="aspect-[2/1] max-h-[480px] border-b border-border" titleClassName="text-3xl sm:text-5xl max-w-3xl" />
 
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="prose prose-invert prose-lg max-w-none
@@ -150,13 +191,34 @@ function BlogPostPage() {
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
         </div>
 
-        <div className="mt-16 rounded-2xl border border-border bg-gradient-to-br from-card via-card to-primary/10 p-8 text-center glow-red">
+        <div className="mt-16 rounded-3xl border border-border bg-gradient-to-br from-card via-card to-primary/10 p-8 text-center glow-red">
           <h3 className="font-display text-2xl font-bold">Got questions about this topic?</h3>
           <p className="mt-2 text-muted-foreground">Ping us on WhatsApp — our mentors usually reply within the hour.</p>
-          <a href={waLink(`Hi MasterVLSI! I read "${post.title}" and have a question.`)} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
+          <a href={waLink(`Hi MasterVLSI! I read "${post.title}" and have a question.`)} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
             <MessageCircle size={14} /> Chat with us
           </a>
         </div>
+
+        {(prev || next) && (
+          <nav className="mt-12 grid sm:grid-cols-2 gap-4" aria-label="Blog post navigation">
+            {prev ? (
+              <Link to="/blog/$slug" params={{ slug: prev.slug }} className="group rounded-2xl border border-border bg-card p-5 hover:border-primary/60 transition-all">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground flex items-center gap-1">
+                  <ArrowLeft size={11} /> Previous
+                </p>
+                <p className="mt-2 font-display font-bold leading-snug line-clamp-2 group-hover:text-primary transition-colors">{prev.title}</p>
+              </Link>
+            ) : <span />}
+            {next ? (
+              <Link to="/blog/$slug" params={{ slug: next.slug }} className="group rounded-2xl border border-border bg-card p-5 text-right hover:border-primary/60 transition-all">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground flex items-center gap-1 justify-end">
+                  Next <ArrowRight size={11} />
+                </p>
+                <p className="mt-2 font-display font-bold leading-snug line-clamp-2 group-hover:text-primary transition-colors">{next.title}</p>
+              </Link>
+            ) : <span />}
+          </nav>
+        )}
       </div>
 
       {related.length > 0 && (
@@ -165,13 +227,8 @@ function BlogPostPage() {
             <h3 className="font-display text-2xl font-bold">Keep reading</h3>
             <div className="mt-6 grid md:grid-cols-3 gap-4">
               {related.map((p) => (
-                <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/60 transition">
-                  <div className="aspect-video overflow-hidden">
-                    <img src={p.cover} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
-                  </div>
-                  <div className="p-4">
-                    <h4 className="font-display font-bold group-hover:text-primary transition-colors line-clamp-2">{p.title}</h4>
-                  </div>
+                <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="group rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/60 transition">
+                  <BlogCover post={p} className="aspect-video" titleClassName="text-sm sm:text-base line-clamp-2 group-hover:text-primary transition-colors" />
                 </Link>
               ))}
             </div>
