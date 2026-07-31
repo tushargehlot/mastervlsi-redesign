@@ -4,6 +4,7 @@ import { AlumniWall } from "@/components/AlumniWall";
 import { GridBackdrop } from "@/components/GridBackdrop";
 import { Reveal } from "@/components/fx/Reveal";
 import { ALUMNI } from "@/data/alumni";
+import { SITE } from "@/data/site";
 
 export const Route = createFileRoute("/alumni")({
   head: () => ({
@@ -13,9 +14,9 @@ export const Route = createFileRoute("/alumni")({
       { property: "og:title", content: "MasterVLSI Alumni Wall" },
       { property: "og:description", content: "5000+ engineers placed across the global semiconductor industry." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/alumni" },
+      { property: "og:url", content: `${SITE.url}/alumni` },
     ],
-    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/alumni" }],
+    links: [{ rel: "canonical", href: `${SITE.url}/alumni` }],
     scripts: [
       {
         type: "application/ld+json",

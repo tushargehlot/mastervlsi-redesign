@@ -16,9 +16,9 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact MasterVLSI — Bengaluru" },
       { property: "og:description", content: "WhatsApp, email, call or drop by our Bengaluru lab." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/contact" },
+      { property: "og:url", content: `${SITE.url}/contact` },
     ],
-    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/contact" }],
+    links: [{ rel: "canonical", href: `${SITE.url}/contact` }],
     scripts: [
       {
         type: "application/ld+json",
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/contact")({
           description: SITE.tagline,
           telephone: SITE.phone,
           email: SITE.email,
-          url: "https://vlsiviz-sparkle.lovable.app/contact",
+          url: `${SITE.url}/contact`,
           address: {
             "@type": "PostalAddress",
             streetAddress:

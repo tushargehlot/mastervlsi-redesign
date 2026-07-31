@@ -5,7 +5,7 @@ import { Counter } from "@/components/Counter";
 import { Spotlight } from "@/components/fx/Spotlight";
 import { Reveal } from "@/components/fx/Reveal";
 import { SectionDivider } from "@/components/vlsi/SectionDivider";
-import { STATS } from "@/data/site";
+import { SITE, STATS } from "@/data/site";
 import { Target, Eye, Heart, Award, Check, X } from "lucide-react";
 import { MentorWall } from "@/components/interactive/MentorWall";
 import { AccommodationSection } from "@/components/AccommodationSection";
@@ -20,9 +20,9 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About MasterVLSI — A Decade of Silicon Excellence" },
       { property: "og:description", content: "How a 12-student weekend cohort became India's most trusted VLSI training school." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/about" },
+      { property: "og:url", content: `${SITE.url}/about` },
     ],
-    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/about" }],
+    links: [{ rel: "canonical", href: `${SITE.url}/about` }],
   }),
   component: About,
 });

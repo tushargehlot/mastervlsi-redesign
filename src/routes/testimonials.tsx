@@ -15,9 +15,9 @@ export const Route = createFileRoute("/testimonials")({
       { property: "og:title", content: "MasterVLSI Video Testimonials" },
       { property: "og:description", content: "200+ unscripted video stories from placed engineers." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/testimonials" },
+      { property: "og:url", content: `${SITE.url}/testimonials` },
     ],
-    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/testimonials" }],
+    links: [{ rel: "canonical", href: `${SITE.url}/testimonials` }],
   }),
   component: TestimonialsPage,
 });

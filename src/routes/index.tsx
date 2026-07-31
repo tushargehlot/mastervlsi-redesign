@@ -34,14 +34,14 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Best VLSI Institute in Bangalore — MasterVLSI" },
       { property: "og:description", content: "From RTL to UVM Verification — training with placement at Intel, AMD, NVIDIA, Qualcomm and 60+ companies in 30–45 days." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.mastervlsi.com/" },
+      { property: "og:url", content: `${SITE.url}/` },
       { property: "og:site_name", content: "MasterVLSI" },
-      { property: "og:image", content: "https://www.mastervlsi.com/logo-mastervlsi.png" },
+      { property: "og:image", content: `${SITE.url}/logo-mastervlsi.png` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Best VLSI Institute in Bangalore — MasterVLSI" },
       { name: "twitter:description", content: "RTL & Design Verification training with placement in 30–45 days." },
     ],
-    links: [{ rel: "canonical", href: "https://www.mastervlsi.com/" }],
+    links: [{ rel: "canonical", href: `${SITE.url}/` }],
     scripts: [
       {
         type: "application/ld+json",

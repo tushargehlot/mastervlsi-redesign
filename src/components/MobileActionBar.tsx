@@ -10,7 +10,7 @@ export function MobileActionBar() {
       className="fixed bottom-0 inset-x-0 z-40 md:hidden border-t border-border bg-background/90 backdrop-blur-xl pb-[env(safe-area-inset-bottom)]"
     >
       <div className="grid grid-cols-3 text-center">
-        <a href={waLink()} className="flex flex-col items-center gap-1 py-2.5 text-[10px] font-mono text-emerald-400 hover:bg-emerald-500/5">
+        <a href={waLink()} className="flex flex-col items-center gap-1 py-2.5 text-[10px] font-mono text-primary hover:bg-primary/5">
           <MessageCircle size={18} />
           WhatsApp
         </a>

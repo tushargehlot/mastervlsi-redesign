@@ -31,9 +31,9 @@ export const Route = createFileRoute("/placements")({
       { property: "og:title", content: "Placements at MasterVLSI — 5000+ Silicon Engineers" },
       { property: "og:description", content: "Video stories, written quotes, Google reviews — see where MasterVLSI engineers land." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/placements" },
+      { property: "og:url", content: `${SITE.url}/placements` },
     ],
-    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/placements" }],
+    links: [{ rel: "canonical", href: `${SITE.url}/placements` }],
 
     scripts: [
       {

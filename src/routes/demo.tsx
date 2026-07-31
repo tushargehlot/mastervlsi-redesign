@@ -12,9 +12,9 @@ export const Route = createFileRoute("/demo")({
       { property: "og:title", content: "Free VLSI Demo Class — MasterVLSI" },
       { property: "og:description", content: "Try before you commit. Book a complimentary demo today." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/demo" },
+      { property: "og:url", content: `${SITE.url}/demo` },
     ],
-    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/demo" }],
+    links: [{ rel: "canonical", href: `${SITE.url}/demo` }],
   }),
   component: DemoPage,
 });

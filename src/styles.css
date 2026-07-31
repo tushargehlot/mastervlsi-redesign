@@ -133,8 +133,6 @@
     color-scheme: dark;
     scroll-behavior: smooth;
     scrollbar-color: var(--navy) var(--surface-1);
-    overflow-x: hidden;
-    overflow-x: clip;
   }
   body {
     background-color: var(--color-background);
@@ -148,7 +146,6 @@
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: none;
-    overflow-x: hidden;
   }
   @media (hover: hover) and (pointer: fine) {
     body {

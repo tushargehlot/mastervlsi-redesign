@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { GridBackdrop } from "@/components/GridBackdrop";
 import { Reveal } from "@/components/fx/Reveal";
 import { ProtocolMatrix } from "@/components/ProtocolMatrix";
+import { SITE } from "@/data/site";
 
 export const Route = createFileRoute("/courses/protocols")({
   head: () => ({
@@ -12,9 +13,9 @@ export const Route = createFileRoute("/courses/protocols")({
       { property: "og:title", content: "Protocols we teach at MasterVLSI" },
       { property: "og:description", content: "AMBA, low-speed and high-speed serial protocols — end-to-end coverage." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/courses/protocols" },
+      { property: "og:url", content: `${SITE.url}/courses/protocols` },
     ],
-    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/courses/protocols" }],
+    links: [{ rel: "canonical", href: `${SITE.url}/courses/protocols` }],
   }),
   component: ProtocolsPage,
 });

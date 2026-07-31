@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { COURSES } from "@/data/courses";
+import { SITE } from "@/data/site";
 import { GridBackdrop } from "@/components/GridBackdrop";
 import { Spotlight } from "@/components/fx/Spotlight";
 import { Reveal } from "@/components/fx/Reveal";
@@ -17,9 +18,9 @@ export const Route = createFileRoute("/services")({
       { property: "og:title", content: "VLSI Design & Verification Services" },
       { property: "og:description", content: "Industry-grade silicon engineering, on demand — from RTL to sign-off." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://vlsiviz-sparkle.lovable.app/services" },
+      { property: "og:url", content: `${SITE.url}/services` },
     ],
-    links: [{ rel: "canonical", href: "https://vlsiviz-sparkle.lovable.app/services" }],
+    links: [{ rel: "canonical", href: `${SITE.url}/services` }],
   }),
   component: ServicesPage,
 });
