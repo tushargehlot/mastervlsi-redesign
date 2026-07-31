@@ -89,7 +89,7 @@ function Index() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-card/75 backdrop-blur px-3 py-1.5 text-xs font-mono shadow-[var(--glow)]">
+            <div className="inline-flex max-w-full flex-wrap justify-center items-center gap-2 rounded-full border border-primary/35 bg-card/75 backdrop-blur px-3 py-1.5 text-xs font-mono shadow-[var(--glow)]">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inset-0 rounded-full bg-primary animate-ping" />
                 <span className="relative h-1.5 w-1.5 rounded-full bg-primary" />

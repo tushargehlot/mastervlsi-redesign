@@ -42,7 +42,7 @@ export function Nav() {
               alt="MasterVLSI"
               width={160}
               height={40}
-              className="relative h-8 sm:h-9 w-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+              className="relative h-8 sm:h-9 w-auto max-w-[45vw] object-contain transition-transform duration-500 group-hover:scale-[1.03]"
             />
           </span>
         </Link>
@@ -78,7 +78,7 @@ export function Nav() {
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
-          className="xl:hidden p-2 -mr-2 text-foreground"
+          className="xl:hidden p-2 -mr-2 text-foreground shrink-0"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
