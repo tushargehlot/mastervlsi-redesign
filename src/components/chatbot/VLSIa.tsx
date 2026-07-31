@@ -111,9 +111,9 @@ function Launcher({ open, onClick }: { open: boolean; onClick: () => void }) {
       className="fixed bottom-16 sm:bottom-5 right-5 z-[60] group"
     >
       {/* Orbit rings */}
-      <span className="absolute inset-[-14px] rounded-full border border-primary/30 animate-spin-slow" />
+      <span className="absolute inset-0 rounded-full border border-primary/30 animate-spin-slow" />
       <span
-        className="absolute inset-[-8px] rounded-full border border-accent/40"
+        className="absolute inset-0 rounded-full border border-accent/40"
         style={{ animation: "spin-slow 12s linear infinite reverse" }}
       />
       <span
