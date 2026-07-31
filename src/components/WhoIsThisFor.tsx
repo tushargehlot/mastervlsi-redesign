@@ -45,7 +45,7 @@ export function WhoIsThisFor() {
         <Reveal className="max-w-2xl">
           <p className="font-mono text-xs text-primary uppercase tracking-widest">// One-stop solution</p>
           <h2 className="mt-3 h-display-sm font-display font-bold">
-            Wherever you're starting from — <span className="text-gradient">we get you into VLSI.</span>
+            Wherever you're starting from – <span className="text-gradient">we get you into VLSI.</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
             12+ years of turning students, freshers, career-gap professionals and cross-domain switchers into shipping semiconductor engineers.

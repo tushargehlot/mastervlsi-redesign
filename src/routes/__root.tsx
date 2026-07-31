@@ -90,11 +90,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Best VLSI Institute in Bangalore | RTL & Design Verification — MasterVLSI" },
+      { title: "Best VLSI Institute in Bangalore | RTL & Design Verification – MasterVLSI" },
       {
         name: "description",
         content:
-          "MasterVLSI — the top VLSI training institute in Bangalore for RTL Design, Design Verification (UVM), CDC, IP & SoC. 5000+ engineers placed at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence in 30–45 days. 24/7 EDA lab, industry mentors.",
+          "MasterVLSI – the top VLSI training institute in Bangalore for RTL Design, Design Verification (UVM), CDC, IP & SoC. 5000+ engineers placed at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence in 30–45 days. 24/7 EDA lab, industry mentors.",
       },
       { name: "keywords", content: "VLSI institute Bangalore, best VLSI training Bangalore, VLSI course Bangalore, RTL design training, Design Verification UVM course, SystemVerilog training Bangalore, VLSI placement, MasterVLSI" },
       { name: "author", content: "MasterVLSI" },
@@ -103,7 +103,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "geo.placename", content: "Bangalore" },
       { name: "geo.position", content: "13.0067;77.6829" },
       { name: "ICBM", content: "13.0067, 77.6829" },
-      { property: "og:title", content: "Best VLSI Institute in Bangalore — MasterVLSI" },
+      { property: "og:title", content: "Best VLSI Institute in Bangalore – MasterVLSI" },
       { property: "og:description", content: "RTL & Design Verification training with placement in 30–45 days at 60+ semiconductor companies." },
       { property: "og:site_name", content: "MasterVLSI" },
       { property: "og:locale", content: "en_IN" },
@@ -136,7 +136,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               logo: `${SITE_URL}/logo-mastervlsi.png`,
               image: `${SITE_URL}/logo-mastervlsi.png`,
               description:
-                "Premier VLSI training institute in Bangalore — RTL Design, Design Verification (UVM), SoC integration and placement in 30–45 days at Intel, AMD, NVIDIA, Qualcomm.",
+                "Premier VLSI training institute in Bangalore – RTL Design, Design Verification (UVM), SoC integration and placement in 30–45 days at Intel, AMD, NVIDIA, Qualcomm.",
               telephone: "+91-98449-82345",
               email: "hr@mastervlsi.com",
               priceRange: "₹₹",
@@ -172,7 +172,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               aggregateRating: {
                 "@type": "AggregateRating",
                 ratingValue: "4.9",
-                reviewCount: "500",
                 bestRating: "5",
               },
               foundingDate: "2015",

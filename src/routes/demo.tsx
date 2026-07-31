@@ -7,9 +7,9 @@ import { CalendarCheck, Clock, MapPin, Users } from "lucide-react";
 export const Route = createFileRoute("/demo")({
   head: () => ({
     meta: [
-      { title: "Book a Free VLSI Demo Class — MasterVLSI Bengaluru" },
+      { title: "Book a Free VLSI Demo Class – MasterVLSI Bengaluru" },
       { name: "description", content: "Reserve a free 60-minute VLSI demo class. Meet mentors, tour the 24/7 lab and see the curriculum firsthand. On-site in Bengaluru or online." },
-      { property: "og:title", content: "Free VLSI Demo Class — MasterVLSI" },
+      { property: "og:title", content: "Free VLSI Demo Class – MasterVLSI" },
       { property: "og:description", content: "Try before you commit. Book a complimentary demo today." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE.url}/demo` },

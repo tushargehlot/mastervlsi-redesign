@@ -15,9 +15,9 @@ import { Play, ExternalLink } from "lucide-react";
 export const Route = createFileRoute("/playlists")({
   head: () => ({
     meta: [
-      { title: "Free VLSI YouTube Playlists — Verilog, SystemVerilog, UVM | MasterVLSI" },
+      { title: "Free VLSI YouTube Playlists – Verilog, SystemVerilog, UVM | MasterVLSI" },
       { name: "description", content: "200+ free VLSI tutorial videos organised by topic: Verilog, SystemVerilog, UVM, Design Verification and interview prep from working industry mentors in Bangalore." },
-      { property: "og:title", content: "Free VLSI Video Tutorials — MasterVLSI" },
+      { property: "og:title", content: "Free VLSI Video Tutorials – MasterVLSI" },
       { property: "og:description", content: "Curated playlists from our YouTube channel @mastervlsi2526." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://www.mastervlsi.com/playlists" },
@@ -45,7 +45,7 @@ function PlaylistsPage() {
               VLSI on <span className="text-gradient">YouTube.</span>
             </h1>
             <p className="mt-5 text-lg text-muted-foreground">
-              200+ videos, organised by topic. Verilog basics through to UVM, Design Verification and full interview prep —
+              200+ videos, organised by topic. Verilog basics through to UVM, Design Verification and full interview prep –
               all from working industry mentors. Start anywhere, work at your own pace.
             </p>
             <Magnetic className="mt-6 inline-block">
@@ -103,7 +103,7 @@ function PlaylistsPage() {
               200+ free videos. <span className="text-gradient">Zero excuses.</span>
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Subscribe and ring the bell — new mentor-led tutorials drop every week.
+              Subscribe and ring the bell – new mentor-led tutorials drop every week.
             </p>
             <Magnetic className="mt-6 inline-block">
               <a

@@ -128,7 +128,7 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 sm:flex-row items-center justify-between border-t border-border pt-6">
           <p className="text-xs text-muted-foreground font-mono">
-            © 2026 MasterVLSI — 12+ years of shaping semiconductor engineers.
+            © 2026 MasterVLSI – 12+ years of shaping semiconductor engineers.
           </p>
           <p className="text-xs text-muted-foreground">
             All trademarks belong to their respective owners.

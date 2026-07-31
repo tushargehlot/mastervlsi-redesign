@@ -28,7 +28,7 @@ export function CampusTour() {
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl">
             The lab where 5000+ engineers wrote their first testbench, taped out their first block,
-            and signed their first offer letter. Full walkthrough — 90 seconds.
+            and signed their first offer letter. Full walkthrough – 90 seconds.
           </p>
         </Reveal>
 
@@ -72,7 +72,7 @@ export function CampusTour() {
                 <div className="absolute bottom-4 left-4 right-4 text-left">
                   <p className="font-mono text-[10px] uppercase tracking-widest text-white/70">// 01:32</p>
                   <p className="mt-1 font-display text-white text-lg sm:text-xl font-bold drop-shadow">
-                    Inside MasterVLSI — Bengaluru
+                    Inside MasterVLSI – Bengaluru
                   </p>
                 </div>
               </button>

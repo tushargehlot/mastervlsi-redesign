@@ -15,9 +15,9 @@ import { HeroBackdrop } from "@/components/HeroBackdrop";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About MasterVLSI — 10+ Years Training VLSI Engineers" },
+      { title: "About MasterVLSI – 10+ Years Training VLSI Engineers" },
       { name: "description", content: "Founded 2015 in Bengaluru. 16 industry mentors, 5000+ alumni at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence. Campus near Tin-Factory with 24/7 lab access." },
-      { property: "og:title", content: "About MasterVLSI — A Decade of Silicon Excellence" },
+      { property: "og:title", content: "About MasterVLSI – A Decade of Silicon Excellence" },
       { property: "og:description", content: "How a 12-student weekend cohort became India's most trusted VLSI training school." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE.url}/about` },
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/about")({
 
 const TIMELINE = [
   { year: "2015", title: "Founded", desc: "Started as a 12-student weekend cohort in Bengaluru with two senior engineers and a borrowed lab." },
-  { year: "2017", title: "First Intel offer", desc: "An alumna joins Intel's DV team — our first marquee placement and our first written testimonial." },
+  { year: "2017", title: "First Intel offer", desc: "An alumna joins Intel's DV team – our first marquee placement and our first written testimonial." },
   { year: "2018", title: "1000+ Alumni", desc: "Crossed our first major milestone with curated cohorts across Design and Verification tracks." },
   { year: "2020", title: "24/7 Online Lab", desc: "Pivoted to remote-first with full EDA tool access for every enrolled student, no geographic limits." },
   { year: "2022", title: "Services arm launched", desc: "Began delivering NDA-grade RTL & DV engagements to fabless startups in addition to training." },
@@ -76,10 +76,10 @@ function About() {
 
           <Reveal delay={0.15} className="mt-16 grid md:grid-cols-2 gap-5">
             {[
-              { icon: Target, title: "Our mission", text: "Make world-class VLSI education accessible, hands-on, and outcome-driven — for every serious engineer regardless of pedigree." },
+              { icon: Target, title: "Our mission", text: "Make world-class VLSI education accessible, hands-on, and outcome-driven – for every serious engineer regardless of pedigree." },
               { icon: Eye, title: "Our vision", text: "Become the global default for chip-design talent training by 2030, with alumni shipping silicon at every major foundry-bound company." },
               { icon: Heart, title: "Our values", text: "Honest mentorship. No shortcuts. Career-long support. We pick up the call after you've graduated, signed and shipped." },
-              { icon: Award, title: "Our proof", text: "5000+ alumni at 30+ marquee silicon companies. 4.9★ average Google review across 200+ verified reviewers." },
+              { icon: Award, title: "Our proof", text: "5000+ alumni at 30+ marquee silicon companies. 4.9★ rated on Google." },
             ].map((b) => (
               <div key={b.title} className="rounded-2xl border border-border bg-card p-7 hover:border-primary/40 transition-all">
                 <div className="h-11 w-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
@@ -120,17 +120,17 @@ function About() {
               How a MasterVLSI cohort <span className="text-gradient">actually runs.</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              We don't believe in tutorial-style learning. Every concept is taught against a real artifact you build —
+              We don't believe in tutorial-style learning. Every concept is taught against a real artifact you build –
               a UART, a DMA, a 32-bit pipelined adder, an AXI verification env, a UVM testbench. By the end of the cohort, you have
-              not a certificate — a portfolio.
+              not a certificate – a portfolio.
             </p>
           </Reveal>
           <div className="lg:col-span-3 grid sm:grid-cols-2 gap-4">
             {[
               { n: "01", t: "Live, capped batches", d: "Max 12 students. Cameras on. Mentor knows your name and your last bug." },
               { n: "02", t: "Lab-first delivery", d: "We open the EDA tool before opening a slide. Theory follows the keystroke." },
-              { n: "03", t: "Graded weekly labs", d: "Every assignment is reviewed line-by-line. No 'completion' — only quality." },
-              { n: "04", t: "1-on-1 design reviews", d: "Senior engineers review your RTL/testbench like a real PR — comments, requested changes, sign-off." },
+              { n: "03", t: "Graded weekly labs", d: "Every assignment is reviewed line-by-line. No 'completion' – only quality." },
+              { n: "04", t: "1-on-1 design reviews", d: "Senior engineers review your RTL/testbench like a real PR – comments, requested changes, sign-off." },
             ].map((m) => (
               <div key={m.n} className="rounded-2xl border border-border bg-card p-6">
                 <span className="font-mono text-xs text-primary">{m.n}</span>
@@ -228,7 +228,7 @@ function About() {
           <Reveal className="max-w-2xl mb-10">
             <p className="font-mono text-xs text-primary uppercase tracking-widest">// The bench</p>
             <h2 className="mt-3 h-display-sm font-display font-bold">
-              Engineers who <span className="text-gradient">tape out silicon</span> — not lecturers.
+              Engineers who <span className="text-gradient">tape out silicon</span> – not lecturers.
             </h2>
             <p className="mt-4 text-muted-foreground">Hover any card to see specialties. Every mentor still works on production silicon.</p>
           </Reveal>

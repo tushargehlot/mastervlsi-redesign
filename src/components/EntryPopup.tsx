@@ -62,7 +62,7 @@ export function EntryPopup() {
                 Talk to a mentor before <span className="text-gradient">you enroll.</span>
               </h2>
               <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
-                Get a personalised roadmap — RTL, SystemVerilog, UVM or protocols — plus a call from
+                Get a personalised roadmap – RTL, SystemVerilog, UVM or protocols – plus a call from
                 our placement team. Zero cost, no obligation.
               </p>
 

@@ -8,10 +8,10 @@ import { SITE } from "@/data/site";
 export const Route = createFileRoute("/courses_/protocols")({
   head: () => ({
     meta: [
-      { title: "Protocols We Teach — AMBA, PCIe, DDR, USB, CXL, Ethernet | MasterVLSI" },
+      { title: "Protocols We Teach – AMBA, PCIe, DDR, USB, CXL, Ethernet | MasterVLSI" },
       { name: "description", content: "MasterVLSI protocol training: AMBA (APB/AHB/AXI), UART, SPI, I2C, GPIO, JTAG, PCIe, DDR, USB, CXL, CHI, Ethernet. Design and verification depth on every protocol." },
       { property: "og:title", content: "Protocols we teach at MasterVLSI" },
-      { property: "og:description", content: "AMBA, low-speed and high-speed serial protocols — end-to-end coverage." },
+      { property: "og:description", content: "AMBA, low-speed and high-speed serial protocols – end-to-end coverage." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE.url}/courses/protocols` },
     ],
@@ -32,7 +32,7 @@ function ProtocolsPage() {
               Every protocol <span className="text-gradient">on modern silicon.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-              From AMBA on-chip fabric to high-speed serial links — we cover the protocols semiconductor companies actually hire for.
+              From AMBA on-chip fabric to high-speed serial links – we cover the protocols semiconductor companies actually hire for.
             </p>
           </Reveal>
         </div>

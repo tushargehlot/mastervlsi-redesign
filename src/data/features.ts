@@ -1,24 +1,39 @@
-// 20 interactive feature ideas — content + placement.
-// Each entry includes which route it lives on so the team can prioritise.
-export const FEATURE_IDEAS = [
-  { id: 1, title: "Mentor Wall", route: "/about",      summary: "Hover-flip cards with mentor specialties + years on silicon." },
-  { id: 2, title: "Coverage Gauge",  route: "/courses",    summary: "Animated radial gauge per module — RTL and DV coverage %." },
-  { id: 3, title: "Salary Heatmap",  route: "/placements", summary: "Role × experience grid with crimson heat cells & live tooltip." },
-  { id: 4, title: "Alumni Map",      route: "/placements", summary: "SVG India-map with company pins clustered by city." },
-  { id: 5, title: "VLSI Glossary",   route: "/playlists",  summary: "Searchable acronym dictionary with quick filter." },
-  { id: 6, title: "Quick Quiz",      route: "/demo",       summary: "5-question role-recommender — outputs the right track." },
-  { id: 7, title: "Cost Calculator", route: "/courses",    summary: "Slider tweaks duration/mode → live fee + EMI estimate." },
-  { id: 8, title: "Founders Note",   route: "/about",      summary: "Letter-style note with animated handwritten signature." },
-  { id: 9, title: "Live Cohort Ticker", route: "/",        summary: "Marquee of latest enrolments + placements (mocked stream)." },
-  { id: 10, title: "News & Press",   route: "/about",      summary: "Press logos + 1-line excerpts, scroll-snap horizontal." },
-  { id: 11, title: "Cohort Compare", route: "/courses",    summary: "Side-by-side Online vs Offline matrix." },
-  { id: 12, title: "Tool Stack Showcase", route: "/services", summary: "Cadence, Synopsys, Mentor logos with hover reveal." },
-  { id: 13, title: "Live Lab Cam (mock)", route: "/about", summary: "Looping ASCII-art terminal pretending to compile RTL." },
-  { id: 14, title: "Roadmap Timeline", route: "/courses",  summary: "Week-by-week scroll-pinned curriculum timeline." },
-  { id: 15, title: "Interview War Stories", route: "/placements", summary: "Carousel of one-liner Q&A from FAANG interviews." },
-  { id: 16, title: "Hire-from-us CTA", route: "/placements", summary: "Recruiter pitch block + downloadable CV pack." },
-  { id: 17, title: "Open Source Lab", route: "/services",  summary: "GitHub-style file tree linking to free RTL snippets." },
-  { id: 18, title: "VLSIa Assistant", route: "global",     summary: "Faux-AI chatbot with logic-gate loader and intents." },
-  { id: 19, title: "Newsletter Signup", route: "global",   summary: "Footer form persisted to Supabase newsletter table." },
-  { id: 20, title: "Google Reviews + Add Yours", route: "/placements", summary: "Approved reviews from Supabase + submit form." },
+export type FaqItem = { q: string; a: string };
+
+export const FAQ_HOME: FaqItem[] = [
+  {
+    q: "I'm from a non-VLSI background. Can I still join?",
+    a: "Yes. We start every cohort with a 3-week digital-electronics + Verilog ramp so anyone with a basic CS/ECE foundation can catch up before the main modules begin.",
+  },
+  {
+    q: "How long is the program?",
+    a: "Six months of structured cohort + 1 year of validity for revisions, mock interviews and post-placement support.",
+  },
+  {
+    q: "Is the course live or recorded?",
+    a: "Live, mentor-led, capped at small batches. Every session is also recorded so you can revisit any topic on your timeline.",
+  },
+  {
+    q: "What does the placement process look like?",
+    a: "Direct alumni referrals to hiring managers at 30+ partner companies. Most students close their first offer within 30–45 days of completing the core modules.",
+  },
+  {
+    q: "Do you offer EMI?",
+    a: "Yes – multiple no-cost EMI partners. Ping us on WhatsApp and a counsellor will share the latest options.",
+  },
+];
+
+export const FAQ_PLACEMENTS: FaqItem[] = [
+  {
+    q: "What is the average package?",
+    a: "Freshers typically land between ₹8–24 LPA depending on the role and target company. Experienced switchers have closed up to ₹38 LPA.",
+  },
+  {
+    q: "Do you guarantee placements?",
+    a: "We guarantee the process – direct referrals, unlimited mock interviews, resume reviews and post-offer support. The interview itself is on you, and we make sure you walk in ready.",
+  },
+  {
+    q: "Which roles do students typically get?",
+    a: "RTL Designer, Design Verification Engineer (UVM), SoC Verification Engineer, IP Verification Engineer, and RTL Design Engineer roles.",
+  },
 ];

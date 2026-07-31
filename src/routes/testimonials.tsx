@@ -10,7 +10,7 @@ import { SITE } from "@/data/site";
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
     meta: [
-      { title: "Video Testimonials — 200+ MasterVLSI Alumni Stories | MasterVLSI" },
+      { title: "Video Testimonials – 200+ MasterVLSI Alumni Stories | MasterVLSI" },
       { name: "description", content: "Watch 200+ video testimonials from MasterVLSI alumni working at Intel, NVIDIA, AMD, Qualcomm. Real engineers, real placements, real stories." },
       { property: "og:title", content: "MasterVLSI Video Testimonials" },
       { property: "og:description", content: "200+ unscripted video stories from placed engineers." },

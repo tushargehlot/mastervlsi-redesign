@@ -9,8 +9,8 @@ import { SITE } from "@/data/site";
 export const Route = createFileRoute("/alumni")({
   head: () => ({
     meta: [
-      { title: "Alumni Wall — 5000+ MasterVLSI Engineers Placed | MasterVLSI" },
-      { name: "description", content: "Meet MasterVLSI alumni working at Intel, NVIDIA, AMD, Qualcomm, Synopsys, Cadence and 60+ semiconductor companies. Names, roles, packages — verified placements." },
+      { title: "Alumni Wall – 5000+ MasterVLSI Engineers Placed | MasterVLSI" },
+      { name: "description", content: "Meet MasterVLSI alumni working at Intel, NVIDIA, AMD, Qualcomm, Synopsys, Cadence and 60+ semiconductor companies. Names, roles, packages – verified placements." },
       { property: "og:title", content: "MasterVLSI Alumni Wall" },
       { property: "og:description", content: "5000+ engineers placed across the global semiconductor industry." },
       { property: "og:type", content: "website" },
@@ -54,7 +54,7 @@ function AlumniPage() {
               5000+ engineers <span className="text-gradient">shipping silicon.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-              These are real MasterVLSI graduates — names, roles, packages, companies. Filter by the track they took to see who's landed where.
+              These are real MasterVLSI graduates – names, roles, packages, companies. Filter by the track they took to see who's landed where.
             </p>
           </Reveal>
         </div>

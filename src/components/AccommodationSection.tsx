@@ -76,7 +76,7 @@ export function AccommodationSection() {
             Verified PGs <span className="text-gradient-ignite">10 m – 200 m</span> from the campus.
           </h2>
           <p className="mt-4 text-muted-foreground text-sm sm:text-base">
-            15+ hand-picked co-living, boys and girls PGs — all within walking distance. We do the vetting;
+            15+ hand-picked co-living, boys and girls PGs – all within walking distance. We do the vetting;
             you focus on the labs.
           </p>
         </Reveal>

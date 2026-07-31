@@ -18,12 +18,12 @@ const FLOWS: Record<string, { reply: string; followups?: string[] }> = {
   },
   Demo: {
     reply:
-      "Free demo class available — book any weekday. Should I send the booking link on WhatsApp?",
+      "Free demo class available – book any weekday. Should I send the booking link on WhatsApp?",
     followups: ["Yes, send link", "Fees"],
   },
   "Demo class": {
     reply:
-      "Free demo class available — book any weekday. Should I send the booking link on WhatsApp?",
+      "Free demo class available – book any weekday. Should I send the booking link on WhatsApp?",
     followups: ["Yes, send link", "Fees"],
   },
   Fees: {
@@ -46,11 +46,11 @@ const FLOWS: Record<string, { reply: string; followups?: string[] }> = {
     followups: ["Placements page", "Demo class"],
   },
   "Yes, send link": {
-    reply: "Sliding the demo link to your WhatsApp now — tap below to open the chat.",
+    reply: "Sliding the demo link to your WhatsApp now – tap below to open the chat.",
     followups: ["Open WhatsApp"],
   },
   "Get directions": {
-    reply: "Opening Google Maps in a new tab — see you at the lab!",
+    reply: "Opening Google Maps in a new tab – see you at the lab!",
     followups: ["Open WhatsApp"],
   },
   "Placements page": {
@@ -92,7 +92,7 @@ export function WhatsAppWidget() {
           ...m,
           {
             from: "bot",
-            text: "Got it — let's continue on WhatsApp so our team can help you personally.",
+            text: "Got it – let's continue on WhatsApp so our team can help you personally.",
           },
         ]);
         setPending(["Open WhatsApp"]);

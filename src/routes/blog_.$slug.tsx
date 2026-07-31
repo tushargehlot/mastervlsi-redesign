@@ -20,7 +20,7 @@ export const Route = createFileRoute("/blog_/$slug")({
     return {
       meta: p
         ? [
-            { title: `${p.title} — MasterVLSI Blog` },
+            { title: `${p.title} – MasterVLSI Blog` },
             { name: "description", content: p.excerpt },
             { property: "og:title", content: p.title },
             { property: "og:description", content: p.excerpt },
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/blog_/$slug")({
             { name: "twitter:description", content: p.excerpt },
             { name: "twitter:image", content: `${SITE.url}/logo-mastervlsi.png` },
           ]
-        : [{ title: "Post — MasterVLSI Blog" }, { name: "robots", content: "noindex" }],
+        : [{ title: "Post – MasterVLSI Blog" }, { name: "robots", content: "noindex" }],
       links: p ? [{ rel: "canonical", href: url }] : [],
       scripts: p
         ? [
@@ -90,7 +90,7 @@ function ShareBar({ title }: { title: string }) {
   const url = typeof window !== "undefined" ? window.location.href : `${SITE.url}/blog`;
 
   function share(provider: "wa" | "x" | "linkedin") {
-    const text = `${title} — MasterVLSI Blog`;
+    const text = `${title} – MasterVLSI Blog`;
     const href =
       provider === "wa"
         ? `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`
@@ -193,7 +193,7 @@ function BlogPostPage() {
 
         <div className="mt-16 rounded-3xl border border-border bg-gradient-to-br from-card via-card to-primary/10 p-8 text-center glow-red">
           <h3 className="font-display text-2xl font-bold">Got questions about this topic?</h3>
-          <p className="mt-2 text-muted-foreground">Ping us on WhatsApp — our mentors usually reply within the hour.</p>
+          <p className="mt-2 text-muted-foreground">Ping us on WhatsApp – our mentors usually reply within the hour.</p>
           <a href={waLink(`Hi MasterVLSI! I read "${post.title}" and have a question.`)} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
             <MessageCircle size={14} /> Chat with us
           </a>
@@ -208,7 +208,7 @@ function BlogPostPage() {
               <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Written by</p>
               <p className="mt-1 font-display font-bold">MasterVLSI Mentor Team</p>
               <p className="mt-1.5 text-sm text-muted-foreground">
-                Working silicon engineers from our Bengaluru institute — the RTL and DV leads who have placed 5000+
+                Working silicon engineers from our Bengaluru institute – the RTL and DV leads who have placed 5000+
                 engineers at Intel, AMD, NVIDIA, Qualcomm, Synopsys and Cadence.{" "}
                 <Link to="/about" className="text-primary hover:underline">More about us →</Link>
               </p>

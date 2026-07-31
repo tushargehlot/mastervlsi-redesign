@@ -26,10 +26,10 @@ import { useState } from "react";
 export const Route = createFileRoute("/placements")({
   head: () => ({
     meta: [
-      { title: "VLSI Placements — 5000+ Alumni at Intel, NVIDIA, AMD | MasterVLSI" },
+      { title: "VLSI Placements – 5000+ Alumni at Intel, NVIDIA, AMD | MasterVLSI" },
       { name: "description", content: "5000+ MasterVLSI alumni placed at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence and 60+ semiconductor companies within 30–45 days of course completion." },
-      { property: "og:title", content: "Placements at MasterVLSI — 5000+ Silicon Engineers" },
-      { property: "og:description", content: "Video stories, written quotes, Google reviews — see where MasterVLSI engineers land." },
+      { property: "og:title", content: "Placements at MasterVLSI – 5000+ Silicon Engineers" },
+      { property: "og:description", content: "Video stories, written quotes, Google reviews – see where MasterVLSI engineers land." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE.url}/placements` },
     ],
@@ -75,7 +75,7 @@ function PlacementsPage() {
               Where our engineers <span className="text-gradient">work today.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-              Placement starts within 30–45 days of completing the core modules. Below is the proof —
+              Placement starts within 30–45 days of completing the core modules. Below is the proof –
               hiring partners, video stories from alumni, written testimonials, and unfiltered Google reviews.
             </p>
           </Reveal>
@@ -166,7 +166,7 @@ function PlacementsPage() {
           <Reveal className="max-w-2xl">
             <p className="font-mono text-xs text-primary uppercase tracking-widest">// Names, roles, packages</p>
             <h2 className="mt-2 h-display-sm font-display font-bold">
-              Real engineers — <span className="text-gradient">real offers.</span>
+              Real engineers – <span className="text-gradient">real offers.</span>
             </h2>
             <p className="mt-3 text-muted-foreground">
               Filter by track to see who landed where, and what they draw.
@@ -207,7 +207,7 @@ function PlacementsPage() {
               Alumni stories, <span className="text-gradient">unscripted.</span>
             </h2>
             <p className="mt-4 text-muted-foreground max-w-2xl">
-              Real engineers — at real companies — telling you what changed when they joined MasterVLSI.
+              Real engineers – at real companies – telling you what changed when they joined MasterVLSI.
               Tap any thumbnail to hear them out.
             </p>
           </Reveal>
@@ -242,12 +242,12 @@ function PlacementsPage() {
         <Spotlight size={560} />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <p className="font-mono text-xs text-primary uppercase tracking-widest">// Verified · Google</p>
+            <p className="font-mono text-xs text-primary uppercase tracking-widest">// Rated on Google</p>
             <h2 className="mt-3 h-display-sm font-display font-bold max-w-2xl">
               What students post <span className="text-gradient">publicly on Google.</span>
             </h2>
             <p className="mt-4 text-muted-foreground max-w-2xl">
-              No filter, no curation — direct from our Google Business profile.
+              Real reviews from our Google Business profile.
             </p>
           </Reveal>
           <div className="mt-10">
@@ -298,7 +298,7 @@ function PlacementsPage() {
               Ready to join the <span className="text-gradient">next cohort?</span>
             </h2>
             <p className="relative mt-3 text-muted-foreground max-w-xl mx-auto">
-              Talk to a counsellor in under 2 minutes — straight on WhatsApp.
+              Talk to a counsellor in under 2 minutes – straight on WhatsApp.
             </p>
             <div className="relative mt-8 flex flex-wrap justify-center gap-3">
               <Magnetic>

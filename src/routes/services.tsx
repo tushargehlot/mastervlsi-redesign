@@ -13,10 +13,10 @@ import { ArrowRight, FileCheck, GitBranch, Layers, Lock, Zap, Cpu } from "lucide
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "VLSI Design & Verification Services — MasterVLSI" },
+      { title: "VLSI Design & Verification Services – MasterVLSI" },
       { name: "description", content: "End-to-end silicon engineering services: RTL design, UVM verification, FPGA prototyping, SoC integration, CDC, IP development and flow automation. NDA-friendly delivery." },
       { property: "og:title", content: "VLSI Design & Verification Services" },
-      { property: "og:description", content: "Industry-grade silicon engineering, on demand — from RTL to sign-off." },
+      { property: "og:description", content: "Industry-grade silicon engineering, on demand – from RTL to sign-off." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE.url}/services` },
     ],
@@ -53,7 +53,7 @@ function ServicesPage() {
             </h1>
             <p className="mt-5 text-lg text-muted-foreground">
               Beyond training, MasterVLSI partners with semiconductor companies and fabless startups on
-              full-flow VLSI engagements — from architecture exploration to tape-out — with deliverables
+              full-flow VLSI engagements – from architecture exploration to tape-out – with deliverables
               you can drop into your repo and ship.
             </p>
           </Reveal>

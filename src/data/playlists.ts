@@ -27,14 +27,14 @@ export const PLAYLISTS: Playlist[] = [
   {
     id: "internship-bootcamp",
     title: "MasterVLSI Internship Bootcamp",
-    description: "Inside the live bootcamp — projects, sprints, mentor reviews.",
+    description: "Inside the live bootcamp – projects, sprints, mentor reviews.",
     listId: "PLTEW9EvjltsOV7_m6FrIU8LEFWt24cSeh",
     videoId: "GRIHZAUXKpU",
     level: "Intermediate", category: "Bootcamp", hours: 18, videoCount: 24, accent: "amber",
   },
   {
     id: "internship-feedback",
-    title: "Internship Feedback — Alumni",
+    title: "Internship Feedback – Alumni",
     description: "Honest reviews from interns who finished the program.",
     listId: "PLTEW9EvjltsME1Pan9W-8s4BA1c3Tj_b-",
     videoId: "rvk59iHUXXs",
@@ -58,7 +58,7 @@ export const PLAYLISTS: Playlist[] = [
   },
   {
     id: "verilog-demo",
-    title: "Verilog Session — Demo Lecture",
+    title: "Verilog Session – Demo Lecture",
     description: "Sample lecture: syntax, modules, simulation walkthrough.",
     listId: "PLTEW9EvjltsOpgKxpIgyhamOfF7_iuHhr",
     videoId: "ywoXaqN9FGo",
@@ -74,7 +74,7 @@ export const PLAYLISTS: Playlist[] = [
   },
   {
     id: "axi-protocol",
-    title: "AXI Protocol — Demo Lectures",
+    title: "AXI Protocol – Demo Lectures",
     description: "AMBA AXI deep dive: channels, handshakes, bursts.",
     listId: "PLTEW9EvjltsOXEGlVPn3SiPulA1Fd9l5j",
     videoId: "okFA5krLqNQ",

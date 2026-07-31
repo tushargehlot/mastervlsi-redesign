@@ -24,9 +24,9 @@ export const Route = createFileRoute("/blog")({
   }),
   head: () => ({
     meta: [
-      { title: "VLSI Blog — Interview Prep, RTL & DV Guides | MasterVLSI" },
-      { name: "description", content: "Deep-dives on Verilog, SystemVerilog, UVM, static timing, CDC, low-power design, and VLSI interview prep — written by working silicon engineers." },
-      { property: "og:title", content: "MasterVLSI Blog — VLSI Guides & Interview Prep" },
+      { title: "VLSI Blog – Interview Prep, RTL & DV Guides | MasterVLSI" },
+      { name: "description", content: "Deep-dives on Verilog, SystemVerilog, UVM, static timing, CDC, low-power design, and VLSI interview prep – written by working silicon engineers." },
+      { property: "og:title", content: "MasterVLSI Blog – VLSI Guides & Interview Prep" },
       { property: "og:description", content: "Sharp, practical writing on chip design and careers." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE.url}/blog` },
@@ -81,7 +81,7 @@ function BlogIndex() {
             Notes from the <span className="text-gradient">silicon trenches.</span>
           </h1>
           <p className="mt-5 text-lg text-muted-foreground">
-            Practical guides, interview prep, and deep-dives on chip design — written by mentors
+            Practical guides, interview prep, and deep-dives on chip design – written by mentors
             who ship silicon every day.
           </p>
         </div>

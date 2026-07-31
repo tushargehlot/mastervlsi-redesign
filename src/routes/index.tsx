@@ -28,17 +28,17 @@ import { FAQ_HOME } from "@/data/faqs";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Best VLSI Institute in Bangalore | RTL & Design Verification Training — MasterVLSI" },
+      { title: "Best VLSI Institute in Bangalore | RTL & Design Verification Training – MasterVLSI" },
       { name: "description", content: "MasterVLSI is Bangalore's top VLSI training institute. RTL Design, Design Verification (UVM), CDC, IP & SoC. 5000+ engineers placed at Intel, AMD, NVIDIA, Qualcomm in 30–45 days. 24/7 EDA lab, industry mentors, Tin-Factory campus." },
       { name: "keywords", content: "VLSI institute in Bangalore, best VLSI institute Bangalore, VLSI training Bangalore, VLSI course Bangalore, RTL training, UVM training, Design Verification Bangalore, VLSI placement Bangalore" },
-      { property: "og:title", content: "Best VLSI Institute in Bangalore — MasterVLSI" },
-      { property: "og:description", content: "From RTL to UVM Verification — training with placement at Intel, AMD, NVIDIA, Qualcomm and 60+ companies in 30–45 days." },
+      { property: "og:title", content: "Best VLSI Institute in Bangalore – MasterVLSI" },
+      { property: "og:description", content: "From RTL to UVM Verification – training with placement at Intel, AMD, NVIDIA, Qualcomm and 60+ companies in 30–45 days." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE.url}/` },
       { property: "og:site_name", content: "MasterVLSI" },
       { property: "og:image", content: `${SITE.url}/logo-mastervlsi.png` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Best VLSI Institute in Bangalore — MasterVLSI" },
+      { name: "twitter:title", content: "Best VLSI Institute in Bangalore – MasterVLSI" },
       { name: "twitter:description", content: "RTL & Design Verification training with placement in 30–45 days." },
     ],
     links: [{ rel: "canonical", href: `${SITE.url}/` }],
@@ -70,7 +70,7 @@ const MANIFESTO = [
 const PILLARS = [
   { icon: Zap, n: "01", title: "30–45 day placements", desc: "Industry-aligned curriculum so tight that companies hire on a rolling basis from every cohort." },
   { icon: Sparkles, n: "02", title: "24/7 lab access", desc: "Tool licenses + servers running round the clock. Practice the moment inspiration strikes." },
-  { icon: GraduationCap, n: "03", title: "Post-placement support", desc: "We mentor you through the first year on the job — promotions, switches, raises." },
+  { icon: GraduationCap, n: "03", title: "Post-placement support", desc: "We mentor you through the first year on the job – promotions, switches, raises." },
 ];
 
 function Index() {
@@ -94,7 +94,7 @@ function Index() {
                 <span className="absolute inset-0 rounded-full bg-primary animate-ping" />
                 <span className="relative h-1.5 w-1.5 rounded-full bg-primary" />
               </span>
-              <span className="text-foreground">Cohort 2026 — AI + Design Verification enrolling now</span>
+              <span className="text-foreground">Cohort 2026 – AI + Design Verification enrolling now</span>
             </div>
             <h1 className="mt-7 h-display font-display font-bold text-on-glass">
               <span className="text-gradient">AI-augmented</span>
@@ -104,7 +104,7 @@ function Index() {
               <span className="text-muted-foreground">RTL, SystemVerilog, UVM.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-on-glass text-muted-foreground">
-              India's longest-running VLSI institute — 12+ years, 5000+ engineers shipped to Intel,
+              India's longest-running VLSI institute – 12+ years, 5000+ engineers shipped to Intel,
               NVIDIA, AMD, Qualcomm & Google. Now with AI-assisted debug, RTL review and interview
               prep baked into every cohort.
             </p>
@@ -221,7 +221,7 @@ function Index() {
               </h3>
               <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
                 Daily standups, peer code reviews, EDA tool licences from Cadence and Synopsys,
-                weekly tape-out rehearsals. We don't lecture — we engineer.
+                weekly tape-out rehearsals. We don't lecture – we engineer.
               </p>
               <ul className="mt-5 grid sm:grid-cols-2 gap-2 text-xs">
                 {[
@@ -360,7 +360,7 @@ function Index() {
               Learn for free on our <span className="text-gradient">YouTube channel.</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              200+ deep-dive videos on Verilog, SystemVerilog, UVM, AMBA protocols and AI-assisted debug — all from working industry mentors.
+              200+ deep-dive videos on Verilog, SystemVerilog, UVM, AMBA protocols and AI-assisted debug – all from working industry mentors.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Magnetic>
@@ -435,7 +435,7 @@ function Index() {
               Ready to <span className="text-gradient">tape-out your career?</span>
             </h2>
             <p className="relative mt-4 text-muted-foreground max-w-xl mx-auto">
-              Book a complimentary demo class. See our pedagogy, meet the mentors, tour the lab — all in 60 minutes.
+              Book a complimentary demo class. See our pedagogy, meet the mentors, tour the lab – all in 60 minutes.
             </p>
             <div className="relative mt-8 flex flex-wrap justify-center gap-3">
               <Magnetic>

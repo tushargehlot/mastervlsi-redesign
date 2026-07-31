@@ -13,8 +13,8 @@ export function FoundersNote() {
           "We don't sell certificates. <span className="text-gradient">We ship engineers.</span>"
         </h3>
         <div className="relative mt-6 max-w-3xl text-base text-muted-foreground leading-relaxed space-y-3">
-          <p>I started MasterVLSI after a decade in the trenches at top semiconductor companies, watching brilliant graduates fail interviews not because they lacked talent — but because nobody taught them how silicon really gets built.</p>
-          <p>Every cohort here is run like a real design house: code reviews, daily standups, EDA tools licensed from Cadence and Synopsys, and mentors who taped out chips last quarter. If you put in the hours, we'll match them — and we won't stop until your offer letter is on your phone.</p>
+          <p>I started MasterVLSI after a decade in the trenches at top semiconductor companies, watching brilliant graduates fail interviews not because they lacked talent – but because nobody taught them how silicon really gets built.</p>
+          <p>Every cohort here is run like a real design house: code reviews, daily standups, EDA tools licensed from Cadence and Synopsys, and mentors who taped out chips last quarter. If you put in the hours, we'll match them – and we won't stop until your offer letter is on your phone.</p>
         </div>
         <div className="relative mt-8 flex items-center gap-4">
           <svg width="120" height="48" viewBox="0 0 120 48" className="text-primary">

@@ -4,7 +4,7 @@ export const DEFAULT_WHATSAPP_PREFILL = "Hi MasterVLSI! I'd like to know more ab
 export const SITE = {
   name: "MasterVLSI",
   url: "https://www.mastervlsi.com",
-  tagline: "Leader in the semiconductor industry — training the engineers who build the chips.",
+  tagline: "Leader in the semiconductor industry – training the engineers who build the chips.",
   whatsappNumber: "+919844982345", // Nitesh Sir — technical
   whatsappPrefill: DEFAULT_WHATSAPP_PREFILL,
   email: "hr@mastervlsi.com",
@@ -19,7 +19,7 @@ export const SITE = {
   mapsEmbed:
     "https://www.google.com/maps?q=MasterVLSI+Institute+Udayanagar+Tin+Factory+Bengaluru&output=embed",
   address:
-    "MasterVLSI Institute — 1st Floor, opposite to Vinayaka Temple, Udayanagar Main Road, near Tin-Factory bus stop, Bangalore – 560016",
+    "MasterVLSI Institute – 1st Floor, opposite to Vinayaka Temple, Udayanagar Main Road, near Tin-Factory bus stop, Bangalore – 560016",
   addressShort: "Udayanagar Main Road, Near Tin-Factory, Bangalore – 560016",
   workingHours: "Mon – Sat · 9:30 AM to 6:30 PM",
   social: {

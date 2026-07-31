@@ -1,15 +1,15 @@
 # MasterVLSI
 
-> The best VLSI institute in Bangalore. Design & Verification focus — RTL Design, SystemVerilog, UVM, CDC, IP and SoC integration. Placement in 30–45 days at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence and 60+ semiconductor companies.
+> The best VLSI institute in Bangalore. Design & Verification focus – RTL Design, SystemVerilog, UVM, CDC, IP and SoC integration. Placement in 30–45 days at Intel, AMD, NVIDIA, Qualcomm, Synopsys, Cadence and 60+ semiconductor companies.
 
-MasterVLSI has been training semiconductor engineers since 2015 from its Bangalore campus at Udayanagar Main Road, near Tin-Factory bus stop (560016). 5000+ alumni placed. 16 industry mentors. 24/7 EDA lab with Synopsys VCS, Cadence Xcelium, Mentor Questa and full frontend simulation stack. We do NOT teach Physical Design — our expertise is Design (RTL) and Verification (UVM).
+MasterVLSI has been training semiconductor engineers since 2015 from its Bangalore campus at Udayanagar Main Road, near Tin-Factory bus stop (560016). 5000+ alumni placed. 16 industry mentors. 24/7 EDA lab with Synopsys VCS, Cadence Xcelium, Mentor Questa and full frontend simulation stack. We do NOT teach Physical Design – our expertise is Design (RTL) and Verification (UVM).
 
 ## Key facts
 
 - Founded: 2015, Bangalore, India
 - Alumni: 5000+
 - Placement window: 30–45 days after course completion
-- Focus: Design (RTL) and Verification (UVM) — no Physical Design, no STA, no DFT
+- Focus: Design (RTL) and Verification (UVM) – no Physical Design, no STA, no DFT
 - Modules: 15 industry-aligned VLSI training modules
 - Contact: WhatsApp +91 98449 82345 · hr@mastervlsi.com
 - YouTube: https://www.youtube.com/@mastervlsi2526 (200+ free tutorials)
@@ -19,20 +19,20 @@ MasterVLSI has been training semiconductor engineers since 2015 from its Bangalo
 
 - [Home](https://www.mastervlsi.com/): Overview, program pillars, mentor manifesto, cohort highlights, FAQs.
 - [About](https://www.mastervlsi.com/about): Institute story since 2015, mentors, Bangalore campus location, PG accommodation, transit connectivity from Bengaluru rail and metro.
-- [Courses](https://www.mastervlsi.com/courses): 15 modules — RTL Design, Design Verification (UVM), SystemVerilog, Coverage & Assertions, CDC, IP Verification, SoC Verification, AMBA (APB/AHB/AXI), High-Speed Protocols (PCIe, DDR, USB, CXL), GLS and more.
+- [Courses](https://www.mastervlsi.com/courses): 15 modules – RTL Design, Design Verification (UVM), SystemVerilog, Coverage & Assertions, CDC, IP Verification, SoC Verification, AMBA (APB/AHB/AXI), High-Speed Protocols (PCIe, DDR, USB, CXL), GLS and more.
 - [Protocols](https://www.mastervlsi.com/courses/protocols): AMBA family, high-speed and low-speed protocol coverage.
-- [Services](https://www.mastervlsi.com/services): NDA-friendly silicon engineering services — RTL, DV, CDC, IP, SoC integration, flow automation — for fabless startups and enterprises.
+- [Services](https://www.mastervlsi.com/services): NDA-friendly silicon engineering services – RTL, DV, CDC, IP, SoC integration, flow automation – for fabless startups and enterprises.
 - [Placements](https://www.mastervlsi.com/placements): Hiring partners, alumni video testimonials, Google reviews, salary heatmap, placement journey, achievements strip.
 - [Alumni](https://www.mastervlsi.com/alumni): Real alumni wall with names, companies and packages.
 - [Testimonials](https://www.mastervlsi.com/testimonials): Written and video testimonials from placed engineers.
-- [Playlists](https://www.mastervlsi.com/playlists): Curated YouTube playlists — Verilog, SystemVerilog, UVM, interview prep.
+- [Playlists](https://www.mastervlsi.com/playlists): Curated YouTube playlists – Verilog, SystemVerilog, UVM, interview prep.
 - [Blog](https://www.mastervlsi.com/blog): Technical guides on RTL, DV, CDC, static timing, interview preparation and career deep-dives.
 
 ### Blog posts
 
-- [What is VLSI? A Beginner's Roadmap for 2026](https://www.mastervlsi.com/blog/what-is-vlsi-roadmap): The VLSI landscape — the five roles and how to start.
+- [What is VLSI? A Beginner's Roadmap for 2026](https://www.mastervlsi.com/blog/what-is-vlsi-roadmap): The VLSI landscape – the five roles and how to start.
 - [RTL Design: Verilog vs SystemVerilog](https://www.mastervlsi.com/blog/rtl-verilog-vs-systemverilog): When to reach for SystemVerilog over plain Verilog.
-- [UVM Verification Explained with a Simple Example](https://www.mastervlsi.com/blog/uvm-explained-simply): Drivers, monitors, sequencers, scoreboards — with a 32-bit adder testbench.
+- [UVM Verification Explained with a Simple Example](https://www.mastervlsi.com/blog/uvm-explained-simply): Drivers, monitors, sequencers, scoreboards – with a 32-bit adder testbench.
 - [Physical Design Flow: Floorplan to GDSII](https://www.mastervlsi.com/blog/physical-design-flow): The seven-step PD recipe.
 - [Static Timing Analysis Demystified](https://www.mastervlsi.com/blog/sta-demystified): Setup, hold, slack, and why corners matter.
 - [DFT 101: Scan Chains, BIST, and ATPG](https://www.mastervlsi.com/blog/dft-101): How testability is baked into modern chips.
@@ -40,10 +40,10 @@ MasterVLSI has been training semiconductor engineers since 2015 from its Bangalo
 - [Low Power Design: UPF, Clock Gating & Beyond](https://www.mastervlsi.com/blog/low-power-design): Clock gating, power gating, multi-VDD, and UPF.
 - [How to Crack VLSI Interviews in 2026](https://www.mastervlsi.com/blog/crack-vlsi-interviews-2026): The 12 topics every interviewer touches, plus a 30-day plan.
 - [Careers in VLSI: Roles, Salaries, and Growth Path](https://www.mastervlsi.com/blog/careers-in-vlsi): The career ladder and where demand is headed.
-- [Top 20 Verilog Interview Questions with Answers](https://www.mastervlsi.com/blog/verilog-interview-questions): The exact Verilog questions interviewers ask — with answers and traps.
+- [Top 20 Verilog Interview Questions with Answers](https://www.mastervlsi.com/blog/verilog-interview-questions): The exact Verilog questions interviewers ask – with answers and traps.
 - [Async FIFO Design: Gray Codes, Full/Empty Flags, and Gotchas](https://www.mastervlsi.com/blog/async-fifo-design): Pointer crossing, gray code, and the depth math nobody remembers.
 - [Blocking vs Non-Blocking Assignments: The #1 Interview Trap](https://www.mastervlsi.com/blog/blocking-vs-nonblocking): The mixing rule, three failing examples, and why simulators behave that way.
-- [Demo](https://www.mastervlsi.com/demo): Book a free 60-minute demo class — on-site in Bangalore or online.
+- [Demo](https://www.mastervlsi.com/demo): Book a free 60-minute demo class – on-site in Bangalore or online.
 - [Contact](https://www.mastervlsi.com/contact): Address, phone, WhatsApp, email, campus map.
 
 ## Optional

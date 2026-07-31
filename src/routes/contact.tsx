@@ -11,9 +11,9 @@ import { MapPin, MessageCircle, Mail, Phone, Youtube, ExternalLink, Send } from 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact MasterVLSI — Bengaluru VLSI Institute | WhatsApp, Call, Visit" },
+      { title: "Contact MasterVLSI – Bengaluru VLSI Institute | WhatsApp, Call, Visit" },
       { name: "description", content: "Visit our Bengaluru campus at Udayanagar Main Road near Tin-Factory, or reach us on WhatsApp (+91 98449 82345), email or phone. Response within a business day." },
-      { property: "og:title", content: "Contact MasterVLSI — Bengaluru" },
+      { property: "og:title", content: "Contact MasterVLSI – Bengaluru" },
       { property: "og:description", content: "WhatsApp, email, call or drop by our Bengaluru lab." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE.url}/contact` },
@@ -74,7 +74,7 @@ function ContactPage() {
   }
 
   const cards = [
-    { icon: MessageCircle, title: "WhatsApp us", text: "Fastest reply — usually within the hour.", cta: "Open WhatsApp", href: waLink() },
+    { icon: MessageCircle, title: "WhatsApp us", text: "Fastest reply – usually within the hour.", cta: "Open WhatsApp", href: waLink() },
     { icon: Mail, title: "Email", text: "info@mastervlsi.com", cta: "Send email", href: "mailto:info@mastervlsi.com" },
     { icon: Phone, title: "Call", text: "Speak to a counsellor", cta: "Get the number", href: waLink("Hi! Can you share the phone number please?") },
     { icon: Youtube, title: "YouTube", text: "200+ free tutorials", cta: "Subscribe", href: SITE.youtubeChannel },
@@ -92,7 +92,7 @@ function ContactPage() {
               Let's <span className="text-gradient">talk silicon.</span>
             </h1>
             <p className="mt-5 text-lg text-muted-foreground">
-              Whether you're exploring a course, planning a corporate engagement, or just curious about VLSI —
+              Whether you're exploring a course, planning a corporate engagement, or just curious about VLSI –
               pick a channel below and we'll get back to you within a business day.
             </p>
           </Reveal>
@@ -161,7 +161,7 @@ function ContactPage() {
           <Reveal delay={0.1}>
             <h2 className="font-display text-2xl font-bold">Or send us a quick note.</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Hits our WhatsApp inbox directly — fastest path to a human reply.
+              Hits our WhatsApp inbox directly – fastest path to a human reply.
             </p>
             <form onSubmit={submit} className="mt-6 space-y-4 rounded-2xl border border-border bg-card p-6">
               {[

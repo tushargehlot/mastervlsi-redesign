@@ -1,13 +1,15 @@
 import { motion } from "framer-motion";
 import { Star, ExternalLink } from "lucide-react";
-import { GOOGLE_REVIEWS } from "@/data/googleReviews";
+import { GOOGLE_REVIEWS, GOOGLE_RATING } from "@/data/googleReviews";
 import { SITE } from "@/data/site";
 
 const COLORS = ["var(--primary)", "var(--accent)", "var(--crimson-deep)", "var(--crimson)", "var(--ignite)"];
 
 export function GoogleReviewsGrid() {
   const reviews = GOOGLE_REVIEWS.filter((r) => r.rating >= 4);
-  const avg = reviews.reduce((s, r) => s + r.rating, 0) / reviews.length;
+  const avg = reviews.length
+    ? reviews.reduce((s, r) => s + r.rating, 0) / reviews.length
+    : GOOGLE_RATING;
 
   return (
     <div>
@@ -24,7 +26,7 @@ export function GoogleReviewsGrid() {
               </div>
             </div>
             <p className="text-xs text-muted-foreground font-mono mt-0.5">
-              {reviews.length}+ verified 4★+ reviews
+              {reviews.length ? `${reviews.length} verified 4★+ reviews` : "Rated on Google"}
             </p>
           </div>
         </div>
@@ -46,42 +48,62 @@ export function GoogleReviewsGrid() {
         </a>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {reviews.map((r, i) => (
-          <motion.article
-            key={r.name + i}
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: (i % 9) * 0.04 }}
-            className="rounded-2xl border border-border bg-card p-5 hover:border-primary/40 hover:shadow-[0_10px_30px_-15px_oklch(0.60_0.20_24_/_0.22)] transition"
-          >
-            <div className="flex items-center gap-3">
-              <div
-                className="h-10 w-10 rounded-full flex items-center justify-center text-white font-display font-bold text-sm"
-                style={{ background: COLORS[i % COLORS.length] }}
-              >
-                {r.initials}
+      {reviews.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {reviews.map((r, i) => (
+            <motion.article
+              key={r.name + i}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: (i % 9) * 0.04 }}
+              className="rounded-2xl border border-border bg-card p-5 hover:border-primary/40 hover:shadow-[0_10px_30px_-15px_oklch(0.60_0.20_24_/_0.22)] transition"
+            >
+              <div className="flex items-center gap-3">
+                <div
+                  className="h-10 w-10 rounded-full flex items-center justify-center text-white font-display font-bold text-sm"
+                  style={{ background: COLORS[i % COLORS.length] }}
+                >
+                  {r.initials}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-display font-semibold text-sm truncate">{r.name}</p>
+                  <p className="text-[11px] text-muted-foreground font-mono">{r.date}</p>
+                </div>
+                <GoogleG className="h-4 w-4 shrink-0" />
               </div>
-              <div className="flex-1 min-w-0">
-                <p className="font-display font-semibold text-sm truncate">{r.name}</p>
-                <p className="text-[11px] text-muted-foreground font-mono">{r.date}</p>
+              <div className="mt-3 flex gap-0.5">
+                {[0, 1, 2, 3, 4].map((s) => (
+                  <Star
+                    key={s}
+                    size={14}
+                    className={s < r.rating ? "fill-primary text-primary" : "text-muted-foreground/40"}
+                  />
+                ))}
               </div>
-              <GoogleG className="h-4 w-4 shrink-0" />
-            </div>
-            <div className="mt-3 flex gap-0.5">
-              {[0, 1, 2, 3, 4].map((s) => (
-                <Star
-                  key={s}
-                  size={14}
-                  className={s < r.rating ? "fill-primary text-primary" : "text-muted-foreground/40"}
-                />
-              ))}
-            </div>
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{r.text}</p>
-          </motion.article>
-        ))}
-      </div>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{r.text}</p>
+            </motion.article>
+          ))}
+        </div>
+      ) : (
+        <a
+          href={SITE.mapsUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="block rounded-2xl border border-dashed border-border bg-card/40 p-10 text-center hover:border-primary/50 hover:bg-card/70 transition group"
+        >
+          <GoogleG className="mx-auto h-8 w-8" />
+          <p className="mt-4 font-display font-semibold text-lg">
+            See what students say <span className="text-primary">on Google</span>
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground max-w-md mx-auto">
+            Real reviews, ratings and photos from our Google Business profile.
+          </p>
+          <span className="mt-4 inline-flex items-center gap-1.5 text-sm text-primary font-mono">
+            Read all reviews <ExternalLink size={12} />
+          </span>
+        </a>
+      )}
     </div>
   );
 }

@@ -11,7 +11,7 @@ const GREETING: Msg = {
   id: "g",
   role: "bot",
   text:
-    "Hi, I'm **VLSIa** — MasterVLSI's silicon-trained assistant. I can help with courses, fees, placements, demo bookings or campus directions. What brings you here today?",
+    "Hi, I'm **VLSIa** – MasterVLSI's silicon-trained assistant. I can help with courses, fees, placements, demo bookings or campus directions. What brings you here today?",
   chips: ["Courses", "Fees & EMI", "Placements", "Book a demo", "Visit campus"],
 };
 
@@ -37,7 +37,7 @@ const SCRIPT: Record<string, { reply: string; chips?: string[]; intent: string }
   "Book a demo": {
     intent: "demo",
     reply:
-      "Free 60-minute demo — Monday to Friday. Meet the mentor, tour the lab, ask anything. Tap below to open the booking form.",
+      "Free 60-minute demo – Monday to Friday. Meet the mentor, tour the lab, ask anything. Tap below to open the booking form.",
     chips: ["Open demo form", "Talk on WhatsApp"],
   },
   "Visit campus": {
@@ -48,13 +48,13 @@ const SCRIPT: Record<string, { reply: string; chips?: string[]; intent: string }
   "I'm a fresher": {
     intent: "fresher",
     reply:
-      "Perfect — start with **Digital Fundamentals → Verilog → SystemVerilog → UVM**. That's our most-placed track for freshers.",
+      "Perfect – start with **Digital Fundamentals → Verilog → SystemVerilog → UVM**. That's our most-placed track for freshers.",
     chips: ["Book a demo", "See curriculum"],
   },
   "I have 1–3 yrs exp": {
     intent: "experienced",
     reply:
-      "For working engineers we recommend the **DV Acceleration** track — weekend cohorts, finished in 3 months with placement support.",
+      "For working engineers we recommend the **DV Acceleration** track – weekend cohorts, finished in 3 months with placement support.",
     chips: ["Book a demo", "Talk on WhatsApp"],
   },
   "EMI options": {
@@ -72,7 +72,7 @@ const SCRIPT: Record<string, { reply: string; chips?: string[]; intent: string }
   "Nearby PGs": {
     intent: "pg",
     reply:
-      "There are 15+ verified PGs within 10–200 m of the institute — separate boys, girls and co-living options. See the Accommodation section on the About page.",
+      "There are 15+ verified PGs within 10–200 m of the institute – separate boys, girls and co-living options. See the Accommodation section on the About page.",
     chips: ["Visit campus", "Talk on WhatsApp"],
   },
 };
@@ -185,7 +185,7 @@ export function VLSIa() {
     if (c === "Talk to a counsellor") { window.open(waLink("Hi, I'd like to talk to a counsellor."), "_blank"); return; }
     const node = SCRIPT[c];
     if (node) pushBot(node.reply, node.chips, node.intent);
-    else pushBot("Got it — I'll loop in a human counsellor on WhatsApp for that.", ["Talk on WhatsApp"], "fallback");
+    else pushBot("Got it – I'll loop in a human counsellor on WhatsApp for that.", ["Talk on WhatsApp"], "fallback");
   }
 
   function handleSend(e?: React.FormEvent) {
@@ -207,7 +207,7 @@ export function VLSIa() {
       pushBot(n.reply, n.chips, n.intent);
     } else {
       pushBot(
-        "I can route you faster if you pick one of these — or I'll hand you to a human on WhatsApp.",
+        "I can route you faster if you pick one of these – or I'll hand you to a human on WhatsApp.",
         ["Courses", "Fees & EMI", "Placements", "Book a demo", "Talk on WhatsApp"],
         "freeform",
       );

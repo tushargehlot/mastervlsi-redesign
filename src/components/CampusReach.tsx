@@ -77,7 +77,7 @@ export function CampusReach() {
           </h2>
           <p className="mt-4 text-muted-foreground text-sm sm:text-base">
             {SITE.address}. Walk to Tin-Factory bus stop in 100 m, K.R. Puram station in 450 m,
-            Benniganahalli Metro in 500 m — and you're one signal away from Samsung R&D.
+            Benniganahalli Metro in 500 m – and you're one signal away from Samsung R&D.
           </p>
         </Reveal>
 

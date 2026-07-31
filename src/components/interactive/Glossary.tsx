@@ -39,7 +39,7 @@ export function Glossary() {
           <li key={t.term} className="group rounded-lg border border-border bg-surface-2/50 p-3 hover:border-primary/50 hover:bg-surface-2 transition-all">
             <div className="flex items-baseline gap-2">
               <span className="font-mono font-bold text-primary">{t.term}</span>
-              {t.expansion && <span className="text-[11px] text-muted-foreground">— {t.expansion}</span>}
+              {t.expansion && <span className="text-[11px] text-muted-foreground">– {t.expansion}</span>}
               <span className="ml-auto text-[9px] font-mono px-1.5 py-0.5 rounded bg-primary/10 text-primary">{t.tag}</span>
             </div>
             <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{t.def}</p>

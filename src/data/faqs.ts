@@ -19,7 +19,7 @@ export const FAQ_HOME: FaqItem[] = [
   },
   {
     q: "Do you offer EMI?",
-    a: "Yes — multiple no-cost EMI partners. Ping us on WhatsApp and a counsellor will share the latest options.",
+    a: "Yes – multiple no-cost EMI partners. Ping us on WhatsApp and a counsellor will share the latest options.",
   },
 ];
 
@@ -30,7 +30,7 @@ export const FAQ_PLACEMENTS: FaqItem[] = [
   },
   {
     q: "Do you guarantee placements?",
-    a: "We guarantee the process — direct referrals, unlimited mock interviews, resume reviews and post-offer support. The interview itself is on you, and we make sure you walk in ready.",
+    a: "We guarantee the process – direct referrals, unlimited mock interviews, resume reviews and post-offer support. The interview itself is on you, and we make sure you walk in ready.",
   },
   {
     q: "Which roles do students typically get?",
