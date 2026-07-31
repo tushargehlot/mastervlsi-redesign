@@ -27,6 +27,22 @@ MasterVLSI has been training semiconductor engineers since 2015 from its Bangalo
 - [Testimonials](https://www.mastervlsi.com/testimonials): Written and video testimonials from placed engineers.
 - [Playlists](https://www.mastervlsi.com/playlists): Curated YouTube playlists — Verilog, SystemVerilog, UVM, interview prep.
 - [Blog](https://www.mastervlsi.com/blog): Technical guides on RTL, DV, CDC, static timing, interview preparation and career deep-dives.
+
+### Blog posts
+
+- [What is VLSI? A Beginner's Roadmap for 2026](https://www.mastervlsi.com/blog/what-is-vlsi-roadmap): The VLSI landscape — the five roles and how to start.
+- [RTL Design: Verilog vs SystemVerilog](https://www.mastervlsi.com/blog/rtl-verilog-vs-systemverilog): When to reach for SystemVerilog over plain Verilog.
+- [UVM Verification Explained with a Simple Example](https://www.mastervlsi.com/blog/uvm-explained-simply): Drivers, monitors, sequencers, scoreboards — with a 32-bit adder testbench.
+- [Physical Design Flow: Floorplan to GDSII](https://www.mastervlsi.com/blog/physical-design-flow): The seven-step PD recipe.
+- [Static Timing Analysis Demystified](https://www.mastervlsi.com/blog/sta-demystified): Setup, hold, slack, and why corners matter.
+- [DFT 101: Scan Chains, BIST, and ATPG](https://www.mastervlsi.com/blog/dft-101): How testability is baked into modern chips.
+- [CDC Pitfalls & How to Fix Them](https://www.mastervlsi.com/blog/cdc-pitfalls): Metastability, synchronizers, and the three CDC sins.
+- [Low Power Design: UPF, Clock Gating & Beyond](https://www.mastervlsi.com/blog/low-power-design): Clock gating, power gating, multi-VDD, and UPF.
+- [How to Crack VLSI Interviews in 2026](https://www.mastervlsi.com/blog/crack-vlsi-interviews-2026): The 12 topics every interviewer touches, plus a 30-day plan.
+- [Careers in VLSI: Roles, Salaries, and Growth Path](https://www.mastervlsi.com/blog/careers-in-vlsi): The career ladder and where demand is headed.
+- [Top 20 Verilog Interview Questions with Answers](https://www.mastervlsi.com/blog/verilog-interview-questions): The exact Verilog questions interviewers ask — with answers and traps.
+- [Async FIFO Design: Gray Codes, Full/Empty Flags, and Gotchas](https://www.mastervlsi.com/blog/async-fifo-design): Pointer crossing, gray code, and the depth math nobody remembers.
+- [Blocking vs Non-Blocking Assignments: The #1 Interview Trap](https://www.mastervlsi.com/blog/blocking-vs-nonblocking): The mixing rule, three failing examples, and why simulators behave that way.
 - [Demo](https://www.mastervlsi.com/demo): Book a free 60-minute demo class — on-site in Bangalore or online.
 - [Contact](https://www.mastervlsi.com/contact): Address, phone, WhatsApp, email, campus map.
 

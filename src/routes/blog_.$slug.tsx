@@ -8,7 +8,7 @@ import { BlogCover } from "@/components/blog/BlogCover";
 import { GridBackdrop } from "@/components/GridBackdrop";
 import { Clock, ArrowLeft, ArrowRight, MessageCircle, Check, Link2, Share2 } from "lucide-react";
 
-export const Route = createFileRoute("/blog/$slug")({
+export const Route = createFileRoute("/blog_/$slug")({
   loader: ({ params }) => {
     const post = getPost(params.slug);
     if (!post) throw notFound();
@@ -198,6 +198,26 @@ function BlogPostPage() {
             <MessageCircle size={14} /> Chat with us
           </a>
         </div>
+
+        <aside className="mt-10 rounded-2xl border border-border bg-card/60 p-6">
+          <div className="flex items-start gap-4">
+            <div className="h-11 w-11 shrink-0 rounded-xl bg-gradient-to-br from-crimson to-ignite flex items-center justify-center font-display font-bold text-primary-foreground text-sm">
+              MV
+            </div>
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Written by</p>
+              <p className="mt-1 font-display font-bold">MasterVLSI Mentor Team</p>
+              <p className="mt-1.5 text-sm text-muted-foreground">
+                Working silicon engineers from our Bengaluru institute — the RTL and DV leads who have placed 5000+
+                engineers at Intel, AMD, NVIDIA, Qualcomm, Synopsys and Cadence.{" "}
+                <Link to="/about" className="text-primary hover:underline">More about us →</Link>
+              </p>
+              <p className="mt-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                Last updated {new Date(post.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+              </p>
+            </div>
+          </div>
+        </aside>
 
         {(prev || next) && (
           <nav className="mt-12 grid sm:grid-cols-2 gap-4" aria-label="Blog post navigation">

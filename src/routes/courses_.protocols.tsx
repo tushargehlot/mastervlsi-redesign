@@ -5,7 +5,7 @@ import { Reveal } from "@/components/fx/Reveal";
 import { ProtocolMatrix } from "@/components/ProtocolMatrix";
 import { SITE } from "@/data/site";
 
-export const Route = createFileRoute("/courses/protocols")({
+export const Route = createFileRoute("/courses_/protocols")({
   head: () => ({
     meta: [
       { title: "Protocols We Teach — AMBA, PCIe, DDR, USB, CXL, Ethernet | MasterVLSI" },

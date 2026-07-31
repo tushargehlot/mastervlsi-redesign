@@ -9,6 +9,15 @@ import { Search, Clock, ArrowRight, ChevronLeft, ChevronRight } from "lucide-rea
 
 const PER_PAGE = 6;
 
+const CLUSTERS: { label: string; tags: string[] | null }[] = [
+  { label: "All topics", tags: null },
+  { label: "Interview Prep", tags: ["Interview", "Career"] },
+  { label: "RTL & Verilog", tags: ["RTL", "Verilog"] },
+  { label: "Verification & UVM", tags: ["Verification", "UVM", "CDC"] },
+  { label: "Backend & Timing", tags: ["Physical Design", "STA", "DFT"] },
+  { label: "Low Power", tags: ["Low Power", "UPF"] },
+];
+
 export const Route = createFileRoute("/blog")({
   validateSearch: (search: Record<string, unknown>): { page?: number } => ({
     page: typeof search.page === "number" && search.page >= 1 ? Math.floor(search.page) : undefined,
@@ -31,6 +40,7 @@ export const Route = createFileRoute("/blog")({
 function BlogIndex() {
   const [q, setQ] = useState("");
   const [tag, setTag] = useState<string | null>(null);
+  const [cluster, setCluster] = useState<string | null>(null);
   const { page = 1 } = Route.useSearch();
   const navigate = Route.useNavigate();
   const tags = useMemo(() => Array.from(new Set(BLOG_POSTS.flatMap((p) => p.tags))).sort(), []);
@@ -38,10 +48,13 @@ function BlogIndex() {
     () =>
       BLOG_POSTS.filter((p) => {
         const matchQ = !q || p.title.toLowerCase().includes(q.toLowerCase()) || p.excerpt.toLowerCase().includes(q.toLowerCase());
-        const matchT = !tag || p.tags.includes(tag);
-        return matchQ && matchT;
+        const matchT = tag ? p.tags.includes(tag) : true;
+        const matchC = cluster
+          ? (CLUSTERS.find((c) => c.label === cluster)?.tags ?? []).some((t) => p.tags.includes(t))
+          : true;
+        return matchQ && matchT && matchC;
       }),
-    [q, tag],
+    [q, tag, cluster],
   );
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
@@ -86,6 +99,20 @@ function BlogIndex() {
             />
           </div>
           <div className="flex flex-wrap gap-1.5">
+            {CLUSTERS.map((c) => (
+              <button
+                key={c.label}
+                onClick={() => { setCluster(cluster === c.label ? null : c.label); setTag(null); resetPage(); }}
+                className={`px-3 py-1.5 rounded-full text-xs font-mono border transition ${cluster === c.label ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border text-muted-foreground hover:text-foreground"}`}
+              >
+                {c.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {!cluster && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
             <button onClick={() => { setTag(null); resetPage(); }} className={`px-3 py-1.5 rounded-full text-xs font-mono border transition ${!tag ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border text-muted-foreground hover:text-foreground"}`}>
               All
             </button>
@@ -95,7 +122,7 @@ function BlogIndex() {
               </button>
             ))}
           </div>
-        </div>
+        )}
 
         {showHero && hero && (
           <Link
