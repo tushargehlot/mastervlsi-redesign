@@ -1,13 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, Play, Sparkles, Zap, Cpu, GraduationCap, Layers, Activity } from "lucide-react";
+import { ArrowRight, Play, Sparkles, Zap, Cpu, GraduationCap, Layers, Activity, RefreshCcw, Briefcase, Hammer } from "lucide-react";
 import { GridBackdrop } from "@/components/GridBackdrop";
 import { Counter } from "@/components/Counter";
 import { FlowVisualizer } from "@/components/FlowVisualizer";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
 import { TiltCard } from "@/components/TiltCard";
 import { COURSES } from "@/data/courses";
-import { STATS, SITE } from "@/data/site";
+import { STATS, SITE, WHATSAPP_COMMUNITY } from "@/data/site";
 import { Spotlight } from "@/components/fx/Spotlight";
 import { Reveal } from "@/components/fx/Reveal";
 import { Magnetic } from "@/components/fx/Magnetic";
@@ -71,6 +71,37 @@ const PILLARS = [
   { icon: Zap, n: "01", title: "30–45 day placements", desc: "Industry-aligned curriculum so tight that companies hire on a rolling basis from every cohort." },
   { icon: Sparkles, n: "02", title: "24/7 lab access", desc: "Tool licenses + servers running round the clock. Practice the moment inspiration strikes." },
   { icon: GraduationCap, n: "03", title: "Post-placement support", desc: "We mentor you through the first year on the job – promotions, switches, raises." },
+];
+
+const TRANSFORM_PATHS = [
+  {
+    icon: RefreshCcw,
+    tag: "Career Gap",
+    title: "Recharge, don't restart",
+    desc: "A gap year doesn't end your engineering story. We rebuild your fundamentals, reframe your experience and get you in front of hiring managers within weeks.",
+    bullets: ["Interview-ready in 5–6 months", "Experience-level framing", "Post-offer first-year support"],
+  },
+  {
+    icon: Briefcase,
+    tag: "Internship",
+    title: "Real silicon, real projects",
+    desc: "Hands-on RTL & verification internship inside a live design house – actual projects, mentor reviews and a portfolio that gets shortlisted.",
+    bullets: ["Live industry projects", "24/7 EDA lab access", "Internship completion certificate"],
+  },
+  {
+    icon: Hammer,
+    tag: "Apprenticeship",
+    title: "Earn while you upskill",
+    desc: "Apprenticeship-style training with paid project work after onboarding – income now, an offer-track pipeline later.",
+    bullets: ["Paid project work", "Stipend while learning", "Convert-to-placement track"],
+  },
+  {
+    icon: GraduationCap,
+    tag: "IIT / NIT / Top Colleges",
+    title: "Degree gets the interview. We get the offer.",
+    desc: "Even top-college engineers need to recharge before they're silicon-ready. RTL and verification fluency in weeks, not years – with alumni at Intel, AMD, NVIDIA.",
+    bullets: ["Fast-track cohorts", "Campus-to-corporate bridge", "Alumni at Intel, AMD, NVIDIA"],
+  },
 ];
 
 function Index() {
@@ -165,6 +196,70 @@ function Index() {
               </div>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* TRANSFORMATION */}
+      <section className="relative py-24 overflow-hidden">
+        <GridBackdrop />
+        <Spotlight size={520} />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal className="max-w-2xl">
+            <p className="font-mono text-xs text-primary uppercase tracking-widest">// The VLSI transformation</p>
+            <h2 className="mt-3 h-display-sm font-display font-bold">
+              Career gap. Internship. Apprenticeship. <span className="text-gradient">Transform to VLSI.</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              From IIT-NIT to top engineering colleges — bright engineers still need to recharge before they're
+              silicon-ready. Whatever your starting point, there's a MasterVLSI path that lands in a VLSI role.
+            </p>
+          </Reveal>
+
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
+            {TRANSFORM_PATHS.map((p, i) => (
+              <Reveal key={p.tag} delay={i * 0.06} className="h-full">
+                <div className="group h-full rounded-2xl border border-border bg-card p-6 hover:border-primary/50 hover:shadow-[0_10px_30px_-12px_oklch(0.60_0.20_24_/_0.18)] transition-all">
+                  <div className="flex items-center gap-3">
+                    <div className="h-11 w-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <p.icon size={20} />
+                    </div>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-accent">{p.tag}</span>
+                  </div>
+                  <h3 className="mt-4 font-display text-xl font-bold">{p.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                  <ul className="mt-4 space-y-1.5">
+                    {p.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-sm text-foreground/80">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.1}>
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-border bg-gradient-to-br from-card via-card to-primary/10 p-6 sm:p-8">
+              <div>
+                <p className="font-display text-lg font-bold">Ready to transform into VLSI?</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Join 1000s of engineers already on the path — ask anything, no pressure.
+                </p>
+              </div>
+              <Magnetic>
+                <a
+                  href={WHATSAPP_COMMUNITY}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground hover:bg-accent/90 transition"
+                >
+                  Join the WhatsApp community <ArrowRight size={16} />
+                </a>
+              </Magnetic>
+            </div>
+          </Reveal>
         </div>
       </section>
 

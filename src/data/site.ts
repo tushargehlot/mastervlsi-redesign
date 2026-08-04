@@ -1,6 +1,11 @@
 // Single source of truth for cross-cutting site constants.
 export const DEFAULT_WHATSAPP_PREFILL = "Hi MasterVLSI! I'd like to know more about your VLSI courses.";
 
+// https://chat.whatsapp.com/K5qG7bLUNyh9xKG0Nex52K — community invite. All
+// WhatsApp CTAs funnel people here per stakeholder decision.
+export const WHATSAPP_COMMUNITY =
+  "https://chat.whatsapp.com/K5qG7bLUNyh9xKG0Nex52K?s=cl&p=a&ilr=0";
+
 export const SITE = {
   name: "MasterVLSI",
   url: "https://www.mastervlsi.com",
@@ -24,9 +29,11 @@ export const SITE = {
   workingHours: "Mon – Sat · 9:30 AM to 6:30 PM",
   social: {
     youtube: "https://www.youtube.com/@mastervlsi2526",
-    linkedin: "#",
-    instagram: "#",
-    twitter: "#",
+    linkedin: "https://www.linkedin.com/company/106502125/",
+    instagram: "https://www.instagram.com/mastervlsi/",
+    twitter: "https://x.com/MasterVlsi",
+    facebook: "https://www.facebook.com/Mastervlsi/",
+    pinterest: "https://in.pinterest.com/mastervlsi/student/",
   },
 } as const;
 
@@ -45,7 +52,6 @@ export const STATS = [
   { value: 10, suffix: "+", label: "Years of Excellence" },
 ] as const;
 
-export function waLink(message: string = DEFAULT_WHATSAPP_PREFILL) {
-  const n = SITE.whatsappNumber.replace(/[^0-9]/g, "");
-  return `https://wa.me/${n}?text=${encodeURIComponent(message)}`;
+export function waLink(_message: string = DEFAULT_WHATSAPP_PREFILL) {
+  return WHATSAPP_COMMUNITY;
 }

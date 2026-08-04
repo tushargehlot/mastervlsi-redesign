@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Youtube, Linkedin, Instagram, Twitter, MapPin, MessageCircle, Send, Star } from "lucide-react";
+import { Youtube, Linkedin, Instagram, Twitter, Facebook, MapPin, MessageCircle, Send, Star } from "lucide-react";
 import { SITE, waLink } from "@/data/site";
 const LOGO_URL = "/logo-mastervlsi.png";
 import { TraceLine } from "@/components/fx/TraceLine";
@@ -75,6 +75,14 @@ export function Footer() {
               </a>
               <a href={SITE.social.twitter} className="p-2.5 rounded-md bg-card border border-border hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition" aria-label="Twitter">
                 <Twitter size={16} />
+              </a>
+              <a href={SITE.social.facebook} target="_blank" rel="noreferrer" className="p-2.5 rounded-md bg-card border border-border hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition" aria-label="Facebook">
+                <Facebook size={16} />
+              </a>
+              <a href={SITE.social.pinterest} target="_blank" rel="noreferrer" className="p-2.5 rounded-md bg-card border border-border hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition" aria-label="Pinterest">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden>
+                  <path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.64 7.86 6.36 9.31-.09-.79-.17-2.01.03-2.87.19-.78 1.2-5.02 1.2-5.02s-.31-.62-.31-1.54c0-1.44.84-2.51 1.88-2.51.89 0 1.32.67 1.32 1.47 0 .89-.57 2.23-.86 3.47-.25 1.04.52 1.88 1.54 1.88 1.85 0 3.27-1.95 3.27-4.76 0-2.49-1.79-4.23-4.34-4.23-2.96 0-4.69 2.22-4.69 4.51 0 .89.34 1.85.77 2.37.08.1.1.19.07.29-.08.32-.25 1.02-.28 1.16-.04.19-.15.23-.34.14-1.28-.6-2.08-2.46-2.08-3.96 0-3.23 2.34-6.19 6.76-6.19 3.55 0 6.31 2.53 6.31 5.91 0 3.53-2.22 6.37-5.31 6.37-1.04 0-2.01-.54-2.35-1.18l-.64 2.43c-.23.89-.85 2-1.27 2.68.96.3 1.97.46 3.02.46 5.52 0 10-4.48 10-10S17.52 2 12 2z" />
+                </svg>
               </a>
               <a href={waLink()} target="_blank" rel="noreferrer" className="ml-1 inline-flex items-center gap-1.5 rounded-md bg-accent/10 text-accent px-3 py-2 text-xs font-medium hover:bg-accent/20 transition">
                 <MessageCircle size={14} /> WhatsApp
